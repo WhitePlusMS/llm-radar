@@ -1,0 +1,6 @@
+# Ignore everything by default
+*
+
+# Keep these repository-level files
+!README.md
+!.gitignore
