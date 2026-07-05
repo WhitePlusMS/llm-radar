@@ -1,0 +1,30 @@
+id: anthropic/claude-4-opus
+name: Claude 4 Opus
+company: anthropic
+release_date: "2025-05-22"
+brand_color: "#CC785C"
+architecture: Dense
+context_window: "200k"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/anthropic.svg
+sources:
+  - key: claude-4-launch
+    title: Introducing Claude 4
+    url: https://www.anthropic.com/news/claude-4
+    type: blog
+  - key: claude-4-system-card
+    title: "System Card: Claude Opus 4 & Claude Sonnet 4"
+    url: https://www-cdn.anthropic.com/4263b940cabb546aa0e3283f35b686f4f3b2ff47/claude-opus-4-and-claude-sonnet-4-system-card.pdf
+    type: system-card
+scores:
+  # SWE-bench Verified, reported as the headline coding benchmark in the launch post.
+  swe-bench:
+    value: 72.5
+    source: claude-4-launch
+  # GPQA Diamond without extended thinking (base model result).
+  gpqa:
+    value: 74.9
+    source: claude-4-launch

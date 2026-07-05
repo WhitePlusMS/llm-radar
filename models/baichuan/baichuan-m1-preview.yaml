@@ -1,0 +1,24 @@
+id: baichuan/baichuan-m1-preview
+name: Baichuan-M1-preview
+company: baichuan
+release_date: "2025-01-24"
+brand_color: "#FF6A00"
+# 官方未披露 Baichuan-M1-preview 的参数规模、架构与上下文窗口
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags:
+  - closed-weights
+  - reasoning
+  - multimodal
+logo: assets/logos/baichuan.svg
+sources:
+  - key: baichuan-m1-preview-launch
+    title: 百川智能发布深度思考模型Baichuan-M1-preview
+    url: https://www.ithome.com/0/826/964.htm
+    type: blog
+  - key: baichuan-m1-preview-huanqiu
+    title: 百川智能首个全场景深度思考模型Baichuan-M1-preview发布
+    url: https://tech.huanqiu.com/article/4LCc06490AH
+    type: blog
+scores: {}

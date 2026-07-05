@@ -1,0 +1,99 @@
+metrics:
+  - id: mmlu-pro
+    name: MMLU-Pro
+    description: A more robust and challenging multi-task language understanding benchmark.
+    scale: percentage
+    higher_is_better: true
+    capability_tags: [knowledge]
+
+  - id: mmlu
+    name: MMLU
+    description: Massive Multitask Language Understanding benchmark.
+    scale: percentage
+    higher_is_better: true
+    capability_tags: [knowledge]
+
+  - id: gpqa
+    name: GPQA Diamond
+    description: Graduate-level Google-Proof Q&A benchmark for scientific reasoning.
+    scale: percentage
+    higher_is_better: true
+    capability_tags: [reasoning, knowledge]
+
+  - id: humaneval
+    name: HumanEval
+    description: Code generation benchmark for functional correctness.
+    scale: percentage
+    higher_is_better: true
+    capability_tags: [coding]
+
+  - id: swe-bench
+    name: SWE-Bench Verified
+    description: Real-world software engineering task resolution benchmark.
+    scale: percentage
+    higher_is_better: true
+    capability_tags: [coding, agentic]
+
+  - id: math-level-5
+    name: MATH Level 5 / MATH-500
+    description: Challenging mathematics reasoning benchmark (commonly reported as MATH-500).
+    scale: percentage
+    higher_is_better: true
+    capability_tags: [math, reasoning]
+
+  - id: gsm8k
+    name: GSM8K
+    description: Grade school math word problems benchmark.
+    scale: percentage
+    higher_is_better: true
+    capability_tags: [math]
+
+  - id: arena-elo
+    name: LMSYS Arena ELO
+    description: Crowdsourced chatbot arena preference Elo rating.
+    scale: raw
+    higher_is_better: true
+    max_value: 1400
+    capability_tags: [chat, preference]
+
+  - id: ifeval
+    name: IFEval
+    description: Instruction following evaluation with verifiable instructions.
+    scale: percentage
+    higher_is_better: true
+    capability_tags: [instruction-following]
+
+  - id: bbh
+    name: BBH
+    description: Big-Bench Hard benchmark for challenging reasoning tasks.
+    scale: percentage
+    higher_is_better: true
+    capability_tags: [reasoning]
+
+  - id: drop
+    name: DROP
+    description: Discrete reasoning over paragraphs benchmark.
+    scale: percentage
+    higher_is_better: true
+    capability_tags: [reading-comprehension, long-context]
+
+  - id: hellaswag
+    name: HellaSwag
+    description: Commonsense natural language inference benchmark.
+    scale: percentage
+    higher_is_better: true
+    capability_tags: [commonsense]
+
+  - id: arc-c
+    name: ARC-Challenge
+    description: AI2 Reasoning Challenge (challenge set).
+    scale: percentage
+    higher_is_better: true
+    capability_tags: [knowledge, reasoning]
+
+  - id: winogrande
+    name: WinoGrande
+    description: Commonsense reasoning benchmark with pronoun resolution.
+    scale: percentage
+    higher_is_better: true
+    capability_tags: [commonsense]

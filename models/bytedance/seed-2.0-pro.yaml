@@ -1,0 +1,58 @@
+id: bytedance/seed-2.0-pro
+name: Seed 2.0 Pro
+company: bytedance
+release_date: "2026-02-14"
+brand_color: "#00F2EA"
+parameters:
+  total: undisclosed
+  active: undisclosed
+architecture: MoE
+context_window: "256k"
+modalities:
+  input: [text, image, audio, video]
+  output: [text, image, audio, video]
+weight_availability_tags: [closed-weights, multimodal]
+logo: assets/logos/bytedance.svg
+sources:
+  - key: seed2.0-model-card
+    title: "Seed2.0 Model Card: Towards Intelligence Frontier for Real-World Complexity"
+    url: https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/seed2/0214/Seed2.0%20Model%20Card.pdf
+    type: paper
+  - key: seed2.0-arxiv
+    title: "Seed2.0 Model Card (arXiv abstract)"
+    url: https://arxiv.org/abs/2607.00248
+    type: paper
+  - key: seed2.0-official-page
+    title: "Seed2.0 Official Product Page"
+    url: https://seed.bytedance.com/en/seed2
+    type: website
+scores:
+  mmlu-pro:
+    value: 87.0
+    source: seed2.0-model-card
+  gpqa:
+    value: 88.9
+    source: seed2.0-model-card
+  humaneval:
+    value: null
+  swe-bench:
+    value: null
+  math-level-5:
+    value: null
+  gsm8k:
+    value: null
+  arena-elo:
+    value: null
+  ifeval:
+    value: 78.9
+    source: seed2.0-model-card
+  bbh:
+    value: null
+  drop:
+    value: null
+  hellaswag:
+    value: null
+  arc-c:
+    value: null
+  winogrande:
+    value: null

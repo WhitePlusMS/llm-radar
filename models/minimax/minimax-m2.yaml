@@ -1,0 +1,42 @@
+id: minimax/minimax-m2
+name: MiniMax-M2
+company: minimax
+brand_color: "#FE603C"
+release_date: "2025-10-27"
+parameters:
+  total: "229.9B"
+  active: "9.8B"
+architecture: MoE
+context_window: "192k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights]
+logo: assets/logos/minimax.svg
+sources:
+  - key: minimax-m2-paper
+    title: "The MiniMax-M2 Series: Mini Activations Unleashing Max Real-World Intelligence"
+    url: https://arxiv.org/abs/2605.26494
+    type: paper
+  - key: minimax-m2-github
+    title: "MiniMax-M2 GitHub Repository"
+    url: https://github.com/MiniMax-AI/MiniMax-M2
+    type: codebase
+  - key: minimax-release-notes
+    title: "MiniMax API Release Notes - Models"
+    url: https://platform.minimax.io/docs/release-notes/models
+    type: blog
+scores:
+  # 以下分数来自 MiniMax-M2 GitHub README 中的 "Intelligence Benchmarks" 与 "Coding & Agentic Benchmarks" 表格。
+  # 报告还公布了 AIME25、LiveCodeBench、IFBench、Terminal-Bench、BrowseComp、GAIA 等成绩，
+  # 但当前 metrics.yaml 常见集合未包含这些 key，故不写入 scores 字段。
+  mmlu-pro:
+    value: 82.0
+    source: minimax-m2-github
+  gpqa:
+    value: 78.0
+    source: minimax-m2-github
+  swe-bench:
+    value: 69.4
+    source: minimax-m2-github
+  # 原始来源未报告：mmlu, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande

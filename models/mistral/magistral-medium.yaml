@@ -1,0 +1,42 @@
+id: mistral/magistral-medium
+name: Magistral Medium
+company: mistral
+brand_color: "#FF7000"
+release_date: "2025-06-10"
+parameters:
+  total:
+  active:
+architecture: Dense
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning]
+logo: assets/logos/mistral.svg
+sources:
+  - key: magistral-blog
+    title: "Magistral — the first reasoning model by Mistral AI"
+    url: https://mistral.ai/news/magistral
+    type: blog
+  - key: magistral-paper
+    title: "Magistral"
+    url: https://arxiv.org/abs/2506.10910
+    type: paper
+scores:
+  # 原始论文（arXiv:2506.10910）与官方博客主要报告 AIME-24/25、LiveCodeBench、Aider、GPQA 等
+  # 推理/代码 benchmark，但 AIME 不在指定的常见集合中；其余指定 benchmark 在原始来源中未报告。
+  # Magistral Medium: AIME 2024 pass@1 = 73.6%, majority-voting@64 = 90%（来源：官方博客）。
+  mmlu-pro:
+  mmlu:
+  gpqa:
+  humaneval:
+  swe-bench:
+  math-level-5:
+  gsm8k:
+  arena-elo:
+  ifeval:
+  bbh:
+  drop:
+  hellaswag:
+  arc-c:
+  winogrande:

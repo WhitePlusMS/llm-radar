@@ -1,0 +1,27 @@
+id: zhipu/glm-5
+name: GLM-5
+company: zhipu
+brand_color: "#0B61FF"
+release_date: "2026-02-17"
+parameters:
+  total: "744B"
+  active: "40B"
+architecture: MoE
+context_window: "200k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights, reasoning]
+logo: assets/logos/zhipu.svg
+sources:
+  - key: glm-5-report
+    title: "GLM-5: from Vibe Coding to Agentic Engineering"
+    url: https://arxiv.org/abs/2602.15763
+    type: paper
+scores:
+  gpqa:
+    value: 82.5
+    source: glm-5-report
+  swe-bench:
+    value: 77.8
+    source: glm-5-report

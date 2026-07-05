@@ -1,0 +1,24 @@
+id: xai/grok-4
+name: Grok-4
+company: xai
+release_date: "2025-07-09"
+brand_color: "#000000"
+# xAI 未公开 Grok-4 的参数规模与架构细节。
+parameters:
+  total: null
+  active: null
+architecture: unknown
+context_window: "256k"
+modalities:
+  input: [text, image, audio]
+  output: [text, audio]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/xai.svg
+sources:
+  - key: grok-4
+    title: Grok 4
+    url: https://x.ai/news/grok-4
+    type: blog
+# 官方博客展示了 GPQA / LiveCodeBench / AIME 等图表，但未在正文中给出允许集合内
+# 的明确数值；因此 scores 留空。
+scores: {}

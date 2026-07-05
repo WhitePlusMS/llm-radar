@@ -1,0 +1,42 @@
+id: mistral/pixtral-large
+name: Pixtral Large
+company: mistral
+brand_color: "#FF7000"
+release_date: "2024-11-19"
+parameters:
+  total: "124B"
+  active: "124B"
+architecture: Dense
+context_window: "128k"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [open-weights, multimodal]
+logo: assets/logos/mistral.svg
+sources:
+  - key: pixtral-large-blog
+    title: "Pixtral Large"
+    url: https://mistral.ai/news/pixtral-large/
+    type: blog
+  - key: pixtral-large-hf
+    title: "Pixtral Large Instruct 2411 — Hugging Face Model Card"
+    url: https://huggingface.co/mistralai/Pixtral-Large-Instruct-2411
+    type: model_card
+scores:
+  # 官方博客主要报告多模态 benchmark（MathVista 69.4%、ChartQA、DocVQA、MM-MT-Bench、
+  # LMSys Vision Leaderboard 等），均未在指定的常见文本 benchmark 集合中。
+  # 发布方原始来源未报告 MMLU / MMLU-Pro / GPQA / HumanEval / GSM8K 等数值。
+  mmlu-pro:
+  mmlu:
+  gpqa:
+  humaneval:
+  swe-bench:
+  math-level-5:
+  gsm8k:
+  arena-elo:
+  ifeval:
+  bbh:
+  drop:
+  hellaswag:
+  arc-c:
+  winogrande:

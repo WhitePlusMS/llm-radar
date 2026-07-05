@@ -1,0 +1,39 @@
+id: zhipu/glm-4
+name: GLM-4
+company: zhipu
+brand_color: "#0B61FF"
+release_date: "2024-05-20"
+parameters:
+  total: undisclosed
+  active: undisclosed
+architecture: Dense
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [closed-weights]
+logo: assets/logos/zhipu.svg
+sources:
+  - key: glm-4-report
+    title: "ChatGLM: A Family of Large Language Models from GLM-130B to GLM-4 All Tools"
+    url: https://arxiv.org/abs/2406.12793
+    type: paper
+scores:
+  mmlu:
+    value: 83.3
+    source: glm-4-report
+  gsm8k:
+    value: 93.3
+    source: glm-4-report
+  math-level-5:
+    value: 61.3
+    source: glm-4-report
+  bbh:
+    value: 84.7
+    source: glm-4-report
+  gpqa:
+    value: 39.9
+    source: glm-4-report
+  humaneval:
+    value: 78.5
+    source: glm-4-report

@@ -1,0 +1,50 @@
+id: meta/llama-3.1-405b
+name: Llama 3.1 405B Instruct
+company: meta
+release_date: "2024-07-23"
+brand_color: "#0082FB"
+parameters:
+  total: "405B"
+  active: "405B"
+architecture: Dense
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text, code]
+weight_availability_tags: [open-weights, chat]
+logo: assets/logos/meta.svg
+sources:
+  - key: llama3.1-model-card
+    title: Llama 3.1 Model Card
+    url: https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md
+    type: model_card
+  - key: llama3-herd-paper
+    title: The Llama 3 Herd of Models
+    url: https://arxiv.org/abs/2407.21783
+    type: paper
+  - key: llama3.1-announcement
+    title: Meta Llama 3.1 Announcement
+    url: https://ai.meta.com/blog/meta-llama-3-1/
+    type: blog
+scores:
+  mmlu:
+    value: 88.6
+    source: llama3.1-model-card
+  mmlu-pro:
+    value: 73.3
+    source: llama3.1-model-card
+  ifeval:
+    value: 88.6
+    source: llama3.1-model-card
+  gpqa:
+    value: 50.7
+    source: llama3.1-model-card
+  humaneval:
+    value: 89.0
+    source: llama3.1-model-card
+  gsm8k:
+    value: 96.8
+    source: llama3.1-model-card
+  arc-c:
+    value: 96.9
+    source: llama3.1-model-card

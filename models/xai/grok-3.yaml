@@ -1,0 +1,31 @@
+id: xai/grok-3
+name: Grok-3
+company: xai
+release_date: "2025-02-19"
+brand_color: "#000000"
+# xAI 未公开 Grok-3 的参数规模与架构细节。
+parameters:
+  total: null
+  active: null
+architecture: unknown
+context_window: "1M"
+modalities:
+  input: [text, image, video]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/xai.svg
+sources:
+  - key: grok-3-beta
+    title: Grok 3 Beta — The Age of Reasoning Agents
+    url: https://x.ai/news/grok-3
+    type: blog
+scores:
+  mmlu-pro:
+    value: 79.9
+    source: grok-3-beta
+  gpqa:
+    value: 75.4
+    source: grok-3-beta
+  arena-elo:
+    value: 1402
+    source: grok-3-beta

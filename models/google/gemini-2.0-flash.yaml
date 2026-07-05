@@ -1,0 +1,31 @@
+id: google/gemini-2.0-flash
+name: Gemini 2.0 Flash
+company: google
+release_date: "2024-12-11"
+brand_color: "#4796E3"
+parameters:
+  total: null
+  active: null
+architecture: MoE
+context_window: "1M"
+modalities:
+  input: [text, image, audio, video]
+  output: [text, image, audio]
+weight_availability_tags: [closed-weights, multimodal]
+logo: assets/logos/google.svg
+sources:
+  - key: gemini-2.5-report
+    title: "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities (includes Gemini 2.0 Flash results)"
+    url: https://arxiv.org/abs/2507.06261
+    type: paper
+  - key: gemini-2.0-announcement
+    title: "Introducing Gemini 2.0: our new AI model for the agentic era"
+    url: https://blog.google/intl/en-nz/company-news/2024_12_introducing-gemini-20-our-new-ai-mode/
+    type: blog
+scores:
+  gpqa:
+    value: 65.2
+    source: gemini-2.5-report
+  swe-bench:
+    value: 34.2
+    source: gemini-2.5-report

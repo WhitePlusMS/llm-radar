@@ -1,0 +1,46 @@
+id: alibaba/qwen3
+name: Qwen3
+company: alibaba
+brand_color: "#FF6A00"
+release_date: "2025-04-29"
+parameters:
+  total: "235B"
+  active: "22B"
+architecture: MoE
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights, reasoning]
+logo: assets/logos/alibaba.svg
+sources:
+  - key: qwen3-report
+    title: "Qwen3 Technical Report"
+    url: https://arxiv.org/abs/2505.09388
+    type: paper
+  - key: qwen3-blog
+    title: "Qwen3: Think Deeper, Act Faster"
+    url: https://qwenlm.github.io/blog/qwen3/
+    type: blog
+scores:
+  mmlu:
+    value: 87.81
+    source: qwen3-report
+  mmlu-pro:
+    value: 68.18
+    source: qwen3-report
+  gpqa:
+    value: 47.47
+    source: qwen3-report
+  gsm8k:
+    value: 94.39
+    source: qwen3-report
+  math-level-5:
+    value: 71.84
+    source: qwen3-report
+  bbh:
+    value: 88.87
+    source: qwen3-report
+  ifeval:
+    value: 83.4
+    source: qwen3-report

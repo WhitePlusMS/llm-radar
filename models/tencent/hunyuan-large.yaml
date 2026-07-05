@@ -1,0 +1,51 @@
+id: tencent/hunyuan-large
+name: Hunyuan-Large
+company: tencent
+brand_color: "#0052D9"
+release_date: "2024-11-04"
+parameters:
+  total: "389B"
+  active: "52B"
+architecture: MoE
+context_window: "256k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights]
+logo: assets/logos/tencent.svg
+sources:
+  - key: hunyuan-large-paper
+    title: "Hunyuan-Large: An Open-Source MoE Model with 52 Billion Activated Parameters by Tencent"
+    url: https://arxiv.org/abs/2411.02265
+    type: paper
+scores:
+  mmlu:
+    value: 88.4
+    source: hunyuan-large-paper
+  mmlu-pro:
+    value: 60.2
+    source: hunyuan-large-paper
+  bbh:
+    value: 86.3
+    source: hunyuan-large-paper
+  drop:
+    value: 88.9
+    source: hunyuan-large-paper
+  hellaswag:
+    value: 86.8
+    source: hunyuan-large-paper
+  arc-c:
+    value: 95.0
+    source: hunyuan-large-paper
+  winogrande:
+    value: 88.7
+    source: hunyuan-large-paper
+  math-level-5:
+    value: 69.8
+    source: hunyuan-large-paper
+  gsm8k:
+    value: 92.8
+    source: hunyuan-large-paper
+  humaneval:
+    value: 71.4
+    source: hunyuan-large-paper

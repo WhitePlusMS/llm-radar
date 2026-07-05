@@ -1,0 +1,30 @@
+id: tencent/hunyuan-t1
+name: Hunyuan-T1
+company: tencent
+brand_color: "#0052D9"
+release_date: "2025-03-24"
+parameters:
+  total: "560B"
+  active: "56B"
+architecture: Hybrid Transformer-Mamba MoE
+context_window: "256k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning]
+logo: assets/logos/tencent.svg
+sources:
+  - key: hunyuan-t1-blog
+    title: "混元-T1：强化学习驱动，业内首个超大规模混合Mamba推理模型正式发布"
+    url: https://github.com/Tencent/llm.hunyuan.T1/blob/main/README.md
+    type: blog
+scores:
+  mmlu-pro:
+    value: 87.2
+    source: hunyuan-t1-blog
+  gpqa:
+    value: 69.3
+    source: hunyuan-t1-blog
+  math-level-5:
+    value: 96.2
+    source: hunyuan-t1-blog

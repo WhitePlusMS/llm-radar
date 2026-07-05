@@ -1,0 +1,31 @@
+id: meta/llama-4-scout
+name: Llama 4 Scout Instruct
+company: meta
+release_date: "2025-04-05"
+brand_color: "#0082FB"
+parameters:
+  total: "109B"
+  active: "17B"
+architecture: MoE
+context_window: "10M"
+modalities:
+  input: [text, image]
+  output: [text, code]
+weight_availability_tags: [open-weights, chat, multimodal]
+logo: assets/logos/meta.svg
+sources:
+  - key: llama4-model-card
+    title: Llama 4 Model Card
+    url: https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md
+    type: model_card
+  - key: llama4-announcement
+    title: "Introducing Llama 4: Advancing multimodal intelligence"
+    url: https://ai.meta.com/blog/llama-4-multimodal-intelligence/
+    type: blog
+scores:
+  mmlu-pro:
+    value: 74.3
+    source: llama4-model-card
+  gpqa:
+    value: 57.2
+    source: llama4-model-card

@@ -1,0 +1,40 @@
+id: openai/o1
+name: OpenAI o1
+company: openai
+brand_color: "#10A37F"
+release_date: "2024-12-05"
+# OpenAI 未公开 o1 的参数规模与架构细节，故不填写 parameters 与 architecture。
+context_window: "200k"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning]
+logo: assets/logos/openai.svg
+sources:
+  - key: o1-api-announcement
+    title: OpenAI o1 and new tools for developers
+    url: https://openai.com/index/o1-and-new-tools-for-developers/
+    type: blog
+  - key: o1-reasoning-blog
+    title: Learning to reason with LLMs
+    url: https://openai.com/index/learning-to-reason-with-llms/
+    type: blog
+  - key: o1-system-card
+    title: OpenAI o1 System Card
+    url: https://arxiv.org/abs/2412.16720
+    type: paper
+scores:
+  # 以下分数来自 OpenAI 官方 o1 API 发布页的 benchmark 对比表（o1-2024-12-17）。
+  mmlu:
+    value: 91.8
+    source: o1-api-announcement
+  gpqa:
+    value: 75.7
+    source: o1-api-announcement
+  swe-bench:
+    value: 48.9
+    source: o1-api-announcement
+  math-level-5:
+    value: 96.4
+    source: o1-api-announcement
+  # 原始来源未报告：mmlu-pro, humaneval, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande

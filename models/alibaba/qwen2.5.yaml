@@ -1,0 +1,58 @@
+id: alibaba/qwen2.5
+name: Qwen2.5
+company: alibaba
+brand_color: "#FF6A00"
+release_date: "2024-09-19"
+parameters:
+  total: "72B"
+  active: "72B"
+architecture: Dense
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights]
+logo: assets/logos/alibaba.svg
+sources:
+  - key: qwen2.5-report
+    title: "Qwen2.5 Technical Report"
+    url: https://arxiv.org/abs/2412.15115
+    type: paper
+  - key: qwen2.5-blog
+    title: "Qwen2.5 Release Blog"
+    url: https://qwenlm.github.io/blog/qwen2.5/
+    type: blog
+scores:
+  mmlu:
+    value: 86.1
+    source: qwen2.5-report
+  mmlu-pro:
+    value: 71.1
+    source: qwen2.5-report
+  gpqa:
+    value: 49.0
+    source: qwen2.5-report
+  gsm8k:
+    value: 95.8
+    source: qwen2.5-report
+  math-level-5:
+    value: 83.1
+    source: qwen2.5-report
+  bbh:
+    value: 86.3
+    source: qwen2.5-report
+  humaneval:
+    value: 86.6
+    source: qwen2.5-report
+  ifeval:
+    value: 84.1
+    source: qwen2.5-report
+  arc-c:
+    value: 72.4
+    source: qwen2.5-report
+  hellaswag:
+    value: 87.6
+    source: qwen2.5-report
+  winogrande:
+    value: 83.9
+    source: qwen2.5-report

@@ -1,0 +1,34 @@
+id: moonshot/kimi-k1.5
+name: Kimi K1.5
+company: moonshot
+brand_color: "#1783FF"
+release_date: "2025-01-22"
+# Moonshot 未在官方技术报告中公开 Kimi K1.5 的参数规模与架构细节，故不填写 parameters 与 architecture。
+context_window: "128k"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/moonshot.svg
+sources:
+  - key: kimi-k1.5-tech-report
+    title: "Kimi K1.5: Scaling Reinforcement Learning with LLMs"
+    url: https://arxiv.org/abs/2501.12599
+    type: paper
+scores:
+  # 以下分数来自 Moonshot AI 官方 arXiv 技术报告 Table 2（long-CoT）与 Table 3（short-CoT）。
+  mmlu:
+    value: 87.4
+    source: kimi-k1.5-tech-report
+  ifeval:
+    value: 87.2
+    source: kimi-k1.5-tech-report
+  math-level-5:
+    value: 96.2
+    source: kimi-k1.5-tech-report
+    note: MATH-500（long-CoT）
+  humaneval:
+    value: 81.5
+    source: kimi-k1.5-tech-report
+    note: HumanEval-Mul（short-CoT）
+  # 原始来源未报告：mmlu-pro, gpqa, swe-bench, gsm8k, arena-elo, bbh, drop, hellaswag, arc-c, winogrande

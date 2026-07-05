@@ -1,0 +1,51 @@
+id: tencent/hunyuan-turbos
+name: Hunyuan-TurboS
+company: tencent
+brand_color: "#0052D9"
+release_date: "2025-05-21"
+parameters:
+  total: "560B"
+  active: "56B"
+architecture: Hybrid Transformer-Mamba MoE
+context_window: "256k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [closed-weights]
+logo: assets/logos/tencent.svg
+sources:
+  - key: hunyuan-turbos-paper
+    title: "Hunyuan-TurboS: Advancing Large Language Models through Mamba-Transformer Synergy and Adaptive Chain-of-Thought"
+    url: https://arxiv.org/abs/2505.15431
+    type: paper
+scores:
+  mmlu:
+    value: 87.94
+    source: hunyuan-turbos-paper
+  mmlu-pro:
+    value: 65.11
+    source: hunyuan-turbos-paper
+  bbh:
+    value: 89.76
+    source: hunyuan-turbos-paper
+  drop:
+    value: 85.3
+    source: hunyuan-turbos-paper
+  hellaswag:
+    value: 87.1
+    source: hunyuan-turbos-paper
+  arc-c:
+    value: 97.32
+    source: hunyuan-turbos-paper
+  winogrande:
+    value: 86.5
+    source: hunyuan-turbos-paper
+  math-level-5:
+    value: 81.4
+    source: hunyuan-turbos-paper
+  gsm8k:
+    value: 94.39
+    source: hunyuan-turbos-paper
+  arena-elo:
+    value: 1356
+    source: hunyuan-turbos-paper

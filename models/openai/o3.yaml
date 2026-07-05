@@ -1,0 +1,30 @@
+id: openai/o3
+name: OpenAI o3
+company: openai
+brand_color: "#10A37F"
+release_date: "2025-04-16"
+# OpenAI 未公开 o3 的参数规模与架构细节，故不填写 parameters 与 architecture。
+context_window: "200k"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/openai.svg
+sources:
+  - key: o3-announcement
+    title: Introducing OpenAI o3 and o4-mini
+    url: https://openai.com/index/introducing-o3-and-o4-mini/
+    type: blog
+  - key: o3-system-card
+    title: OpenAI o3 and o4-mini System Card
+    url: https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf
+    type: paper
+scores:
+  # 以下分数来自 OpenAI 官方 o3/o4-mini 发布页及其系统卡中公布的基准结果。
+  gpqa:
+    value: 87.7
+    source: o3-announcement
+  swe-bench:
+    value: 71.7
+    source: o3-announcement
+  # 原始来源未报告：mmlu, mmlu-pro, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande

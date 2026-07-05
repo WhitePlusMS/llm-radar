@@ -1,0 +1,45 @@
+id: baidu/ernie-5.0-base
+name: ERNIE 5.0-Base
+company: baidu
+brand_color: "#2529D8"
+release_date: "2026-02-04"
+parameters:
+  total: "1T+"
+  active: "<3% of total"
+architecture: MoE
+context_window: "128k"
+modalities:
+  input: [text, image, audio, video]
+  output: [text, image, audio]
+weight_availability_tags: [closed-weights, multimodal]
+logo: assets/logos/baidu.svg
+sources:
+  - key: ernie-5.0-tr
+    title: ERNIE 5.0 Technical Report
+    url: https://arxiv.org/abs/2602.04705
+    type: paper
+scores:
+  mmlu-pro:
+    value: 75.58
+    source: ernie-5.0-tr
+  mmlu:
+    value: 90.58
+    source: ernie-5.0-tr
+  gpqa:
+    value: 57.30
+    source: ernie-5.0-tr
+  humaneval:
+    value: 80.86
+    source: ernie-5.0-tr
+    note: HumanEval+ 0-shot
+  math-level-5:
+    value: 73.89
+    source: ernie-5.0-tr
+    note: MATH (CoT) 8-shot
+  bbh:
+    value: 75.69
+    source: ernie-5.0-tr
+    note: BBH 5-shot without CoT (Direct)
+  winogrande:
+    value: 92.66
+    source: ernie-5.0-tr

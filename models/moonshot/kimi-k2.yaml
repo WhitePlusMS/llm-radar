@@ -1,0 +1,52 @@
+id: moonshot/kimi-k2
+name: Kimi K2
+company: moonshot
+brand_color: "#1783FF"
+release_date: "2025-07-28"
+parameters:
+  total: "1T"
+  active: "32B"
+architecture: MoE
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights, reasoning]
+logo: assets/logos/moonshot.svg
+sources:
+  - key: kimi-k2-tech-report
+    title: "Kimi K2: Open Agentic Intelligence"
+    url: https://arxiv.org/abs/2507.20534
+    type: paper
+  - key: kimi-k2-github
+    title: "MoonshotAI/Kimi-K2"
+    url: https://github.com/moonshotai/kimi-k2
+    type: code
+scores:
+  # 以下分数来自 Moonshot AI 官方 arXiv 技术报告 Table 3（Kimi-K2-Instruct）。
+  mmlu:
+    value: 89.5
+    source: kimi-k2-tech-report
+  mmlu-pro:
+    value: 81.1
+    source: kimi-k2-tech-report
+  gpqa:
+    value: 75.1
+    source: kimi-k2-tech-report
+    note: GPQA-Diamond（Avg@8）
+  swe-bench:
+    value: 65.8
+    source: kimi-k2-tech-report
+    note: SWE-Bench Verified Agentic-Single-Attempt（Pass@1）
+  math-level-5:
+    value: 97.4
+    source: kimi-k2-tech-report
+    note: MATH-500
+  ifeval:
+    value: 89.8
+    source: kimi-k2-tech-report
+    note: Prompt Strict
+  drop:
+    value: 93.5
+    source: kimi-k2-tech-report
+  # 原始来源未报告：humaneval, gsm8k, arena-elo, bbh, hellaswag, arc-c, winogrande

@@ -1,0 +1,59 @@
+id: bytedance/seed-thinking-v1.5
+name: Seed-Thinking-v1.5
+company: bytedance
+release_date: "2025-04-14"
+brand_color: "#00F2EA"
+parameters:
+  total: "200B"
+  active: "20B"
+architecture: MoE
+context_window: "32k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning]
+logo: assets/logos/bytedance.svg
+sources:
+  - key: seed-thinking-v1.5-paper
+    title: "Seed1.5-Thinking: Advancing Superb Reasoning Models with Reinforcement Learning"
+    url: https://github.com/ByteDance-Seed/Seed-Thinking-v1.5/raw/main/seed-thinking-v1.5.pdf
+    type: paper
+  - key: seed-thinking-v1.5-blog
+    title: "ByteDance's Latest Thinking Model, Seed-Thinking-v1.5 Technical Details Disclosed"
+    url: https://seed.bytedance.com/en/blog/bytedance-s-latest-thinking-model-seed-thinking-v1-5-technical-details-disclosed
+    type: website
+  - key: seed-thinking-v1.5-github
+    title: "ByteDance-Seed/Seed-Thinking-v1.5"
+    url: https://github.com/ByteDance-Seed/Seed-Thinking-v1.5
+    type: website
+scores:
+  mmlu-pro:
+    value: 87.0
+    source: seed-thinking-v1.5-paper
+  gpqa:
+    value: 77.3
+    source: seed-thinking-v1.5-paper
+  humaneval:
+    value: null
+  swe-bench:
+    value: 47.0
+    source: seed-thinking-v1.5-paper
+  math-level-5:
+    value: null
+  gsm8k:
+    value: null
+  arena-elo:
+    value: null
+  ifeval:
+    value: 87.4
+    source: seed-thinking-v1.5-paper
+  bbh:
+    value: null
+  drop:
+    value: null
+  hellaswag:
+    value: null
+  arc-c:
+    value: null
+  winogrande:
+    value: null

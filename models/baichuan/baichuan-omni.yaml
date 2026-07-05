@@ -1,0 +1,30 @@
+id: baichuan/baichuan-omni
+name: Baichuan-Omni
+company: baichuan
+release_date: "2024-10-11"
+brand_color: "#FF6A00"
+parameters:
+  total: "7B"
+  active: "7B"
+architecture: Dense
+# 论文未明确给出上下文窗口长度
+modalities:
+  input: [text, image, video, audio]
+  output: [text]
+weight_availability_tags:
+  - open-weights
+  - multimodal
+logo: assets/logos/baichuan.svg
+sources:
+  - key: baichuan-omni-report
+    title: Baichuan-Omni Technical Report
+    url: https://arxiv.org/abs/2410.08565
+    type: paper
+  - key: baichuan-omni-github
+    title: Baichuan-Omni GitHub Repository
+    url: https://github.com/westlake-baichuan-mllm/bc-omni
+    type: code
+scores:
+  mmlu:
+    value: 65.3
+    source: baichuan-omni-report

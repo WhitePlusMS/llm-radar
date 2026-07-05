@@ -1,0 +1,21 @@
+id: baidu/ernie-x1
+name: ERNIE X1
+company: baidu
+brand_color: "#2529D8"
+release_date: "2025-03-18"
+parameters:
+  total: null
+  active: null
+architecture: null
+context_window: null
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/baidu.svg
+sources:
+  - key: baidu-x1-news
+    title: Baidu unveils Ernie 4.5 and deep-thinking reasoning model Ernie X1
+    url: https://www.wicinternet.org/2025-03/24/c_1080639.htm
+    type: blog
+scores: {}

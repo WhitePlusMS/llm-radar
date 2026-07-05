@@ -1,0 +1,31 @@
+id: google/gemini-2.5-pro
+name: Gemini 2.5 Pro
+company: google
+release_date: "2025-03-25"
+brand_color: "#4796E3"
+parameters:
+  total: null
+  active: null
+architecture: MoE
+context_window: "1M"
+modalities:
+  input: [text, image, audio, video]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/google.svg
+sources:
+  - key: gemini-2.5-report
+    title: "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities"
+    url: https://arxiv.org/abs/2507.06261
+    type: paper
+  - key: gemini-2.5-announcement
+    title: "Gemini 2.5: Our most intelligent AI model"
+    url: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-thinking-updates-march-2025/
+    type: blog
+scores:
+  gpqa:
+    value: 86.4
+    source: gemini-2.5-report
+  swe-bench:
+    value: 67.2
+    source: gemini-2.5-report

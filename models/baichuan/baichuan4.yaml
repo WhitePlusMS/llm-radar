@@ -1,0 +1,23 @@
+id: baichuan/baichuan4
+name: Baichuan4
+company: baichuan
+release_date: "2024-05-22"
+brand_color: "#FF6A00"
+# 官方未披露 Baichuan4 的总/激活参数量与架构细节，故省略 parameters 与 architecture 字段
+context_window: "32k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags:
+  - closed-weights
+logo: assets/logos/baichuan.svg
+sources:
+  - key: baichuan4-launch
+    title: 百川智能发布Baichuan4及首款AI助手百小应
+    url: https://www.donews.com/news/detail/1/4245551.html
+    type: blog
+  - key: baichuan4-platform
+    title: 百川大模型 API 平台（Baichuan4 / Baichuan4-Turbo）
+    url: https://platform.baichuan-ai.com/prices
+    type: website
+scores: {}

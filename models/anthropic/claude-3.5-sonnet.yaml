@@ -1,0 +1,46 @@
+id: anthropic/claude-3.5-sonnet
+name: Claude 3.5 Sonnet
+company: anthropic
+release_date: "2024-10-22"
+brand_color: "#CC785C"
+architecture: Dense
+context_window: "200k"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, multimodal]
+logo: assets/logos/anthropic.svg
+sources:
+  - key: claude-3-5-sonnet-oct-addendum
+    title: "Model Card Addendum: Claude 3.5 Haiku and Upgraded Claude 3.5 Sonnet"
+    url: https://assets.anthropic.com/m/1cd9d098ac3e6467/original/Claude-3-Model-Card-October-Addendum.pdf
+    type: model-card
+scores:
+  mmlu:
+    value: 88.7
+    source: claude-3-5-sonnet-oct-addendum
+  mmlu-pro:
+    value: 78.0
+    source: claude-3-5-sonnet-oct-addendum
+  gpqa:
+    value: 65.0
+    source: claude-3-5-sonnet-oct-addendum
+  humaneval:
+    value: 93.7
+    source: claude-3-5-sonnet-oct-addendum
+  swe-bench:
+    value: 49.0
+    source: claude-3-5-sonnet-oct-addendum
+  # Source reports Hendrycks MATH overall (0-shot CoT). Mapped to math-level-5 for radar compatibility.
+  math-level-5:
+    value: 78.3
+    source: claude-3-5-sonnet-oct-addendum
+  drop:
+    value: 88.3
+    source: claude-3-5-sonnet-oct-addendum
+  bbh:
+    value: 93.2
+    source: claude-3-5-sonnet-oct-addendum
+  ifeval:
+    value: 90.2
+    source: claude-3-5-sonnet-oct-addendum

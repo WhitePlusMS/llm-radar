@@ -1,0 +1,58 @@
+id: bytedance/seed-1.8
+name: Seed1.8
+company: bytedance
+release_date: "2025-12-31"
+brand_color: "#00F2EA"
+parameters:
+  total: undisclosed
+  active: undisclosed
+architecture: MoE
+context_window: "256k"
+modalities:
+  input: [text, image, video]
+  output: [text, image]
+weight_availability_tags: [closed-weights, multimodal, agentic]
+logo: assets/logos/bytedance.svg
+sources:
+  - key: seed1.8-model-card
+    title: "Seed1.8 Model Card: Towards Generalized Real-World Agency"
+    url: https://arxiv.org/html/2603.20633v2
+    type: paper
+  - key: seed1.8-github
+    title: "ByteDance-Seed/Seed-1.8"
+    url: https://github.com/ByteDance-Seed/Seed-1.8
+    type: website
+scores:
+  mmlu:
+    value: 92.3
+    source: seed1.8-model-card
+  mmlu-pro:
+    value: 84.9
+    source: seed1.8-model-card
+  gpqa:
+    value: 83.8
+    source: seed1.8-model-card
+  humaneval:
+    value: null
+  swe-bench:
+    value: 72.9
+    source: seed1.8-model-card
+  math-level-5:
+    value: null
+  gsm8k:
+    value: null
+  arena-elo:
+    value: null
+  ifeval:
+    value: 80.3
+    source: seed1.8-model-card
+  bbh:
+    value: null
+  drop:
+    value: null
+  hellaswag:
+    value: null
+  arc-c:
+    value: null
+  winogrande:
+    value: null

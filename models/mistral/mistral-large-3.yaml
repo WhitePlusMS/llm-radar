@@ -1,0 +1,42 @@
+id: mistral/mistral-large-3
+name: Mistral Large 3
+company: mistral
+brand_color: "#FF7000"
+release_date: "2025-12-02"
+parameters:
+  total: "675B"
+  active: "41B"
+architecture: MoE
+context_window: "256k"
+modalities:
+  input: [text, image]
+  output: [text, image]
+weight_availability_tags: [open-weights, multimodal]
+logo: assets/logos/mistral.svg
+sources:
+  - key: mistral-3-blog
+    title: "Introducing Mistral 3"
+    url: https://mistral.ai/news/mistral-3/
+    type: blog
+  - key: mistral-large-3-hf
+    title: "Mistral Large 3 675B Instruct 2512 — Hugging Face Model Card"
+    url: https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512
+    type: model_card
+scores:
+  # 发布方原始来源（官方博客与 Hugging Face 模型卡）未以可提取文本形式报告
+  # MMLU / MMLU-Pro / GPQA / HumanEval / GSM8K 等标准 benchmark 的具体数值。
+  # 官方仅在 Hugging Face README 中以图片形式展示 benchmark 图表，无法直接读取数值。
+  mmlu-pro:
+  mmlu:
+  gpqa:
+  humaneval:
+  swe-bench:
+  math-level-5:
+  gsm8k:
+  arena-elo:
+  ifeval:
+  bbh:
+  drop:
+  hellaswag:
+  arc-c:
+  winogrande:

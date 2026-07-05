@@ -1,0 +1,39 @@
+id: deepseek/v3
+name: DeepSeek-V3
+company: deepseek
+release_date: "2024-12-26"
+brand_color: "#4D6BFE"
+parameters:
+  total: "671B"
+  active: "37B"
+architecture: MoE
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights]
+logo: assets/logos/deepseek.svg
+sources:
+  - key: v3-tech-report
+    title: DeepSeek-V3 Technical Report
+    url: https://arxiv.org/abs/2412.19437
+    type: paper
+scores:
+  mmlu-pro:
+    value: 75.9
+    source: v3-tech-report
+  mmlu:
+    value: 88.5
+    source: v3-tech-report
+  gpqa:
+    value: 59.1
+    source: v3-tech-report
+  ifeval:
+    value: 86.1
+    source: v3-tech-report
+  drop:
+    value: 91.6
+    source: v3-tech-report
+  swe-bench:
+    value: 42.0
+    source: v3-tech-report

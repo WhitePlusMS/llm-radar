@@ -1,0 +1,38 @@
+id: minimax/minimax-m1
+name: MiniMax-M1
+company: minimax
+brand_color: "#FE603C"
+release_date: "2025-06-16"
+parameters:
+  total: "456B"
+  active: "45.9B"
+architecture: MoE
+context_window: "1M"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights, reasoning]
+logo: assets/logos/minimax.svg
+sources:
+  - key: minimax-m1-paper
+    title: "MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention"
+    url: https://arxiv.org/abs/2506.13585
+    type: paper
+  - key: minimax-m1-github
+    title: "MiniMax-M1 GitHub Repository"
+    url: https://github.com/MiniMax-AI/MiniMax-M1
+    type: codebase
+scores:
+  # 以下分数来自 MiniMax-M1 技术报告 Table 2（MiniMax-M1-80k 列）。
+  # 报告还公布了 AIME 2024/2025、MATH-500、LiveCodeBench、FullStackBench、ZebraLogic、SimpleQA 等成绩，
+  # 但当前 metrics.yaml 常见集合未包含这些 key，故不写入 scores 字段。
+  mmlu-pro:
+    value: 81.1
+    source: minimax-m1-paper
+  gpqa:
+    value: 70.0
+    source: minimax-m1-paper
+  swe-bench:
+    value: 56.0
+    source: minimax-m1-paper
+  # 原始来源未报告：mmlu, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande

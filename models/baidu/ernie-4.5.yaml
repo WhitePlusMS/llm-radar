@@ -1,0 +1,47 @@
+id: baidu/ernie-4.5
+name: ERNIE 4.5-300B-A47B
+company: baidu
+brand_color: "#2529D8"
+release_date: "2025-03-18"
+parameters:
+  total: "300B"
+  active: "47B"
+architecture: MoE
+context_window: "128k"
+modalities:
+  input: [text, image, video]
+  output: [text]
+weight_availability_tags: [open-weights, multimodal]
+logo: assets/logos/baidu.svg
+sources:
+  - key: ernie-4.5-tr
+    title: ERNIE 4.5 Technical Report
+    url: https://ernie.baidu.com/blog/publication/ERNIE_Technical_Report.pdf
+    type: paper
+scores:
+  mmlu-pro:
+    value: 78.4
+    source: ernie-4.5-tr
+  mmlu:
+    value: 86.5
+    source: ernie-4.5-tr
+  humaneval:
+    value: 92.1
+    source: ernie-4.5-tr
+    note: HumanEval+ 0-shot
+  math-level-5:
+    value: 96.4
+    source: ernie-4.5-tr
+    note: MATH-500
+  gsm8k:
+    value: 96.6
+    source: ernie-4.5-tr
+  ifeval:
+    value: 88.0
+    source: ernie-4.5-tr
+  bbh:
+    value: 94.3
+    source: ernie-4.5-tr
+  drop:
+    value: 91.1
+    source: ernie-4.5-tr

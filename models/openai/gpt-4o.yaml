@@ -1,0 +1,41 @@
+id: openai/gpt-4o
+name: GPT-4o
+company: openai
+brand_color: "#10A37F"
+release_date: "2024-05-13"
+# OpenAI 未公开 GPT-4o 的参数规模与架构细节，故不填写 parameters 与 architecture。
+context_window: "128k"
+modalities:
+  input: [text, image, audio, video]
+  output: [text, image, audio]
+weight_availability_tags: [closed-weights, multimodal]
+logo: assets/logos/openai.svg
+sources:
+  - key: gpt-4o-announcement
+    title: Hello GPT-4o
+    url: https://openai.com/index/hello-gpt-4o/
+    type: blog
+  - key: gpt-4o-system-card
+    title: GPT-4o System Card
+    url: https://arxiv.org/abs/2410.21276
+    type: paper
+  - key: gpt-4.1-announcement
+    title: Introducing GPT-4.1 in the API
+    url: https://openai.com/index/gpt-4-1/
+    type: blog
+scores:
+  # 以下分数来自 OpenAI 官方 GPT-4.1 发布页中的对比表（GPT-4o 2024-11-20 快照）。
+  # GPT-4o 原始 announce 页面未列出具体 benchmark 数值。
+  mmlu:
+    value: 85.7
+    source: gpt-4.1-announcement
+  gpqa:
+    value: 46.0
+    source: gpt-4.1-announcement
+  swe-bench:
+    value: 33.2
+    source: gpt-4.1-announcement
+  ifeval:
+    value: 81.0
+    source: gpt-4.1-announcement
+  # 原始来源未报告：mmlu-pro, humaneval, math-level-5, gsm8k, arena-elo, bbh, drop, hellaswag, arc-c, winogrande

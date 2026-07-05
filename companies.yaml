@@ -1,0 +1,60 @@
+companies:
+  - key: openai
+    name: OpenAI
+    website: https://openai.com
+
+  - key: google
+    name: Google DeepMind
+    website: https://deepmind.google
+
+  - key: anthropic
+    name: Anthropic
+    website: https://www.anthropic.com
+
+  - key: meta
+    name: Meta
+    website: https://ai.meta.com
+
+  - key: alibaba
+    name: Alibaba
+    website: https://www.alibabacloud.com
+
+  - key: deepseek
+    name: DeepSeek
+    website: https://www.deepseek.com
+
+  - key: mistral
+    name: Mistral AI
+    website: https://mistral.ai
+
+  - key: xai
+    name: xAI
+    website: https://x.ai
+
+  - key: zhipu
+    name: Zhipu AI
+    website: https://www.zhipu.ai
+
+  - key: moonshot
+    name: Moonshot AI
+    website: https://moonshot.ai
+
+  - key: minimax
+    name: MiniMax
+    website: https://www.minimax.io
+
+  - key: baichuan
+    name: Baichuan
+    website: https://www.baichuan-ai.com
+
+  - key: bytedance
+    name: ByteDance
+    website: https://www.bytedance.com
+
+  - key: baidu
+    name: Baidu
+    website: https://www.baidu.com
+
+  - key: tencent
+    name: Tencent
+    website: https://www.tencent.com

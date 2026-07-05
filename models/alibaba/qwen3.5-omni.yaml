@@ -1,0 +1,30 @@
+id: alibaba/qwen3.5-omni
+name: Qwen3.5-Omni
+company: alibaba
+brand_color: "#FF6A00"
+release_date: "2026-03-30"
+parameters:
+  total: undisclosed
+  active: undisclosed
+architecture: MoE
+context_window: "256k"
+modalities:
+  input: [text, image, audio, video]
+  output: [text, audio]
+weight_availability_tags: [closed-weights, multimodal]
+logo: assets/logos/alibaba.svg
+sources:
+  - key: qwen3.5-omni-report
+    title: "Qwen3.5-Omni Technical Report"
+    url: https://arxiv.org/abs/2604.15804
+    type: paper
+scores:
+  mmlu-pro:
+    value: 85.9
+    source: qwen3.5-omni-report
+  gpqa:
+    value: 83.9
+    source: qwen3.5-omni-report
+  ifeval:
+    value: 89.7
+    source: qwen3.5-omni-report
