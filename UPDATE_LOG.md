@@ -1,5 +1,63 @@
 # 更新日志
 
+## 2026-07-06 — 项目骨架完成、代码推送与 GitHub Actions 触发
+
+### 修改原因
+
+根据 `PRD.md` 与 `CONTEXT.md` 完成 `llm-radar` 全栈构建，并将代码推送到 GitHub 触发自动部署。
+
+### 修改文件与关键变更
+
+1. **项目骨架**
+   - `package.json`：定义 Vite + React + TypeScript + ECharts + Tailwind + Vitest 依赖与脚本。
+   - `vite.config.ts` / `tsconfig.json` / `tsconfig.node.json`：构建与类型配置。
+   - `tailwind.config.js` / `postcss.config.js` / `src/index.css`：Tailwind 样式配置。
+   - `index.html`：单页入口。
+
+2. **构建与数据**
+   - `scripts/build-index.ts`：扫描 `models/**/*.yaml`，校验并生成 `public/model-index.json`。
+   - `metrics.yaml`：定义 14 个 benchmark。
+   - `companies.yaml`：定义 15 家公司。
+   - `models/`：收录 45 个模型卡片（OpenAI、Google、Anthropic、Meta、Alibaba、DeepSeek、Mistral、xAI、Zhipu、Moonshot、MiniMax、Baichuan、ByteDance、Baidu、Tencent）。
+
+3. **前端实现**
+   - `src/App.tsx`：主页面布局与数据加载。
+   - `src/components/ModelSelector.tsx`：模型多选。
+   - `src/components/MetricSelector.tsx`：benchmark 按 capability 分组多选。
+   - `src/components/RadarChart.tsx`：ECharts 雷达图。
+   - `src/components/SourceList.tsx`：来源追溯列表。
+   - `src/lib/radar-option.ts`：雷达图 option 生成与分数归一化。
+   - `src/hooks/use-comparison.ts`：对比状态与 URL query string 同步。
+
+4. **测试**
+   - `tests/build.test.ts`：Data-to-Deploy 接缝测试。
+   - `tests/radar-option.test.ts`：雷达图 option 生成接缝测试。
+
+5. **部署**
+   - `.github/workflows/deploy.yml`：cicd 分支推送时构建并部署到 GitHub Pages。
+
+6. **资源与文档**
+   - `assets/logos/*.svg`：15 个公司占位 logo。
+   - `docs/research/*-sources.md`：各公司数据来源记录。
+   - `BLOCKERS.md`：记录 GitHub Pages 启用这一待人工处理事项。
+
+### 验证结果
+
+- `npm test`：10 个测试全部通过。
+- `npm run build`：TypeScript 编译与 Vite 构建成功，生成 `dist/` 产物。
+- `public/model-index.json`：45 个模型、14 个 benchmark、15 家公司。
+- `master` 分支与 `cicd` 分支均已成功推送到 `git@github.com:WhitePlusMS/llm-radar.git`。
+- GitHub Actions Run：`https://github.com/WhitePlusMS/llm-radar/actions/runs/28747864585`
+  - build job：成功。
+  - deploy job：失败（GitHub Pages 未启用）。
+
+### 待处理阻塞
+
+- 需要手动启用 GitHub Pages 并选择 Source 为 GitHub Actions，然后重新运行 deploy job。详见 `BLOCKERS.md`。
+
+---
+
+
 ## 2026-07-06 — 添加 Moonshot AI（Kimi）旗舰大模型 ModelCard
 
 ### 修改原因
