@@ -6,6 +6,7 @@ import { ModelSelector } from '@/components/ModelSelector';
 import { MetricSelector } from '@/components/MetricSelector';
 import { RadarChart } from '@/components/RadarChart';
 import { SourceList } from '@/components/SourceList';
+import { ModelInfoPanel } from '@/components/ModelInfoPanel';
 import type { ModelIndex } from '@/types';
 
 function App() {
@@ -113,11 +114,27 @@ function App() {
           <aside className="order-2 space-y-4 lg:order-1 lg:col-span-3">
             <ModelSelector
               models={index.models}
+              companies={index.companies}
               selectedIds={selectedModelIds}
               onToggle={toggleModel}
               onSelectAll={setModelIds}
               onClear={() => setModelIds([])}
             />
+
+            {/* 选中模型信息卡片 */}
+            {selectedModels.length > 0 && (
+              <div className="space-y-3">
+                <h3 className="px-1 text-sm font-semibold text-slate-800">模型信息</h3>
+                {selectedModels.map((model) => (
+                  <ModelInfoPanel
+                    key={model.id}
+                    model={model}
+                    company={index.companies.find((c) => c.key === model.company)}
+                  />
+                ))}
+              </div>
+            )}
+
             <MetricSelector
               metrics={index.metrics}
               selectedIds={selectedMetricIds}

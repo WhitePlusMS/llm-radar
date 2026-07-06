@@ -74,6 +74,7 @@ export interface ModelCard {
   context_window?: string;
   modalities?: ModelModalities;
   weight_availability_tags: WeightAvailabilityTag[];
+  tags?: string[];
   logo?: string;
   sources: Source[];
   scores: Record<string, ScoreEntry>;
