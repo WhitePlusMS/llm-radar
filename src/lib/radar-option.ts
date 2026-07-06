@@ -151,7 +151,7 @@ export function buildRadarOption(
       },
       splitArea: {
         areaStyle: {
-          color: ['#f8fafc', '#f1f5f9', '#e2e8f0', '#cbd5e1'],
+          color: ['rgba(241,245,249,0.5)', 'rgba(241,245,249,0.3)', 'rgba(241,245,249,0.2)', 'rgba(241,245,249,0.1)'],
         },
       },
       axisLine: {
