@@ -30,15 +30,18 @@ jobs:
       - name: Build
         run: GITHUB_PAGES=true npm run build
 
-      - name: Copy README and workflow into dist
-        run: |
-          cp README.md dist/
-          cp -r .github dist/
-
       - name: Deploy to master branch
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: master
-          force_orphan: true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          mkdir -p /tmp/deploy
+          cp -r dist/. /tmp/deploy/
+          cp README.md /tmp/deploy/
+          mkdir -p /tmp/deploy/.github/workflows
+          cp .github/workflows/deploy.yml /tmp/deploy/.github/workflows/
+          git checkout --orphan __deploy
+          git rm -rf .
+          cp -r /tmp/deploy/. .
+          git add .
+          git commit -m "deploy: update GitHub Pages from master"
+          git push -f origin __deploy:master
