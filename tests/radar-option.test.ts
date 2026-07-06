@@ -119,22 +119,31 @@ describe('buildRadarOption', () => {
 
   it('系列数量等于模型数量（不含平均线）', () => {
     const option = buildRadarOption([modelA, modelB], metrics, ['mmlu-pro', 'gpqa'], []);
-    const series = (option.series as Array<{ data: unknown[] }>)[0];
-    expect(series.data.length).toBe(2);
+    expect((option.series as Array<unknown>).length).toBe(2);
   });
 
   it('开启平均线时系列数量多一个', () => {
     const option = buildRadarOption([modelA, modelB], metrics, ['mmlu-pro', 'gpqa'], [modelA, modelB]);
-    const series = (option.series as Array<{ data: unknown[] }>)[0];
-    expect(series.data.length).toBe(3);
+    expect((option.series as Array<unknown>).length).toBe(3);
+  });
+
+  it('平均系列应置于 series 数组最前（z 最低），模型 series 在上层响应 hover', () => {
+    const option = buildRadarOption([modelA, modelB], metrics, ['mmlu-pro', 'gpqa'], [modelA, modelB]);
+    const series = option.series as Array<{ name: string; z: number; data: unknown[] }>;
+    expect(series[0].name).toBe('平均');
+    expect(series[0].z).toBeLessThan(series[1].z);
+    expect(series[1].name).toBe('Model A');
+    expect(series[2].name).toBe('Model B');
   });
 
   it('缺失值对应的 radar 数据点 value 为 0，真实分数保留归一化值', () => {
     const option = buildRadarOption([modelA], metrics, ['mmlu-pro', 'gpqa', 'arena-elo'], []);
-    const series = (option.series as Array<{ data: Array<{ value: { value: number } }> }>)[0];
-    expect(series.data[0].value[0]).toMatchObject({ value: 80 }); // mmlu-pro 80
-    expect(series.data[0].value[1]).toMatchObject({ value: 0 }); // gpqa null → 0
-    expect(series.data[0].value[2]).toMatchObject({ value: 100 }); // arena-elo 1400/1400*100
+    const series = (option.series as Array<{ name: string; data: Array<{ value: number[] }> }>).find(
+      (s) => s.name === 'Model A'
+    )!;
+    expect(series.data[0].value[0]).toBe(80); // mmlu-pro 80
+    expect(series.data[0].value[1]).toBe(0); // gpqa null → 0
+    expect(series.data[0].value[2]).toBe(100); // arena-elo 1400/1400*100
   });
 
   it('tooltip formatter 对缺失值显示 N/A，对真实 0 分显示 0.0', () => {

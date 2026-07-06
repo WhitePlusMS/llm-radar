@@ -1,7 +1,5 @@
-import type { EChartsOption, SeriesOption } from 'echarts';
+import type { EChartsOption } from 'echarts';
 import type { Metric, ModelCard, ScoreEntry, Source } from '@/types';
-
-type RadarSeriesDataItem = NonNullable<Extract<SeriesOption, { type?: 'radar' }>['data']>[number];
 
 /**
  * 雷达图上的一个投影点。
@@ -162,7 +160,9 @@ export function buildRadarOption(
   // 系列名 → 模型对象，供 tooltip 查询来源标题
   const modelByName = new Map<string, ModelCard>();
 
-  const seriesData: RadarSeriesDataItem[] = models.map((model) => {
+  // 每个模型独立一个 radar series：ECharts 对同一 series 内多个 data item 的鼠标命中策略
+  // 在雷达图上不可靠（总是命中 data[0]），拆成独立 series 后用 z 层级控制，hover 才能正确响应模型。
+  const modelSeries = models.map((model) => {
     const points = selectedMetrics.map((metric) =>
       projectScore(model.scores[metric.id], metric)
     );
@@ -170,65 +170,77 @@ export function buildRadarOption(
     modelByName.set(model.name, model);
 
     return {
-      value: points.map((p) =>
-        p.missing
-          ? {
-              value: p.value,
-              itemStyle: {
-                color: 'transparent',
-                borderColor: model.brand_color,
-                borderWidth: 2,
-              },
-              symbol: 'circle',
-              symbolSize: 5,
-            }
-          : { value: p.value }
-      ) as unknown as number[],
+      type: 'radar' as const,
       name: model.name,
-      itemStyle: {
-        color: model.brand_color,
-      },
-      // 发丝线：1.8px 描边 + 10% 面积填充，对齐 mockup .series 规格
-      lineStyle: {
-        width: 1.8,
-        color: model.brand_color,
-      },
-      areaStyle: {
-        color: model.brand_color,
-        opacity: 0.10,
-      },
-      symbol: 'circle',
-      symbolSize: 5,
+      z: 2,
+      data: [
+        {
+          value: points.map((p) => p.value),
+          name: model.name,
+          itemStyle: { color: model.brand_color },
+          lineStyle: { width: 1.8, color: model.brand_color },
+          areaStyle: { color: model.brand_color, opacity: 0.10 },
+          symbol: 'circle',
+          symbolSize: 5,
+        },
+      ],
       emphasis: {
-        lineStyle: {
-          width: 2.4,
-        },
-        areaStyle: {
-          color: model.brand_color,
-          opacity: 0.20,
-        },
+        lineStyle: { width: 2.4 },
+        areaStyle: { color: model.brand_color, opacity: 0.20 },
       },
     };
   });
 
   const averageModels = Array.isArray(average) ? average : average && models.length > 0 ? models : [];
-  if (averageModels.length > 0) {
-    const avgPoints = buildAveragePoints(averageModels, selectedMetrics);
-    pointsByName.set('平均', avgPoints);
-    seriesData.push({
-      value: avgPoints.map((p) => p.value),
-      name: '平均',
-      itemStyle: { color: '#475569' },
-      lineStyle: {
-        type: 'dashed',
-        width: 1.3,
-        color: '#475569',
-      },
-      areaStyle: { opacity: 0 },
-      symbol: 'circle',
-      symbolSize: 4,
+  const avgSeries =
+    averageModels.length > 0
+      ? (() => {
+          const avgPoints = buildAveragePoints(averageModels, selectedMetrics);
+          pointsByName.set('平均', avgPoints);
+          return {
+            type: 'radar' as const,
+            name: '平均',
+            z: 1,
+            silent: true,
+            data: [
+              {
+                value: avgPoints.map((p) => p.value),
+                name: '平均',
+                itemStyle: { color: '#475569' },
+                lineStyle: { type: 'dashed' as const, width: 1.3, color: '#475569' },
+                areaStyle: { opacity: 0 },
+                symbol: 'circle',
+                symbolSize: 4,
+              },
+            ],
+          };
+        })()
+      : null;
+
+  // 生成单个系列（模型/平均）的 tooltip 内容块；hover 卡片只展示分数，来源放到 DataTable / SourceList。
+  const buildSeriesTip = (seriesName: string): string => {
+    const points = pointsByName.get(seriesName) ?? [];
+    const lines: string[] = [];
+    selectedMetrics.forEach((metric, idx) => {
+      const point = points[idx];
+      const metricLine = `<span style="color:#475569;">${metric.name}</span>`;
+      if (!point || point.missing) {
+        lines.push(
+          `<div style="display:flex;justify-content:space-between;gap:16px;margin:2px 0;">${metricLine}<span style="font-weight:500;color:#94a3b8;">N/A</span></div>`
+        );
+        return;
+      }
+      const rawText =
+        point.rawValue !== undefined ? formatRawValue(point.rawValue, metric) : '';
+      lines.push(
+        `<div style="display:flex;justify-content:space-between;gap:16px;margin:2px 0;">` +
+          `${metricLine}` +
+          `<span style="font-weight:600;color:#0f172a;font-variant-numeric:tabular-nums;">${point.value.toFixed(1)} <span style="color:#94a3b8;font-size:11px;font-weight:400;">(原始 ${rawText})</span></span>` +
+        `</div>`
+      );
     });
-  }
+    return `<div style="line-height:1.5;">${lines.join('')}</div>`;
+  };
 
   return {
     color: models.map((m) => m.brand_color),
@@ -246,40 +258,16 @@ export function buildRadarOption(
       formatter: (params: unknown) => {
         const p = params as { seriesName?: string };
         const seriesName = p.seriesName ?? '';
-        const points = pointsByName.get(seriesName) ?? [];
-        const model = modelByName.get(seriesName);
-        const lines = [
-          `<div style="font-weight:700;color:#0f172a;margin-bottom:6px;letter-spacing:0.02em;">${seriesName}</div>`,
-        ];
-        selectedMetrics.forEach((metric, idx) => {
-          const point = points[idx];
-          const metricLine = `<span style="color:#475569;">${metric.name}</span>`;
-          if (!point || point.missing) {
-            lines.push(
-              `<div style="display:flex;justify-content:space-between;gap:16px;margin:2px 0;">${metricLine}<span style="font-weight:500;color:#94a3b8;">N/A</span></div>`
-            );
-            return;
-          }
-          // rawText 与 DataTable 同源走 formatRawValue，修复旧 tooltip 对 raw 调 toFixed(1) 的分叉
-          const rawText =
-            point.rawValue !== undefined ? formatRawValue(point.rawValue, metric) : '';
-          const source = model ? resolveSource(model, point.source) : undefined;
-          const sourceLink = source
-            ? `<a href="${source.url}" target="_blank" rel="noreferrer" style="color:#345fdf;text-decoration:none;" title="${source.title}">来源 ↗</a>`
-            : '';
-          lines.push(
-            `<div style="display:flex;justify-content:space-between;gap:16px;margin:2px 0;">` +
-              `${metricLine}` +
-              `<span style="font-weight:600;color:#0f172a;font-variant-numeric:tabular-nums;">${point.value.toFixed(1)} <span style="color:#94a3b8;font-size:11px;font-weight:400;">(原始 ${rawText})</span></span>` +
-            `</div>`
-          );
-          if (sourceLink) {
-            lines.push(
-              `<div style="text-align:right;font-size:11px;margin-bottom:4px;">${sourceLink}</div>`
-            );
-          }
-        });
-        return `<div style="line-height:1.5;">${lines.join('')}</div>`;
+        const color = seriesName === '平均' ? '#475569' : modelByName.get(seriesName)?.brand_color ?? '#0f172a';
+        return (
+          `<div style="line-height:1.5;">` +
+            `<div style="font-weight:700;color:${color};margin-bottom:6px;letter-spacing:0.02em;display:flex;align-items:center;gap:6px;">` +
+              `<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:${color};"></span>` +
+              seriesName +
+            `</div>` +
+            buildSeriesTip(seriesName) +
+          `</div>`
+        );
       },
     },
     radar: {
@@ -308,20 +296,6 @@ export function buildRadarOption(
         },
       },
     },
-    series: [
-      {
-        type: 'radar',
-        data: seriesData,
-        symbolSize: 5,
-        lineStyle: {
-          width: 1.8,
-        },
-        emphasis: {
-          lineStyle: {
-            width: 2.4,
-          },
-        },
-      },
-    ],
+    series: avgSeries ? [avgSeries, ...modelSeries] : modelSeries,
   };
 }
