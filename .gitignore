@@ -54,3 +54,5 @@ PRD.md
 UPDATE_LOG.md
 docs/superpowers/
 .vite/
+.playwright-mcp/
+.claude/
