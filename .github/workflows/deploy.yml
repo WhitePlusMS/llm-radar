@@ -36,14 +36,27 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          mkdir -p /tmp/deploy
-          cp -r dist/. /tmp/deploy/
-          cp README.md /tmp/deploy/
-          mkdir -p /tmp/deploy/.github/workflows
-          cp .github/workflows/deploy.yml /tmp/deploy/.github/workflows/
-          cd /tmp/deploy
+          mkdir -p /tmp/deploy-master
+          cp -r dist/. /tmp/deploy-master/
+          cp README.md /tmp/deploy-master/
+          mkdir -p /tmp/deploy-master/.github/workflows
+          cp .github/workflows/deploy.yml /tmp/deploy-master/.github/workflows/
+          cd /tmp/deploy-master
           git init
           git add .
           git commit -m "deploy: update GitHub Pages from master"
           git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push -f origin master
+
+      - name: Deploy to gh-pages branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p /tmp/deploy-gh-pages
+          cp -r dist/. /tmp/deploy-gh-pages/
+          cd /tmp/deploy-gh-pages
+          git init
+          git add .
+          git commit -m "deploy: update GitHub Pages from master"
+          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push -f origin gh-pages
