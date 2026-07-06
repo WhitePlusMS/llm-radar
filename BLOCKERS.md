@@ -1,65 +1,42 @@
 # LLM Radar 部署阻塞项
 
-> 生成时间：2026-07-06 00:48（北京时间）
+> 更新时间：2026-07-06 01:40（北京时间）
 >
-> 本文件汇总了无人值守构建期间需要用户手动处理的事项。请按以下步骤操作后即可完成上线。
+> **状态：已解决**。GitHub Pages 已启用并部署成功，站点可正常访问。
 
-## 阻塞 1：GitHub Pages 未启用，导致 deploy job 失败
+## 已解决：GitHub Pages 部署
 
-### 现象
+### 结果
 
-- `cicd` 分支推送后 GitHub Actions 已触发。
-- **build job**：成功（代码编译、测试、Vite 构建均通过）。
-- **deploy job**：失败。
-- Actions Run：`https://github.com/WhitePlusMS/llm-radar/actions/runs/28747864585`
+- `cicd` 分支推送后 GitHub Actions 成功运行并部署到 `gh-pages`。
+- 最新成功 Run：`https://github.com/WhitePlusMS/llm-radar/actions/runs/28759784502`
+- 站点地址：`https://whiteplusms.github.io/llm-radar/`
+- 在线验证：
+  - 首页 HTML：`HTTP 200`
+  - JS/CSS 资源：`HTTP 200`
+  - `model-index.json`：`HTTP 200`，包含 45 个模型、14 个 benchmark、15 家公司
 
-### 根因
+### 解决过程
 
-仓库尚未启用 GitHub Pages，或 Pages 的 Source 未设置为 **GitHub Actions**。`actions/deploy-pages@v4` 在 Pages 未启用时会失败。
+- 用户手动启用 GitHub Pages 并选择 Source 为 GitHub Actions。
+- 重新推送 `cicd` 分支后 `deploy` job 成功完成。
+- GitHub Pages 完全传播大约需要 1-2 分钟。
 
-### 手动操作步骤
+## 本地保留文件说明
 
-1. 打开仓库设置：
-   `https://github.com/WhitePlusMS/llm-radar/settings/pages`
-2. 在 **Source** 下拉框中选择：
-   **GitHub Actions**
-3. 点击 **Save**。
-4. 返回 Actions 页面，找到失败的 run：
-   `https://github.com/WhitePlusMS/llm-radar/actions/runs/28747864585`
-5. 点击右上角 **Re-run jobs** -> **Re-run all jobs**。
-6. 等待 `deploy` job 完成。
-7. 部署成功后，站点地址为：
-   `https://whiteplusms.github.io/llm-radar/`
+以下文件保留在本地 `E:/项目demo/llm-radar/`，已从 GitHub 仓库排除：
 
-### 验证上线
+- `AGENTS.md`、`CONTEXT.md`、`GOAL.md`、`PRD.md`、`UPDATE_LOG.md`：内部规划与更新日志文档。
+- `docs/superpowers/plans/2026-07-05-llm-radar-skeleton.md`：骨架实现计划。
+- `docs/papers/`：下载的原始论文/报告 PDF（约 180 MB）。
 
-- 访问 `https://whiteplusms.github.io/llm-radar/`
-- 页面应显示 LLM Radar 标题、模型选择器、benchmark 选择器、雷达图与来源列表。
-- 打开浏览器控制台，确认无红色报错。
+## 当前仓库中包含的内容
 
-## 其他潜在事项
-
-### 本地 PDF 论文归档
-
-- `docs/papers/` 目录下已下载约 180 MB 原始论文/报告 PDF，已排除在 git 之外（见 `.gitignore`）。
-- 这些文件保留在本地 `E:/项目demo/llm-radar/docs/papers/`，无需推送。
-
-### Logo 占位图
-
-- `assets/logos/` 下已生成 15 个公司占位 SVG logo（品牌色圆形 + 首字母）。
-- 如需使用真实品牌 logo，可后续替换对应 SVG 文件。
-
-### 模型数据持续更新
-
-- 当前收录 45 个模型、14 个 benchmark、15 家公司，均来自发布方原始来源。
-- 新增模型时，在 `models/{company}/{model}.yaml` 添加文件；新增 benchmark 时，先在 `metrics.yaml` 中定义。
-
-## 当前已验证通过的项目
-
-- [x] `npm test`：10 个测试全部通过
-- [x] `npm run build`：TypeScript 编译与 Vite 构建成功
-- [x] `public/model-index.json`：包含 45 个模型、14 个 benchmark、15 家公司
-- [x] `dist/` 产物包含 `index.html`、`model-index.json`、JS/CSS 资源
-- [x] `master` 分支已推送到 `git@github.com:WhitePlusMS/llm-radar.git`
-- [x] `cicd` 分支已推送并触发 GitHub Actions
-- [ ] GitHub Pages 启用并重新运行 deploy（待处理）
+- `README.md`：项目说明。
+- `models/`：45 个模型 YAML 数据文件。
+- `metrics.yaml`、`companies.yaml`：benchmark 与公司元数据。
+- `src/`、`scripts/`、`tests/`：前端源码、构建脚本、接缝测试。
+- `.github/workflows/deploy.yml`：GitHub Actions 部署配置。
+- `assets/logos/`：15 个公司占位 SVG logo。
+- `docs/research/`：各公司数据来源追溯 markdown。
+- `BLOCKERS.md`：本文件。

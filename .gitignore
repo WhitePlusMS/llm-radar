@@ -41,3 +41,11 @@ coverage/
 
 # Downloaded original paper PDFs (large binaries kept locally only)
 docs/papers/
+
+# Internal planning and changelog documents (local only)
+AGENTS.md
+CONTEXT.md
+GOAL.md
+PRD.md
+UPDATE_LOG.md
+docs/superpowers/
