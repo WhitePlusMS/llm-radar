@@ -1,5 +1,5 @@
-id: alibaba/qwen3.5
-name: Qwen3.5
+id: alibaba/qwen3.5-397b-a17b
+name: Qwen3.5-397B-A17B
 company: alibaba
 brand_color: "#615CED"
 release_date: "2026-02-16"
@@ -7,17 +7,21 @@ parameters:
   total: "397B"
   active: "17B"
 architecture: MoE
-context_window: "1M"
+context_window: "262k native / 1M with extrapolation"
 modalities:
-  input: [text]
+  input: [text, image, video]
   output: [text]
-weight_availability_tags: [closed-weights, reasoning, multimodal]
+weight_availability_tags: [open-weights, reasoning, multimodal]
 logo: assets/logos/alibaba.svg
 sources:
   - key: qwen3.5-announcement
     title: Alibaba Group announces Qwen3.5
     url: https://www.alibabagroup.com/document-1960233590314762240
     type: blog
+  - key: qwen3.5-hf
+    title: Qwen3.5-397B-A17B
+    url: https://huggingface.co/Qwen/Qwen3.5-397B-A17B
+    type: model-card
 # Qwen3.5 官方发布资料中可验证的 metrics.yaml 指标有限。
 # 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
 scores: {}

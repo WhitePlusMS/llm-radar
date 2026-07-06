@@ -1,0 +1,21 @@
+id: deepseek/r1-0528
+name: DeepSeek-R1-0528
+company: deepseek
+brand_color: "#4D6BFE"
+release_date: "2025-05-28"
+parameters:
+  total: "671B"
+  active: "37B"
+architecture: MoE
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text, code]
+weight_availability_tags: [open-weights, reasoning]
+logo: assets/logos/deepseek.svg
+sources:
+  - key: deepseek-r1-github
+    title: DeepSeek-R1
+    url: https://github.com/deepseek-ai/DeepSeek-R1
+    type: codebase
+scores: {}

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { loadModelIndex } from '@/data/model-index-loader';
-import { useComparison } from '@/hooks/use-comparison';
+import { useModelSelectorState } from '@/hooks/use-model-selector-state';
 import { ModelSelector } from '@/components/ModelSelector';
 import { MetricSelector } from '@/components/MetricSelector';
 import { RadarChart } from '@/components/RadarChart';
@@ -41,51 +41,20 @@ function App() {
       .catch((err) => setError(err instanceof Error ? err.message : String(err)));
   }, []);
 
-  // 默认选中最新 4 个模型；默认所有模型都计入平均；默认 metrics 为 featured 精选集。
-  const defaultModelIds = useMemo(
-    () => (index ? index.models.slice(0, 4).map((m) => m.id) : []),
-    [index]
-  );
-  const defaultMetricIds = useMemo(
-    () => (index ? index.metrics.filter((m) => m.featured).map((m) => m.id) : []),
-    [index]
-  );
-  const defaultAverageModelIds = useMemo(
-    () => (index ? index.models.map((m) => m.id) : []),
-    [index]
-  );
-
   const {
     selectedModelIds,
     selectedMetricIds,
     averageModelIds,
+    selectedModels,
+    averageModels,
+    featuredMetricCount,
     toggleModel,
     toggleMetric,
     toggleAverage,
     setModelIds,
     setMetricIds,
-    setAverageModelIds,
-  } = useComparison(
-    () => defaultModelIds,
-    () => defaultMetricIds,
-    () => defaultAverageModelIds
-  );
-
-  const selectedModels = useMemo(
-    () =>
-      selectedModelIds
-        .map((id) => index?.models.find((m) => m.id === id))
-        .filter((m): m is NonNullable<typeof m> => m !== undefined),
-    [selectedModelIds, index]
-  );
-
-  const averageModels = useMemo(
-    () =>
-      averageModelIds
-        .map((id) => index?.models.find((m) => m.id === id))
-        .filter((m): m is NonNullable<typeof m> => m !== undefined),
-    [averageModelIds, index]
-  );
+    clearModelsAndAverage,
+  } = useModelSelectorState(index);
 
   // hero / topbar 统计数字与更新日期
   const stats = useMemo(() => {
@@ -118,8 +87,6 @@ function App() {
       </div>
     );
   }
-
-  const featuredCount = index.metrics.filter((m) => m.featured).length;
 
   return (
     <>
@@ -180,10 +147,7 @@ function App() {
             onToggle={toggleModel}
             onToggleAverage={toggleAverage}
             onSelectAll={setModelIds}
-            onClear={() => {
-              setModelIds([]);
-              setAverageModelIds([]);
-            }}
+            onClear={clearModelsAndAverage}
           />
 
           <MetricSelector
@@ -200,7 +164,7 @@ function App() {
             metrics={index.metrics}
             selectedMetricIds={selectedMetricIds}
             averageModels={averageModels}
-            featuredCount={featuredCount}
+            featuredCount={featuredMetricCount}
           />
 
           <DataTable

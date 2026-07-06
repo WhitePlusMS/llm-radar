@@ -26,17 +26,8 @@ sources:
     title: "MiniMax API Release Notes - Models"
     url: https://platform.minimax.io/docs/release-notes/models
     type: blog
-  - key: minimax-m3-venturebeat
-    title: "MiniMax M3 debuts, eclipsing GPT-5.5 and Gemini 3.1 Pro on key benchmark performance"
-    url: https://venturebeat.com/technology/minimax-m3-debuts-eclipsing-gpt-5-5-and-gemini-3-1-pro-on-key-benchmark-performance-for-just-5-10-of-the-cost
-    type: blog
-scores:
+scores: {}
   # MiniMax-M3 的技术报告（MSA 论文）主要验证 109B 参数 MSA 模型的稀疏注意力机制，
   # 未给出完整 428B MiniMax-M3 的常规 benchmark 表格。
-  # 以下 SWE-Bench Pro 分数来自 VentureBeat 对 MiniMax 官方发布宣传的引用（vendor-reported），
-  # 是目前可获取的最接近原始来源的公开数值；其余常用 benchmark（mmlu-pro、gpqa 等）
-  # 在已找到的原始/半原始来源中均未报告。
-  swe-bench:
-    value: 59.0
-    source: minimax-m3-venturebeat
+  # SWE-Bench Pro 不是当前 metrics.yaml 中定义的 SWE-Bench Verified，且 VentureBeat 不是原始来源。
   # 原始来源未报告：mmlu-pro, mmlu, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande

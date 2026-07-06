@@ -1,0 +1,18 @@
+id: mistral/codestral-25.01
+name: Codestral 25.01
+company: mistral
+brand_color: "#FA520F"
+release_date: "2025-01-13"
+# Mistral 官方未公开 Codestral 25.01 的参数规模。
+context_window: "256k"
+modalities:
+  input: [text]
+  output: [text, code]
+weight_availability_tags: [closed-weights, agentic]
+logo: assets/logos/mistral.svg
+sources:
+  - key: codestral-doc
+    title: Codestral
+    url: https://docs.mistral.ai/models/model-cards/codestral
+    type: website
+scores: {}

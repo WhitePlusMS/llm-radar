@@ -1,0 +1,21 @@
+id: mistral/devstral-small
+name: Devstral Small
+company: mistral
+brand_color: "#FA520F"
+release_date: "2025-05-28"
+parameters:
+  total: "24B"
+  active: "24B"
+architecture: Dense
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text, code]
+weight_availability_tags: [open-weights, agentic]
+logo: assets/logos/mistral.svg
+sources:
+  - key: devstral-doc
+    title: Devstral
+    url: https://docs.mistral.ai/models/model-cards/devstral
+    type: website
+scores: {}

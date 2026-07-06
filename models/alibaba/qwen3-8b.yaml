@@ -1,0 +1,21 @@
+id: alibaba/qwen3-8b
+name: Qwen3-8B
+company: alibaba
+brand_color: "#615CED"
+release_date: "2025-04-29"
+parameters:
+  total: "8B"
+  active: "8B"
+architecture: Dense
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights, reasoning]
+logo: assets/logos/alibaba.svg
+sources:
+  - key: qwen3-blog
+    title: "Qwen3: Think Deeper, Act Faster"
+    url: https://qwenlm.github.io/blog/qwen3/
+    type: blog
+scores: {}

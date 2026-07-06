@@ -1,0 +1,21 @@
+id: deepseek/v3.1
+name: DeepSeek-V3.1
+company: deepseek
+brand_color: "#4D6BFE"
+release_date: "2025-08-21"
+parameters:
+  total: "671B"
+  active: "37B"
+architecture: MoE
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text, code]
+weight_availability_tags: [open-weights, reasoning]
+logo: assets/logos/deepseek.svg
+sources:
+  - key: deepseek-v3.1-news
+    title: DeepSeek-V3.1 Release
+    url: https://api-docs.deepseek.com/news/news250821
+    type: website
+scores: {}

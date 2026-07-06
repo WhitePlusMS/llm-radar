@@ -46,11 +46,9 @@ scores:
     value: null
   arena-elo:
     value: null
-  # 官方报告为 Inverse IFEval 80.3，非标准 IFEval。
+  # 官方报告的是 Inverse IFEval，不是标准 IFEval；当前 metrics.yaml 没有该指标。
   ifeval:
-    value: 80.3
-    source: seed1.8-model-card
-    note: Inverse IFEval
+    value: null
   bbh:
     value: null
   drop:

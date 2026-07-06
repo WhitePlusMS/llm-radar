@@ -1,5 +1,9 @@
 import type { Metric } from '@/types';
 import { Star } from 'lucide-react';
+import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
+import { Checkbox } from '@/components/ui/Checkbox';
+import { Tooltip } from '@/components/ui/Tooltip';
 
 interface MetricSelectorProps {
   metrics: Metric[];
@@ -9,8 +13,8 @@ interface MetricSelectorProps {
 }
 
 /**
- * Benchmark 选择面板：对应 mockup 的 .panel（idx 03）。
- * 按 capability 分组的 metric-group + metric-row + 琥珀星标 featured。
+ * Benchmark 选择面板：按 capability 分组。
+ * 精选集是产品默认路径；完整列表仍保留给技术用户深挖。
  */
 export function MetricSelector({ metrics, selectedIds, onToggle, onChangeSelected }: MetricSelectorProps) {
   const groups = new Map<string, Metric[]>();
@@ -31,22 +35,23 @@ export function MetricSelector({ metrics, selectedIds, onToggle, onChangeSelecte
         <div className="actions">
           {onChangeSelected && (
             <>
-              <button
-                type="button"
-                className="btn"
+              <Button
+                variant="secondary"
                 onClick={() => onChangeSelected(featuredIds)}
                 title="恢复默认精选 benchmark"
               >
                 默认
-              </button>
-              <button
-                type="button"
-                className="btn"
+              </Button>
+              <Button
+                variant="secondary"
                 onClick={() => onChangeSelected(allIds)}
                 title="展开全部 benchmark"
               >
                 全部
-              </button>
+              </Button>
+              <Button variant="ghost" onClick={() => onChangeSelected([])}>
+                清空
+              </Button>
             </>
           )}
         </div>
@@ -58,20 +63,36 @@ export function MetricSelector({ metrics, selectedIds, onToggle, onChangeSelecte
             {items.map((metric) => {
               const isSelected = selectedIds.includes(metric.id);
               return (
-                <label
+                <div
                   key={metric.id}
                   className={`metric-row${isSelected ? ' sel' : ''}`}
-                  title={metric.description}
+                  role="checkbox"
+                  aria-checked={isSelected}
+                  tabIndex={0}
+                  onClick={() => onToggle(metric.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === ' ' || e.key === 'Enter') {
+                      e.preventDefault();
+                      onToggle(metric.id);
+                    }
+                  }}
                 >
-                  <input
-                    type="checkbox"
-                    className="cb"
+                  <Checkbox
                     checked={isSelected}
-                    onChange={() => onToggle(metric.id)}
+                    onCheckedChange={() => onToggle(metric.id)}
+                    ariaLabel={`${metric.name} benchmark`}
+                    onClick={(e) => e.stopPropagation()}
                   />
-                  <span className="mname">{metric.name}</span>
-                  {metric.featured && <Star className="star" />}
-                </label>
+                  <Tooltip content={metric.description}>
+                    <span className="mname">{metric.name}</span>
+                  </Tooltip>
+                  {metric.featured && (
+                    <Badge tone="warning" className="metric-featured">
+                      <Star size={10} />
+                      精选
+                    </Badge>
+                  )}
+                </div>
               );
             })}
           </div>

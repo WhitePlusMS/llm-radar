@@ -31,7 +31,7 @@
   --mint-3:    #bcf3b4;
   --na:        #94a3b8;
   --star:      #d97706;
-  --font-sans: "Hanken Grotesk", system-ui, sans-serif;
+  --font-sans: "Geist Sans", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --radius: 10px;
 }
@@ -59,10 +59,156 @@ body {
 a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--accent-2); text-decoration: underline; text-underline-offset: 3px; }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 .mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 .eyebrow {
   font-family: var(--font-mono); font-size: 10px; font-weight: 600;
   letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ---------- Radix/shadcn 风格基础控件 ---------- */
+.ui-button {
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  padding: 0 10px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s, box-shadow .15s;
+}
+.ui-button-default { color: #fff; background: var(--accent); border-color: var(--accent); }
+.ui-button-default:hover { background: var(--accent-2); border-color: var(--accent-2); }
+.ui-button-secondary { color: var(--ink); background: var(--surface-2); border-color: var(--rule-2); }
+.ui-button-secondary:hover { color: var(--accent); border-color: rgba(52,95,223,0.35); background: var(--accent-soft); }
+.ui-button-ghost { color: var(--muted); background: transparent; border-color: var(--rule); }
+.ui-button-ghost:hover { color: var(--ink); background: var(--surface-2); }
+.ui-button-icon { width: 28px; padding: 0; color: var(--muted); background: var(--surface); border-color: var(--rule-2); }
+.ui-button:focus-visible,
+.ui-checkbox:focus-visible,
+.ui-select-trigger:focus-visible,
+.baseline-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-soft), 0 0 0 1px var(--accent);
+}
+.ui-checkbox {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--rule-2);
+  background: var(--surface);
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, box-shadow .15s;
+}
+.ui-checkbox:hover { border-color: var(--accent); }
+.ui-checkbox[data-state="checked"],
+.ui-checkbox[data-state="indeterminate"] {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.ui-checkbox-indicator { display: inline-flex; align-items: center; justify-content: center; }
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 18px;
+  border-radius: 5px;
+  padding: 2px 6px;
+  border: 1px solid var(--rule);
+  background: var(--surface-2);
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+.ui-badge-accent { color: var(--accent); background: var(--accent-soft); border-color: rgba(52,95,223,0.22); }
+.ui-badge-success { color: #166534; background: #dcfce7; border-color: #bbf7d0; }
+.ui-badge-warning { color: #92400e; background: #fff7ed; border-color: #fed7aa; }
+.ui-tooltip {
+  max-width: 280px;
+  z-index: 50;
+  border: 1px solid var(--rule-2);
+  border-radius: 6px;
+  background: var(--ink);
+  color: #fff;
+  padding: 8px 10px;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.22);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.ui-tooltip-arrow { fill: var(--ink); }
+.ui-select-trigger {
+  height: 30px;
+  min-width: 110px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border: 1px solid var(--rule-2);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink-2);
+  padding: 0 9px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ui-select-trigger:hover { border-color: rgba(52,95,223,0.45); background: var(--accent-soft); }
+.ui-select-icon { color: var(--dim); display: inline-flex; }
+.ui-select-content {
+  z-index: 60;
+  min-width: var(--radix-select-trigger-width);
+  max-height: 280px;
+  overflow: hidden;
+  border: 1px solid var(--rule-2);
+  border-radius: 7px;
+  background: var(--surface);
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.18);
+}
+.ui-select-viewport { padding: 5px; }
+.ui-select-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 28px;
+  border-radius: 5px;
+  padding: 0 28px 0 9px;
+  color: var(--ink-2);
+  font-size: 12px;
+  cursor: pointer;
+  outline: none;
+}
+.ui-select-item[data-highlighted] { background: var(--accent-soft); color: var(--accent-2); }
+.ui-select-check {
+  position: absolute;
+  right: 8px;
+  display: inline-flex;
+  color: var(--accent);
 }
 
 /* ---------- 顶部状态条（深色，与 hero 一体） ---------- */
@@ -318,21 +464,47 @@ table.data thead th {
   vertical-align: middle;
 }
 table.data th.model-h, table.data td.model { text-align: left; }
+table.data th.model-h, table.data td.model {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--surface);
+}
+table.data thead th.model-h {
+  z-index: 2;
+  background: var(--surface-2);
+}
 table.data td.model { color: var(--ink); font-weight: 600; font-family: var(--font-sans); }
 table.data td.model .swatch-inline {
   display: inline-block; width: 8px; height: 8px; border-radius: 2px;
   margin-right: 6px; vertical-align: middle;
 }
 table.data td.val { color: var(--ink); }
+table.data td.val .raw {
+  display: block;
+  color: var(--ink);
+  font-weight: 700;
+}
 table.data td.val .norm { display: block; font-size: 9px; color: var(--dim); margin-top: 1px; }
 table.data td.val .src {
-  display: inline-block; max-width: 8rem; overflow: hidden; text-overflow: ellipsis;
+  display: inline-flex; align-items: center; justify-content: flex-end; gap: 3px;
+  max-width: 8rem; overflow: hidden; text-overflow: ellipsis;
   white-space: nowrap; font-size: 9px; color: var(--accent); margin-top: 2px;
 }
 table.data td.na { color: var(--na); }
+table.data td.na span { display: block; font-weight: 700; }
+table.data td.na small { display: block; font-size: 9px; color: var(--dim); margin-top: 1px; }
 table.data td.avg-cell { color: var(--ink-2); background: var(--surface-2); font-weight: 600; }
 table.data tbody tr:hover td { background: var(--accent-soft); }
 table.data tbody tr:hover td.avg-cell { background: #dde6fb; }
+.metric-head {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  max-width: 160px;
+  white-space: normal;
+}
 
 /* ---------- 来源 ---------- */
 .src-card {
@@ -390,30 +562,46 @@ table.data tbody tr:hover td.avg-cell { background: #dde6fb; }
 .company-row:hover { background: var(--surface-2); }
 .company-row .cname { flex: 1; font-size: 13px; font-weight: 600; color: var(--ink); }
 .company-row .ccount { font-family: var(--font-mono); font-size: 10px; color: var(--dim); }
-.chev { color: var(--dim); font-size: 10px; transition: transform .2s; }
+.chev {
+  color: var(--dim); font-size: 10px; transition: transform .2s;
+  border: 0; background: transparent; padding: 2px; display: inline-flex;
+  align-items: center; justify-content: center; border-radius: 4px; cursor: pointer;
+}
+.chev:hover { color: var(--accent); background: var(--surface-2); }
 .company-group.open .chev { transform: rotate(90deg); }
 .model-list { display: none; padding: 2px 0 6px 14px; border-left: 1px solid var(--rule); margin-left: 5px; }
 .company-group.open .model-list { display: block; }
 
 .model-row {
-  display: flex; align-items: center; gap: 8px;
+  display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto auto;
+  align-items: center; gap: 8px;
   padding: 6px 6px; border-radius: 6px; cursor: pointer;
   border: 1px solid transparent;
 }
 .model-row:hover { background: var(--surface-2); }
 .model-row.sel { background: var(--accent-soft); border-color: rgba(52,95,223,0.25); }
 .model-row .swatch { width: 8px; height: 8px; border-radius: 50%; flex: none; }
-.model-row .mname { flex: 1; font-size: 12px; color: var(--ink-2); min-width: 0; }
+.model-row .mname { font-size: 12px; color: var(--ink-2); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .model-row.sel .mname { color: var(--ink); font-weight: 600; }
 .model-row .mdate { font-family: var(--font-mono); font-size: 10px; color: var(--dim); }
-.model-row .avg {
-  font-family: var(--font-mono); font-size: 9px; font-weight: 600;
-  padding: 2px 5px; border: 1px solid var(--rule-2); color: var(--dim);
-  border-radius: 4px; cursor: pointer; background: var(--surface);
-  transition: color .15s, border-color .15s, background .15s;
+.baseline-toggle {
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 6px;
+  border: 1px solid var(--rule-2);
+  border-radius: 5px;
+  color: var(--dim);
+  background: var(--surface);
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color .15s, border-color .15s, background .15s, box-shadow .15s;
 }
-.model-row .avg:hover { color: var(--accent); border-color: var(--accent); }
-.model-row .avg.on { color: #fff; background: var(--ink); border-color: var(--ink); }
+.baseline-toggle:hover { color: var(--accent); border-color: rgba(52,95,223,0.45); background: var(--accent-soft); }
+.baseline-toggle.on { color: #fff; background: var(--ink); border-color: var(--ink); }
 
 /* 真实 checkbox 的可访问自定义样式（appearance:none + 背景勾选） */
 input[type="checkbox"].cb {
@@ -502,12 +690,14 @@ input[type="checkbox"].cb:indeterminate {
 .metric-row {
   display: flex; align-items: center; gap: 8px;
   padding: 6px 6px; border-radius: 6px; cursor: pointer;
+  border: 1px solid transparent;
 }
 .metric-row:hover { background: var(--surface-2); }
-.metric-row.sel { background: var(--accent-soft); }
+.metric-row.sel { background: var(--accent-soft); border-color: rgba(52,95,223,0.22); }
 .metric-row.sel .mname { font-weight: 600; }
-.metric-row .mname { flex: 1; font-size: 12px; color: var(--ink-2); }
+.metric-row .mname { flex: 1; font-size: 12px; color: var(--ink-2); min-width: 0; }
 .metric-row .star { color: var(--star); width: 11px; height: 11px; }
+.metric-featured { margin-left: auto; }
 
 /* ---------- footer ---------- */
 footer.site {

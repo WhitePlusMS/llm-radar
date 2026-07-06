@@ -1,0 +1,18 @@
+id: google/gemini-3.5-flash
+name: Gemini 3.5 Flash
+company: google
+brand_color: "#4285F4"
+release_date: "2026-06-17"
+# Google API 文档未公开 Gemini 3.5 Flash 的参数规模与架构细节。
+context_window: "1M"
+modalities:
+  input: [text, image, audio, video]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/google.svg
+sources:
+  - key: gemini-3.5-flash-doc
+    title: Gemini 3.5 Flash
+    url: https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash
+    type: website
+scores: {}
