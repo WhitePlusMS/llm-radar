@@ -1,4 +1,3 @@
-import { Star, CheckSquare, Square } from 'lucide-react';
 import type { Metric } from '@/types';
 
 interface MetricSelectorProps {
@@ -8,6 +7,10 @@ interface MetricSelectorProps {
   onChangeSelected?: (ids: string[]) => void;
 }
 
+/**
+ * Benchmark 选择面板：对应 mockup 的 .panel（idx 03）。
+ * 按 capability 分组的 metric-group + metric-row + 琥珀星标 featured。
+ */
 export function MetricSelector({ metrics, selectedIds, onToggle, onChangeSelected }: MetricSelectorProps) {
   const groups = new Map<string, Metric[]>();
   metrics.forEach((metric) => {
@@ -21,84 +24,61 @@ export function MetricSelector({ metrics, selectedIds, onToggle, onChangeSelecte
   const isAllFeatured = featuredIds.length > 0 && featuredIds.every((id) => selectedIds.includes(id));
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="mb-3 flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-slate-800">选择 Benchmark</h3>
-        <span className="text-xs text-slate-400">已选 {selectedIds.length}</span>
-      </div>
-
-      {onChangeSelected && (
-        <div className="mb-3 flex flex-wrap gap-2">
-          <button
-            type="button"
-            onClick={() => onChangeSelected(featuredIds)}
-            className={`inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-medium transition-colors ${
-              isAllFeatured
-                ? 'bg-amber-100 text-amber-700'
-                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-            }`}
-            title="恢复默认精选 benchmark"
-          >
-            <Star className="h-3 w-3" />
-            恢复默认
-          </button>
-          <button
-            type="button"
-            onClick={() => onChangeSelected(allIds)}
-            className="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-2 py-1 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-200"
-            title="展开全部 benchmark"
-          >
-            <CheckSquare className="h-3 w-3" />
-            全部
-          </button>
-          <button
-            type="button"
-            onClick={() => onChangeSelected([])}
-            className="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-2 py-1 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-200"
-            title="清空选择"
-          >
-            <Square className="h-3 w-3" />
-            清空
-          </button>
+    <div className="panel">
+      <div className="panel-head">
+        <span className="title"><span className="idx">03</span>Benchmarks</span>
+        <div className="actions">
+          {onChangeSelected && (
+            <>
+              <button
+                type="button"
+                className="btn"
+                onClick={() => onChangeSelected(featuredIds)}
+                title="恢复默认精选 benchmark"
+              >
+                默认
+              </button>
+              <button
+                type="button"
+                className="btn"
+                onClick={() => onChangeSelected(allIds)}
+                title="展开全部 benchmark"
+              >
+                全部
+              </button>
+            </>
+          )}
         </div>
-      )}
-
-      <div className="max-h-72 space-y-4 overflow-y-auto pr-1">
+      </div>
+      <div className="panel-body">
         {Array.from(groups.entries()).map(([tag, items]) => (
-          <div key={tag}>
-            <div className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
-              <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />
-              {tag}
-            </div>
-            <div className="grid grid-cols-1 gap-1">
-              {items.map((metric) => {
-                const isSelected = selectedIds.includes(metric.id);
-                return (
-                  <label
-                    key={metric.id}
-                    className={`flex cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 transition-colors ${
-                      isSelected ? 'bg-indigo-50 text-indigo-900' : 'hover:bg-slate-50'
-                    }`}
-                    title={metric.description}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={isSelected}
-                      onChange={() => onToggle(metric.id)}
-                      className="h-4 w-4 flex-shrink-0 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
-                    />
-                    <span className="flex-1 text-sm text-slate-700">{metric.name}</span>
-                    {metric.featured && (
-                      <span title="精选 benchmark">
-                        <Star className="h-3 w-3 text-amber-400" />
-                      </span>
-                    )}
-                  </label>
-                );
-              })}
-            </div>
+          <div className="metric-group" key={tag}>
+            <div className="glabel">{tag}</div>
+            {items.map((metric) => {
+              const isSelected = selectedIds.includes(metric.id);
+              return (
+                <label
+                  key={metric.id}
+                  className={`metric-row${isSelected ? ' sel' : ''}`}
+                  title={metric.description}
+                >
+                  <input
+                    type="checkbox"
+                    className="cb"
+                    checked={isSelected}
+                    onChange={() => onToggle(metric.id)}
+                  />
+                  <span className="mname">{metric.name}</span>
+                  {metric.featured && <span className="star" title="精选 benchmark">★</span>}
+                </label>
+              );
+            })}
           </div>
         ))}
+        <div className="sel-summary">
+          <span>已选 <b>{selectedIds.length}</b> / {metrics.length}</span>
+          {isAllFeatured && <span>默认精选集</span>}
+        </div>
       </div>
     </div>
   );

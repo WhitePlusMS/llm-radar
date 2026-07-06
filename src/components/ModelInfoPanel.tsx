@@ -1,5 +1,4 @@
 import type { Company, ModelCard } from '@/types';
-import { Calendar, Cpu, Globe, Layers, MessageSquare, Tag, Database, ExternalLink } from 'lucide-react';
 import { ModelLogo } from './ModelLogo';
 
 interface ModelInfoPanelProps {
@@ -7,97 +6,72 @@ interface ModelInfoPanelProps {
   company?: Company;
 }
 
-function Badge({ children, color }: { children: React.ReactNode; color?: string }) {
-  return (
-    <span
-      className="inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium"
-      style={{
-        backgroundColor: color ? `${color}20` : '#e2e8f0',
-        color: color || '#475569',
-      }}
-    >
-      {children}
-    </span>
-  );
-}
-
-function InfoRow({ icon: Icon, label, value }: { icon: React.ElementType; label: string; value?: React.ReactNode }) {
-  if (value === undefined || value === null || value === '') return null;
-  return (
-    <div className="flex items-start gap-2 py-1">
-      <Icon className="mt-0.5 h-4 w-4 flex-shrink-0 text-slate-400" />
-      <div className="min-w-0 flex-1">
-        <span className="text-xs text-slate-500">{label}</span>
-        <div className="text-sm font-medium text-slate-700">{value}</div>
-      </div>
-    </div>
-  );
-}
-
+/**
+ * 单个模型信息卡：对应 mockup 的 .info-card。
+ * 左边框品牌色 + ic-logo + 名称/公司 + info-grid(k/v) + tags + 来源。
+ * 由 App 包裹在 "Model Info" panel shell 内，一个模型一张卡。
+ */
 export function ModelInfoPanel({ model, company }: ModelInfoPanelProps) {
-  const allTags = [
-    ...model.weight_availability_tags,
-    ...(model.tags ?? []),
-  ];
+  const allTags = [...model.weight_availability_tags, ...(model.tags ?? [])];
 
   const parameterText = [model.parameters?.total, model.parameters?.active]
     .filter(Boolean)
     .join(model.parameters?.active ? ' / ' : '');
 
   const modalityText = model.modalities
-    ? `输入: ${model.modalities.input.join(', ')} / 输出: ${model.modalities.output.join(', ')}`
+    ? `in: ${model.modalities.input.join(', ')} · out: ${model.modalities.output.join(', ')}`
     : undefined;
 
+  const rows: Array<[string, string | undefined]> = [
+    ['params', parameterText || undefined],
+    ['arch', model.architecture],
+    ['ctx', model.context_window],
+    ['modal', modalityText],
+  ];
+
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="mb-3 flex items-center gap-3">
-        <ModelLogo model={model} company={company} size="lg" />
-        <div className="min-w-0 flex-1">
-          <h4 className="truncate text-base font-bold text-slate-900">{model.name}</h4>
-          <p className="text-xs text-slate-500">{company?.name ?? model.company}</p>
+    <div className="info-card" style={{ borderLeftColor: model.brand_color }}>
+      <div className="ic-head">
+        <ModelLogo model={model} company={company} />
+        <div>
+          <div className="ic-name">{model.name}</div>
+          <div className="ic-co">
+            {company?.name ?? model.company} · {model.release_date}
+          </div>
         </div>
       </div>
 
-      <div className="space-y-0.5">
-        <InfoRow icon={Calendar} label="发布日期" value={model.release_date} />
-        <InfoRow icon={Database} label="参数量" value={parameterText || undefined} />
-        <InfoRow icon={Cpu} label="架构" value={model.architecture} />
-        <InfoRow icon={Layers} label="上下文窗口" value={model.context_window} />
-        <InfoRow icon={MessageSquare} label="模态" value={modalityText} />
+      <div className="info-grid">
+        {rows
+          .filter(([, v]) => v !== undefined)
+          .flatMap(([k, v]) => [
+            <span className="k" key={`k-${k}`}>{k}</span>,
+            <span className="v" key={`v-${k}`}>{v}</span>,
+          ])}
       </div>
 
       {allTags.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-1.5">
+        <div className="info-tags">
           {allTags.map((tag) => (
-            <Badge key={tag} color={model.brand_color}>
-              <Tag className="mr-1 h-3 w-3" />
-              {tag}
-            </Badge>
+            <span className="tag" key={tag}>{tag}</span>
           ))}
         </div>
       )}
 
       {model.sources.length > 0 && (
-        <div className="mt-4 border-t border-slate-100 pt-3">
-          <div className="mb-1.5 flex items-center gap-1.5 text-xs font-semibold text-slate-700">
-            <Globe className="h-3.5 w-3.5 text-slate-400" />
-            来源
-          </div>
-          <ul className="space-y-1">
-            {model.sources.map((source) => (
-              <li key={source.key}>
-                <a
-                  href={source.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1 text-xs text-indigo-600 hover:text-indigo-800 hover:underline"
-                >
-                  {source.title}
-                  <ExternalLink className="h-3 w-3" />
-                </a>
-              </li>
-            ))}
-          </ul>
+        <div className="info-src">
+          <div className="src-title">Sources</div>
+          {model.sources.map((source) => (
+            <a
+              key={source.key}
+              href={source.url}
+              target="_blank"
+              rel="noreferrer"
+              title={source.title}
+            >
+              {source.title}
+            </a>
+          ))}
         </div>
       )}
     </div>

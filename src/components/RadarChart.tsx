@@ -7,41 +7,80 @@ interface RadarChartProps {
   metrics: Metric[];
   selectedMetricIds: string[];
   averageModels?: ModelCard[];
+  /** 已选 featured benchmark 数量，用于 section-label 右侧副标 */
+  featuredCount?: number;
 }
 
-export function RadarChart({ models, metrics, selectedMetricIds, averageModels }: RadarChartProps) {
+/**
+ * 雷达图区块：套用 mockup 的 chart-card 结构（toolbar + legend + chart-wrap + note）。
+ * 继续用 ECharts（不换成 SVG），只把视觉主题映射到发丝线风格。
+ */
+export function RadarChart({
+  models,
+  metrics,
+  selectedMetricIds,
+  averageModels,
+  featuredCount,
+}: RadarChartProps) {
   const option = buildRadarOption(models, metrics, selectedMetricIds, averageModels ?? []);
 
   if (selectedMetricIds.length === 0) {
     return (
-      <div className="flex h-[28rem] items-center justify-center text-slate-400">
-        请至少选择一个 benchmark
-      </div>
+      <section className="chart-block">
+        <div className="section-label">
+          <span><span className="num">01</span>Radar / Normalized 0–100</span>
+          <span className="right">未选 benchmark</span>
+        </div>
+        <div className="chart-card">
+          <div className="chart-empty">请至少选择一个 benchmark</div>
+        </div>
+      </section>
     );
   }
 
+  const rightLabel = `${selectedMetricIds.length} benchmarks${featuredCount ? ` · ${featuredCount} featured` : ''}`;
+
   return (
-    <div className="flex h-full flex-col">
-      <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-lg bg-slate-50 px-3 py-2">
-        {models.map((model) => (
-          <div key={model.id} className="flex items-center gap-1.5 text-xs font-medium text-slate-700">
-            <span
-              className="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full"
-              style={{ backgroundColor: model.brand_color }}
-            />
-            <span className="max-w-[10rem] truncate sm:max-w-[12rem]">{model.name}</span>
-          </div>
-        ))}
-        {averageModels && averageModels.length > 0 && (
-          <div className="flex items-center gap-1.5 text-xs font-medium text-slate-700">
-            <span className="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-slate-400" />
-            <span>平均 ({averageModels.length} 个模型)</span>
-          </div>
-        )}
+    <section className="chart-block">
+      <div className="section-label">
+        <span><span className="num">01</span>Radar / Normalized 0–100</span>
+        <span className="right">{rightLabel}</span>
       </div>
-      <div className="min-h-0 flex-1">
-        <ReactECharts option={option} style={{ height: '100%', minHeight: '26rem', width: '100%' }} />
+      <div className="chart-card">
+        <div className="chart-toolbar">
+          <span className="ctitle">
+            Capability Radar<span className="sub">· normalized</span>
+          </span>
+          <div className="legend">
+            {models.map((model) => (
+              <span key={model.id} className="legend-item">
+                <span
+                  className="legend-swatch"
+                  style={{ background: model.brand_color }}
+                />
+                {model.name}
+              </span>
+            ))}
+            {averageModels && averageModels.length > 0 && (
+              <span className="legend-item avg">
+                <span className="legend-swatch" />
+                Avg ({averageModels.length})
+              </span>
+            )}
+          </div>
+        </div>
+        <div className="chart-wrap">
+          <ReactECharts
+            option={option}
+            className="echart"
+            style={{ height: '100%', minHeight: '26rem', width: '100%' }}
+          />
+        </div>
+        <div className="chart-note">
+          <span>空心环点 = 该 benchmark 缺失 (N/A)，不计入形状面积</span>
+          <span>灰虚线 = 计入平均的模型均值</span>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

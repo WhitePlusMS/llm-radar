@@ -188,16 +188,24 @@ export function buildRadarOption(
       itemStyle: {
         color: model.brand_color,
       },
+      // 发丝线：1.8px 描边 + 10% 面积填充，对齐 mockup .series 规格
       lineStyle: {
-        width: 3,
+        width: 1.8,
+        color: model.brand_color,
       },
+      areaStyle: {
+        color: model.brand_color,
+        opacity: 0.10,
+      },
+      symbol: 'circle',
+      symbolSize: 5,
       emphasis: {
         lineStyle: {
-          width: 4,
+          width: 2.4,
         },
         areaStyle: {
           color: model.brand_color,
-          opacity: 0.15,
+          opacity: 0.20,
         },
       },
     };
@@ -210,11 +218,11 @@ export function buildRadarOption(
     seriesData.push({
       value: avgPoints.map((p) => p.value),
       name: '平均',
-      itemStyle: { color: '#64748b' },
+      itemStyle: { color: '#475569' },
       lineStyle: {
         type: 'dashed',
-        width: 3,
-        color: '#64748b',
+        width: 1.3,
+        color: '#475569',
       },
       areaStyle: { opacity: 0 },
       symbol: 'circle',
@@ -229,8 +237,11 @@ export function buildRadarOption(
       backgroundColor: 'rgba(255, 255, 255, 0.96)',
       borderColor: '#e2e8f0',
       borderWidth: 1,
+      padding: [10, 12],
       textStyle: {
         color: '#1e293b',
+        fontFamily: '"JetBrains Mono", ui-monospace, monospace',
+        fontSize: 12,
       },
       formatter: (params: unknown) => {
         const p = params as { seriesName?: string };
@@ -238,11 +249,11 @@ export function buildRadarOption(
         const points = pointsByName.get(seriesName) ?? [];
         const model = modelByName.get(seriesName);
         const lines = [
-          `<div style="font-weight:600;margin-bottom:6px;">${seriesName}</div>`,
+          `<div style="font-weight:700;color:#0f172a;margin-bottom:6px;letter-spacing:0.02em;">${seriesName}</div>`,
         ];
         selectedMetrics.forEach((metric, idx) => {
           const point = points[idx];
-          const metricLine = `<span style="color:#64748b;">${metric.name}</span>`;
+          const metricLine = `<span style="color:#475569;">${metric.name}</span>`;
           if (!point || point.missing) {
             lines.push(
               `<div style="display:flex;justify-content:space-between;gap:16px;margin:2px 0;">${metricLine}<span style="font-weight:500;color:#94a3b8;">N/A</span></div>`
@@ -254,12 +265,12 @@ export function buildRadarOption(
             point.rawValue !== undefined ? formatRawValue(point.rawValue, metric) : '';
           const source = model ? resolveSource(model, point.source) : undefined;
           const sourceLink = source
-            ? `<a href="${source.url}" target="_blank" style="color:#4f46e5;text-decoration:none;" title="${source.title}">来源</a>`
+            ? `<a href="${source.url}" target="_blank" rel="noreferrer" style="color:#345fdf;text-decoration:none;" title="${source.title}">来源 ↗</a>`
             : '';
           lines.push(
             `<div style="display:flex;justify-content:space-between;gap:16px;margin:2px 0;">` +
               `${metricLine}` +
-              `<span style="font-weight:500;">${point.value.toFixed(1)} <span style="color:#94a3b8;font-size:11px;">(原始 ${rawText})</span></span>` +
+              `<span style="font-weight:600;color:#0f172a;font-variant-numeric:tabular-nums;">${point.value.toFixed(1)} <span style="color:#94a3b8;font-size:11px;font-weight:400;">(原始 ${rawText})</span></span>` +
             `</div>`
           );
           if (sourceLink) {
@@ -268,7 +279,7 @@ export function buildRadarOption(
             );
           }
         });
-        return `<div style="font-size:13px;line-height:1.4;">${lines.join('')}</div>`;
+        return `<div style="line-height:1.5;">${lines.join('')}</div>`;
       },
     },
     radar: {
@@ -277,23 +288,23 @@ export function buildRadarOption(
       center: ['50%', '50%'],
       splitNumber: 4,
       axisName: {
-        color: '#475569',
-        fontSize: 12,
-        fontWeight: 500,
+        color: '#1e293b',
+        fontSize: 11,
+        fontWeight: 600,
+        fontFamily: '"JetBrains Mono", ui-monospace, monospace',
       },
-      splitArea: {
-        areaStyle: {
-          color: ['rgba(241,245,249,0.5)', 'rgba(241,245,249,0.3)', 'rgba(241,245,249,0.2)', 'rgba(241,245,249,0.1)'],
-        },
-      },
+      // 发丝线风格：移除 splitArea 填充，环/轴用 slate-200 发丝线
+      splitArea: { show: false },
       axisLine: {
         lineStyle: {
-          color: '#cbd5e1',
+          color: '#e2e8f0',
+          width: 1,
         },
       },
       splitLine: {
         lineStyle: {
-          color: '#cbd5e1',
+          color: '#e2e8f0',
+          width: 1,
         },
       },
     },
@@ -301,13 +312,13 @@ export function buildRadarOption(
       {
         type: 'radar',
         data: seriesData,
-        symbolSize: 6,
+        symbolSize: 5,
         lineStyle: {
-          width: 2.5,
+          width: 1.8,
         },
         emphasis: {
           lineStyle: {
-            width: 3.5,
+            width: 2.4,
           },
         },
       },

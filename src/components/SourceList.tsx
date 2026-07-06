@@ -4,54 +4,49 @@ interface SourceListProps {
   models: ModelCard[];
 }
 
+/**
+ * 来源列表：套用 mockup 的 src-card / src-item 语义。
+ * 每条来源一行：模型色点 + 来源标题 + 来源类型。
+ */
 export function SourceList({ models }: SourceListProps) {
-  const modelsWithSources = models.filter((m) => m.sources && m.sources.length > 0);
-
-  if (modelsWithSources.length === 0) {
-    return (
-      <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-        <h3 className="mb-2 text-sm font-semibold text-slate-800">数据来源</h3>
-        <p className="text-xs text-slate-400">选择模型后显示来源</p>
-      </div>
-    );
-  }
+  const items = models
+    .filter((m) => m.sources && m.sources.length > 0)
+    .flatMap((m) => m.sources.map((s) => ({ model: m, source: s })));
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm md:p-5">
-      <h3 className="mb-3 flex items-center gap-2 text-sm font-semibold text-slate-800">
-        <span className="h-2 w-2 rounded-full bg-indigo-500" />
-        数据来源
-      </h3>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {modelsWithSources.map((model) => (
-          <div
-            key={model.id}
-            className="rounded-lg border border-slate-100 bg-slate-50 p-3"
-          >
-            <div className="mb-2 flex items-center gap-2 text-sm font-semibold">
-              <span
-                className="inline-block h-2.5 w-2.5 rounded-full"
-                style={{ backgroundColor: model.brand_color }}
-              />
-              <span className="text-slate-800">{model.name}</span>
-            </div>
-            <ul className="space-y-1.5">
-              {model.sources.map((source) => (
-                <li key={source.key} className="text-xs leading-relaxed">
-                  <a
-                    href={source.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-indigo-600 hover:text-indigo-800 hover:underline"
-                  >
-                    {source.title} <span className="text-slate-400">({source.type})</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+    <section>
+      <div className="section-label">
+        <span><span className="num">03</span>Sources</span>
+        <span className="right">100% primary</span>
       </div>
-    </div>
+      <div className="src-card">
+        {items.length === 0 ? (
+          <div className="src-item">
+            <span className="swatch" style={{ background: 'var(--rule-2)' }} />
+            <span className="stitle">选择模型后显示来源</span>
+            <span className="stype">—</span>
+          </div>
+        ) : (
+          <ul className="src-list">
+            {items.map(({ model, source }) => (
+              <li key={`${model.id}:${source.key}`} className="src-item">
+                <span className="swatch" style={{ background: model.brand_color }} />
+                <a
+                  className="stitle"
+                  href={source.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  title={source.title}
+                >
+                  <span className="sname">{model.name}</span>
+                  {source.title} ↗
+                </a>
+                <span className="stype">{source.type}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </section>
   );
 }
