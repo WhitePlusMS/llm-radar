@@ -1,5 +1,5 @@
 import type { EChartsOption, SeriesOption } from 'echarts';
-import type { Metric, ModelCard, ScoreEntry } from '@/types';
+import type { Metric, ModelCard, ScoreEntry, Source } from '@/types';
 
 type RadarSeriesDataItem = NonNullable<Extract<SeriesOption, { type?: 'radar' }>['data']>[number];
 
@@ -63,13 +63,52 @@ export function projectScore(entry: ScoreEntry | undefined, metric: Metric): Rad
 }
 
 /**
+ * 把原始分数格式化为展示文本——tooltip 与 DataTable 同源消费此函数，
+ * 以消除过去 raw 分支在两处分别 toFixed(1) / 不 toFixed 的静默分叉 bug。
+ *
+ * 规则（与领域约定一致）：
+ * - percentage: toFixed(1)
+ * - zero_to_one: toFixed(3)
+ * - raw: 原值直出不 toFixed（保留 ELO 这类整数分数的可读性），
+ *        若 metric 提供 max_value 则追加 " / {max_value}"
+ */
+export function formatRawValue(value: number, metric: Metric): string {
+  switch (metric.scale) {
+    case 'percentage':
+      return value.toFixed(1);
+    case 'zero_to_one':
+      return value.toFixed(3);
+    case 'raw':
+      return metric.max_value !== undefined && metric.max_value !== 0
+        ? `${value} / ${metric.max_value}`
+        : `${value}`;
+    default:
+      return `${value}`;
+  }
+}
+
+/**
+ * 解析分数来源：entry.source 指定则按 key 在 model.sources 中查找，
+ * 否则 fallback 到 model.sources[0]（与领域约定一致）。
+ *
+ * tooltip 与 DataTable 同源消费此函数，避免两处各写一份 find/fallback。
+ */
+export function resolveSource(model: ModelCard, sourceKey?: string): Source | undefined {
+  if (sourceKey) {
+    return model.sources.find((s) => s.key === sourceKey);
+  }
+  return model.sources[0];
+}
+
+/**
  * 根据当前选中的 metric ids 计算需要绘制的 metric 列表。
  *
  * 实现使用并集：只要被选中就纳入，缺失分数由 RadarPoint.missing 标记，
  * 雷达形状落至中心 0、tooltip 显示 N/A。
+ *
+ * 注：旧签名带 `_models` 参数但全程未读，已删除（不做向后兼容）。
  */
 export function selectMetrics(
-  _models: ModelCard[],
   metrics: Metric[],
   selectedMetricIds: string[]
 ): Metric[] {
@@ -112,7 +151,7 @@ export function buildRadarOption(
   selectedMetricIds: string[],
   average: boolean | ModelCard[]
 ): EChartsOption {
-  const selectedMetrics = selectMetrics(models, metrics, selectedMetricIds);
+  const selectedMetrics = selectMetrics(metrics, selectedMetricIds);
   const indicator = selectedMetrics.map((metric) => ({
     name: metric.name,
     max: 100,
@@ -210,14 +249,10 @@ export function buildRadarOption(
             );
             return;
           }
+          // rawText 与 DataTable 同源走 formatRawValue，修复旧 tooltip 对 raw 调 toFixed(1) 的分叉
           const rawText =
-            metric.scale === 'raw' && metric.max_value !== undefined
-              ? `${point.rawValue?.toFixed(1) ?? ''} / ${metric.max_value}`
-              : point.rawValue?.toFixed(metric.scale === 'zero_to_one' ? 3 : 1) ?? '';
-          const sourceKey = point.source;
-          const source = sourceKey
-            ? model?.sources.find((s) => s.key === sourceKey)
-            : model?.sources[0];
+            point.rawValue !== undefined ? formatRawValue(point.rawValue, metric) : '';
+          const source = model ? resolveSource(model, point.source) : undefined;
           const sourceLink = source
             ? `<a href="${source.url}" target="_blank" style="color:#4f46e5;text-decoration:none;" title="${source.title}">来源</a>`
             : '';

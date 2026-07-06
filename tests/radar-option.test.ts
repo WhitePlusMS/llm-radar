@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildRadarOption, projectScore, buildAveragePoints } from '@/lib/radar-option';
+import { buildRadarOption, projectScore, buildAveragePoints, formatRawValue } from '@/lib/radar-option';
 import type { Metric, ModelCard } from '@/types';
 
 const metrics: Metric[] = [
@@ -76,6 +76,36 @@ describe('buildAveragePoints', () => {
       { ...metrics[0], id: 'no-such-metric' },
     ]);
     expect(points[0]).toEqual({ value: 0, missing: true });
+  });
+});
+
+describe('formatRawValue', () => {
+  it('percentage 保留 1 位小数', () => {
+    // 80.56 在浮点存储下能干净进位到 80.6（80.55 会存成 80.5499… 导致 toFixed(1) 得 80.5）
+    expect(formatRawValue(80.56, metrics[0])).toBe('80.6');
+  });
+
+  it('zero_to_one 保留 3 位小数', () => {
+    expect(formatRawValue(0.1234, { ...metrics[0], scale: 'zero_to_one' })).toBe('0.123');
+  });
+
+  it('raw 原值直出并附带 max_value，不 toFixed', () => {
+    expect(formatRawValue(1400, metrics[2])).toBe('1400 / 1400');
+  });
+
+  it('raw 无 max_value 时仅原值', () => {
+    expect(formatRawValue(42, { ...metrics[2], max_value: undefined })).toBe('42');
+  });
+
+  // 回归断言：tooltip 与表格同源走 formatRawValue，杜绝旧 toFixed(1) 分叉
+  it('tooltip 的 rawText 与 formatRawValue 完全一致（修复 raw toFixed 分叉）', () => {
+    const option = buildRadarOption([modelA], metrics, ['arena-elo'], []);
+    const tooltip = (option.tooltip as { formatter: (p: unknown) => string }).formatter;
+    const html = tooltip({ seriesName: 'Model A' });
+    // 共享格式化输出：原值 1400 直出不带小数
+    expect(html).toContain('1400 / 1400');
+    // 旧 bug 痕迹：tooltip 曾对 raw 调 toFixed(1) 产生 "1400.0"
+    expect(html).not.toContain('1400.0');
   });
 });
 

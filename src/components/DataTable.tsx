@@ -1,6 +1,12 @@
 import { useMemo } from 'react';
-import type { Metric, ModelCard, ScoreEntry } from '@/types';
-import { normalize } from '@/lib/radar-option';
+import type { Metric, ModelCard } from '@/types';
+import {
+  buildAveragePoints,
+  formatRawValue,
+  projectScore,
+  resolveSource,
+  selectMetrics,
+} from '@/lib/radar-option';
 
 interface DataTableProps {
   models: ModelCard[];
@@ -9,33 +15,27 @@ interface DataTableProps {
   selectedMetricIds: string[];
 }
 
-function formatRaw(value: number, metric: Metric): string {
-  if (metric.scale === 'zero_to_one') return value.toFixed(3);
-  if (metric.scale === 'raw') return `${value}${metric.max_value ? ` / ${metric.max_value}` : ''}`;
-  return value.toFixed(1);
-}
-
-function formatScore(entry: ScoreEntry | undefined, metric: Metric): {
-  text: string;
-  normalized: string;
-  missing: boolean;
-  sourceKey?: string;
-} {
-  if (entry === undefined || entry.value === null || entry.value === undefined) {
-    return { text: 'N/A', normalized: 'N/A', missing: true };
-  }
-  return {
-    text: formatRaw(entry.value, metric),
-    normalized: normalize(entry.value, metric).toFixed(1),
-    missing: false,
-    sourceKey: entry.source,
-  };
-}
-
+/**
+ * 数据表格：与雷达 tooltip 同源消费 radar-option 的投影/格式化函数。
+ *
+ * 设计原则：表格不再自判"分数是否缺失"或"raw 如何格式化"，
+ * 一律走 projectScore → RadarPoint，再由 formatRawValue/resolveSource 投影成展示文本，
+ * 与 tooltip 共享同一份实现，消除过去 toFixed 分叉与重复 reduce。
+ */
 export function DataTable({ models, averageModels, metrics, selectedMetricIds }: DataTableProps) {
+  // 复用 selectMetrics，避免在表格内再写一份 find/filter
   const selectedMetrics = useMemo(
-    () => selectedMetricIds.map((id) => metrics.find((m) => m.id === id)).filter((m): m is Metric => !!m),
-    [selectedMetricIds, metrics]
+    () => selectMetrics(metrics, selectedMetricIds),
+    [metrics, selectedMetricIds]
+  );
+
+  // 平均列复用 buildAveragePoints，避免表格内再写一份 reduce；按 metric 顺序索引
+  const avgPoints = useMemo(
+    () =>
+      averageModels && averageModels.length > 0
+        ? buildAveragePoints(averageModels, selectedMetrics)
+        : [],
+    [averageModels, selectedMetrics]
   );
 
   if (selectedMetrics.length === 0 || models.length === 0) {
@@ -80,7 +80,7 @@ export function DataTable({ models, averageModels, metrics, selectedMetricIds }:
             </tr>
           </thead>
           <tbody>
-            {selectedMetrics.map((metric) => (
+            {selectedMetrics.map((metric, metricIdx) => (
               <tr key={metric.id} className="border-b border-slate-100 hover:bg-slate-50/50">
                 <td className="sticky left-0 z-10 bg-white px-3 py-2">
                   <div className="font-medium text-slate-700">{metric.name}</div>
@@ -89,21 +89,22 @@ export function DataTable({ models, averageModels, metrics, selectedMetricIds }:
                   </div>
                 </td>
                 {models.map((model) => {
-                  const score = formatScore(model.scores[metric.id], metric);
-                  const source = score.sourceKey
-                    ? model.sources.find((s) => s.key === score.sourceKey)
-                    : model.sources[0];
+                  // 走 projectScore 取 RadarPoint：缺失语义在此单点决定
+                  const point = projectScore(model.scores[metric.id], metric);
+                  // 来源解析与 tooltip 同源
+                  const source = resolveSource(model, point.source);
                   return (
                     <td key={model.id} className="px-3 py-2">
                       <div
                         className={`font-medium ${
-                          score.missing ? 'text-slate-300' : 'text-slate-700'
+                          point.missing ? 'text-slate-300' : 'text-slate-700'
                         }`}
                       >
-                        {score.text}
+                        {/* rawValue 在 !missing 时由 projectScore 保证存在 */}
+                        {point.missing ? 'N/A' : formatRawValue(point.rawValue!, metric)}
                       </div>
-                      {!score.missing && (
-                        <div className="text-xs text-slate-400">归一: {score.normalized}</div>
+                      {!point.missing && (
+                        <div className="text-xs text-slate-400">归一: {point.value.toFixed(1)}</div>
                       )}
                       {source && (
                         <a
@@ -122,17 +123,16 @@ export function DataTable({ models, averageModels, metrics, selectedMetricIds }:
                 {averageModels && averageModels.length > 0 && (
                   <td className="px-3 py-2">
                     {(() => {
-                      const values = averageModels
-                        .map((m) => m.scores[metric.id]?.value)
-                        .filter((v): v is number => v !== null && v !== undefined);
-                      if (values.length === 0) {
+                      const point = avgPoints[metricIdx];
+                      if (point.missing) {
                         return <span className="text-slate-300">N/A</span>;
                       }
-                      const avg = values.reduce((a, b) => a + b, 0) / values.length;
                       return (
                         <>
-                          <div className="font-medium text-slate-600">{formatRaw(avg, metric)}</div>
-                          <div className="text-xs text-slate-400">归一: {normalize(avg, metric).toFixed(1)}</div>
+                          <div className="font-medium text-slate-600">
+                            {formatRawValue(point.rawValue!, metric)}
+                          </div>
+                          <div className="text-xs text-slate-400">归一: {point.value.toFixed(1)}</div>
                         </>
                       );
                     })()}
