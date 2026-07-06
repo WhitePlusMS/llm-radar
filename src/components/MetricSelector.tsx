@@ -7,7 +7,6 @@ interface MetricSelectorProps {
 }
 
 export function MetricSelector({ metrics, selectedIds, onToggle }: MetricSelectorProps) {
-  // 按 capability_tags 分组
   const groups = new Map<string, Metric[]>();
   metrics.forEach((metric) => {
     const tag = metric.capability_tags[0] ?? '其他';
@@ -16,29 +15,38 @@ export function MetricSelector({ metrics, selectedIds, onToggle }: MetricSelecto
   });
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
-      <h3 className="mb-3 text-sm font-semibold text-gray-700">选择 Benchmark</h3>
-      <div className="max-h-64 space-y-4 overflow-y-auto pr-1">
+    <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="mb-3 flex items-center justify-between">
+        <h3 className="text-sm font-semibold text-slate-800">选择 Benchmark</h3>
+        <span className="text-xs text-slate-400">已选 {selectedIds.length}</span>
+      </div>
+      <div className="max-h-64 space-y-3 overflow-y-auto pr-1">
         {Array.from(groups.entries()).map(([tag, items]) => (
           <div key={tag}>
-            <div className="mb-1 text-xs font-medium uppercase tracking-wide text-gray-400">
+            <div className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400">
               {tag}
             </div>
-            <div className="space-y-1">
-              {items.map((metric) => (
-                <label
-                  key={metric.id}
-                  className="flex cursor-pointer items-center gap-2 rounded-md p-1 hover:bg-gray-50"
-                >
-                  <input
-                    type="checkbox"
-                    checked={selectedIds.includes(metric.id)}
-                    onChange={() => onToggle(metric.id)}
-                    className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                  />
-                  <span className="text-sm text-gray-700">{metric.name}</span>
-                </label>
-              ))}
+            <div className="grid grid-cols-1 gap-1">
+              {items.map((metric) => {
+                const isSelected = selectedIds.includes(metric.id);
+                return (
+                  <label
+                    key={metric.id}
+                    className={`flex cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 transition-colors ${
+                      isSelected ? 'bg-indigo-50' : 'hover:bg-slate-50'
+                    }`}
+                    title={metric.description}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={isSelected}
+                      onChange={() => onToggle(metric.id)}
+                      className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                    />
+                    <span className="text-sm text-slate-700">{metric.name}</span>
+                  </label>
+                );
+              })}
             </div>
           </div>
         ))}

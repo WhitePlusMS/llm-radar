@@ -18,9 +18,9 @@ function App() {
       .catch((err) => setError(err instanceof Error ? err.message : String(err)));
   }, []);
 
-  // 默认选中最新 5 个模型，默认选中所有 metric
+  // 默认选中最新 4 个模型，默认选中所有 metric
   const defaultModelIds = useMemo(
-    () => (index ? index.models.slice(0, 5).map((m) => m.id) : []),
+    () => (index ? index.models.slice(0, 4).map((m) => m.id) : []),
     [index]
   );
   const defaultMetricIds = useMemo(
@@ -35,6 +35,16 @@ function App() {
     toggleMetric,
     setModelIds,
   } = useComparison(defaultModelIds, defaultMetricIds);
+
+  // 首次加载且 URL 未指定模型时，自动选中默认模型
+  useEffect(() => {
+    if (index && selectedModelIds.length === 0 && defaultModelIds.length > 0) {
+      const params = new URLSearchParams(window.location.search);
+      if (!params.has('models')) {
+        setModelIds(defaultModelIds);
+      }
+    }
+  }, [index, selectedModelIds.length, defaultModelIds, setModelIds]);
 
   const selectedModels = useMemo(
     () =>
@@ -61,58 +71,66 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-6">
-      <header className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">LLM Radar</h1>
-        <p className="text-sm text-gray-500">
-          大模型能力雷达图 · {index.meta.model_count} 个模型 · {index.meta.metric_count} 个
-          benchmark
-        </p>
+    <div className="min-h-screen bg-slate-50 text-slate-800">
+      <header className="border-b border-slate-200 bg-white px-4 py-4 shadow-sm md:px-6">
+        <div className="mx-auto max-w-7xl">
+          <h1 className="text-xl font-bold tracking-tight text-slate-900 md:text-2xl">
+            LLM Radar
+          </h1>
+          <p className="mt-1 text-xs text-slate-500 md:text-sm">
+            大模型能力雷达图 · {index.meta.model_count} 个模型 · {index.meta.metric_count} 个
+            benchmark · 仅采用发布方原始来源
+          </p>
+        </div>
       </header>
 
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
-        <aside className="space-y-4 lg:col-span-1">
-          <ModelSelector
-            models={index.models}
-            selectedIds={selectedModelIds}
-            onToggle={toggleModel}
-            onSelectAll={setModelIds}
-            onClear={() => setModelIds([])}
-          />
-          <MetricSelector
-            metrics={index.metrics}
-            selectedIds={selectedMetricIds}
-            onToggle={toggleMetric}
-          />
-          <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
-            <label className="flex cursor-pointer items-center gap-2 text-sm text-gray-700">
-              <input
-                type="checkbox"
-                checked={averageEnabled}
-                onChange={(e) => setAverageEnabled(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-              />
-              显示平均线
-            </label>
-          </div>
-          <SourceList models={selectedModels} />
-        </aside>
-
-        <main className="lg:col-span-3">
-          {selectedModels.length === 0 ? (
-            <div className="flex h-96 items-center justify-center rounded-lg border border-dashed border-gray-300 bg-gray-50 text-gray-500">
-              请至少选择一个模型
-            </div>
-          ) : (
-            <RadarChart
-              models={selectedModels}
-              metrics={index.metrics}
-              selectedMetricIds={selectedMetricIds}
-              averageEnabled={averageEnabled}
+      <main className="mx-auto max-w-7xl p-3 md:p-5">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
+          <aside className="space-y-4 lg:col-span-3">
+            <ModelSelector
+              models={index.models}
+              selectedIds={selectedModelIds}
+              onToggle={toggleModel}
+              onSelectAll={setModelIds}
+              onClear={() => setModelIds([])}
             />
-          )}
-        </main>
-      </div>
+            <MetricSelector
+              metrics={index.metrics}
+              selectedIds={selectedMetricIds}
+              onToggle={toggleMetric}
+            />
+            <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+              <label className="flex cursor-pointer items-center gap-3 text-sm font-medium text-slate-700">
+                <input
+                  type="checkbox"
+                  checked={averageEnabled}
+                  onChange={(e) => setAverageEnabled(e.target.checked)}
+                  className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+                />
+                显示平均线
+              </label>
+            </div>
+            <SourceList models={selectedModels} />
+          </aside>
+
+          <section className="lg:col-span-9">
+            <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm md:p-5">
+              {selectedModels.length === 0 ? (
+                <div className="flex h-[28rem] items-center justify-center text-slate-400">
+                  请至少选择一个模型
+                </div>
+              ) : (
+                <RadarChart
+                  models={selectedModels}
+                  metrics={index.metrics}
+                  selectedMetricIds={selectedMetricIds}
+                  averageEnabled={averageEnabled}
+                />
+              )}
+            </div>
+          </section>
+        </div>
+      </main>
     </div>
   );
 }

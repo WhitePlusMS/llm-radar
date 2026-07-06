@@ -14,15 +14,32 @@ export function RadarChart({ models, metrics, selectedMetricIds, averageEnabled 
 
   if (selectedMetricIds.length === 0) {
     return (
-      <div className="flex h-96 items-center justify-center rounded-lg border border-dashed border-gray-300 bg-gray-50 text-gray-500">
+      <div className="flex h-[28rem] items-center justify-center text-slate-400">
         请至少选择一个 benchmark
       </div>
     );
   }
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
-      <ReactECharts option={option} style={{ height: '500px', width: '100%' }} />
+    <div>
+      <div className="mb-3 flex flex-wrap items-center gap-3">
+        {models.map((model) => (
+          <div key={model.id} className="flex items-center gap-1.5 text-xs text-slate-600">
+            <span
+              className="inline-block h-2.5 w-2.5 rounded-full"
+              style={{ backgroundColor: model.brand_color }}
+            />
+            <span>{model.name}</span>
+          </div>
+        ))}
+        {averageEnabled && (
+          <div className="flex items-center gap-1.5 text-xs text-slate-600">
+            <span className="inline-block h-2.5 w-2.5 rounded-full bg-slate-400" />
+            <span>平均</span>
+          </div>
+        )}
+      </div>
+      <ReactECharts option={option} style={{ height: '26rem', width: '100%' }} />
     </div>
   );
 }
