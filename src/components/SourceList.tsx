@@ -17,7 +17,7 @@ export function SourceList({ models }: SourceListProps) {
   return (
     <section>
       <div className="section-label">
-        <span><span className="num">03</span>Sources</span>
+        <span><span className="num">04</span>Sources</span>
         <span className="right">100% primary</span>
       </div>
       <div className="src-card">

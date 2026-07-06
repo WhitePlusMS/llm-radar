@@ -194,19 +194,20 @@ export function ModelSelector({
           const allSelected = companyModels.every((m) => selectedIds.includes(m.id));
           const someSelected = companyModels.some((m) => selectedIds.includes(m.id)) && !allSelected;
           const expanded = expandedCompanies.has(companyKey) || hasFilters;
+          const toggleCompanySelection = () => {
+            const ids = companyModels.map((m) => m.id);
+            if (allSelected) {
+              onSelectAll(selectedIds.filter((id) => !ids.includes(id)));
+            } else {
+              onSelectAll(Array.from(new Set([...selectedIds, ...ids])));
+            }
+          };
 
           return (
             <div key={companyKey} className={`company-group${expanded ? ' open' : ''}`}>
               <div
                 className="company-row"
-                onClick={() => {
-                  const ids = companyModels.map((m) => m.id);
-                  if (allSelected) {
-                    onSelectAll(selectedIds.filter((id) => !ids.includes(id)));
-                  } else {
-                    onSelectAll(Array.from(new Set([...selectedIds, ...ids])));
-                  }
-                }}
+                onClick={toggleCompanySelection}
                 role="checkbox"
                 aria-checked={allSelected}
                 tabIndex={0}
@@ -224,7 +225,8 @@ export function ModelSelector({
                   ref={(el) => {
                     if (el) el.indeterminate = someSelected;
                   }}
-                  onChange={() => {}}
+                  onClick={(e) => e.stopPropagation()}
+                  onChange={toggleCompanySelection}
                   tabIndex={-1}
                 />
                 <span className="cname">{companyName}</span>
@@ -266,6 +268,7 @@ export function ModelSelector({
                         type="checkbox"
                         className="cb"
                         checked={isSelected}
+                        onClick={(e) => e.stopPropagation()}
                         onChange={() => onToggle(model.id)}
                         tabIndex={-1}
                       />

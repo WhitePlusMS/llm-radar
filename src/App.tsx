@@ -169,28 +169,9 @@ function App() {
         </div>
       </header>
 
-      {/* 主体 */}
+      {/* 主体：左侧控制区 + 右侧结果区，Model Info 按样式稿放在 DataTable 下方。 */}
       <div className="layout">
-        <main>
-          <RadarChart
-            models={selectedModels}
-            metrics={index.metrics}
-            selectedMetricIds={selectedMetricIds}
-            averageModels={averageModels}
-            featuredCount={featuredCount}
-          />
-
-          <DataTable
-            models={selectedModels}
-            averageModels={averageModels}
-            metrics={index.metrics}
-            selectedMetricIds={selectedMetricIds}
-          />
-
-          <SourceList models={selectedModels} />
-        </main>
-
-        <aside>
+        <aside className="control-sidebar">
           <ModelSelector
             models={index.models}
             companies={index.companies}
@@ -205,13 +186,36 @@ function App() {
             }}
           />
 
-          {/* 模型信息面板：包裹多个 info-card 的 panel shell */}
+          <MetricSelector
+            metrics={index.metrics}
+            selectedIds={selectedMetricIds}
+            onToggle={toggleMetric}
+            onChangeSelected={setMetricIds}
+          />
+        </aside>
+
+        <main>
+          <RadarChart
+            models={selectedModels}
+            metrics={index.metrics}
+            selectedMetricIds={selectedMetricIds}
+            averageModels={averageModels}
+            featuredCount={featuredCount}
+          />
+
+          <DataTable
+            models={selectedModels}
+            metrics={index.metrics}
+            selectedMetricIds={selectedMetricIds}
+          />
+
           {selectedModels.length > 0 && (
-            <div className="panel">
-              <div className="panel-head">
-                <span className="title"><span className="idx">02</span>Model Info</span>
+            <section className="model-info-section">
+              <div className="section-label">
+                <span><span className="num">03</span>Model Info</span>
+                <span className="right">{selectedModels.length} cards</span>
               </div>
-              <div className="panel-body">
+              <div className="model-info-grid">
                 {selectedModels.map((model) => (
                   <ModelInfoPanel
                     key={model.id}
@@ -220,16 +224,11 @@ function App() {
                   />
                 ))}
               </div>
-            </div>
+            </section>
           )}
 
-          <MetricSelector
-            metrics={index.metrics}
-            selectedIds={selectedMetricIds}
-            onToggle={toggleMetric}
-            onChangeSelected={setMetricIds}
-          />
-        </aside>
+          <SourceList models={selectedModels} />
+        </main>
       </div>
 
       <Footer

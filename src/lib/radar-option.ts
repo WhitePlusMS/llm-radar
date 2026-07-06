@@ -273,7 +273,7 @@ export function buildRadarOption(
     },
     radar: {
       indicator,
-      radius: '68%',
+      radius: '76%',
       center: ['50%', '50%'],
       splitNumber: 4,
       scale: false,

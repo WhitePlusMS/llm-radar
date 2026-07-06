@@ -1,17 +1,10 @@
 import { useMemo } from 'react';
 import type { Metric, ModelCard } from '@/types';
 import { ExternalLink } from 'lucide-react';
-import {
-  buildAveragePoints,
-  formatRawValue,
-  projectScore,
-  resolveSource,
-  selectMetrics,
-} from '@/lib/radar-option';
+import { formatRawValue, projectScore, resolveSource, selectMetrics } from '@/lib/radar-option';
 
 interface DataTableProps {
   models: ModelCard[];
-  averageModels?: ModelCard[];
   metrics: Metric[];
   selectedMetricIds: string[];
 }
@@ -24,25 +17,15 @@ interface DataTableProps {
  * 一律走 projectScore → RadarPoint，再由 formatRawValue/resolveSource 投影成展示文本，
  * 与 tooltip 共享同一份实现。
  */
-export function DataTable({ models, averageModels, metrics, selectedMetricIds }: DataTableProps) {
+export function DataTable({ models, metrics, selectedMetricIds }: DataTableProps) {
   const selectedMetrics = useMemo(
     () => selectMetrics(metrics, selectedMetricIds),
     [metrics, selectedMetricIds]
   );
 
-  const avgPoints = useMemo(
-    () =>
-      averageModels && averageModels.length > 0
-        ? buildAveragePoints(averageModels, selectedMetrics)
-        : [],
-    [averageModels, selectedMetrics]
-  );
-
   if (selectedMetrics.length === 0 || models.length === 0) {
     return null;
   }
-
-  const hasAvg = averageModels && averageModels.length > 0;
 
   return (
     <section className="table-block">
@@ -55,35 +38,29 @@ export function DataTable({ models, averageModels, metrics, selectedMetricIds }:
           <table className="data">
             <thead>
               <tr>
-                <th className="bench-h">Benchmark</th>
-                {models.map((model) => (
-                  <th key={model.id}>
-                    <span className="swatch-inline" style={{ background: model.brand_color }} />
-                    {model.name}
+                <th className="model-h">Model</th>
+                {selectedMetrics.map((metric) => (
+                  <th key={metric.id}>
+                    {metric.name}
                   </th>
                 ))}
-                {hasAvg && <th>Avg</th>}
               </tr>
             </thead>
             <tbody>
-              {selectedMetrics.map((metric, metricIdx) => (
-                <tr key={metric.id}>
-                  <td className="bench">
-                    {metric.name}
-                    <span className="scale">
-                      {metric.scale === 'raw' && metric.max_value
-                        ? `raw · max ${metric.max_value}`
-                        : metric.scale}
-                    </span>
+              {models.map((model) => (
+                <tr key={model.id}>
+                  <td className="model">
+                    <span className="swatch-inline" style={{ background: model.brand_color }} />
+                    {model.name}
                   </td>
-                  {models.map((model) => {
+                  {selectedMetrics.map((metric) => {
                     const point = projectScore(model.scores[metric.id], metric);
                     const source = resolveSource(model, point.source);
                     if (point.missing) {
-                      return <td key={model.id} className="na">N/A</td>;
+                      return <td key={metric.id} className="na">N/A</td>;
                     }
                     return (
-                      <td key={model.id} className="val">
+                      <td key={metric.id} className="val">
                         {formatRawValue(point.rawValue!, metric)}
                         <span className="norm">归一 {point.value.toFixed(1)}</span>
                         {source && (
@@ -100,20 +77,6 @@ export function DataTable({ models, averageModels, metrics, selectedMetricIds }:
                       </td>
                     );
                   })}
-                  {hasAvg && (
-                    <td className="avg-cell">
-                      {(() => {
-                        const point = avgPoints[metricIdx];
-                        if (point.missing) return <span>N/A</span>;
-                        return (
-                          <>
-                            {formatRawValue(point.rawValue!, metric)}
-                            <span className="norm">归一 {point.value.toFixed(1)}</span>
-                          </>
-                        );
-                      })()}
-                    </td>
-                  )}
                 </tr>
               ))}
             </tbody>
