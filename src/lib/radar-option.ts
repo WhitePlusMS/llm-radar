@@ -152,6 +152,7 @@ export function buildRadarOption(
   const selectedMetrics = selectMetrics(metrics, selectedMetricIds);
   const indicator = selectedMetrics.map((metric) => ({
     name: metric.name,
+    min: 0,
     max: 100,
   }));
 
@@ -275,6 +276,7 @@ export function buildRadarOption(
       radius: '68%',
       center: ['50%', '50%'],
       splitNumber: 4,
+      scale: false,
       axisName: {
         color: '#1e293b',
         fontSize: 11,
