@@ -39,6 +39,9 @@ coverage/
 *.tmp
 *.temp
 
+# Screenshots generated during local verification
+screenshot*.png
+
 # Downloaded original paper PDFs (large binaries kept locally only)
 docs/papers/
 
