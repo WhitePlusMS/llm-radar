@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Radar, BarChart3 } from 'lucide-react';
 import { loadModelIndex } from '@/data/model-index-loader';
 import { useComparison } from '@/hooks/use-comparison';
@@ -14,7 +14,6 @@ import type { ModelIndex } from '@/types';
 function App() {
   const [index, setIndex] = useState<ModelIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const defaultsAppliedRef = useRef(false);
 
   useEffect(() => {
     loadModelIndex()
@@ -46,24 +45,11 @@ function App() {
     setModelIds,
     setMetricIds,
     setAverageModelIds,
-  } = useComparison(defaultModelIds, defaultMetricIds, defaultAverageModelIds);
-
-  // 首次加载且 URL 未指定选择时，自动应用默认值；仅执行一次，避免清空后自动恢复
-  useEffect(() => {
-    if (!index || defaultsAppliedRef.current) return;
-    defaultsAppliedRef.current = true;
-
-    const params = new URLSearchParams(window.location.search);
-    if (!params.has('models') && defaultModelIds.length > 0) {
-      setModelIds(defaultModelIds);
-    }
-    if (!params.has('metrics') && defaultMetricIds.length > 0) {
-      setMetricIds(defaultMetricIds);
-    }
-    if (!params.has('avg') && defaultAverageModelIds.length > 0) {
-      setAverageModelIds(defaultAverageModelIds);
-    }
-  }, [index, defaultModelIds, defaultMetricIds, defaultAverageModelIds, setModelIds, setMetricIds, setAverageModelIds]);
+  } = useComparison(
+    () => defaultModelIds,
+    () => defaultMetricIds,
+    () => defaultAverageModelIds
+  );
 
   const selectedModels = useMemo(
     () =>
