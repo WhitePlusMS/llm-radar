@@ -30,6 +30,17 @@ jobs:
       - name: Build
         run: GITHUB_PAGES=true npm run build
 
+      - name: Copy README into dist
+        run: cp README.md dist/
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          force_orphan: true
+
       - name: Deploy to master branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -47,16 +58,3 @@ jobs:
           git commit -m "deploy: update GitHub Pages from master"
           git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push -f origin master
-
-      - name: Deploy to gh-pages branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          mkdir -p /tmp/deploy-gh-pages
-          cp -r dist/. /tmp/deploy-gh-pages/
-          cd /tmp/deploy-gh-pages
-          git init
-          git add .
-          git commit -m "deploy: update GitHub Pages from master"
-          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push -f origin gh-pages
