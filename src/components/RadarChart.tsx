@@ -6,11 +6,11 @@ interface RadarChartProps {
   models: ModelCard[];
   metrics: Metric[];
   selectedMetricIds: string[];
-  averageEnabled: boolean;
+  averageModels?: ModelCard[];
 }
 
-export function RadarChart({ models, metrics, selectedMetricIds, averageEnabled }: RadarChartProps) {
-  const option = buildRadarOption(models, metrics, selectedMetricIds, averageEnabled);
+export function RadarChart({ models, metrics, selectedMetricIds, averageModels }: RadarChartProps) {
+  const option = buildRadarOption(models, metrics, selectedMetricIds, averageModels ?? []);
 
   if (selectedMetricIds.length === 0) {
     return (
@@ -32,10 +32,10 @@ export function RadarChart({ models, metrics, selectedMetricIds, averageEnabled 
             <span className="max-w-[10rem] truncate sm:max-w-[12rem]">{model.name}</span>
           </div>
         ))}
-        {averageEnabled && (
+        {averageModels && averageModels.length > 0 && (
           <div className="flex items-center gap-1.5 text-xs font-medium text-slate-700">
             <span className="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-slate-400" />
-            <span>平均</span>
+            <span>平均 ({averageModels.length} 个模型)</span>
           </div>
         )}
       </div>

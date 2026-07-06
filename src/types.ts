@@ -89,6 +89,7 @@ export interface Metric {
   higher_is_better: boolean;
   max_value?: number;
   capability_tags: string[];
+  featured?: boolean;
 }
 
 /** 公司元数据 */

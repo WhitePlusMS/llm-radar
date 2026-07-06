@@ -15,6 +15,10 @@ export interface RadarPoint {
   value: number;
   /** 原始分数缺失（entry 不存在或 value 为 null/undefined） */
   missing: boolean;
+  /** 原始分数值（仅非缺失时有效） */
+  rawValue?: number;
+  /** 原始分数来源 key（仅非缺失时有效） */
+  source?: string;
 }
 
 /**
@@ -26,7 +30,7 @@ export interface RadarPoint {
  * - raw: 按 max_value 线性缩放
  * - 缺失值（null/undefined）返回 0，由调用方通过 RadarPoint.missing 区分
  */
-function normalize(value: number, metric: Metric): number {
+export function normalize(value: number, metric: Metric): number {
   switch (metric.scale) {
     case 'percentage':
       return value;
@@ -50,7 +54,12 @@ export function projectScore(entry: ScoreEntry | undefined, metric: Metric): Rad
   if (entry === undefined || entry.value === null || entry.value === undefined) {
     return { value: 0, missing: true };
   }
-  return { value: normalize(entry.value, metric), missing: false };
+  return {
+    value: normalize(entry.value, metric),
+    missing: false,
+    rawValue: entry.value,
+    source: entry.source,
+  };
 }
 
 /**
@@ -85,8 +94,8 @@ export function buildAveragePoints(
       .map((m) => m.scores[metric.id]?.value)
       .filter((v): v is number => v !== null && v !== undefined);
     if (values.length === 0) return { value: 0, missing: true };
-    const sum = values.reduce((a, b) => a + b, 0);
-    return { value: normalize(sum / values.length, metric), missing: false };
+    const avg = values.reduce((a, b) => a + b, 0) / values.length;
+    return { value: normalize(avg, metric), missing: false, rawValue: avg };
   });
 }
 
@@ -101,7 +110,7 @@ export function buildRadarOption(
   models: ModelCard[],
   metrics: Metric[],
   selectedMetricIds: string[],
-  averageEnabled: boolean
+  average: boolean | ModelCard[]
 ): EChartsOption {
   const selectedMetrics = selectMetrics(models, metrics, selectedMetricIds);
   const indicator = selectedMetrics.map((metric) => ({
@@ -111,15 +120,31 @@ export function buildRadarOption(
 
   // 系列名 → 各 metric 的投影点，供 tooltip 闭包查询缺失标记
   const pointsByName = new Map<string, RadarPoint[]>();
+  // 系列名 → 模型对象，供 tooltip 查询来源标题
+  const modelByName = new Map<string, ModelCard>();
 
   const seriesData: RadarSeriesDataItem[] = models.map((model) => {
     const points = selectedMetrics.map((metric) =>
       projectScore(model.scores[metric.id], metric)
     );
     pointsByName.set(model.name, points);
+    modelByName.set(model.name, model);
 
     return {
-      value: points.map((p) => p.value),
+      value: points.map((p) =>
+        p.missing
+          ? {
+              value: p.value,
+              itemStyle: {
+                color: 'transparent',
+                borderColor: model.brand_color,
+                borderWidth: 2,
+              },
+              symbol: 'circle',
+              symbolSize: 5,
+            }
+          : { value: p.value }
+      ) as unknown as number[],
       name: model.name,
       itemStyle: {
         color: model.brand_color,
@@ -139,8 +164,9 @@ export function buildRadarOption(
     };
   });
 
-  if (averageEnabled && models.length > 0) {
-    const avgPoints = buildAveragePoints(models, selectedMetrics);
+  const averageModels = Array.isArray(average) ? average : average && models.length > 0 ? models : [];
+  if (averageModels.length > 0) {
+    const avgPoints = buildAveragePoints(averageModels, selectedMetrics);
     pointsByName.set('平均', avgPoints);
     seriesData.push({
       value: avgPoints.map((p) => p.value),
@@ -171,18 +197,43 @@ export function buildRadarOption(
         const p = params as { seriesName?: string };
         const seriesName = p.seriesName ?? '';
         const points = pointsByName.get(seriesName) ?? [];
+        const model = modelByName.get(seriesName);
         const lines = [
-          `<div style="font-weight:600;margin-bottom:4px;">${seriesName}</div>`,
+          `<div style="font-weight:600;margin-bottom:6px;">${seriesName}</div>`,
         ];
         selectedMetrics.forEach((metric, idx) => {
           const point = points[idx];
-          // 缺失标记由投影点直接给出，不再用 value===0 反推
-          const display = point && !point.missing ? point.value.toFixed(1) : 'N/A';
+          const metricLine = `<span style="color:#64748b;">${metric.name}</span>`;
+          if (!point || point.missing) {
+            lines.push(
+              `<div style="display:flex;justify-content:space-between;gap:16px;margin:2px 0;">${metricLine}<span style="font-weight:500;color:#94a3b8;">N/A</span></div>`
+            );
+            return;
+          }
+          const rawText =
+            metric.scale === 'raw' && metric.max_value !== undefined
+              ? `${point.rawValue?.toFixed(1) ?? ''} / ${metric.max_value}`
+              : point.rawValue?.toFixed(metric.scale === 'zero_to_one' ? 3 : 1) ?? '';
+          const sourceKey = point.source;
+          const source = sourceKey
+            ? model?.sources.find((s) => s.key === sourceKey)
+            : model?.sources[0];
+          const sourceLink = source
+            ? `<a href="${source.url}" target="_blank" style="color:#4f46e5;text-decoration:none;" title="${source.title}">来源</a>`
+            : '';
           lines.push(
-            `<div style="display:flex;justify-content:space-between;gap:12px;"><span>${metric.name}</span><span style="font-weight:500;">${display}</span></div>`
+            `<div style="display:flex;justify-content:space-between;gap:16px;margin:2px 0;">` +
+              `${metricLine}` +
+              `<span style="font-weight:500;">${point.value.toFixed(1)} <span style="color:#94a3b8;font-size:11px;">(原始 ${rawText})</span></span>` +
+            `</div>`
           );
+          if (sourceLink) {
+            lines.push(
+              `<div style="text-align:right;font-size:11px;margin-bottom:4px;">${sourceLink}</div>`
+            );
+          }
         });
-        return `<div style="font-size:13px;line-height:1.5;">${lines.join('')}</div>`;
+        return `<div style="font-size:13px;line-height:1.4;">${lines.join('')}</div>`;
       },
     },
     radar: {

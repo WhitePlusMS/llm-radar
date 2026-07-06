@@ -149,6 +149,7 @@ function validateMetrics(filePath: string): Metric[] {
     }
     const max_value = typeof obj.max_value === 'number' ? obj.max_value : undefined;
     const capability_tags = reqArr(obj, p, 'capability_tags');
+    const featured = obj.featured === true ? true : undefined;
 
     return {
       id,
@@ -158,6 +159,7 @@ function validateMetrics(filePath: string): Metric[] {
       higher_is_better,
       ...(max_value !== undefined ? { max_value } : {}),
       capability_tags,
+      featured,
     } as Metric;
   });
 }

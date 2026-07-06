@@ -5,6 +5,7 @@ metrics:
     scale: percentage
     higher_is_better: true
     capability_tags: [knowledge]
+    featured: true
 
   - id: mmlu
     name: MMLU
@@ -19,6 +20,7 @@ metrics:
     scale: percentage
     higher_is_better: true
     capability_tags: [reasoning, knowledge]
+    featured: true
 
   - id: humaneval
     name: HumanEval
@@ -26,6 +28,7 @@ metrics:
     scale: percentage
     higher_is_better: true
     capability_tags: [coding]
+    featured: true
 
   - id: swe-bench
     name: SWE-Bench Verified
@@ -40,6 +43,7 @@ metrics:
     scale: percentage
     higher_is_better: true
     capability_tags: [math, reasoning]
+    featured: true
 
   - id: gsm8k
     name: GSM8K
@@ -55,6 +59,7 @@ metrics:
     higher_is_better: true
     max_value: 1400
     capability_tags: [chat, preference]
+    featured: true
 
   - id: ifeval
     name: IFEval
@@ -62,6 +67,7 @@ metrics:
     scale: percentage
     higher_is_better: true
     capability_tags: [instruction-following]
+    featured: true
 
   - id: bbh
     name: BBH

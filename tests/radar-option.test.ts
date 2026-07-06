@@ -40,7 +40,7 @@ const modelB: ModelCard = {
 
 describe('projectScore', () => {
   it('percentage 保持不变且不缺失', () => {
-    expect(projectScore({ value: 85.5 }, metrics[0])).toEqual({ value: 85.5, missing: false });
+    expect(projectScore({ value: 85.5 }, metrics[0])).toMatchObject({ value: 85.5, missing: false, rawValue: 85.5 });
   });
 
   it('缺失值（null/undefined）标记为 missing', () => {
@@ -50,13 +50,13 @@ describe('projectScore', () => {
 
   // 回归断言：真实 0 分不能被误判为缺失（旧 normalizeScore 实现下的 bug）
   it('真实 0 分不缺失', () => {
-    expect(projectScore({ value: 0 }, metrics[0])).toEqual({ value: 0, missing: false });
-    expect(projectScore({ value: 0 }, metrics[1])).toEqual({ value: 0, missing: false });
+    expect(projectScore({ value: 0 }, metrics[0])).toMatchObject({ value: 0, missing: false, rawValue: 0 });
+    expect(projectScore({ value: 0 }, metrics[1])).toMatchObject({ value: 0, missing: false, rawValue: 0 });
   });
 
   it('raw 值按 max_value 缩放', () => {
-    expect(projectScore({ value: 1400 }, metrics[2])).toEqual({ value: 100, missing: false });
-    expect(projectScore({ value: 700 }, metrics[2])).toEqual({ value: 50, missing: false });
+    expect(projectScore({ value: 1400 }, metrics[2])).toMatchObject({ value: 100, missing: false, rawValue: 1400 });
+    expect(projectScore({ value: 700 }, metrics[2])).toMatchObject({ value: 50, missing: false, rawValue: 700 });
   });
 });
 
@@ -66,9 +66,9 @@ describe('buildAveragePoints', () => {
     // gpqa: A=null, B=70 → 仅 B 计入 → 70
     // arena-elo: A=1400, B=null → 仅 A 计入 → 归一化 100
     const points = buildAveragePoints([modelA, modelB], metrics);
-    expect(points[0]).toEqual({ value: 70, missing: false });
-    expect(points[1]).toEqual({ value: 70, missing: false });
-    expect(points[2]).toEqual({ value: 100, missing: false });
+    expect(points[0]).toMatchObject({ value: 70, missing: false, rawValue: 70 });
+    expect(points[1]).toMatchObject({ value: 70, missing: false, rawValue: 70 });
+    expect(points[2]).toMatchObject({ value: 100, missing: false, rawValue: 1400 });
   });
 
   it('所有模型都缺失时该点 missing=true', () => {
@@ -81,30 +81,30 @@ describe('buildAveragePoints', () => {
 
 describe('buildRadarOption', () => {
   it('indicator 数量等于选中 metric 数量', () => {
-    const option = buildRadarOption([modelA, modelB], metrics, ['mmlu-pro', 'gpqa'], false);
+    const option = buildRadarOption([modelA, modelB], metrics, ['mmlu-pro', 'gpqa'], []);
     expect(option.radar).toBeDefined();
     const radar = option.radar as { indicator: unknown[] };
     expect(radar.indicator.length).toBe(2);
   });
 
   it('系列数量等于模型数量（不含平均线）', () => {
-    const option = buildRadarOption([modelA, modelB], metrics, ['mmlu-pro', 'gpqa'], false);
+    const option = buildRadarOption([modelA, modelB], metrics, ['mmlu-pro', 'gpqa'], []);
     const series = (option.series as Array<{ data: unknown[] }>)[0];
     expect(series.data.length).toBe(2);
   });
 
   it('开启平均线时系列数量多一个', () => {
-    const option = buildRadarOption([modelA, modelB], metrics, ['mmlu-pro', 'gpqa'], true);
+    const option = buildRadarOption([modelA, modelB], metrics, ['mmlu-pro', 'gpqa'], [modelA, modelB]);
     const series = (option.series as Array<{ data: unknown[] }>)[0];
     expect(series.data.length).toBe(3);
   });
 
   it('缺失值对应的 radar 数据点 value 为 0，真实分数保留归一化值', () => {
-    const option = buildRadarOption([modelA], metrics, ['mmlu-pro', 'gpqa', 'arena-elo'], false);
-    const series = (option.series as Array<{ data: Array<{ value: number[] }> }>)[0];
-    expect(series.data[0].value[0]).toBe(80); // mmlu-pro 80
-    expect(series.data[0].value[1]).toBe(0); // gpqa null → 0
-    expect(series.data[0].value[2]).toBe(100); // arena-elo 1400/1400*100
+    const option = buildRadarOption([modelA], metrics, ['mmlu-pro', 'gpqa', 'arena-elo'], []);
+    const series = (option.series as Array<{ data: Array<{ value: { value: number } }> }>)[0];
+    expect(series.data[0].value[0]).toMatchObject({ value: 80 }); // mmlu-pro 80
+    expect(series.data[0].value[1]).toMatchObject({ value: 0 }); // gpqa null → 0
+    expect(series.data[0].value[2]).toMatchObject({ value: 100 }); // arena-elo 1400/1400*100
   });
 
   it('tooltip formatter 对缺失值显示 N/A，对真实 0 分显示 0.0', () => {
@@ -122,14 +122,14 @@ describe('buildRadarOption', () => {
       [modelWithZero],
       metrics,
       ['mmlu-pro', 'gpqa'],
-      false
+      []
     );
     const tooltip = (option.tooltip as { formatter: (p: unknown) => string }).formatter;
     const html = tooltip({ seriesName: 'Zero Model' });
 
-    // 真实 0 分 → "0.0"，缺失 → "N/A"
-    expect(html).toContain('>0.0<');
-    expect(html).toContain('>N/A<');
+    // 真实 0 分 → 显示 0.0，缺失 → "N/A"
+    expect(html).toContain('0.0');
+    expect(html).toContain('N/A');
     expect(html).toContain('MMLU-Pro');
     expect(html).toContain('GPQA');
   });

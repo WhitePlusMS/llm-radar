@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-06T02:59:32.112Z",
+    "generated_at": "2026-07-06T03:20:36.001Z",
     "version": "0.1.0",
     "model_count": 45,
     "metric_count": 14,
@@ -15,7 +15,8 @@
       "higher_is_better": true,
       "capability_tags": [
         "knowledge"
-      ]
+      ],
+      "featured": true
     },
     {
       "id": "mmlu",
@@ -36,7 +37,8 @@
       "capability_tags": [
         "reasoning",
         "knowledge"
-      ]
+      ],
+      "featured": true
     },
     {
       "id": "humaneval",
@@ -46,7 +48,8 @@
       "higher_is_better": true,
       "capability_tags": [
         "coding"
-      ]
+      ],
+      "featured": true
     },
     {
       "id": "swe-bench",
@@ -68,7 +71,8 @@
       "capability_tags": [
         "math",
         "reasoning"
-      ]
+      ],
+      "featured": true
     },
     {
       "id": "gsm8k",
@@ -90,7 +94,8 @@
       "capability_tags": [
         "chat",
         "preference"
-      ]
+      ],
+      "featured": true
     },
     {
       "id": "ifeval",
@@ -100,7 +105,8 @@
       "higher_is_better": true,
       "capability_tags": [
         "instruction-following"
-      ]
+      ],
+      "featured": true
     },
     {
       "id": "bbh",

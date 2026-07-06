@@ -1,12 +1,14 @@
-import { useMemo, useState } from 'react';
-import { Search, X, ChevronDown, ChevronUp, Tag } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
+import { Search, X, ChevronDown, ChevronUp, Tag, BarChart3 } from 'lucide-react';
 import type { Company, ModelCard } from '@/types';
 
 interface ModelSelectorProps {
   models: ModelCard[];
   companies: Company[];
   selectedIds: string[];
+  averageIds: string[];
   onToggle: (id: string) => void;
+  onToggleAverage: (id: string) => void;
   onSelectAll: (ids: string[]) => void;
   onClear: () => void;
 }
@@ -15,14 +17,29 @@ export function ModelSelector({
   models,
   companies,
   selectedIds,
+  averageIds,
   onToggle,
+  onToggleAverage,
   onSelectAll,
   onClear,
 }: ModelSelectorProps) {
   const [search, setSearch] = useState('');
   const [companyFilter, setCompanyFilter] = useState<string | null>(null);
   const [tagFilter, setTagFilter] = useState<string | null>(null);
-  const [expandedCompanies, setExpandedCompanies] = useState<Set<string>>(() => new Set());
+  const [expandedCompanies, setExpandedCompanies] = useState<Set<string>>(new Set());
+
+  // 当选择或平均集合变化时，自动展开包含选中/平均模型的公司
+  useEffect(() => {
+    setExpandedCompanies((prev) => {
+      const next = new Set(prev);
+      models.forEach((m) => {
+        if (selectedIds.includes(m.id) || averageIds.includes(m.id)) {
+          next.add(m.company);
+        }
+      });
+      return next;
+    });
+  }, [models, selectedIds, averageIds]);
 
   const companyMap = useMemo(() => {
     const map = new Map<string, Company>();
@@ -226,11 +243,12 @@ export function ModelSelector({
                 <div className="space-y-0.5 px-1 pb-1">
                   {companyModels.map((model) => {
                     const isSelected = selectedIds.includes(model.id);
+                    const isAverage = averageIds.includes(model.id);
                     const logoPath = model.logo ?? `assets/logos/${model.company.toLowerCase()}.svg`;
                     return (
-                      <label
+                      <div
                         key={model.id}
-                        className={`flex cursor-pointer items-start gap-2 rounded-lg px-2 py-2 transition-colors ${
+                        className={`flex items-start gap-2 rounded-lg px-2 py-2 transition-colors ${
                           isSelected ? 'bg-indigo-50' : 'hover:bg-white'
                         }`}
                       >
@@ -248,7 +266,7 @@ export function ModelSelector({
                             e.currentTarget.style.visibility = 'hidden';
                           }}
                         />
-                        <span className="min-w-0 flex-1">
+                        <label className="min-w-0 flex-1 cursor-pointer" onClick={() => onToggle(model.id)}>
                           <span className="block text-sm font-medium leading-tight text-slate-700">
                             {model.name}
                           </span>
@@ -266,12 +284,21 @@ export function ModelSelector({
                               ))}
                             </span>
                           )}
-                        </span>
-                        <span
-                          className="mt-1.5 inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full"
-                          style={{ backgroundColor: model.brand_color }}
-                        />
-                      </label>
+                        </label>
+                        <button
+                          type="button"
+                          onClick={() => onToggleAverage(model.id)}
+                          title={isAverage ? '不计入平均线' : '计入平均线'}
+                          className={`mt-1 flex flex-shrink-0 items-center gap-0.5 rounded px-1.5 py-0.5 text-[10px] font-medium transition-colors ${
+                            isAverage
+                              ? 'bg-slate-500 text-white'
+                              : 'bg-slate-100 text-slate-400 hover:bg-slate-200 hover:text-slate-600'
+                          }`}
+                        >
+                          <BarChart3 className="h-3 w-3" />
+                          均
+                        </button>
+                      </div>
                     );
                   })}
                 </div>
@@ -284,6 +311,7 @@ export function ModelSelector({
       <div className="mt-2 text-xs text-slate-400">
         已选 {selectedIds.length} / {models.length}
         {filteredModels.length !== models.length && ` · 当前筛选 ${filteredModels.length} 个`}
+        {averageIds.length > 0 && ` · ${averageIds.length} 个计入平均`}
       </div>
     </div>
   );

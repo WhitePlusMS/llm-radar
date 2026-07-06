@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Radar, BarChart3 } from 'lucide-react';
 import { loadModelIndex } from '@/data/model-index-loader';
 import { useComparison } from '@/hooks/use-comparison';
@@ -7,12 +7,14 @@ import { MetricSelector } from '@/components/MetricSelector';
 import { RadarChart } from '@/components/RadarChart';
 import { SourceList } from '@/components/SourceList';
 import { ModelInfoPanel } from '@/components/ModelInfoPanel';
+import { DataTable } from '@/components/DataTable';
+import { Footer } from '@/components/Footer';
 import type { ModelIndex } from '@/types';
 
 function App() {
   const [index, setIndex] = useState<ModelIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [averageEnabled, setAverageEnabled] = useState(true);
+  const defaultsAppliedRef = useRef(false);
 
   useEffect(() => {
     loadModelIndex()
@@ -20,24 +22,48 @@ function App() {
       .catch((err) => setError(err instanceof Error ? err.message : String(err)));
   }, []);
 
-  // 默认选中最新 4 个模型，默认选中所有 metric。
-  // "URL 优先否则默认"的决策由 useComparison→useSelectableSet 内部完成，App 无需补打。
+  // 默认选中最新 4 个模型；默认所有模型都计入平均；默认 metrics 为 featured 精选集。
   const defaultModelIds = useMemo(
     () => (index ? index.models.slice(0, 4).map((m) => m.id) : []),
     [index]
   );
   const defaultMetricIds = useMemo(
-    () => (index ? index.metrics.map((m) => m.id) : []),
+    () => (index ? index.metrics.filter((m) => m.featured).map((m) => m.id) : []),
+    [index]
+  );
+  const defaultAverageModelIds = useMemo(
+    () => (index ? index.models.map((m) => m.id) : []),
     [index]
   );
 
   const {
     selectedModelIds,
     selectedMetricIds,
+    averageModelIds,
     toggleModel,
     toggleMetric,
+    toggleAverage,
     setModelIds,
-  } = useComparison(defaultModelIds, defaultMetricIds);
+    setMetricIds,
+    setAverageModelIds,
+  } = useComparison(defaultModelIds, defaultMetricIds, defaultAverageModelIds);
+
+  // 首次加载且 URL 未指定选择时，自动应用默认值；仅执行一次，避免清空后自动恢复
+  useEffect(() => {
+    if (!index || defaultsAppliedRef.current) return;
+    defaultsAppliedRef.current = true;
+
+    const params = new URLSearchParams(window.location.search);
+    if (!params.has('models') && defaultModelIds.length > 0) {
+      setModelIds(defaultModelIds);
+    }
+    if (!params.has('metrics') && defaultMetricIds.length > 0) {
+      setMetricIds(defaultMetricIds);
+    }
+    if (!params.has('avg') && defaultAverageModelIds.length > 0) {
+      setAverageModelIds(defaultAverageModelIds);
+    }
+  }, [index, defaultModelIds, defaultMetricIds, defaultAverageModelIds, setModelIds, setMetricIds, setAverageModelIds]);
 
   const selectedModels = useMemo(
     () =>
@@ -45,6 +71,14 @@ function App() {
         .map((id) => index?.models.find((m) => m.id === id))
         .filter((m): m is NonNullable<typeof m> => m !== undefined),
     [selectedModelIds, index]
+  );
+
+  const averageModels = useMemo(
+    () =>
+      averageModelIds
+        .map((id) => index?.models.find((m) => m.id === id))
+        .filter((m): m is NonNullable<typeof m> => m !== undefined),
+    [averageModelIds, index]
   );
 
   if (error) {
@@ -99,26 +133,39 @@ function App() {
                   models={selectedModels}
                   metrics={index.metrics}
                   selectedMetricIds={selectedMetricIds}
-                  averageEnabled={averageEnabled}
+                  averageModels={averageModels}
                 />
               )}
             </div>
 
-            {/* 数据来源放在图表下方，桌面端全宽展示 */}
+            {/* 数据表格与来源放在图表下方，桌面端全宽展示 */}
+            <div className="mt-4">
+              <DataTable
+                models={selectedModels}
+                averageModels={averageModels}
+                metrics={index.metrics}
+                selectedMetricIds={selectedMetricIds}
+              />
+            </div>
             <div className="mt-4">
               <SourceList models={selectedModels} />
             </div>
           </section>
 
           {/* 移动端：控制面板在图表下方；桌面端：左侧边栏 */}
-          <aside className="order-2 space-y-4 lg:order-1 lg:col-span-3">
+          <aside className="order-2 space-y-4 lg:order-1 lg:col-span-3 lg:self-start">
             <ModelSelector
               models={index.models}
               companies={index.companies}
               selectedIds={selectedModelIds}
+              averageIds={averageModelIds}
               onToggle={toggleModel}
+              onToggleAverage={toggleAverage}
               onSelectAll={setModelIds}
-              onClear={() => setModelIds([])}
+              onClear={() => {
+                setModelIds([]);
+                setAverageModelIds([]);
+              }}
             />
 
             {/* 选中模型信息卡片 */}
@@ -139,21 +186,18 @@ function App() {
               metrics={index.metrics}
               selectedIds={selectedMetricIds}
               onToggle={toggleMetric}
+              onChangeSelected={setMetricIds}
             />
-            <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-              <label className="flex cursor-pointer items-center gap-3 text-sm font-medium text-slate-700">
-                <input
-                  type="checkbox"
-                  checked={averageEnabled}
-                  onChange={(e) => setAverageEnabled(e.target.checked)}
-                  className="h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
-                />
-                显示平均线
-              </label>
-            </div>
           </aside>
         </div>
       </main>
+
+      <Footer
+        generatedAt={index.meta.generated_at}
+        modelCount={index.meta.model_count}
+        metricCount={index.meta.metric_count}
+        companyCount={index.meta.company_count}
+      />
     </div>
   );
 }
