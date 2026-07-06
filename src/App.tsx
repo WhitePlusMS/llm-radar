@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { Radar, BarChart3 } from 'lucide-react';
 import { loadModelIndex } from '@/data/model-index-loader';
 import { useComparison } from '@/hooks/use-comparison';
 import { ModelSelector } from '@/components/ModelSelector';
@@ -80,19 +81,51 @@ function App() {
     <div className="min-h-screen bg-slate-50 text-slate-800">
       <header className="border-b border-slate-200 bg-white px-4 py-4 shadow-sm md:px-6">
         <div className="mx-auto max-w-7xl">
-          <h1 className="text-xl font-bold tracking-tight text-slate-900 md:text-2xl">
-            LLM Radar
-          </h1>
-          <p className="mt-1 text-xs text-slate-500 md:text-sm">
-            大模型能力雷达图 · {index.meta.model_count} 个模型 · {index.meta.metric_count} 个
-            benchmark · 仅采用发布方原始来源
-          </p>
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-md">
+              <Radar className="h-5 w-5" />
+            </div>
+            <div>
+              <h1 className="text-xl font-bold tracking-tight text-slate-900 md:text-2xl">
+                LLM Radar
+              </h1>
+              <p className="text-xs text-slate-500 md:text-sm">
+                大模型能力雷达图 · {index.meta.model_count} 个模型 · {index.meta.metric_count} 个
+                benchmark · 仅采用发布方原始来源
+              </p>
+            </div>
+          </div>
         </div>
       </header>
 
       <main className="mx-auto max-w-7xl p-3 md:p-5">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
-          <aside className="space-y-4 lg:col-span-3">
+          {/* 移动端：图表优先展示；桌面端：右侧主内容 */}
+          <section className="order-1 lg:order-2 lg:col-span-9">
+            <div className="flex h-[28rem] flex-col rounded-xl border border-slate-200 bg-white p-4 shadow-sm md:h-[36rem] md:p-5 lg:h-[42rem]">
+              {selectedModels.length === 0 ? (
+                <div className="flex flex-1 flex-col items-center justify-center gap-3 text-slate-400">
+                  <BarChart3 className="h-12 w-12 text-slate-300" />
+                  <p className="text-sm md:text-base">请至少选择一个模型以查看雷达图</p>
+                </div>
+              ) : (
+                <RadarChart
+                  models={selectedModels}
+                  metrics={index.metrics}
+                  selectedMetricIds={selectedMetricIds}
+                  averageEnabled={averageEnabled}
+                />
+              )}
+            </div>
+
+            {/* 数据来源放在图表下方，桌面端全宽展示 */}
+            <div className="mt-4">
+              <SourceList models={selectedModels} />
+            </div>
+          </section>
+
+          {/* 移动端：控制面板在图表下方；桌面端：左侧边栏 */}
+          <aside className="order-2 space-y-4 lg:order-1 lg:col-span-3">
             <ModelSelector
               models={index.models}
               selectedIds={selectedModelIds}
@@ -116,25 +149,7 @@ function App() {
                 显示平均线
               </label>
             </div>
-            <SourceList models={selectedModels} />
           </aside>
-
-          <section className="lg:col-span-9">
-            <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm md:p-5">
-              {selectedModels.length === 0 ? (
-                <div className="flex h-[28rem] items-center justify-center text-slate-400">
-                  请至少选择一个模型
-                </div>
-              ) : (
-                <RadarChart
-                  models={selectedModels}
-                  metrics={index.metrics}
-                  selectedMetricIds={selectedMetricIds}
-                  averageEnabled={averageEnabled}
-                />
-              )}
-            </div>
-          </section>
         </div>
       </main>
     </div>

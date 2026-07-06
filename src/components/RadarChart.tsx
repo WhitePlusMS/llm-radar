@@ -21,25 +21,27 @@ export function RadarChart({ models, metrics, selectedMetricIds, averageEnabled 
   }
 
   return (
-    <div>
-      <div className="mb-3 flex flex-wrap items-center gap-3">
+    <div className="flex h-full flex-col">
+      <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-lg bg-slate-50 px-3 py-2">
         {models.map((model) => (
-          <div key={model.id} className="flex items-center gap-1.5 text-xs text-slate-600">
+          <div key={model.id} className="flex items-center gap-1.5 text-xs font-medium text-slate-700">
             <span
-              className="inline-block h-2.5 w-2.5 rounded-full"
+              className="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full"
               style={{ backgroundColor: model.brand_color }}
             />
-            <span>{model.name}</span>
+            <span className="max-w-[10rem] truncate sm:max-w-[12rem]">{model.name}</span>
           </div>
         ))}
         {averageEnabled && (
-          <div className="flex items-center gap-1.5 text-xs text-slate-600">
-            <span className="inline-block h-2.5 w-2.5 rounded-full bg-slate-400" />
+          <div className="flex items-center gap-1.5 text-xs font-medium text-slate-700">
+            <span className="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full border border-slate-400 bg-transparent" />
             <span>平均</span>
           </div>
         )}
       </div>
-      <ReactECharts option={option} style={{ height: '26rem', width: '100%' }} />
+      <div className="min-h-0 flex-1">
+        <ReactECharts option={option} style={{ height: '100%', minHeight: '26rem', width: '100%' }} />
+      </div>
     </div>
   );
 }

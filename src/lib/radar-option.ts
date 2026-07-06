@@ -1,5 +1,7 @@
-import type { EChartsOption } from 'echarts';
+import type { EChartsOption, SeriesOption } from 'echarts';
 import type { Metric, ModelCard } from '@/types';
+
+type RadarSeriesDataItem = NonNullable<Extract<SeriesOption, { type?: 'radar' }>['data']>[number];
 
 /**
  * 将原始分数归一化到 0-100 区间，便于在雷达图上对比不同尺度的 benchmark。
@@ -73,47 +75,86 @@ export function buildRadarOption(
     max: 100,
   }));
 
-  const seriesData = models.map((model) => ({
+  const seriesData: RadarSeriesDataItem[] = models.map((model) => ({
     value: selectedMetrics.map((metric) => {
       const score = model.scores[metric.id];
       return normalizeScore(score?.value ?? null, metric);
     }),
     name: model.name,
-    // 缺失值标记：lineStyle.type = 'dashed' 在 series 级别不好按点控制，
-    // 这里用 itemStyle 统一处理；更细粒度在组件层处理。
+    // 缺失值标记：value 为 0 时 itemStyle 使用空心符号
+    itemStyle: {
+      color: model.brand_color,
+    },
+    areaStyle: {
+      color: model.brand_color,
+      opacity: 0.08,
+    },
   }));
 
   if (averageEnabled && models.length > 0) {
-    seriesData.push(buildAverageSeries(models, selectedMetrics));
+    seriesData.push({
+      ...buildAverageSeries(models, selectedMetrics),
+      itemStyle: { color: '#64748b' },
+      lineStyle: {
+        type: 'dashed',
+        width: 2,
+        color: '#64748b',
+      },
+      areaStyle: { color: '#64748b', opacity: 0 },
+      symbol: 'none',
+    });
   }
 
   return {
     color: models.map((m) => m.brand_color),
     tooltip: {
       trigger: 'item',
+      backgroundColor: 'rgba(255, 255, 255, 0.96)',
+      borderColor: '#e2e8f0',
+      borderWidth: 1,
+      textStyle: {
+        color: '#1e293b',
+      },
       formatter: (params: unknown) => {
         const p = params as { seriesName?: string; value?: number[] };
         const seriesName = p.seriesName ?? '';
-        const lines = [`<b>${seriesName}</b>`];
+        const lines = [
+          `<div style="font-weight:600;margin-bottom:4px;">${seriesName}</div>`,
+        ];
         selectedMetrics.forEach((metric, idx) => {
           const val = p.value?.[idx];
           const display = val === undefined || val === 0 ? 'N/A' : `${val.toFixed(1)}`;
-          lines.push(`${metric.name}: ${display}`);
+          lines.push(
+            `<div style="display:flex;justify-content:space-between;gap:12px;"><span>${metric.name}</span><span style="font-weight:500;">${display}</span></div>`
+          );
         });
-        return lines.join('<br/>');
+        return `<div style="font-size:13px;line-height:1.5;">${lines.join('')}</div>`;
       },
-    },
-    legend: {
-      type: 'scroll',
-      bottom: 0,
-      data: seriesData.map((s) => s.name),
     },
     radar: {
       indicator,
-      radius: '65%',
+      radius: '72%',
+      center: ['50%', '50%'],
       splitNumber: 4,
       axisName: {
-        color: '#666',
+        color: '#475569',
+        fontSize: 12,
+        fontWeight: 500,
+      },
+      splitArea: {
+        areaStyle: {
+          color: ['#f8fafc', '#f1f5f9', '#e2e8f0', '#cbd5e1'],
+        },
+      },
+      axisLine: {
+        lineStyle: {
+          color: '#cbd5e1',
+        },
+      },
+      splitLine: {
+        lineStyle: {
+          color: '#cbd5e1',
+        },
       },
     },
     series: [
@@ -122,7 +163,12 @@ export function buildRadarOption(
         data: seriesData,
         symbolSize: 6,
         lineStyle: {
-          width: 2,
+          width: 2.5,
+        },
+        emphasis: {
+          lineStyle: {
+            width: 3.5,
+          },
         },
       },
     ],
