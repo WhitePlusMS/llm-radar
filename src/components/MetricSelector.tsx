@@ -1,4 +1,5 @@
 import type { Metric } from '@/types';
+import { Star } from 'lucide-react';
 
 interface MetricSelectorProps {
   metrics: Metric[];
@@ -69,7 +70,7 @@ export function MetricSelector({ metrics, selectedIds, onToggle, onChangeSelecte
                     onChange={() => onToggle(metric.id)}
                   />
                   <span className="mname">{metric.name}</span>
-                  {metric.featured && <span className="star" title="精选 benchmark">★</span>}
+                  {metric.featured && <Star className="star" />}
                 </label>
               );
             })}

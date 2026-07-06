@@ -1,4 +1,5 @@
 import type { ModelCard } from '@/types';
+import { ExternalLink } from 'lucide-react';
 
 interface SourceListProps {
   models: ModelCard[];
@@ -39,7 +40,7 @@ export function SourceList({ models }: SourceListProps) {
                   title={source.title}
                 >
                   <span className="sname">{model.name}</span>
-                  {source.title} ↗
+                  {source.title} <ExternalLink size={10} />
                 </a>
                 <span className="stype">{source.type}</span>
               </li>

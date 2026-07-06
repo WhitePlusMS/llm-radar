@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { Company, ModelCard } from '@/types';
+import { ChevronRight, Search, X } from 'lucide-react';
 
 interface ModelSelectorProps {
   models: ModelCard[];
@@ -120,7 +121,7 @@ export function ModelSelector({
       <div className="panel-body">
         {/* 搜索框 */}
         <div className="search">
-          <span className="ico">⌕</span>
+          <Search className="ico" />
           <input
             type="text"
             value={search}
@@ -135,7 +136,7 @@ export function ModelSelector({
               onClick={() => setSearch('')}
               aria-label="清除搜索"
             >
-              ×
+              <X size={14} />
             </button>
           )}
         </div>
@@ -238,7 +239,7 @@ export function ModelSelector({
                       toggleCompanyExpanded(companyKey);
                     }}
                   >
-                    ▸
+                    <ChevronRight size={12} />
                   </button>
                 )}
               </div>
