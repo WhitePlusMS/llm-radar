@@ -85,9 +85,17 @@ export function buildRadarOption(
     itemStyle: {
       color: model.brand_color,
     },
-    areaStyle: {
-      color: model.brand_color,
-      opacity: 0.08,
+    lineStyle: {
+      width: 2.5,
+    },
+    emphasis: {
+      lineStyle: {
+        width: 3.5,
+      },
+      areaStyle: {
+        color: model.brand_color,
+        opacity: 0.12,
+      },
     },
   }));
 
