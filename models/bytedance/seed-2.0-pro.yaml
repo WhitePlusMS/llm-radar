@@ -11,8 +11,7 @@ context_window: "256k"
 modalities:
   # 官方强调 visual + video 能力，audio input/output 缺乏直接依据。
   input: [text, image, video]
-  # image/video output 为推测，audio 输出缺乏依据。
-  output: [text, image, video]
+  output: [text]
 weight_availability_tags: [closed-weights, multimodal]
 logo: assets/logos/bytedance.svg
 sources:
@@ -48,11 +47,9 @@ scores:
     value: null
   arena-elo:
     value: null
-  # 官方报告为 Inverse IFEval，非标准 IFEval，避免跨模型直接比较。
+  # 官方报告的是 Inverse IFEval，不是标准 IFEval；当前 metrics.yaml 没有该指标。
   ifeval:
-    value: 78.9
-    source: seed2.0-model-card
-    note: Inverse IFEval
+    value: null
   bbh:
     value: null
   drop:

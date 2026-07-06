@@ -1,0 +1,21 @@
+id: alibaba/qwen2.5-omni-7b
+name: Qwen2.5-Omni-7B
+company: alibaba
+brand_color: "#615CED"
+release_date: "2025-03-26"
+parameters:
+  total: "7B"
+  active: "7B"
+architecture: Dense
+context_window: "32k"
+modalities:
+  input: [text, image, audio, video]
+  output: [text, audio]
+weight_availability_tags: [open-weights, multimodal]
+logo: assets/logos/alibaba.svg
+sources:
+  - key: qwen2.5-omni-blog
+    title: Qwen2.5-Omni
+    url: https://qwenlm.github.io/blog/qwen2.5-omni/
+    type: blog
+scores: {}

@@ -1,0 +1,21 @@
+id: mistral/ministral-8b
+name: Ministral 8B
+company: mistral
+brand_color: "#FA520F"
+release_date: "2024-10-16"
+parameters:
+  total: "8B"
+  active: "8B"
+architecture: Dense
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [closed-weights]
+logo: assets/logos/mistral.svg
+sources:
+  - key: mistral-models-overview
+    title: Mistral models overview
+    url: https://docs.mistral.ai/getting-started/models/models_overview/
+    type: website
+scores: {}

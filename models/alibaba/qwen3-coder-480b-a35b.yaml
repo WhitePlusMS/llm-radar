@@ -1,0 +1,25 @@
+id: alibaba/qwen3-coder-480b-a35b
+name: Qwen3-Coder-480B-A35B
+company: alibaba
+brand_color: "#615CED"
+release_date: "2025-07-22"
+parameters:
+  total: "480B"
+  active: "35B"
+architecture: MoE
+context_window: "256k native / 1M with extrapolation"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights, agentic]
+logo: assets/logos/alibaba.svg
+sources:
+  - key: qwen3-coder-hf
+    title: Qwen3-Coder-480B-A35B-Instruct
+    url: https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct
+    type: model-card
+  - key: qwen3-coder-blog
+    title: "Qwen3-Coder: Agentic Coding in the World"
+    url: https://qwenlm.github.io/blog/qwen3-coder/
+    type: blog
+scores: {}

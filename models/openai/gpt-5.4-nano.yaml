@@ -1,0 +1,18 @@
+id: openai/gpt-5.4-nano
+name: GPT-5.4 nano
+company: openai
+brand_color: "#10A37F"
+release_date: "2026-03-17"
+# OpenAI 未公开 GPT-5.4 nano 的参数规模与架构细节。
+context_window: "400k"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/openai.svg
+sources:
+  - key: gpt-5.4-nano-model-doc
+    title: GPT-5.4 nano Model
+    url: https://developers.openai.com/api/docs/models/gpt-5.4-nano
+    type: website
+scores: {}

@@ -26,9 +26,7 @@ scores:
   swe-bench:
     value: 73.5
     source: seed2.0-model-card
-  # 官方报告为 Inverse IFEval，非标准 IFEval。
+  # 官方报告的是 Inverse IFEval，不是标准 IFEval；当前 metrics.yaml 没有该指标。
   ifeval:
-    value: 77.1
-    source: seed2.0-model-card
-    note: Inverse IFEval
+    value: null
   # 原始来源未报告：mmlu, humaneval, math-level-5, gsm8k, arena-elo, bbh, drop, hellaswag, arc-c, winogrande

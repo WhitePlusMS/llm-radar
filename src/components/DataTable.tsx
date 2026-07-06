@@ -2,6 +2,8 @@ import { useMemo } from 'react';
 import type { Metric, ModelCard } from '@/types';
 import { ExternalLink } from 'lucide-react';
 import { formatRawValue, projectScore, resolveSource, selectMetrics } from '@/lib/radar-option';
+import { Badge } from '@/components/ui/Badge';
+import { Tooltip } from '@/components/ui/Tooltip';
 
 interface DataTableProps {
   models: ModelCard[];
@@ -41,7 +43,12 @@ export function DataTable({ models, metrics, selectedMetricIds }: DataTableProps
                 <th className="model-h">Model</th>
                 {selectedMetrics.map((metric) => (
                   <th key={metric.id}>
-                    {metric.name}
+                    <Tooltip content={metric.description}>
+                      <span className="metric-head">
+                        <span>{metric.name}</span>
+                        {metric.featured && <Badge tone="warning">精选</Badge>}
+                      </span>
+                    </Tooltip>
                   </th>
                 ))}
               </tr>
@@ -57,11 +64,16 @@ export function DataTable({ models, metrics, selectedMetricIds }: DataTableProps
                     const point = projectScore(model.scores[metric.id], metric);
                     const source = resolveSource(model, point.source);
                     if (point.missing) {
-                      return <td key={metric.id} className="na">N/A</td>;
+                      return (
+                        <td key={metric.id} className="na">
+                          <span>N/A</span>
+                          <small>未报告</small>
+                        </td>
+                      );
                     }
                     return (
                       <td key={metric.id} className="val">
-                        {formatRawValue(point.rawValue!, metric)}
+                        <span className="raw">{formatRawValue(point.rawValue!, metric)}</span>
                         <span className="norm">归一 {point.value.toFixed(1)}</span>
                         {source && (
                           <a
@@ -71,7 +83,8 @@ export function DataTable({ models, metrics, selectedMetricIds }: DataTableProps
                             rel="noreferrer"
                             title={source.title}
                           >
-                            来源 <ExternalLink size={10} />
+                            来源
+                            <ExternalLink size={10} />
                           </a>
                         )}
                       </td>

@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated_at": "2026-07-06T15:44:42.065Z",
+    "generated_at": "2026-07-06T16:14:58.257Z",
     "version": "0.1.0",
-    "model_count": 70,
+    "model_count": 103,
     "metric_count": 14,
     "company_count": 15
   },
@@ -240,6 +240,175 @@
   ],
   "models": [
     {
+      "id": "anthropic/claude-sonnet-5",
+      "name": "Claude Sonnet 5",
+      "company": "anthropic",
+      "brand_color": "#D97757",
+      "release_date": "2026-06-30",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "claude-models-overview",
+          "title": "Models overview",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+          "type": "website"
+        },
+        {
+          "key": "claude-sonnet-5-doc",
+          "title": "What's new in Claude Sonnet 5",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/whats-new-sonnet-5",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/anthropic.svg"
+    },
+    {
+      "id": "google/gemini-3.5-flash",
+      "name": "Gemini 3.5 Flash",
+      "company": "google",
+      "brand_color": "#4285F4",
+      "release_date": "2026-06-17",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gemini-3.5-flash-doc",
+          "title": "Gemini 3.5 Flash",
+          "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/google.svg"
+    },
+    {
+      "id": "mistral/mistral-small-4",
+      "name": "Mistral Small 4",
+      "company": "mistral",
+      "brand_color": "#FA520F",
+      "release_date": "2026-06-17",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "mistral-small-4-doc",
+          "title": "Mistral Small 4",
+          "url": "https://docs.mistral.ai/models/model-cards/mistral-small-4",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "24B",
+        "active": "24B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/mistral.svg"
+    },
+    {
+      "id": "xai/grok-4.3",
+      "name": "Grok 4.3",
+      "company": "xai",
+      "brand_color": "#000000",
+      "release_date": "2026-06-11",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "xai-models-doc",
+          "title": "Models",
+          "url": "https://docs.x.ai/docs/models",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/xai.svg"
+    },
+    {
+      "id": "xai/grok-build-0.1",
+      "name": "Grok Build 0.1",
+      "company": "xai",
+      "brand_color": "#000000",
+      "release_date": "2026-06-11",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "agentic"
+      ],
+      "sources": [
+        {
+          "key": "xai-models-doc",
+          "title": "Models",
+          "url": "https://docs.x.ai/docs/models",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/xai.svg"
+    },
+    {
       "id": "anthropic/claude-fable-5",
       "name": "Claude Fable 5",
       "company": "anthropic",
@@ -315,20 +484,9 @@
           "title": "MiniMax API Release Notes - Models",
           "url": "https://platform.minimax.io/docs/release-notes/models",
           "type": "blog"
-        },
-        {
-          "key": "minimax-m3-venturebeat",
-          "title": "MiniMax M3 debuts, eclipsing GPT-5.5 and Gemini 3.1 Pro on key benchmark performance",
-          "url": "https://venturebeat.com/technology/minimax-m3-debuts-eclipsing-gpt-5-5-and-gemini-3-1-pro-on-key-benchmark-performance-for-just-5-10-of-the-cost",
-          "type": "blog"
         }
       ],
-      "scores": {
-        "swe-bench": {
-          "value": 59,
-          "source": "minimax-m3-venturebeat"
-        }
-      },
+      "scores": {},
       "parameters": {
         "total": "428B",
         "active": "23B"
@@ -346,6 +504,44 @@
         ]
       },
       "logo": "assets/logos/minimax.svg"
+    },
+    {
+      "id": "anthropic/claude-opus-4.8",
+      "name": "Claude Opus 4.8",
+      "company": "anthropic",
+      "brand_color": "#D97757",
+      "release_date": "2026-05-28",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "claude-models-overview",
+          "title": "Models overview",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+          "type": "website"
+        },
+        {
+          "key": "claude-opus-4.8-doc",
+          "title": "What's new in Claude Opus 4.8",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/whats-new-claude-4-8",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/anthropic.svg"
     },
     {
       "id": "baidu/ernie-5.1",
@@ -401,6 +597,38 @@
       "logo": "assets/logos/baidu.svg"
     },
     {
+      "id": "openai/gpt-5.5",
+      "name": "GPT-5.5",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2026-04-23",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-5.5-model-doc",
+          "title": "GPT-5.5 Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.5",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1.05M",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
       "id": "alibaba/qwen3.5-omni",
       "name": "Qwen3.5-Omni",
       "company": "alibaba",
@@ -453,6 +681,167 @@
       "logo": "assets/logos/alibaba.svg"
     },
     {
+      "id": "google/gemini-3.1-pro-preview",
+      "name": "Gemini 3.1 Pro Preview",
+      "company": "google",
+      "brand_color": "#4285F4",
+      "release_date": "2026-03-30",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gemini-3.1-pro-preview-doc",
+          "title": "Gemini 3.1 Pro Preview",
+          "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/google.svg"
+    },
+    {
+      "id": "openai/gpt-5.4-mini",
+      "name": "GPT-5.4 mini",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2026-03-17",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-5.4-mini-model-doc",
+          "title": "GPT-5.4 mini Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.4-mini",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "400k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "openai/gpt-5.4-nano",
+      "name": "GPT-5.4 nano",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2026-03-17",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-5.4-nano-model-doc",
+          "title": "GPT-5.4 nano Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.4-nano",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "400k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "openai/gpt-5.4",
+      "name": "GPT-5.4",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2026-03-05",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-5.4-model-doc",
+          "title": "GPT-5.4 Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.4",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1.05M",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "mistral/mistral-medium-3.5",
+      "name": "Mistral Medium 3.5",
+      "company": "mistral",
+      "brand_color": "#FA520F",
+      "release_date": "2026-02-17",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "mistral-medium-3.5-doc",
+          "title": "Mistral Medium 3.5",
+          "url": "https://docs.mistral.ai/models/model-cards/mistral-medium-3.5",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/mistral.svg"
+    },
+    {
       "id": "zhipu/glm-5",
       "name": "GLM-5",
       "company": "zhipu",
@@ -497,13 +886,13 @@
       "logo": "assets/logos/zhipu.svg"
     },
     {
-      "id": "alibaba/qwen3.5",
-      "name": "Qwen3.5",
+      "id": "alibaba/qwen3.5-397b-a17b",
+      "name": "Qwen3.5-397B-A17B",
       "company": "alibaba",
       "brand_color": "#615CED",
       "release_date": "2026-02-16",
       "weight_availability_tags": [
-        "closed-weights",
+        "open-weights",
         "reasoning",
         "multimodal"
       ],
@@ -513,6 +902,12 @@
           "title": "Alibaba Group announces Qwen3.5",
           "url": "https://www.alibabagroup.com/document-1960233590314762240",
           "type": "blog"
+        },
+        {
+          "key": "qwen3.5-hf",
+          "title": "Qwen3.5-397B-A17B",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B",
+          "type": "model-card"
         }
       ],
       "scores": {},
@@ -521,10 +916,12 @@
         "active": "17B"
       },
       "architecture": "MoE",
-      "context_window": "1M",
+      "context_window": "262k native / 1M with extrapolation",
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image",
+          "video"
         ],
         "output": [
           "text"
@@ -588,8 +985,7 @@
           "value": null
         },
         "ifeval": {
-          "value": 78.9,
-          "source": "seed2.0-model-card"
+          "value": null
         },
         "bbh": {
           "value": null
@@ -620,9 +1016,7 @@
           "video"
         ],
         "output": [
-          "text",
-          "image",
-          "video"
+          "text"
         ]
       },
       "logo": "assets/logos/bytedance.svg"
@@ -659,8 +1053,7 @@
           "source": "seed2.0-model-card"
         },
         "ifeval": {
-          "value": 77.1,
-          "source": "seed2.0-model-card"
+          "value": null
         }
       },
       "architecture": "MoE",
@@ -933,8 +1326,7 @@
           "value": null
         },
         "ifeval": {
-          "value": 80.3,
-          "source": "seed1.8-model-card"
+          "value": null
         },
         "bbh": {
           "value": null
@@ -1116,6 +1508,111 @@
       "logo": "assets/logos/minimax.svg"
     },
     {
+      "id": "anthropic/claude-haiku-4.5",
+      "name": "Claude Haiku 4.5",
+      "company": "anthropic",
+      "brand_color": "#D97757",
+      "release_date": "2025-10-01",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "claude-models-overview",
+          "title": "Models overview",
+          "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "200k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/anthropic.svg"
+    },
+    {
+      "id": "alibaba/qwen3-vl-235b-a22b",
+      "name": "Qwen3-VL-235B-A22B",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2025-09-23",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "qwen3-vl-hf",
+          "title": "Qwen3-VL-235B-A22B-Instruct",
+          "url": "https://huggingface.co/Qwen/Qwen3-VL-235B-A22B-Instruct",
+          "type": "model-card"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "235B",
+        "active": "22B"
+      },
+      "architecture": "MoE",
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "deepseek/v3.1",
+      "name": "DeepSeek-V3.1",
+      "company": "deepseek",
+      "brand_color": "#4D6BFE",
+      "release_date": "2025-08-21",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "deepseek-v3.1-news",
+          "title": "DeepSeek-V3.1 Release",
+          "url": "https://api-docs.deepseek.com/news/news250821",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "671B",
+        "active": "37B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/deepseek.svg"
+    },
+    {
       "id": "moonshot/kimi-k2",
       "name": "Kimi K2",
       "company": "moonshot",
@@ -1254,6 +1751,47 @@
         ]
       },
       "logo": "assets/logos/zhipu.svg"
+    },
+    {
+      "id": "alibaba/qwen3-coder-480b-a35b",
+      "name": "Qwen3-Coder-480B-A35B",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2025-07-22",
+      "weight_availability_tags": [
+        "open-weights",
+        "agentic"
+      ],
+      "sources": [
+        {
+          "key": "qwen3-coder-hf",
+          "title": "Qwen3-Coder-480B-A35B-Instruct",
+          "url": "https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct",
+          "type": "model-card"
+        },
+        {
+          "key": "qwen3-coder-blog",
+          "title": "Qwen3-Coder: Agentic Coding in the World",
+          "url": "https://qwenlm.github.io/blog/qwen3-coder/",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "480B",
+        "active": "35B"
+      },
+      "architecture": "MoE",
+      "context_window": "256k native / 1M with extrapolation",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
     },
     {
       "id": "xai/grok-4",
@@ -1558,6 +2096,78 @@
       "logo": "assets/logos/mistral.svg"
     },
     {
+      "id": "deepseek/r1-0528",
+      "name": "DeepSeek-R1-0528",
+      "company": "deepseek",
+      "brand_color": "#4D6BFE",
+      "release_date": "2025-05-28",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "deepseek-r1-github",
+          "title": "DeepSeek-R1",
+          "url": "https://github.com/deepseek-ai/DeepSeek-R1",
+          "type": "codebase"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "671B",
+        "active": "37B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/deepseek.svg"
+    },
+    {
+      "id": "mistral/devstral-small",
+      "name": "Devstral Small",
+      "company": "mistral",
+      "brand_color": "#FA520F",
+      "release_date": "2025-05-28",
+      "weight_availability_tags": [
+        "open-weights",
+        "agentic"
+      ],
+      "sources": [
+        {
+          "key": "devstral-doc",
+          "title": "Devstral",
+          "url": "https://docs.mistral.ai/models/model-cards/devstral",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "24B",
+        "active": "24B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/mistral.svg"
+    },
+    {
       "id": "anthropic/claude-4-opus",
       "name": "Claude 4 Opus",
       "company": "anthropic",
@@ -1723,6 +2333,146 @@
         ]
       },
       "logo": "assets/logos/tencent.svg"
+    },
+    {
+      "id": "alibaba/qwen3-14b",
+      "name": "Qwen3-14B",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2025-04-29",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "qwen3-blog",
+          "title": "Qwen3: Think Deeper, Act Faster",
+          "url": "https://qwenlm.github.io/blog/qwen3/",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "14B",
+        "active": "14B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "alibaba/qwen3-30b-a3b",
+      "name": "Qwen3-30B-A3B",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2025-04-29",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "qwen3-blog",
+          "title": "Qwen3: Think Deeper, Act Faster",
+          "url": "https://qwenlm.github.io/blog/qwen3/",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "30B",
+        "active": "3B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "alibaba/qwen3-32b",
+      "name": "Qwen3-32B",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2025-04-29",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "qwen3-blog",
+          "title": "Qwen3: Think Deeper, Act Faster",
+          "url": "https://qwenlm.github.io/blog/qwen3/",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "32B",
+        "active": "32B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "alibaba/qwen3-8b",
+      "name": "Qwen3-8B",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2025-04-29",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "qwen3-blog",
+          "title": "Qwen3: Think Deeper, Act Faster",
+          "url": "https://qwenlm.github.io/blog/qwen3/",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "8B",
+        "active": "8B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
     },
     {
       "id": "alibaba/qwen3",
@@ -2246,6 +2996,45 @@
       "logo": "assets/logos/meta.svg"
     },
     {
+      "id": "alibaba/qwen2.5-omni-7b",
+      "name": "Qwen2.5-Omni-7B",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2025-03-26",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "qwen2.5-omni-blog",
+          "title": "Qwen2.5-Omni",
+          "url": "https://qwenlm.github.io/blog/qwen2.5-omni/",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "7B",
+        "active": "7B"
+      },
+      "architecture": "Dense",
+      "context_window": "32k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text",
+          "audio"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
+    },
+    {
       "id": "google/gemini-2.5-pro",
       "name": "Gemini 2.5 Pro",
       "company": "google",
@@ -2448,6 +3237,41 @@
         ]
       },
       "logo": "assets/logos/baidu.svg"
+    },
+    {
+      "id": "alibaba/qwq-32b",
+      "name": "QwQ-32B",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2025-03-05",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "qwq-32b-blog",
+          "title": "QwQ-32B: Embracing the Power of Reinforcement Learning",
+          "url": "https://qwenlm.github.io/blog/qwq-32b/",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "32B",
+        "active": "32B"
+      },
+      "architecture": "Dense",
+      "context_window": "32k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
     },
     {
       "id": "anthropic/claude-3.7-sonnet",
@@ -2934,6 +3758,37 @@
       "logo": "assets/logos/minimax.svg"
     },
     {
+      "id": "mistral/codestral-25.01",
+      "name": "Codestral 25.01",
+      "company": "mistral",
+      "brand_color": "#FA520F",
+      "release_date": "2025-01-13",
+      "weight_availability_tags": [
+        "closed-weights",
+        "agentic"
+      ],
+      "sources": [
+        {
+          "key": "codestral-doc",
+          "title": "Codestral",
+          "url": "https://docs.mistral.ai/models/model-cards/codestral",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/mistral.svg"
+    },
+    {
       "id": "deepseek/v3",
       "name": "DeepSeek-V3",
       "company": "deepseek",
@@ -3100,7 +3955,36 @@
           "type": "model-card"
         }
       ],
-      "scores": {},
+      "scores": {
+        "mmlu": {
+          "value": 86,
+          "source": "llama3.3-model-card"
+        },
+        "mmlu-pro": {
+          "value": 68.9,
+          "source": "llama3.3-model-card"
+        },
+        "gpqa": {
+          "value": 50.5,
+          "source": "llama3.3-model-card"
+        },
+        "humaneval": {
+          "value": 88.4,
+          "source": "llama3.3-model-card"
+        },
+        "math-level-5": {
+          "value": 77,
+          "source": "llama3.3-model-card"
+        },
+        "gsm8k": {
+          "value": 96.8,
+          "source": "llama3.3-model-card"
+        },
+        "ifeval": {
+          "value": 92.1,
+          "source": "llama3.3-model-card"
+        }
+      },
       "parameters": {
         "total": "70B",
         "active": "70B"
@@ -3422,6 +4306,40 @@
       "logo": "assets/logos/anthropic.svg"
     },
     {
+      "id": "mistral/ministral-8b",
+      "name": "Ministral 8B",
+      "company": "mistral",
+      "brand_color": "#FA520F",
+      "release_date": "2024-10-16",
+      "weight_availability_tags": [
+        "closed-weights"
+      ],
+      "sources": [
+        {
+          "key": "mistral-models-overview",
+          "title": "Mistral models overview",
+          "url": "https://docs.mistral.ai/getting-started/models/models_overview/",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "8B",
+        "active": "8B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/mistral.svg"
+    },
+    {
       "id": "baichuan/baichuan-omni",
       "name": "Baichuan-Omni",
       "company": "baichuan",
@@ -3468,6 +4386,184 @@
         ]
       },
       "logo": "assets/logos/baichuan.svg"
+    },
+    {
+      "id": "meta/llama-3.2-11b-vision",
+      "name": "Llama 3.2 11B Vision Instruct",
+      "company": "meta",
+      "brand_color": "#1d65c1",
+      "release_date": "2024-09-25",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "llama3.2-11b-vision-hf",
+          "title": "Llama-3.2-11B-Vision-Instruct",
+          "url": "https://huggingface.co/meta-llama/Llama-3.2-11B-Vision-Instruct",
+          "type": "model-card"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "11B",
+        "active": "11B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/meta.svg"
+    },
+    {
+      "id": "meta/llama-3.2-1b",
+      "name": "Llama 3.2 1B Instruct",
+      "company": "meta",
+      "brand_color": "#1d65c1",
+      "release_date": "2024-09-25",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "llama3.2-model-card",
+          "title": "Llama 3.2 Model Card",
+          "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+          "type": "model-card"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 49.3,
+          "source": "llama3.2-model-card"
+        },
+        "gsm8k": {
+          "value": 44.4,
+          "source": "llama3.2-model-card"
+        },
+        "ifeval": {
+          "value": 59.5,
+          "source": "llama3.2-model-card"
+        }
+      },
+      "parameters": {
+        "total": "1B",
+        "active": "1B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/meta.svg"
+    },
+    {
+      "id": "meta/llama-3.2-3b",
+      "name": "Llama 3.2 3B Instruct",
+      "company": "meta",
+      "brand_color": "#1d65c1",
+      "release_date": "2024-09-25",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "llama3.2-model-card",
+          "title": "Llama 3.2 Model Card",
+          "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md",
+          "type": "model-card"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 63.4,
+          "source": "llama3.2-model-card"
+        },
+        "math-level-5": {
+          "value": 48,
+          "source": "llama3.2-model-card"
+        },
+        "gsm8k": {
+          "value": 77.7,
+          "source": "llama3.2-model-card"
+        },
+        "ifeval": {
+          "value": 77.4,
+          "source": "llama3.2-model-card"
+        },
+        "arc-c": {
+          "value": 78.6,
+          "source": "llama3.2-model-card"
+        }
+      },
+      "parameters": {
+        "total": "3B",
+        "active": "3B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/meta.svg"
+    },
+    {
+      "id": "meta/llama-3.2-90b-vision",
+      "name": "Llama 3.2 90B Vision Instruct",
+      "company": "meta",
+      "brand_color": "#1d65c1",
+      "release_date": "2024-09-25",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "llama3.2-90b-vision-hf",
+          "title": "Llama-3.2-90B-Vision-Instruct",
+          "url": "https://huggingface.co/meta-llama/Llama-3.2-90B-Vision-Instruct",
+          "type": "model-card"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "90B",
+        "active": "90B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/meta.svg"
     },
     {
       "id": "alibaba/qwen2.5",
@@ -3793,10 +4889,111 @@
           "type": "model-card"
         }
       ],
-      "scores": {},
+      "scores": {
+        "mmlu": {
+          "value": 86,
+          "source": "llama3.1-model-card"
+        },
+        "mmlu-pro": {
+          "value": 66.4,
+          "source": "llama3.1-model-card"
+        },
+        "gpqa": {
+          "value": 46.7,
+          "source": "llama3.1-model-card"
+        },
+        "humaneval": {
+          "value": 80.5,
+          "source": "llama3.1-model-card"
+        },
+        "math-level-5": {
+          "value": 68,
+          "source": "llama3.1-model-card"
+        },
+        "gsm8k": {
+          "value": 95.1,
+          "source": "llama3.1-model-card"
+        },
+        "ifeval": {
+          "value": 87.5,
+          "source": "llama3.1-model-card"
+        },
+        "arc-c": {
+          "value": 94.8,
+          "source": "llama3.1-model-card"
+        }
+      },
       "parameters": {
         "total": "70B",
         "active": "70B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/meta.svg"
+    },
+    {
+      "id": "meta/llama-3.1-8b",
+      "name": "Llama 3.1 8B Instruct",
+      "company": "meta",
+      "brand_color": "#1d65c1",
+      "release_date": "2024-07-23",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "llama3.1-model-card",
+          "title": "Llama 3.1 Model Card",
+          "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md",
+          "type": "model-card"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 73,
+          "source": "llama3.1-model-card"
+        },
+        "mmlu-pro": {
+          "value": 48.3,
+          "source": "llama3.1-model-card"
+        },
+        "gpqa": {
+          "value": 30.4,
+          "source": "llama3.1-model-card"
+        },
+        "humaneval": {
+          "value": 72.6,
+          "source": "llama3.1-model-card"
+        },
+        "math-level-5": {
+          "value": 51.9,
+          "source": "llama3.1-model-card"
+        },
+        "gsm8k": {
+          "value": 84.5,
+          "source": "llama3.1-model-card"
+        },
+        "ifeval": {
+          "value": 80.4,
+          "source": "llama3.1-model-card"
+        },
+        "arc-c": {
+          "value": 83.4,
+          "source": "llama3.1-model-card"
+        }
+      },
+      "parameters": {
+        "total": "8B",
+        "active": "8B"
       },
       "architecture": "Dense",
       "context_window": "128k",
@@ -3849,6 +5046,42 @@
       "logo": "assets/logos/openai.svg"
     },
     {
+      "id": "deepseek/coder-v2",
+      "name": "DeepSeek-Coder-V2",
+      "company": "deepseek",
+      "brand_color": "#4D6BFE",
+      "release_date": "2024-06-17",
+      "weight_availability_tags": [
+        "open-weights",
+        "agentic"
+      ],
+      "sources": [
+        {
+          "key": "deepseek-coder-v2-github",
+          "title": "DeepSeek-Coder-V2",
+          "url": "https://github.com/deepseek-ai/DeepSeek-Coder-V2",
+          "type": "codebase"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "236B",
+        "active": "21B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/deepseek.svg"
+    },
+    {
       "id": "baichuan/baichuan4",
       "name": "Baichuan4",
       "company": "baichuan",
@@ -3858,12 +5091,6 @@
         "closed-weights"
       ],
       "sources": [
-        {
-          "key": "baichuan4-launch",
-          "title": "百川智能发布Baichuan4及首款AI助手百小应",
-          "url": "https://www.donews.com/news/detail/1/4245551.html",
-          "type": "blog"
-        },
         {
           "key": "baichuan4-platform",
           "title": "百川大模型 API 平台（Baichuan4 / Baichuan4-Turbo）",
@@ -4023,6 +5250,41 @@
         ]
       },
       "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "deepseek/v2",
+      "name": "DeepSeek-V2",
+      "company": "deepseek",
+      "brand_color": "#4D6BFE",
+      "release_date": "2024-05-07",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "deepseek-v2-github",
+          "title": "DeepSeek-V2",
+          "url": "https://github.com/deepseek-ai/DeepSeek-V2",
+          "type": "codebase"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "236B",
+        "active": "21B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/deepseek.svg"
     }
   ]
 }

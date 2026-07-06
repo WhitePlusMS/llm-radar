@@ -1,0 +1,21 @@
+id: mistral/mistral-small-4
+name: Mistral Small 4
+company: mistral
+brand_color: "#FA520F"
+release_date: "2026-06-17"
+parameters:
+  total: "24B"
+  active: "24B"
+architecture: Dense
+context_window: "128k"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [open-weights, multimodal]
+logo: assets/logos/mistral.svg
+sources:
+  - key: mistral-small-4-doc
+    title: Mistral Small 4
+    url: https://docs.mistral.ai/models/model-cards/mistral-small-4
+    type: website
+scores: {}

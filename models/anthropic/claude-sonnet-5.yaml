@@ -1,0 +1,22 @@
+id: anthropic/claude-sonnet-5
+name: Claude Sonnet 5
+company: anthropic
+brand_color: "#D97757"
+release_date: "2026-06-30"
+# Anthropic 官方未公开 Claude Sonnet 5 的参数规模与架构细节。
+context_window: "1M"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/anthropic.svg
+sources:
+  - key: claude-models-overview
+    title: Models overview
+    url: https://platform.claude.com/docs/en/about-claude/models/overview
+    type: website
+  - key: claude-sonnet-5-doc
+    title: "What's new in Claude Sonnet 5"
+    url: https://platform.claude.com/docs/en/about-claude/models/whats-new-sonnet-5
+    type: website
+scores: {}

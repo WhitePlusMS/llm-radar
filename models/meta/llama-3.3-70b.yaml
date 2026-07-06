@@ -18,6 +18,25 @@ sources:
     title: Llama 3.3 Model Card
     url: https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md
     type: model-card
-# Llama 3.3 70B 官方 model card 未报告 metrics.yaml 中多数指标的精确数值。
-# 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
-scores: {}
+scores:
+  mmlu:
+    value: 86.0
+    source: llama3.3-model-card
+  mmlu-pro:
+    value: 68.9
+    source: llama3.3-model-card
+  gpqa:
+    value: 50.5
+    source: llama3.3-model-card
+  humaneval:
+    value: 88.4
+    source: llama3.3-model-card
+  math-level-5:
+    value: 77.0
+    source: llama3.3-model-card
+  gsm8k:
+    value: 96.8
+    source: llama3.3-model-card
+  ifeval:
+    value: 92.1
+    source: llama3.3-model-card

@@ -12,10 +12,6 @@ weight_availability_tags:
   - closed-weights
 logo: assets/logos/baichuan.svg
 sources:
-  - key: baichuan4-launch
-    title: 百川智能发布Baichuan4及首款AI助手百小应
-    url: https://www.donews.com/news/detail/1/4245551.html
-    type: blog
   - key: baichuan4-platform
     title: 百川大模型 API 平台（Baichuan4 / Baichuan4-Turbo）
     url: https://platform.baichuan-ai.com/prices
