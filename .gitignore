@@ -42,8 +42,9 @@ coverage/
 # Downloaded original paper PDFs (large binaries kept locally only)
 docs/papers/
 
-# Internal planning and changelog documents (local only)
+# Internal planning, changelog and blocker documents (local only)
 AGENTS.md
+BLOCKERS.md
 CONTEXT.md
 GOAL.md
 PRD.md
