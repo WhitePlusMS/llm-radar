@@ -91,7 +91,6 @@ a:hover { color: var(--accent-2); text-decoration: underline; text-underline-off
   letter-spacing: 0.04em;
   display: inline-flex; align-items: center; gap: 6px;
 }
-.topbar .gh .gh-mark { flex: none; }
 .topbar .gh:hover { color: #fff; }
 .topbar .live::before {
   content: ""; width: 6px; height: 6px; border-radius: 50%;
@@ -193,7 +192,14 @@ a:hover { color: var(--accent-2); text-decoration: underline; text-underline-off
   display: flex; align-items: baseline; justify-content: space-between;
 }
 .section-label .num { color: var(--accent); margin-right: 6px; font-weight: 700; }
-.section-label .right { color: var(--dim); font-weight: 500; }
+.section-label .right {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--dim);
+}
 
 /* ---------- 面板 ---------- */
 .panel {
@@ -305,7 +311,7 @@ table.data td.bench .scale {
 table.data td.val { color: var(--ink); }
 table.data td.val .norm { display: block; font-size: 9px; color: var(--dim); margin-top: 1px; }
 table.data td.val .src {
-  display: block; max-width: 12rem; overflow: hidden; text-overflow: ellipsis;
+  display: inline-block; max-width: 8rem; overflow: hidden; text-overflow: ellipsis;
   white-space: nowrap; font-size: 9px; color: var(--accent); margin-top: 2px;
 }
 table.data td.na { color: var(--na); }
@@ -342,7 +348,7 @@ table.data tbody tr:hover td.avg-cell { background: #dde6fb; }
 }
 .search input::placeholder { color: var(--dim); }
 .search input:focus { outline: none; border-color: var(--accent); background: var(--surface); box-shadow: 0 0 0 3px var(--accent-soft); }
-.search .ico { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--dim); font-size: 13px; pointer-events: none; }
+.search .ico { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--dim); width: 13px; height: 13px; pointer-events: none; }
 .search .clear {
   position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
   background: none; border: none; cursor: pointer; color: var(--dim);
@@ -472,7 +478,7 @@ input[type="checkbox"].cb:indeterminate {
 .metric-row.sel { background: var(--accent-soft); }
 .metric-row.sel .mname { font-weight: 600; }
 .metric-row .mname { flex: 1; font-size: 12px; color: var(--ink-2); }
-.metric-row .star { color: var(--star); font-size: 11px; }
+.metric-row .star { color: var(--star); width: 11px; height: 11px; }
 
 /* ---------- footer ---------- */
 footer.site {

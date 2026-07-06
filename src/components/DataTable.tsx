@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import type { Metric, ModelCard } from '@/types';
+import { ExternalLink } from 'lucide-react';
 import {
   buildAveragePoints,
   formatRawValue,
@@ -93,7 +94,7 @@ export function DataTable({ models, averageModels, metrics, selectedMetricIds }:
                             rel="noreferrer"
                             title={source.title}
                           >
-                            {source.title} ↗
+                            来源 <ExternalLink size={10} />
                           </a>
                         )}
                       </td>
