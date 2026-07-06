@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { loadModelIndex } from '@/data/model-index-loader';
 import { useComparison } from '@/hooks/use-comparison';
 import { ModelSelector } from '@/components/ModelSelector';
@@ -11,6 +11,7 @@ function App() {
   const [index, setIndex] = useState<ModelIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [averageEnabled, setAverageEnabled] = useState(true);
+  const defaultsAppliedRef = useRef(false);
 
   useEffect(() => {
     loadModelIndex()
@@ -37,25 +38,19 @@ function App() {
     setMetricIds,
   } = useComparison(defaultModelIds, defaultMetricIds);
 
-  // 首次加载且 URL 未指定模型时，自动选中默认模型
+  // 首次加载且 URL 未指定选择时，自动应用默认值；仅执行一次，避免清空后自动恢复
   useEffect(() => {
-    if (index && selectedModelIds.length === 0 && defaultModelIds.length > 0) {
-      const params = new URLSearchParams(window.location.search);
-      if (!params.has('models')) {
-        setModelIds(defaultModelIds);
-      }
-    }
-  }, [index, selectedModelIds.length, defaultModelIds, setModelIds]);
+    if (!index || defaultsAppliedRef.current) return;
+    defaultsAppliedRef.current = true;
 
-  // 首次加载且 URL 未指定 benchmark 时，自动选中所有 benchmark
-  useEffect(() => {
-    if (index && selectedMetricIds.length === 0 && defaultMetricIds.length > 0) {
-      const params = new URLSearchParams(window.location.search);
-      if (!params.has('metrics')) {
-        setMetricIds(defaultMetricIds);
-      }
+    const params = new URLSearchParams(window.location.search);
+    if (!params.has('models') && defaultModelIds.length > 0) {
+      setModelIds(defaultModelIds);
     }
-  }, [index, selectedMetricIds.length, defaultMetricIds, setMetricIds]);
+    if (!params.has('metrics') && defaultMetricIds.length > 0) {
+      setMetricIds(defaultMetricIds);
+    }
+  }, [index, defaultModelIds, defaultMetricIds, setModelIds, setMetricIds]);
 
   const selectedModels = useMemo(
     () =>
