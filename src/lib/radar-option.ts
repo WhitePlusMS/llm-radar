@@ -86,15 +86,15 @@ export function buildRadarOption(
       color: model.brand_color,
     },
     lineStyle: {
-      width: 2.5,
+      width: 3,
     },
     emphasis: {
       lineStyle: {
-        width: 3.5,
+        width: 4,
       },
       areaStyle: {
         color: model.brand_color,
-        opacity: 0.12,
+        opacity: 0.15,
       },
     },
   }));
@@ -105,11 +105,12 @@ export function buildRadarOption(
       itemStyle: { color: '#64748b' },
       lineStyle: {
         type: 'dashed',
-        width: 2,
+        width: 3,
         color: '#64748b',
       },
-      areaStyle: { color: '#64748b', opacity: 0 },
-      symbol: 'none',
+      areaStyle: { opacity: 0 },
+      symbol: 'circle',
+      symbolSize: 4,
     });
   }
 
@@ -141,7 +142,7 @@ export function buildRadarOption(
     },
     radar: {
       indicator,
-      radius: '72%',
+      radius: '68%',
       center: ['50%', '50%'],
       splitNumber: 4,
       axisName: {

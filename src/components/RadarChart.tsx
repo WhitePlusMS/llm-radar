@@ -34,7 +34,7 @@ export function RadarChart({ models, metrics, selectedMetricIds, averageEnabled 
         ))}
         {averageEnabled && (
           <div className="flex items-center gap-1.5 text-xs font-medium text-slate-700">
-            <span className="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full border border-slate-400 bg-transparent" />
+            <span className="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-slate-400" />
             <span>平均</span>
           </div>
         )}
