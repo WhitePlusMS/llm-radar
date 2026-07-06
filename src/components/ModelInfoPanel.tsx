@@ -1,5 +1,6 @@
 import type { Company, ModelCard } from '@/types';
 import { Calendar, Cpu, Globe, Layers, MessageSquare, Tag, Database, ExternalLink } from 'lucide-react';
+import { ModelLogo } from './ModelLogo';
 
 interface ModelInfoPanelProps {
   model: ModelCard;
@@ -34,7 +35,6 @@ function InfoRow({ icon: Icon, label, value }: { icon: React.ElementType; label:
 }
 
 export function ModelInfoPanel({ model, company }: ModelInfoPanelProps) {
-  const logoPath = model.logo ?? `assets/logos/${model.company.toLowerCase()}.svg`;
   const allTags = [
     ...model.weight_availability_tags,
     ...(model.tags ?? []),
@@ -51,27 +51,7 @@ export function ModelInfoPanel({ model, company }: ModelInfoPanelProps) {
   return (
     <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
       <div className="mb-3 flex items-center gap-3">
-        <div
-          className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg border border-slate-100 bg-white p-1"
-          title={company?.name ?? model.company}
-        >
-          <img
-            src={logoPath}
-            alt={company?.name ?? model.company}
-            className="h-full w-full object-contain"
-            onError={(e) => {
-              e.currentTarget.style.display = 'none';
-              const fallback = e.currentTarget.nextElementSibling as HTMLElement | null;
-              if (fallback) fallback.style.display = 'flex';
-            }}
-          />
-          <div
-            className="hidden h-full w-full items-center justify-center rounded-lg text-xs font-bold text-white"
-            style={{ backgroundColor: model.brand_color }}
-          >
-            {(company?.name ?? model.company).slice(0, 1).toUpperCase()}
-          </div>
-        </div>
+        <ModelLogo model={model} company={company} size="lg" />
         <div className="min-w-0 flex-1">
           <h4 className="truncate text-base font-bold text-slate-900">{model.name}</h4>
           <p className="text-xs text-slate-500">{company?.name ?? model.company}</p>

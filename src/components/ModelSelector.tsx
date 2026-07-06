@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Search, X, ChevronDown, ChevronUp, Tag, BarChart3 } from 'lucide-react';
 import type { Company, ModelCard } from '@/types';
+import { ModelLogo } from './ModelLogo';
 
 interface ModelSelectorProps {
   models: ModelCard[];
@@ -244,7 +245,6 @@ export function ModelSelector({
                   {companyModels.map((model) => {
                     const isSelected = selectedIds.includes(model.id);
                     const isAverage = averageIds.includes(model.id);
-                    const logoPath = model.logo ?? `assets/logos/${model.company.toLowerCase()}.svg`;
                     return (
                       <div
                         key={model.id}
@@ -258,14 +258,9 @@ export function ModelSelector({
                           onChange={() => onToggle(model.id)}
                           className="mt-1 h-4 w-4 flex-shrink-0 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
                         />
-                        <img
-                          src={logoPath}
-                          alt=""
-                          className="mt-0.5 h-5 w-5 flex-shrink-0 object-contain"
-                          onError={(e) => {
-                            e.currentTarget.style.visibility = 'hidden';
-                          }}
-                        />
+                        <span className="mt-0.5">
+                          <ModelLogo model={model} company={companyMap.get(model.company)} size="sm" />
+                        </span>
                         <label className="min-w-0 flex-1 cursor-pointer" onClick={() => onToggle(model.id)}>
                           <span className="block text-sm font-medium leading-tight text-slate-700">
                             {model.name}
