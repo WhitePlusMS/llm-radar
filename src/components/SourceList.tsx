@@ -4,15 +4,6 @@ interface SourceListProps {
   models: ModelCard[];
 }
 
-function escapeHtml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
-
 export function SourceList({ models }: SourceListProps) {
   const modelsWithSources = models.filter((m) => m.sources && m.sources.length > 0);
 
@@ -52,10 +43,9 @@ export function SourceList({ models }: SourceListProps) {
                     target="_blank"
                     rel="noreferrer"
                     className="text-indigo-600 hover:text-indigo-800 hover:underline"
-                    dangerouslySetInnerHTML={{
-                      __html: `${escapeHtml(source.title)} <span class="text-slate-400">(${escapeHtml(source.type)})</span>`,
-                    }}
-                  />
+                  >
+                    {source.title} <span className="text-slate-400">({source.type})</span>
+                  </a>
                 </li>
               ))}
             </ul>
