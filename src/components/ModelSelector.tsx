@@ -242,7 +242,7 @@ export function ModelSelector({
                           aria-label={averaged ? `${model.name} 不计入平均基线` : `${model.name} 计入平均基线`}
                         >
                           <Activity size={12} />
-                          <span>基线</span>
+                          <span className="sr-only">计入平均基线</span>
                         </button>
                       </Tooltip>
                     </div>

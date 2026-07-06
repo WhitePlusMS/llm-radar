@@ -585,11 +585,13 @@ table.data tbody tr:hover td.avg-cell { background: #dde6fb; }
 .model-row.sel .mname { color: var(--ink); font-weight: 600; }
 .model-row .mdate { font-family: var(--font-mono); font-size: 10px; color: var(--dim); }
 .baseline-toggle {
+  width: 24px;
   height: 24px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
-  padding: 0 6px;
+  padding: 0;
   border: 1px solid var(--rule-2);
   border-radius: 5px;
   color: var(--dim);
@@ -601,7 +603,7 @@ table.data tbody tr:hover td.avg-cell { background: #dde6fb; }
   transition: color .15s, border-color .15s, background .15s, box-shadow .15s;
 }
 .baseline-toggle:hover { color: var(--accent); border-color: rgba(52,95,223,0.45); background: var(--accent-soft); }
-.baseline-toggle.on { color: #fff; background: var(--ink); border-color: var(--ink); }
+.baseline-toggle.on { color: var(--accent); background: var(--accent-soft); border-color: rgba(52,95,223,0.45); }
 
 /* 真实 checkbox 的可访问自定义样式（appearance:none + 背景勾选） */
 input[type="checkbox"].cb {
