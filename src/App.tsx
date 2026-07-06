@@ -34,6 +34,7 @@ function App() {
     toggleModel,
     toggleMetric,
     setModelIds,
+    setMetricIds,
   } = useComparison(defaultModelIds, defaultMetricIds);
 
   // 首次加载且 URL 未指定模型时，自动选中默认模型
@@ -45,6 +46,16 @@ function App() {
       }
     }
   }, [index, selectedModelIds.length, defaultModelIds, setModelIds]);
+
+  // 首次加载且 URL 未指定 benchmark 时，自动选中所有 benchmark
+  useEffect(() => {
+    if (index && selectedMetricIds.length === 0 && defaultMetricIds.length > 0) {
+      const params = new URLSearchParams(window.location.search);
+      if (!params.has('metrics')) {
+        setMetricIds(defaultMetricIds);
+      }
+    }
+  }, [index, selectedMetricIds.length, defaultMetricIds, setMetricIds]);
 
   const selectedModels = useMemo(
     () =>
