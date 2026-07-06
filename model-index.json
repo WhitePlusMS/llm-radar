@@ -1,0 +1,4028 @@
+{
+  "meta": {
+    "generated_at": "2026-07-06T14:22:32.642Z",
+    "version": "0.1.0",
+    "model_count": 70,
+    "metric_count": 14,
+    "company_count": 15
+  },
+  "metrics": [
+    {
+      "id": "mmlu-pro",
+      "name": "MMLU-Pro",
+      "description": "A more robust and challenging multi-task language understanding benchmark.",
+      "scale": "percentage",
+      "higher_is_better": true,
+      "capability_tags": [
+        "knowledge"
+      ],
+      "featured": true
+    },
+    {
+      "id": "mmlu",
+      "name": "MMLU",
+      "description": "Massive Multitask Language Understanding benchmark.",
+      "scale": "percentage",
+      "higher_is_better": true,
+      "capability_tags": [
+        "knowledge"
+      ]
+    },
+    {
+      "id": "gpqa",
+      "name": "GPQA Diamond",
+      "description": "Graduate-level Google-Proof Q&A benchmark for scientific reasoning.",
+      "scale": "percentage",
+      "higher_is_better": true,
+      "capability_tags": [
+        "reasoning",
+        "knowledge"
+      ],
+      "featured": true
+    },
+    {
+      "id": "humaneval",
+      "name": "HumanEval",
+      "description": "Code generation benchmark for functional correctness.",
+      "scale": "percentage",
+      "higher_is_better": true,
+      "capability_tags": [
+        "coding"
+      ],
+      "featured": true
+    },
+    {
+      "id": "swe-bench",
+      "name": "SWE-Bench Verified",
+      "description": "Real-world software engineering task resolution benchmark.",
+      "scale": "percentage",
+      "higher_is_better": true,
+      "capability_tags": [
+        "coding",
+        "agentic"
+      ]
+    },
+    {
+      "id": "math-level-5",
+      "name": "MATH Level 5 / MATH-500",
+      "description": "Challenging mathematics reasoning benchmark (commonly reported as MATH-500).",
+      "scale": "percentage",
+      "higher_is_better": true,
+      "capability_tags": [
+        "math",
+        "reasoning"
+      ],
+      "featured": true
+    },
+    {
+      "id": "gsm8k",
+      "name": "GSM8K",
+      "description": "Grade school math word problems benchmark.",
+      "scale": "percentage",
+      "higher_is_better": true,
+      "capability_tags": [
+        "math"
+      ]
+    },
+    {
+      "id": "arena-elo",
+      "name": "LMSYS Arena ELO",
+      "description": "Crowdsourced chatbot arena preference Elo rating.",
+      "scale": "raw",
+      "higher_is_better": true,
+      "max_value": 1400,
+      "capability_tags": [
+        "chat",
+        "preference"
+      ],
+      "featured": true
+    },
+    {
+      "id": "ifeval",
+      "name": "IFEval",
+      "description": "Instruction following evaluation with verifiable instructions.",
+      "scale": "percentage",
+      "higher_is_better": true,
+      "capability_tags": [
+        "instruction-following"
+      ],
+      "featured": true
+    },
+    {
+      "id": "bbh",
+      "name": "BBH",
+      "description": "Big-Bench Hard benchmark for challenging reasoning tasks.",
+      "scale": "percentage",
+      "higher_is_better": true,
+      "capability_tags": [
+        "reasoning"
+      ]
+    },
+    {
+      "id": "drop",
+      "name": "DROP",
+      "description": "Discrete reasoning over paragraphs benchmark.",
+      "scale": "percentage",
+      "higher_is_better": true,
+      "capability_tags": [
+        "reading-comprehension",
+        "long-context"
+      ]
+    },
+    {
+      "id": "hellaswag",
+      "name": "HellaSwag",
+      "description": "Commonsense natural language inference benchmark.",
+      "scale": "percentage",
+      "higher_is_better": true,
+      "capability_tags": [
+        "commonsense"
+      ]
+    },
+    {
+      "id": "arc-c",
+      "name": "ARC-Challenge",
+      "description": "AI2 Reasoning Challenge (challenge set).",
+      "scale": "percentage",
+      "higher_is_better": true,
+      "capability_tags": [
+        "knowledge",
+        "reasoning"
+      ]
+    },
+    {
+      "id": "winogrande",
+      "name": "WinoGrande",
+      "description": "Commonsense reasoning benchmark with pronoun resolution.",
+      "scale": "percentage",
+      "higher_is_better": true,
+      "capability_tags": [
+        "commonsense"
+      ]
+    }
+  ],
+  "companies": [
+    {
+      "key": "openai",
+      "name": "OpenAI",
+      "website": "https://openai.com"
+    },
+    {
+      "key": "google",
+      "name": "Google DeepMind",
+      "website": "https://deepmind.google"
+    },
+    {
+      "key": "anthropic",
+      "name": "Anthropic",
+      "website": "https://www.anthropic.com"
+    },
+    {
+      "key": "meta",
+      "name": "Meta",
+      "website": "https://ai.meta.com"
+    },
+    {
+      "key": "alibaba",
+      "name": "Alibaba",
+      "website": "https://www.alibabacloud.com"
+    },
+    {
+      "key": "deepseek",
+      "name": "DeepSeek",
+      "website": "https://www.deepseek.com"
+    },
+    {
+      "key": "mistral",
+      "name": "Mistral AI",
+      "website": "https://mistral.ai"
+    },
+    {
+      "key": "xai",
+      "name": "xAI",
+      "website": "https://x.ai"
+    },
+    {
+      "key": "zhipu",
+      "name": "Zhipu AI",
+      "website": "https://www.zhipu.ai"
+    },
+    {
+      "key": "moonshot",
+      "name": "Moonshot AI",
+      "website": "https://moonshot.ai"
+    },
+    {
+      "key": "minimax",
+      "name": "MiniMax",
+      "website": "https://www.minimax.io"
+    },
+    {
+      "key": "baichuan",
+      "name": "Baichuan",
+      "website": "https://www.baichuan-ai.com"
+    },
+    {
+      "key": "bytedance",
+      "name": "ByteDance",
+      "website": "https://www.bytedance.com"
+    },
+    {
+      "key": "baidu",
+      "name": "Baidu",
+      "website": "https://www.baidu.com"
+    },
+    {
+      "key": "tencent",
+      "name": "Tencent",
+      "website": "https://www.tencent.com"
+    }
+  ],
+  "models": [
+    {
+      "id": "anthropic/claude-fable-5",
+      "name": "Claude Fable 5",
+      "company": "anthropic",
+      "brand_color": "#D97757",
+      "release_date": "2026-06-09",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "claude-fable-5-mythos-5-system-card",
+          "title": "Claude Fable 5 & Claude Mythos 5 System Card",
+          "url": "https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf",
+          "type": "system-card"
+        },
+        {
+          "key": "claude-fable-5-launch",
+          "title": "Claude Fable 5 and Claude Mythos 5",
+          "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "swe-bench": {
+          "value": 95,
+          "source": "claude-fable-5-mythos-5-system-card"
+        },
+        "gpqa": {
+          "value": 94.1,
+          "source": "claude-fable-5-mythos-5-system-card"
+        }
+      },
+      "architecture": "Dense",
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/anthropic.svg"
+    },
+    {
+      "id": "minimax/minimax-m3",
+      "name": "MiniMax-M3",
+      "company": "minimax",
+      "brand_color": "#F23F5D",
+      "release_date": "2026-06-01",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "minimax-m3-paper",
+          "title": "MiniMax Sparse Attention",
+          "url": "https://arxiv.org/abs/2606.13392",
+          "type": "paper"
+        },
+        {
+          "key": "minimax-m3-github",
+          "title": "MiniMax-M3 GitHub Repository",
+          "url": "https://github.com/MiniMax-AI/MiniMax-M3",
+          "type": "codebase"
+        },
+        {
+          "key": "minimax-release-notes",
+          "title": "MiniMax API Release Notes - Models",
+          "url": "https://platform.minimax.io/docs/release-notes/models",
+          "type": "blog"
+        },
+        {
+          "key": "minimax-m3-venturebeat",
+          "title": "MiniMax M3 debuts, eclipsing GPT-5.5 and Gemini 3.1 Pro on key benchmark performance",
+          "url": "https://venturebeat.com/technology/minimax-m3-debuts-eclipsing-gpt-5-5-and-gemini-3-1-pro-on-key-benchmark-performance-for-just-5-10-of-the-cost",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "swe-bench": {
+          "value": 59,
+          "source": "minimax-m3-venturebeat"
+        }
+      },
+      "parameters": {
+        "total": "428B",
+        "active": "23B"
+      },
+      "architecture": "MoE",
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/minimax.svg"
+    },
+    {
+      "id": "baidu/ernie-5.1",
+      "name": "ERNIE 5.1",
+      "company": "baidu",
+      "brand_color": "#2932E1",
+      "release_date": "2026-05-08",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "ernie-5.1-blog",
+          "title": "ERNIE 5.1 Release",
+          "url": "https://ernie.baidu.com/blog/posts/ernie-5.1-0508-release/",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 85.6,
+          "source": "ernie-5.1-blog"
+        },
+        "gpqa": {
+          "value": 82.1,
+          "source": "ernie-5.1-blog"
+        },
+        "arena-elo": {
+          "value": 1476,
+          "source": "ernie-5.1-blog"
+        }
+      },
+      "parameters": {
+        "total": "800B",
+        "active": "uncertain"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text",
+          "image",
+          "audio"
+        ]
+      },
+      "logo": "assets/logos/baidu.svg"
+    },
+    {
+      "id": "alibaba/qwen3.5-omni",
+      "name": "Qwen3.5-Omni",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2026-03-30",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "qwen3.5-omni-report",
+          "title": "Qwen3.5-Omni Technical Report",
+          "url": "https://arxiv.org/abs/2604.15804",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 85.9,
+          "source": "qwen3.5-omni-report"
+        },
+        "gpqa": {
+          "value": 83.9,
+          "source": "qwen3.5-omni-report"
+        },
+        "ifeval": {
+          "value": 89.7,
+          "source": "qwen3.5-omni-report"
+        }
+      },
+      "parameters": {
+        "total": "uncertain",
+        "active": "uncertain"
+      },
+      "architecture": "MoE",
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text",
+          "audio"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "zhipu/glm-5",
+      "name": "GLM-5",
+      "company": "zhipu",
+      "brand_color": "#4268FA",
+      "release_date": "2026-02-17",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "glm-5-report",
+          "title": "GLM-5: from Vibe Coding to Agentic Engineering",
+          "url": "https://arxiv.org/abs/2602.15763",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "gpqa": {
+          "value": 86,
+          "source": "glm-5-report"
+        },
+        "swe-bench": {
+          "value": 77.8,
+          "source": "glm-5-report"
+        }
+      },
+      "parameters": {
+        "total": "744B",
+        "active": "40B"
+      },
+      "architecture": "MoE",
+      "context_window": "200k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/zhipu.svg"
+    },
+    {
+      "id": "alibaba/qwen3.5",
+      "name": "Qwen3.5",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2026-02-16",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "qwen3.5-announcement",
+          "title": "Alibaba Group announces Qwen3.5",
+          "url": "https://www.alibabagroup.com/document-1960233590314762240",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "397B",
+        "active": "17B"
+      },
+      "architecture": "MoE",
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "bytedance/seed-2.0-pro",
+      "name": "Seed 2.0 Pro",
+      "company": "bytedance",
+      "brand_color": "#325AB4",
+      "release_date": "2026-02-14",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "seed2.0-model-card",
+          "title": "Seed2.0 Model Card: Towards Intelligence Frontier for Real-World Complexity",
+          "url": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/seed2/0214/Seed2.0%20Model%20Card.pdf",
+          "type": "paper"
+        },
+        {
+          "key": "seed2.0-arxiv",
+          "title": "Seed2.0 Model Card (arXiv abstract)",
+          "url": "https://arxiv.org/abs/2607.00248",
+          "type": "paper"
+        },
+        {
+          "key": "seed2.0-official-page",
+          "title": "Seed2.0 Official Product Page",
+          "url": "https://seed.bytedance.com/en/seed2",
+          "type": "website"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 87,
+          "source": "seed2.0-model-card"
+        },
+        "gpqa": {
+          "value": 88.9,
+          "source": "seed2.0-model-card"
+        },
+        "swe-bench": {
+          "value": 76.5,
+          "source": "seed2.0-model-card"
+        },
+        "humaneval": {
+          "value": null
+        },
+        "math-level-5": {
+          "value": null
+        },
+        "gsm8k": {
+          "value": null
+        },
+        "arena-elo": {
+          "value": null
+        },
+        "ifeval": {
+          "value": 78.9,
+          "source": "seed2.0-model-card"
+        },
+        "bbh": {
+          "value": null
+        },
+        "drop": {
+          "value": null
+        },
+        "hellaswag": {
+          "value": null
+        },
+        "arc-c": {
+          "value": null
+        },
+        "winogrande": {
+          "value": null
+        }
+      },
+      "parameters": {
+        "total": "undisclosed",
+        "active": "undisclosed"
+      },
+      "architecture": "MoE",
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text",
+          "image",
+          "video"
+        ]
+      },
+      "logo": "assets/logos/bytedance.svg"
+    },
+    {
+      "id": "bytedance/seed2.0-lite",
+      "name": "Seed 2.0 Lite",
+      "company": "bytedance",
+      "brand_color": "#325AB4",
+      "release_date": "2026-02-14",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "seed2.0-model-card",
+          "title": "Seed2.0 Model Card: Towards Intelligence Frontier for Real-World Complexity",
+          "url": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/seed2/0214/Seed2.0%20Model%20Card.pdf",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 87.7,
+          "source": "seed2.0-model-card"
+        },
+        "gpqa": {
+          "value": 85.1,
+          "source": "seed2.0-model-card"
+        },
+        "swe-bench": {
+          "value": 73.5,
+          "source": "seed2.0-model-card"
+        },
+        "ifeval": {
+          "value": 77.1,
+          "source": "seed2.0-model-card"
+        }
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/bytedance.svg"
+    },
+    {
+      "id": "moonshot/kimi-k2.5",
+      "name": "Kimi K2.5",
+      "company": "moonshot",
+      "brand_color": "#1783FF",
+      "release_date": "2026-02-02",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "kimi-k2.5-tech-report",
+          "title": "Kimi K2.5: Visual Agentic Intelligence",
+          "url": "https://arxiv.org/abs/2602.02276",
+          "type": "paper"
+        },
+        {
+          "key": "kimi-k2.5-huggingface",
+          "title": "Kimi K2.5 Hugging Face Model Card",
+          "url": "https://huggingface.co/moonshotai/Kimi-K2.5",
+          "type": "model-card"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 87.1,
+          "source": "kimi-k2.5-tech-report"
+        },
+        "gpqa": {
+          "value": 87.6,
+          "source": "kimi-k2.5-tech-report"
+        },
+        "swe-bench": {
+          "value": 76.8,
+          "source": "kimi-k2.5-tech-report"
+        }
+      },
+      "parameters": {
+        "total": "1.04T",
+        "active": "32B"
+      },
+      "architecture": "MoE",
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/moonshot.svg"
+    },
+    {
+      "id": "baidu/ernie-5.0-base",
+      "name": "ERNIE 5.0-Base",
+      "company": "baidu",
+      "brand_color": "#2932E1",
+      "release_date": "2026-01-22",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "ernie-5.0-tr",
+          "title": "ERNIE 5.0 Technical Report",
+          "url": "https://arxiv.org/abs/2602.04705",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 75.58,
+          "source": "ernie-5.0-tr"
+        },
+        "mmlu": {
+          "value": 90.58,
+          "source": "ernie-5.0-tr"
+        },
+        "gpqa": {
+          "value": 57.3,
+          "source": "ernie-5.0-tr"
+        },
+        "humaneval": {
+          "value": 80.86,
+          "source": "ernie-5.0-tr"
+        },
+        "math-level-5": {
+          "value": 73.89,
+          "source": "ernie-5.0-tr"
+        },
+        "bbh": {
+          "value": 75.69,
+          "source": "ernie-5.0-tr"
+        },
+        "winogrande": {
+          "value": 92.66,
+          "source": "ernie-5.0-tr"
+        }
+      },
+      "parameters": {
+        "total": "2.4T",
+        "active": "<3% of total"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text",
+          "image",
+          "audio"
+        ]
+      },
+      "logo": "assets/logos/baidu.svg"
+    },
+    {
+      "id": "baidu/ernie-5.0",
+      "name": "ERNIE 5.0",
+      "company": "baidu",
+      "brand_color": "#2932E1",
+      "release_date": "2026-01-22",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "ernie-5.0-tr",
+          "title": "ERNIE 5.0 Technical Report",
+          "url": "https://arxiv.org/abs/2602.04705",
+          "type": "paper"
+        },
+        {
+          "key": "ernie-5.0-lmarena",
+          "title": "ERNIE 5.0 release on LMArena",
+          "url": "https://ernie.baidu.com/blog/posts/ernie-5.0-0110-release-on-lmarena/",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 83.8,
+          "source": "ernie-5.0-tr"
+        },
+        "mmlu": {
+          "value": 91.2,
+          "source": "ernie-5.0-tr"
+        },
+        "gpqa": {
+          "value": 76.2,
+          "source": "ernie-5.0-tr"
+        },
+        "humaneval": {
+          "value": 94.48,
+          "source": "ernie-5.0-tr"
+        },
+        "math-level-5": {
+          "value": 82.54,
+          "source": "ernie-5.0-tr"
+        },
+        "ifeval": {
+          "value": 93.35,
+          "source": "ernie-5.0-tr"
+        },
+        "arena-elo": {
+          "value": 1460,
+          "source": "ernie-5.0-lmarena"
+        }
+      },
+      "parameters": {
+        "total": "2.4T",
+        "active": "<3% of total"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text",
+          "image",
+          "audio"
+        ]
+      },
+      "logo": "assets/logos/baidu.svg"
+    },
+    {
+      "id": "bytedance/seed-1.8",
+      "name": "Seed1.8",
+      "company": "bytedance",
+      "brand_color": "#325AB4",
+      "release_date": "2025-12-18",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal",
+        "agentic"
+      ],
+      "sources": [
+        {
+          "key": "seed1.8-model-card",
+          "title": "Seed1.8 Model Card: Towards Generalized Real-World Agency",
+          "url": "https://arxiv.org/html/2603.20633v2",
+          "type": "paper"
+        },
+        {
+          "key": "seed1.8-github",
+          "title": "ByteDance-Seed/Seed-1.8",
+          "url": "https://github.com/ByteDance-Seed/Seed-1.8",
+          "type": "website"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 92.3,
+          "source": "seed1.8-model-card"
+        },
+        "mmlu-pro": {
+          "value": 84.9,
+          "source": "seed1.8-model-card"
+        },
+        "gpqa": {
+          "value": 83.8,
+          "source": "seed1.8-model-card"
+        },
+        "humaneval": {
+          "value": null
+        },
+        "swe-bench": {
+          "value": 72.9,
+          "source": "seed1.8-model-card"
+        },
+        "math-level-5": {
+          "value": null
+        },
+        "gsm8k": {
+          "value": null
+        },
+        "arena-elo": {
+          "value": null
+        },
+        "ifeval": {
+          "value": 80.3,
+          "source": "seed1.8-model-card"
+        },
+        "bbh": {
+          "value": null
+        },
+        "drop": {
+          "value": null
+        },
+        "hellaswag": {
+          "value": null
+        },
+        "arc-c": {
+          "value": null
+        },
+        "winogrande": {
+          "value": null
+        }
+      },
+      "parameters": {
+        "total": "undisclosed",
+        "active": "undisclosed"
+      },
+      "architecture": "MoE",
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/bytedance.svg"
+    },
+    {
+      "id": "mistral/mistral-large-3",
+      "name": "Mistral Large 3",
+      "company": "mistral",
+      "brand_color": "#FA520F",
+      "release_date": "2025-12-02",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "mistral-3-blog",
+          "title": "Introducing Mistral 3",
+          "url": "https://mistral.ai/news/mistral-3/",
+          "type": "blog"
+        },
+        {
+          "key": "mistral-large-3-hf",
+          "title": "Mistral Large 3 675B Instruct 2512 — Hugging Face Model Card",
+          "url": "https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512",
+          "type": "model-card"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": null
+        },
+        "mmlu": {
+          "value": null
+        },
+        "gpqa": {
+          "value": null
+        },
+        "humaneval": {
+          "value": null
+        },
+        "swe-bench": {
+          "value": null
+        },
+        "math-level-5": {
+          "value": null
+        },
+        "gsm8k": {
+          "value": null
+        },
+        "arena-elo": {
+          "value": null
+        },
+        "ifeval": {
+          "value": null
+        },
+        "bbh": {
+          "value": null
+        },
+        "drop": {
+          "value": null
+        },
+        "hellaswag": {
+          "value": null
+        },
+        "arc-c": {
+          "value": null
+        },
+        "winogrande": {
+          "value": null
+        }
+      },
+      "parameters": {
+        "total": "675B",
+        "active": "41B"
+      },
+      "architecture": "MoE",
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text",
+          "image"
+        ]
+      },
+      "logo": "assets/logos/mistral.svg"
+    },
+    {
+      "id": "minimax/minimax-m2",
+      "name": "MiniMax-M2",
+      "company": "minimax",
+      "brand_color": "#F23F5D",
+      "release_date": "2025-10-27",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "minimax-m2-paper",
+          "title": "The MiniMax-M2 Series: Mini Activations Unleashing Max Real-World Intelligence",
+          "url": "https://arxiv.org/abs/2605.26494",
+          "type": "paper"
+        },
+        {
+          "key": "minimax-m2-github",
+          "title": "MiniMax-M2 GitHub Repository",
+          "url": "https://github.com/MiniMax-AI/MiniMax-M2",
+          "type": "codebase"
+        },
+        {
+          "key": "minimax-release-notes",
+          "title": "MiniMax API Release Notes - Models",
+          "url": "https://platform.minimax.io/docs/release-notes/models",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 82,
+          "source": "minimax-m2-github"
+        },
+        "gpqa": {
+          "value": 78,
+          "source": "minimax-m2-github"
+        },
+        "swe-bench": {
+          "value": 69.4,
+          "source": "minimax-m2-github"
+        }
+      },
+      "parameters": {
+        "total": "229.9B",
+        "active": "9.8B"
+      },
+      "architecture": "MoE",
+      "context_window": "192k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/minimax.svg"
+    },
+    {
+      "id": "moonshot/kimi-k2",
+      "name": "Kimi K2",
+      "company": "moonshot",
+      "brand_color": "#1783FF",
+      "release_date": "2025-07-28",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "kimi-k2-tech-report",
+          "title": "Kimi K2: Open Agentic Intelligence",
+          "url": "https://arxiv.org/abs/2507.20534",
+          "type": "paper"
+        },
+        {
+          "key": "kimi-k2-github",
+          "title": "MoonshotAI/Kimi-K2",
+          "url": "https://github.com/moonshotai/kimi-k2",
+          "type": "code"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 89.5,
+          "source": "kimi-k2-tech-report"
+        },
+        "mmlu-pro": {
+          "value": 81.1,
+          "source": "kimi-k2-tech-report"
+        },
+        "gpqa": {
+          "value": 75.1,
+          "source": "kimi-k2-tech-report"
+        },
+        "swe-bench": {
+          "value": 65.8,
+          "source": "kimi-k2-tech-report"
+        },
+        "math-level-5": {
+          "value": 97.4,
+          "source": "kimi-k2-tech-report"
+        },
+        "ifeval": {
+          "value": 89.8,
+          "source": "kimi-k2-tech-report"
+        },
+        "drop": {
+          "value": 93.5,
+          "source": "kimi-k2-tech-report"
+        }
+      },
+      "parameters": {
+        "total": "1.04T",
+        "active": "32.6B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/moonshot.svg"
+    },
+    {
+      "id": "zhipu/glm-4.5",
+      "name": "GLM-4.5",
+      "company": "zhipu",
+      "brand_color": "#4268FA",
+      "release_date": "2025-07-28",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "glm-4.5-report",
+          "title": "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models",
+          "url": "https://arxiv.org/abs/2508.06471",
+          "type": "paper"
+        },
+        {
+          "key": "glm-4.5-blog",
+          "title": "GLM-4.5: Reasoning, Coding, and Agentic Abilities",
+          "url": "https://z.ai/blog/glm-4.5",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 90,
+          "source": "glm-4.5-report"
+        },
+        "mmlu-pro": {
+          "value": 84.6,
+          "source": "glm-4.5-report"
+        },
+        "gpqa": {
+          "value": 79.1,
+          "source": "glm-4.5-report"
+        },
+        "humaneval": {
+          "value": 91.5,
+          "source": "glm-4.5-report"
+        },
+        "math-level-5": {
+          "value": 98.2,
+          "source": "glm-4.5-report"
+        },
+        "ifeval": {
+          "value": 86.1,
+          "source": "glm-4.5-report"
+        },
+        "swe-bench": {
+          "value": 64.2,
+          "source": "glm-4.5-report"
+        }
+      },
+      "parameters": {
+        "total": "355B",
+        "active": "32B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/zhipu.svg"
+    },
+    {
+      "id": "xai/grok-4",
+      "name": "Grok-4",
+      "company": "xai",
+      "brand_color": "#000000",
+      "release_date": "2025-07-09",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "grok-4",
+          "title": "Grok 4",
+          "url": "https://x.ai/news/grok-4",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "architecture": "unknown",
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio"
+        ],
+        "output": [
+          "text",
+          "audio"
+        ]
+      },
+      "logo": "assets/logos/xai.svg"
+    },
+    {
+      "id": "tencent/hunyuan-a13b",
+      "name": "Hunyuan-A13B",
+      "company": "tencent",
+      "brand_color": "#0052D9",
+      "release_date": "2025-06-27",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "hunyuan-a13b-github",
+          "title": "Tencent-Hunyuan/Hunyuan-A13B",
+          "url": "https://github.com/Tencent-Hunyuan/Hunyuan-A13B",
+          "type": "codebase"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 88.17,
+          "source": "hunyuan-a13b-github"
+        },
+        "mmlu-pro": {
+          "value": 67.23,
+          "source": "hunyuan-a13b-github"
+        },
+        "gpqa": {
+          "value": 49.12,
+          "source": "hunyuan-a13b-github"
+        },
+        "math-level-5": {
+          "value": 72.35,
+          "source": "hunyuan-a13b-github"
+        },
+        "gsm8k": {
+          "value": 91.83,
+          "source": "hunyuan-a13b-github"
+        },
+        "ifeval": {
+          "value": 84.7,
+          "source": "hunyuan-a13b-github"
+        }
+      },
+      "parameters": {
+        "total": "80B",
+        "active": "13B"
+      },
+      "architecture": "MoE",
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/tencent.svg"
+    },
+    {
+      "id": "google/gemini-2.5-flash-lite",
+      "name": "Gemini 2.5 Flash-Lite",
+      "company": "google",
+      "brand_color": "#4285F4",
+      "release_date": "2025-06-17",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gemini-2.5-report",
+          "title": "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities",
+          "url": "https://arxiv.org/abs/2507.06261",
+          "type": "paper"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/google.svg"
+    },
+    {
+      "id": "minimax/minimax-m1",
+      "name": "MiniMax-M1",
+      "company": "minimax",
+      "brand_color": "#F23F5D",
+      "release_date": "2025-06-16",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "minimax-m1-paper",
+          "title": "MiniMax-M1: Scaling Test-Time Compute Efficiently with Lightning Attention",
+          "url": "https://arxiv.org/abs/2506.13585",
+          "type": "paper"
+        },
+        {
+          "key": "minimax-m1-github",
+          "title": "MiniMax-M1 GitHub Repository",
+          "url": "https://github.com/MiniMax-AI/MiniMax-M1",
+          "type": "codebase"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 81.1,
+          "source": "minimax-m1-paper"
+        },
+        "gpqa": {
+          "value": 70,
+          "source": "minimax-m1-paper"
+        },
+        "swe-bench": {
+          "value": 56,
+          "source": "minimax-m1-paper"
+        }
+      },
+      "parameters": {
+        "total": "456B",
+        "active": "45.9B"
+      },
+      "architecture": "MoE",
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/minimax.svg"
+    },
+    {
+      "id": "mistral/magistral-medium",
+      "name": "Magistral Medium",
+      "company": "mistral",
+      "brand_color": "#FA520F",
+      "release_date": "2025-06-10",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "magistral-blog",
+          "title": "Magistral — the first reasoning model by Mistral AI",
+          "url": "https://mistral.ai/news/magistral",
+          "type": "blog"
+        },
+        {
+          "key": "magistral-paper",
+          "title": "Magistral",
+          "url": "https://arxiv.org/abs/2506.10910",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": null
+        },
+        "mmlu": {
+          "value": null
+        },
+        "gpqa": {
+          "value": null
+        },
+        "humaneval": {
+          "value": null
+        },
+        "swe-bench": {
+          "value": null
+        },
+        "math-level-5": {
+          "value": null
+        },
+        "gsm8k": {
+          "value": null
+        },
+        "arena-elo": {
+          "value": null
+        },
+        "ifeval": {
+          "value": null
+        },
+        "bbh": {
+          "value": null
+        },
+        "drop": {
+          "value": null
+        },
+        "hellaswag": {
+          "value": null
+        },
+        "arc-c": {
+          "value": null
+        },
+        "winogrande": {
+          "value": null
+        }
+      },
+      "architecture": "Dense",
+      "context_window": "uncertain",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/mistral.svg"
+    },
+    {
+      "id": "mistral/magistral-small",
+      "name": "Magistral Small",
+      "company": "mistral",
+      "brand_color": "#FA520F",
+      "release_date": "2025-06-10",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "magistral-blog",
+          "title": "Magistral — the first reasoning model by Mistral AI",
+          "url": "https://mistral.ai/news/magistral",
+          "type": "blog"
+        },
+        {
+          "key": "magistral-paper",
+          "title": "Magistral",
+          "url": "https://arxiv.org/abs/2506.10910",
+          "type": "paper"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "24B",
+        "active": "24B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/mistral.svg"
+    },
+    {
+      "id": "anthropic/claude-4-opus",
+      "name": "Claude 4 Opus",
+      "company": "anthropic",
+      "brand_color": "#D97757",
+      "release_date": "2025-05-22",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "claude-4-launch",
+          "title": "Introducing Claude 4",
+          "url": "https://www.anthropic.com/news/claude-4",
+          "type": "blog"
+        },
+        {
+          "key": "claude-4-system-card",
+          "title": "System Card: Claude Opus 4 & Claude Sonnet 4",
+          "url": "https://www-cdn.anthropic.com/4263b940cabb546aa0e3283f35b686f4f3b2ff47/claude-opus-4-and-claude-sonnet-4-system-card.pdf",
+          "type": "system-card"
+        }
+      ],
+      "scores": {
+        "swe-bench": {
+          "value": 72.5,
+          "source": "claude-4-launch"
+        },
+        "gpqa": {
+          "value": 74.9,
+          "source": "claude-4-launch"
+        }
+      },
+      "architecture": "Dense",
+      "context_window": "200k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/anthropic.svg"
+    },
+    {
+      "id": "anthropic/claude-4-sonnet",
+      "name": "Claude 4 Sonnet",
+      "company": "anthropic",
+      "brand_color": "#D97757",
+      "release_date": "2025-05-22",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "claude-4-launch",
+          "title": "Introducing Claude 4",
+          "url": "https://www.anthropic.com/news/claude-4",
+          "type": "blog"
+        },
+        {
+          "key": "claude-4-system-card",
+          "title": "System Card: Claude Opus 4 & Claude Sonnet 4",
+          "url": "https://www-cdn.anthropic.com/4263b940cabb546aa0e3283f35b686f4f3b2ff47/claude-opus-4-and-claude-sonnet-4-system-card.pdf",
+          "type": "system-card"
+        }
+      ],
+      "scores": {
+        "swe-bench": {
+          "value": 72.7,
+          "source": "claude-4-launch"
+        }
+      },
+      "architecture": "Dense",
+      "context_window": "200k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/anthropic.svg"
+    },
+    {
+      "id": "tencent/hunyuan-turbos",
+      "name": "Hunyuan-TurboS",
+      "company": "tencent",
+      "brand_color": "#0052D9",
+      "release_date": "2025-05-21",
+      "weight_availability_tags": [
+        "closed-weights"
+      ],
+      "sources": [
+        {
+          "key": "hunyuan-turbos-paper",
+          "title": "Hunyuan-TurboS: Advancing Large Language Models through Mamba-Transformer Synergy and Adaptive Chain-of-Thought",
+          "url": "https://arxiv.org/abs/2505.15431",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 87.94,
+          "source": "hunyuan-turbos-paper"
+        },
+        "mmlu-pro": {
+          "value": 65.11,
+          "source": "hunyuan-turbos-paper"
+        },
+        "bbh": {
+          "value": 89.76,
+          "source": "hunyuan-turbos-paper"
+        },
+        "drop": {
+          "value": 85.3,
+          "source": "hunyuan-turbos-paper"
+        },
+        "hellaswag": {
+          "value": 87.1,
+          "source": "hunyuan-turbos-paper"
+        },
+        "arc-c": {
+          "value": 97.32,
+          "source": "hunyuan-turbos-paper"
+        },
+        "winogrande": {
+          "value": 86.5,
+          "source": "hunyuan-turbos-paper"
+        },
+        "math-level-5": {
+          "value": 81.4,
+          "source": "hunyuan-turbos-paper"
+        },
+        "gsm8k": {
+          "value": 94.39,
+          "source": "hunyuan-turbos-paper"
+        },
+        "arena-elo": {
+          "value": 1356,
+          "source": "hunyuan-turbos-paper"
+        }
+      },
+      "parameters": {
+        "total": "560B",
+        "active": "56B"
+      },
+      "architecture": "Hybrid Transformer-Mamba MoE",
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/tencent.svg"
+    },
+    {
+      "id": "alibaba/qwen3",
+      "name": "Qwen3",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2025-04-29",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "qwen3-report",
+          "title": "Qwen3 Technical Report",
+          "url": "https://arxiv.org/abs/2505.09388",
+          "type": "paper"
+        },
+        {
+          "key": "qwen3-blog",
+          "title": "Qwen3: Think Deeper, Act Faster",
+          "url": "https://qwenlm.github.io/blog/qwen3/",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 87.81,
+          "source": "qwen3-report"
+        },
+        "mmlu-pro": {
+          "value": 68.18,
+          "source": "qwen3-report"
+        },
+        "gpqa": {
+          "value": 47.47,
+          "source": "qwen3-report"
+        },
+        "gsm8k": {
+          "value": 94.39,
+          "source": "qwen3-report"
+        },
+        "math-level-5": {
+          "value": 71.84,
+          "source": "qwen3-report"
+        },
+        "bbh": {
+          "value": 88.87,
+          "source": "qwen3-report"
+        },
+        "ifeval": {
+          "value": 83.4,
+          "source": "qwen3-report"
+        }
+      },
+      "parameters": {
+        "total": "235B",
+        "active": "22B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "google/gemini-2.5-flash",
+      "name": "Gemini 2.5 Flash",
+      "company": "google",
+      "brand_color": "#4285F4",
+      "release_date": "2025-04-17",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gemini-2.5-report",
+          "title": "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities",
+          "url": "https://arxiv.org/abs/2507.06261",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "gpqa": {
+          "value": 82.8,
+          "source": "gemini-2.5-report"
+        },
+        "swe-bench": {
+          "value": 60.3,
+          "source": "gemini-2.5-report"
+        }
+      },
+      "architecture": "MoE",
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/google.svg"
+    },
+    {
+      "id": "openai/o3",
+      "name": "OpenAI o3",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2025-04-16",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "o3-announcement",
+          "title": "Introducing OpenAI o3 and o4-mini",
+          "url": "https://openai.com/index/introducing-o3-and-o4-mini/",
+          "type": "blog"
+        },
+        {
+          "key": "o3-system-card",
+          "title": "OpenAI o3 and o4-mini System Card",
+          "url": "https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "gpqa": {
+          "value": 87.7,
+          "source": "o3-announcement"
+        },
+        "swe-bench": {
+          "value": 71.7,
+          "source": "o3-announcement"
+        }
+      },
+      "context_window": "200k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "openai/o4-mini",
+      "name": "OpenAI o4-mini",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2025-04-16",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "o3-announcement",
+          "title": "Introducing OpenAI o3 and o4-mini",
+          "url": "https://openai.com/index/introducing-o3-and-o4-mini/",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "context_window": "200k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "moonshot/kimi-vl",
+      "name": "Kimi-VL",
+      "company": "moonshot",
+      "brand_color": "#1783FF",
+      "release_date": "2025-04-15",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "kimi-vl-tech-report",
+          "title": "Kimi-VL: Frontier-Class Visual Language Model",
+          "url": "https://arxiv.org/abs/2504.07491",
+          "type": "paper"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "16B",
+        "active": "2.8B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/moonshot.svg"
+    },
+    {
+      "id": "bytedance/seed-thinking-v1.5",
+      "name": "Seed-Thinking-v1.5",
+      "company": "bytedance",
+      "brand_color": "#325AB4",
+      "release_date": "2025-04-14",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "seed-thinking-v1.5-paper",
+          "title": "Seed1.5-Thinking: Advancing Superb Reasoning Models with Reinforcement Learning",
+          "url": "https://github.com/ByteDance-Seed/Seed-Thinking-v1.5/raw/main/seed-thinking-v1.5.pdf",
+          "type": "paper"
+        },
+        {
+          "key": "seed-thinking-v1.5-blog",
+          "title": "ByteDance's Latest Thinking Model, Seed-Thinking-v1.5 Technical Details Disclosed",
+          "url": "https://seed.bytedance.com/en/blog/bytedance-s-latest-thinking-model-seed-thinking-v1-5-technical-details-disclosed",
+          "type": "website"
+        },
+        {
+          "key": "seed-thinking-v1.5-github",
+          "title": "ByteDance-Seed/Seed-Thinking-v1.5",
+          "url": "https://github.com/ByteDance-Seed/Seed-Thinking-v1.5",
+          "type": "website"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 87,
+          "source": "seed-thinking-v1.5-paper"
+        },
+        "gpqa": {
+          "value": 77.3,
+          "source": "seed-thinking-v1.5-paper"
+        },
+        "humaneval": {
+          "value": null
+        },
+        "swe-bench": {
+          "value": 47,
+          "source": "seed-thinking-v1.5-paper"
+        },
+        "math-level-5": {
+          "value": null
+        },
+        "gsm8k": {
+          "value": null
+        },
+        "arena-elo": {
+          "value": null
+        },
+        "ifeval": {
+          "value": 87.4,
+          "source": "seed-thinking-v1.5-paper"
+        },
+        "bbh": {
+          "value": null
+        },
+        "drop": {
+          "value": null
+        },
+        "hellaswag": {
+          "value": null
+        },
+        "arc-c": {
+          "value": null
+        },
+        "winogrande": {
+          "value": null
+        }
+      },
+      "parameters": {
+        "total": "200B",
+        "active": "20B"
+      },
+      "architecture": "MoE",
+      "context_window": "32k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/bytedance.svg"
+    },
+    {
+      "id": "openai/gpt-4.1-mini",
+      "name": "GPT-4.1 mini",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2025-04-14",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-4.1-announcement",
+          "title": "Introducing GPT-4.1 in the API",
+          "url": "https://openai.com/index/gpt-4-1/",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 87.5,
+          "source": "gpt-4.1-announcement"
+        },
+        "gpqa": {
+          "value": 65,
+          "source": "gpt-4.1-announcement"
+        },
+        "ifeval": {
+          "value": 84.1,
+          "source": "gpt-4.1-announcement"
+        },
+        "swe-bench": {
+          "value": 23.6,
+          "source": "gpt-4.1-announcement"
+        }
+      },
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "openai/gpt-4.1",
+      "name": "GPT-4.1",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2025-04-14",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-4.1-announcement",
+          "title": "Introducing GPT-4.1 in the API",
+          "url": "https://openai.com/index/gpt-4-1/",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 90.2,
+          "source": "gpt-4.1-announcement"
+        },
+        "gpqa": {
+          "value": 66.3,
+          "source": "gpt-4.1-announcement"
+        },
+        "ifeval": {
+          "value": 87.4,
+          "source": "gpt-4.1-announcement"
+        },
+        "swe-bench": {
+          "value": 54.6,
+          "source": "gpt-4.1-announcement"
+        }
+      },
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "meta/llama-4-maverick",
+      "name": "Llama 4 Maverick Instruct",
+      "company": "meta",
+      "brand_color": "#1d65c1",
+      "release_date": "2025-04-05",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "llama4-model-card",
+          "title": "Llama 4 Model Card",
+          "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md",
+          "type": "model-card"
+        },
+        {
+          "key": "llama4-announcement",
+          "title": "Introducing Llama 4: Advancing multimodal intelligence",
+          "url": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 80.5,
+          "source": "llama4-model-card"
+        },
+        "gpqa": {
+          "value": 69.8,
+          "source": "llama4-model-card"
+        }
+      },
+      "parameters": {
+        "total": "400B",
+        "active": "17B"
+      },
+      "architecture": "MoE",
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/meta.svg"
+    },
+    {
+      "id": "meta/llama-4-scout",
+      "name": "Llama 4 Scout Instruct",
+      "company": "meta",
+      "brand_color": "#1d65c1",
+      "release_date": "2025-04-05",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "llama4-model-card",
+          "title": "Llama 4 Model Card",
+          "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md",
+          "type": "model-card"
+        },
+        {
+          "key": "llama4-announcement",
+          "title": "Introducing Llama 4: Advancing multimodal intelligence",
+          "url": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 74.3,
+          "source": "llama4-model-card"
+        },
+        "gpqa": {
+          "value": 57.2,
+          "source": "llama4-model-card"
+        }
+      },
+      "parameters": {
+        "total": "109B",
+        "active": "17B"
+      },
+      "architecture": "MoE",
+      "context_window": "10M",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/meta.svg"
+    },
+    {
+      "id": "google/gemini-2.5-pro",
+      "name": "Gemini 2.5 Pro",
+      "company": "google",
+      "brand_color": "#4285F4",
+      "release_date": "2025-03-25",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gemini-2.5-report",
+          "title": "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities",
+          "url": "https://arxiv.org/abs/2507.06261",
+          "type": "paper"
+        },
+        {
+          "key": "gemini-2.5-announcement",
+          "title": "Gemini 2.5: Our most intelligent AI model",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-thinking-updates-march-2025/",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "gpqa": {
+          "value": 86.4,
+          "source": "gemini-2.5-report"
+        },
+        "swe-bench": {
+          "value": 67.2,
+          "source": "gemini-2.5-report"
+        }
+      },
+      "architecture": "MoE",
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/google.svg"
+    },
+    {
+      "id": "tencent/hunyuan-t1",
+      "name": "Hunyuan-T1",
+      "company": "tencent",
+      "brand_color": "#0052D9",
+      "release_date": "2025-03-21",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "hunyuan-t1-blog",
+          "title": "混元-T1：强化学习驱动，业内首个超大规模混合Mamba推理模型正式发布",
+          "url": "https://github.com/Tencent/llm.hunyuan.T1/blob/main/README.md",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 87.2,
+          "source": "hunyuan-t1-blog"
+        },
+        "gpqa": {
+          "value": 69.3,
+          "source": "hunyuan-t1-blog"
+        },
+        "math-level-5": {
+          "value": 96.2,
+          "source": "hunyuan-t1-blog"
+        }
+      },
+      "parameters": {
+        "total": "560B",
+        "active": "56B"
+      },
+      "architecture": "Hybrid Transformer-Mamba MoE",
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/tencent.svg"
+    },
+    {
+      "id": "baidu/ernie-4.5",
+      "name": "ERNIE 4.5-300B-A47B",
+      "company": "baidu",
+      "brand_color": "#2932E1",
+      "release_date": "2025-03-16",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "ernie-4.5-tr",
+          "title": "ERNIE 4.5 Technical Report",
+          "url": "https://ernie.baidu.com/blog/publication/ERNIE_Technical_Report.pdf",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 78.4,
+          "source": "ernie-4.5-tr"
+        },
+        "mmlu": {
+          "value": 86.5,
+          "source": "ernie-4.5-tr"
+        },
+        "humaneval": {
+          "value": 92.1,
+          "source": "ernie-4.5-tr"
+        },
+        "math-level-5": {
+          "value": 96.4,
+          "source": "ernie-4.5-tr"
+        },
+        "gsm8k": {
+          "value": 96.6,
+          "source": "ernie-4.5-tr"
+        },
+        "ifeval": {
+          "value": 88,
+          "source": "ernie-4.5-tr"
+        },
+        "bbh": {
+          "value": 94.3,
+          "source": "ernie-4.5-tr"
+        },
+        "drop": {
+          "value": 91.1,
+          "source": "ernie-4.5-tr"
+        },
+        "gpqa": {
+          "value": 81.1,
+          "source": "ernie-4.5-tr"
+        }
+      },
+      "parameters": {
+        "total": "300B",
+        "active": "47B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/baidu.svg"
+    },
+    {
+      "id": "baidu/ernie-x1",
+      "name": "ERNIE X1",
+      "company": "baidu",
+      "brand_color": "#2932E1",
+      "release_date": "2025-03-16",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "baidu-x1-news",
+          "title": "Baidu unveils Ernie 4.5 and deep-thinking reasoning model Ernie X1",
+          "url": "https://www.wicinternet.org/2025-03/24/c_1080639.htm",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "undisclosed",
+        "active": "undisclosed"
+      },
+      "architecture": "MoE",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/baidu.svg"
+    },
+    {
+      "id": "anthropic/claude-3.7-sonnet",
+      "name": "Claude 3.7 Sonnet",
+      "company": "anthropic",
+      "brand_color": "#D97757",
+      "release_date": "2025-02-24",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "claude-3-7-sonnet-launch",
+          "title": "Claude 3.7 Sonnet and Claude Code",
+          "url": "https://www.anthropic.com/news/claude-3-7-sonnet",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "architecture": "Dense",
+      "context_window": "200k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/anthropic.svg"
+    },
+    {
+      "id": "xai/grok-3-mini",
+      "name": "Grok-3 mini",
+      "company": "xai",
+      "brand_color": "#000000",
+      "release_date": "2025-02-19",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "grok-3-beta",
+          "title": "Grok 3 Beta — The Age of Reasoning Agents",
+          "url": "https://x.ai/news/grok-3",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 78.9,
+          "source": "grok-3-beta"
+        },
+        "gpqa": {
+          "value": 66.2,
+          "source": "grok-3-beta"
+        }
+      },
+      "architecture": "unknown",
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/xai.svg"
+    },
+    {
+      "id": "xai/grok-3",
+      "name": "Grok-3",
+      "company": "xai",
+      "brand_color": "#000000",
+      "release_date": "2025-02-19",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "grok-3-beta",
+          "title": "Grok 3 Beta — The Age of Reasoning Agents",
+          "url": "https://x.ai/news/grok-3",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 79.9,
+          "source": "grok-3-beta"
+        },
+        "gpqa": {
+          "value": 75.4,
+          "source": "grok-3-beta"
+        },
+        "arena-elo": {
+          "value": 1402,
+          "source": "grok-3-beta"
+        }
+      },
+      "architecture": "unknown",
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/xai.svg"
+    },
+    {
+      "id": "google/gemini-2.0-flash-lite",
+      "name": "Gemini 2.0 Flash-Lite",
+      "company": "google",
+      "brand_color": "#4285F4",
+      "release_date": "2025-02-05",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gemini-2.0-update",
+          "title": "Gemini model updates February 2025",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-updates-february-2025/",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/google.svg"
+    },
+    {
+      "id": "alibaba/qwen2.5-vl",
+      "name": "Qwen2.5-VL",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2025-01-28",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "qwen2.5-vl-report",
+          "title": "Qwen2.5-VL Technical Report",
+          "url": "https://arxiv.org/abs/2502.13923",
+          "type": "paper"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "72B",
+        "active": "72B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "baichuan/baichuan-m1-preview",
+      "name": "Baichuan-M1-preview",
+      "company": "baichuan",
+      "brand_color": "#FF6933",
+      "release_date": "2025-01-24",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "baichuan-m1-preview-launch",
+          "title": "百川智能发布深度思考模型Baichuan-M1-preview",
+          "url": "https://www.ithome.com/0/826/964.htm",
+          "type": "blog"
+        },
+        {
+          "key": "baichuan-m1-preview-huanqiu",
+          "title": "百川智能首个全场景深度思考模型Baichuan-M1-preview发布",
+          "url": "https://tech.huanqiu.com/article/4LCc06490AH",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/baichuan.svg"
+    },
+    {
+      "id": "baichuan/baichuan-m1-14b",
+      "name": "Baichuan-M1-14B",
+      "company": "baichuan",
+      "brand_color": "#FF6933",
+      "release_date": "2025-01-23",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "baichuan-m1-14b-report",
+          "title": "Baichuan-M1-14B: A Medical Specialized Large Language Model",
+          "url": "https://arxiv.org/abs/2502.12671",
+          "type": "paper"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "14B",
+        "active": "14B"
+      },
+      "architecture": "Dense",
+      "context_window": "32k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/baichuan.svg"
+    },
+    {
+      "id": "bytedance/doubao-1.5-pro",
+      "name": "Doubao-1.5-pro",
+      "company": "bytedance",
+      "brand_color": "#325AB4",
+      "release_date": "2025-01-22",
+      "weight_availability_tags": [
+        "closed-weights"
+      ],
+      "sources": [
+        {
+          "key": "volcengine-model-list",
+          "title": "Volcano Engine Model List",
+          "url": "https://www.volcengine.com/docs/82379/1330310",
+          "type": "website"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 80.2,
+          "source": "volcengine-model-list"
+        },
+        "gpqa": {
+          "value": 66.2,
+          "source": "volcengine-model-list"
+        }
+      },
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/bytedance.svg"
+    },
+    {
+      "id": "moonshot/kimi-k1.5",
+      "name": "Kimi K1.5",
+      "company": "moonshot",
+      "brand_color": "#1783FF",
+      "release_date": "2025-01-22",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "kimi-k1.5-tech-report",
+          "title": "Kimi K1.5: Scaling Reinforcement Learning with LLMs",
+          "url": "https://arxiv.org/abs/2501.12599",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 87.4,
+          "source": "kimi-k1.5-tech-report"
+        },
+        "ifeval": {
+          "value": 87.2,
+          "source": "kimi-k1.5-tech-report"
+        },
+        "math-level-5": {
+          "value": 96.2,
+          "source": "kimi-k1.5-tech-report"
+        },
+        "humaneval": {
+          "value": 81.5,
+          "source": "kimi-k1.5-tech-report"
+        }
+      },
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/moonshot.svg"
+    },
+    {
+      "id": "deepseek/r1-zero",
+      "name": "DeepSeek-R1-Zero",
+      "company": "deepseek",
+      "brand_color": "#4D6BFE",
+      "release_date": "2025-01-20",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "r1-tech-report",
+          "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+          "url": "https://arxiv.org/abs/2501.12948",
+          "type": "paper"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "671B",
+        "active": "37B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/deepseek.svg"
+    },
+    {
+      "id": "deepseek/r1",
+      "name": "DeepSeek-R1",
+      "company": "deepseek",
+      "brand_color": "#4D6BFE",
+      "release_date": "2025-01-20",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "r1-tech-report",
+          "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
+          "url": "https://arxiv.org/abs/2501.12948",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 84,
+          "source": "r1-tech-report"
+        },
+        "mmlu": {
+          "value": 90.8,
+          "source": "r1-tech-report"
+        },
+        "gpqa": {
+          "value": 71.5,
+          "source": "r1-tech-report"
+        },
+        "ifeval": {
+          "value": 83.3,
+          "source": "r1-tech-report"
+        },
+        "drop": {
+          "value": 92.2,
+          "source": "r1-tech-report"
+        },
+        "math-level-5": {
+          "value": 97.3,
+          "source": "r1-tech-report"
+        },
+        "swe-bench": {
+          "value": 49.2,
+          "source": "r1-tech-report"
+        }
+      },
+      "parameters": {
+        "total": "671B",
+        "active": "37B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/deepseek.svg"
+    },
+    {
+      "id": "minimax/minimax-text-01",
+      "name": "MiniMax-Text-01",
+      "company": "minimax",
+      "brand_color": "#F23F5D",
+      "release_date": "2025-01-14",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "minimax-01-report",
+          "title": "MiniMax-01: Scaling Foundation Models with Efficient Lightning Attention",
+          "url": "https://arxiv.org/abs/2501.08313",
+          "type": "paper"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "456B",
+        "active": "45.9B"
+      },
+      "architecture": "MoE",
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/minimax.svg"
+    },
+    {
+      "id": "deepseek/v3",
+      "name": "DeepSeek-V3",
+      "company": "deepseek",
+      "brand_color": "#4D6BFE",
+      "release_date": "2024-12-26",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "v3-tech-report",
+          "title": "DeepSeek-V3 Technical Report",
+          "url": "https://arxiv.org/abs/2412.19437",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 75.9,
+          "source": "v3-tech-report"
+        },
+        "mmlu": {
+          "value": 88.5,
+          "source": "v3-tech-report"
+        },
+        "gpqa": {
+          "value": 59.1,
+          "source": "v3-tech-report"
+        },
+        "ifeval": {
+          "value": 86.1,
+          "source": "v3-tech-report"
+        },
+        "drop": {
+          "value": 91.6,
+          "source": "v3-tech-report"
+        },
+        "math-level-5": {
+          "value": 90.2,
+          "source": "v3-tech-report"
+        },
+        "swe-bench": {
+          "value": 42,
+          "source": "v3-tech-report"
+        }
+      },
+      "parameters": {
+        "total": "671B",
+        "active": "37B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/deepseek.svg"
+    },
+    {
+      "id": "deepseek/vl2",
+      "name": "DeepSeek-VL2",
+      "company": "deepseek",
+      "brand_color": "#4D6BFE",
+      "release_date": "2024-12-13",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "vl2-tech-report",
+          "title": "DeepSeek-VL2: Mixture-of-Experts Vision-Language Models for Advanced Multimodal Understanding",
+          "url": "https://arxiv.org/abs/2412.10302",
+          "type": "paper"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "27B",
+        "active": "4.5B"
+      },
+      "architecture": "MoE",
+      "context_window": "uncertain",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/deepseek.svg"
+    },
+    {
+      "id": "google/gemini-2.0-flash",
+      "name": "Gemini 2.0 Flash",
+      "company": "google",
+      "brand_color": "#4285F4",
+      "release_date": "2024-12-11",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gemini-2.5-report",
+          "title": "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities (includes Gemini 2.0 Flash results)",
+          "url": "https://arxiv.org/abs/2507.06261",
+          "type": "paper"
+        },
+        {
+          "key": "gemini-2.0-announcement",
+          "title": "Introducing Gemini 2.0: our new AI model for the agentic era",
+          "url": "https://blog.google/intl/en-nz/company-news/2024_12_introducing-gemini-20-our-new-ai-mode/",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "gpqa": {
+          "value": 65.2,
+          "source": "gemini-2.5-report"
+        },
+        "swe-bench": {
+          "value": 34.2,
+          "source": "gemini-2.5-report"
+        }
+      },
+      "architecture": "MoE",
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text",
+          "image",
+          "audio"
+        ]
+      },
+      "logo": "assets/logos/google.svg"
+    },
+    {
+      "id": "meta/llama-3.3-70b",
+      "name": "Llama 3.3 70B Instruct",
+      "company": "meta",
+      "brand_color": "#1d65c1",
+      "release_date": "2024-12-06",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "llama3.3-model-card",
+          "title": "Llama 3.3 Model Card",
+          "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md",
+          "type": "model-card"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "70B",
+        "active": "70B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/meta.svg"
+    },
+    {
+      "id": "openai/o1",
+      "name": "OpenAI o1",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2024-12-05",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "o1-api-announcement",
+          "title": "OpenAI o1 and new tools for developers",
+          "url": "https://openai.com/index/o1-and-new-tools-for-developers/",
+          "type": "blog"
+        },
+        {
+          "key": "o1-reasoning-blog",
+          "title": "Learning to reason with LLMs",
+          "url": "https://openai.com/index/learning-to-reason-with-llms/",
+          "type": "blog"
+        },
+        {
+          "key": "o1-system-card",
+          "title": "OpenAI o1 System Card",
+          "url": "https://arxiv.org/abs/2412.16720",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 91.8,
+          "source": "o1-api-announcement"
+        },
+        "gpqa": {
+          "value": 75.7,
+          "source": "o1-api-announcement"
+        },
+        "swe-bench": {
+          "value": 48.9,
+          "source": "o1-api-announcement"
+        },
+        "math-level-5": {
+          "value": 96.4,
+          "source": "o1-api-announcement"
+        }
+      },
+      "context_window": "200k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "mistral/pixtral-large",
+      "name": "Pixtral Large",
+      "company": "mistral",
+      "brand_color": "#FA520F",
+      "release_date": "2024-11-19",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "pixtral-large-blog",
+          "title": "Pixtral Large",
+          "url": "https://mistral.ai/news/pixtral-large/",
+          "type": "blog"
+        },
+        {
+          "key": "pixtral-large-hf",
+          "title": "Pixtral Large Instruct 2411 — Hugging Face Model Card",
+          "url": "https://huggingface.co/mistralai/Pixtral-Large-Instruct-2411",
+          "type": "model-card"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": null
+        },
+        "mmlu": {
+          "value": null
+        },
+        "gpqa": {
+          "value": null
+        },
+        "humaneval": {
+          "value": null
+        },
+        "swe-bench": {
+          "value": null
+        },
+        "math-level-5": {
+          "value": null
+        },
+        "gsm8k": {
+          "value": null
+        },
+        "arena-elo": {
+          "value": null
+        },
+        "ifeval": {
+          "value": null
+        },
+        "bbh": {
+          "value": null
+        },
+        "drop": {
+          "value": null
+        },
+        "hellaswag": {
+          "value": null
+        },
+        "arc-c": {
+          "value": null
+        },
+        "winogrande": {
+          "value": null
+        }
+      },
+      "parameters": {
+        "total": "124B",
+        "active": "124B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/mistral.svg"
+    },
+    {
+      "id": "tencent/hunyuan-large",
+      "name": "Hunyuan-Large",
+      "company": "tencent",
+      "brand_color": "#0052D9",
+      "release_date": "2024-11-05",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "hunyuan-large-paper",
+          "title": "Hunyuan-Large: An Open-Source MoE Model with 52 Billion Activated Parameters by Tencent",
+          "url": "https://arxiv.org/abs/2411.02265",
+          "type": "paper"
+        },
+        {
+          "key": "hunyuan-large-github",
+          "title": "Tencent-Hunyuan-Large GitHub Repository",
+          "url": "https://github.com/Tencent-Hunyuan/Tencent-Hunyuan-Large",
+          "type": "codebase"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 88.4,
+          "source": "hunyuan-large-paper"
+        },
+        "mmlu-pro": {
+          "value": 60.2,
+          "source": "hunyuan-large-paper"
+        },
+        "bbh": {
+          "value": 86.3,
+          "source": "hunyuan-large-paper"
+        },
+        "drop": {
+          "value": 88.9,
+          "source": "hunyuan-large-paper"
+        },
+        "hellaswag": {
+          "value": 86.8,
+          "source": "hunyuan-large-paper"
+        },
+        "arc-c": {
+          "value": 95,
+          "source": "hunyuan-large-paper"
+        },
+        "winogrande": {
+          "value": 88.7,
+          "source": "hunyuan-large-paper"
+        },
+        "math-level-5": {
+          "value": 69.8,
+          "source": "hunyuan-large-paper"
+        },
+        "gsm8k": {
+          "value": 92.8,
+          "source": "hunyuan-large-paper"
+        },
+        "humaneval": {
+          "value": 71.4,
+          "source": "hunyuan-large-paper"
+        },
+        "gpqa": {
+          "value": 42.4,
+          "source": "hunyuan-large-github"
+        },
+        "ifeval": {
+          "value": 85,
+          "source": "hunyuan-large-github"
+        }
+      },
+      "parameters": {
+        "total": "389B",
+        "active": "52B"
+      },
+      "architecture": "MoE",
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/tencent.svg"
+    },
+    {
+      "id": "anthropic/claude-3.5-sonnet",
+      "name": "Claude 3.5 Sonnet",
+      "company": "anthropic",
+      "brand_color": "#D97757",
+      "release_date": "2024-10-22",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "claude-3-5-sonnet-oct-addendum",
+          "title": "Model Card Addendum: Claude 3.5 Haiku and Upgraded Claude 3.5 Sonnet",
+          "url": "https://assets.anthropic.com/m/1cd9d098ac3e6467/original/Claude-3-Model-Card-October-Addendum.pdf",
+          "type": "model-card"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 88.7,
+          "source": "claude-3-5-sonnet-oct-addendum"
+        },
+        "mmlu-pro": {
+          "value": 78,
+          "source": "claude-3-5-sonnet-oct-addendum"
+        },
+        "gpqa": {
+          "value": 65,
+          "source": "claude-3-5-sonnet-oct-addendum"
+        },
+        "humaneval": {
+          "value": 93.7,
+          "source": "claude-3-5-sonnet-oct-addendum"
+        },
+        "swe-bench": {
+          "value": 49,
+          "source": "claude-3-5-sonnet-oct-addendum"
+        },
+        "math-level-5": {
+          "value": 78.3,
+          "source": "claude-3-5-sonnet-oct-addendum"
+        },
+        "drop": {
+          "value": 88.3,
+          "source": "claude-3-5-sonnet-oct-addendum"
+        },
+        "bbh": {
+          "value": 93.2,
+          "source": "claude-3-5-sonnet-oct-addendum"
+        },
+        "ifeval": {
+          "value": 90.2,
+          "source": "claude-3-5-sonnet-oct-addendum"
+        }
+      },
+      "architecture": "Dense",
+      "context_window": "200k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/anthropic.svg"
+    },
+    {
+      "id": "baichuan/baichuan-omni",
+      "name": "Baichuan-Omni",
+      "company": "baichuan",
+      "brand_color": "#FF6933",
+      "release_date": "2024-10-11",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "baichuan-omni-report",
+          "title": "Baichuan-Omni Technical Report",
+          "url": "https://arxiv.org/abs/2410.08565",
+          "type": "paper"
+        },
+        {
+          "key": "baichuan-omni-github",
+          "title": "Baichuan-Omni GitHub Repository",
+          "url": "https://github.com/westlake-baichuan-mllm/bc-omni",
+          "type": "code"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 65.3,
+          "source": "baichuan-omni-report"
+        }
+      },
+      "parameters": {
+        "total": "7B",
+        "active": "7B"
+      },
+      "architecture": "Dense",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video",
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/baichuan.svg"
+    },
+    {
+      "id": "alibaba/qwen2.5",
+      "name": "Qwen2.5",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2024-09-19",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "qwen2.5-report",
+          "title": "Qwen2.5 Technical Report",
+          "url": "https://arxiv.org/abs/2412.15115",
+          "type": "paper"
+        },
+        {
+          "key": "qwen2.5-blog",
+          "title": "Qwen2.5 Release Blog",
+          "url": "https://qwenlm.github.io/blog/qwen2.5/",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 86.1,
+          "source": "qwen2.5-report"
+        },
+        "mmlu-pro": {
+          "value": 71.1,
+          "source": "qwen2.5-report"
+        },
+        "gpqa": {
+          "value": 49,
+          "source": "qwen2.5-report"
+        },
+        "gsm8k": {
+          "value": 95.8,
+          "source": "qwen2.5-report"
+        },
+        "math-level-5": {
+          "value": 83.1,
+          "source": "qwen2.5-report"
+        },
+        "bbh": {
+          "value": 86.3,
+          "source": "qwen2.5-report"
+        },
+        "humaneval": {
+          "value": 86.6,
+          "source": "qwen2.5-report"
+        },
+        "ifeval": {
+          "value": 84.1,
+          "source": "qwen2.5-report"
+        },
+        "arc-c": {
+          "value": 72.4,
+          "source": "qwen2.5-report"
+        },
+        "hellaswag": {
+          "value": 87.6,
+          "source": "qwen2.5-report"
+        },
+        "winogrande": {
+          "value": 83.9,
+          "source": "qwen2.5-report"
+        }
+      },
+      "parameters": {
+        "total": "72B",
+        "active": "72B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "deepseek/v2.5",
+      "name": "DeepSeek-V2.5",
+      "company": "deepseek",
+      "brand_color": "#4D6BFE",
+      "release_date": "2024-09-05",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "deepseek-api-updates",
+          "title": "DeepSeek API Updates",
+          "url": "https://api-docs.deepseek.com/updates",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "236B",
+        "active": "21B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/deepseek.svg"
+    },
+    {
+      "id": "xai/grok-2-mini",
+      "name": "Grok-2 mini",
+      "company": "xai",
+      "brand_color": "#000000",
+      "release_date": "2024-08-13",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "grok-2-beta",
+          "title": "Grok-2 Beta Release",
+          "url": "https://x.ai/news/grok-2",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 86.2,
+          "source": "grok-2-beta"
+        },
+        "mmlu-pro": {
+          "value": 72,
+          "source": "grok-2-beta"
+        },
+        "gpqa": {
+          "value": 51,
+          "source": "grok-2-beta"
+        },
+        "humaneval": {
+          "value": 85.7,
+          "source": "grok-2-beta"
+        },
+        "math-level-5": {
+          "value": 73,
+          "source": "grok-2-beta"
+        }
+      },
+      "architecture": "unknown",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text",
+          "image"
+        ]
+      },
+      "logo": "assets/logos/xai.svg"
+    },
+    {
+      "id": "xai/grok-2",
+      "name": "Grok-2",
+      "company": "xai",
+      "brand_color": "#000000",
+      "release_date": "2024-08-13",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "grok-2-beta",
+          "title": "Grok-2 Beta Release",
+          "url": "https://x.ai/news/grok-2",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 75.5,
+          "source": "grok-2-beta"
+        },
+        "mmlu": {
+          "value": 87.5,
+          "source": "grok-2-beta"
+        },
+        "gpqa": {
+          "value": 56,
+          "source": "grok-2-beta"
+        },
+        "humaneval": {
+          "value": 88.4,
+          "source": "grok-2-beta"
+        },
+        "math-level-5": {
+          "value": 76.1,
+          "source": "grok-2-beta"
+        }
+      },
+      "architecture": "unknown",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text",
+          "image"
+        ]
+      },
+      "logo": "assets/logos/xai.svg"
+    },
+    {
+      "id": "meta/llama-3.1-405b",
+      "name": "Llama 3.1 405B Instruct",
+      "company": "meta",
+      "brand_color": "#1d65c1",
+      "release_date": "2024-07-23",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "llama3.1-model-card",
+          "title": "Llama 3.1 Model Card",
+          "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md",
+          "type": "model-card"
+        },
+        {
+          "key": "llama3-herd-paper",
+          "title": "The Llama 3 Herd of Models",
+          "url": "https://arxiv.org/abs/2407.21783",
+          "type": "paper"
+        },
+        {
+          "key": "llama3.1-announcement",
+          "title": "Meta Llama 3.1 Announcement",
+          "url": "https://ai.meta.com/blog/meta-llama-3-1/",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 88.6,
+          "source": "llama3.1-model-card"
+        },
+        "mmlu-pro": {
+          "value": 73.3,
+          "source": "llama3.1-model-card"
+        },
+        "ifeval": {
+          "value": 88.6,
+          "source": "llama3.1-model-card"
+        },
+        "gpqa": {
+          "value": 50.7,
+          "source": "llama3.1-model-card"
+        },
+        "humaneval": {
+          "value": 89,
+          "source": "llama3.1-model-card"
+        },
+        "gsm8k": {
+          "value": 96.8,
+          "source": "llama3.1-model-card"
+        },
+        "arc-c": {
+          "value": 96.9,
+          "source": "llama3.1-model-card"
+        },
+        "math-level-5": {
+          "value": 73.8,
+          "source": "llama3.1-model-card"
+        }
+      },
+      "parameters": {
+        "total": "405B",
+        "active": "405B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/meta.svg"
+    },
+    {
+      "id": "meta/llama-3.1-70b",
+      "name": "Llama 3.1 70B Instruct",
+      "company": "meta",
+      "brand_color": "#1d65c1",
+      "release_date": "2024-07-23",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "llama3.1-model-card",
+          "title": "Llama 3.1 Model Card",
+          "url": "https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md",
+          "type": "model-card"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "70B",
+        "active": "70B"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text",
+          "code"
+        ]
+      },
+      "logo": "assets/logos/meta.svg"
+    },
+    {
+      "id": "openai/gpt-4o-mini",
+      "name": "GPT-4o mini",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2024-07-18",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-4o-mini-announcement",
+          "title": "GPT-4o mini advancing cost-efficient intelligence",
+          "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 82,
+          "source": "gpt-4o-mini-announcement"
+        }
+      },
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "baichuan/baichuan4",
+      "name": "Baichuan4",
+      "company": "baichuan",
+      "brand_color": "#FF6933",
+      "release_date": "2024-05-22",
+      "weight_availability_tags": [
+        "closed-weights"
+      ],
+      "sources": [
+        {
+          "key": "baichuan4-launch",
+          "title": "百川智能发布Baichuan4及首款AI助手百小应",
+          "url": "https://www.donews.com/news/detail/1/4245551.html",
+          "type": "blog"
+        },
+        {
+          "key": "baichuan4-platform",
+          "title": "百川大模型 API 平台（Baichuan4 / Baichuan4-Turbo）",
+          "url": "https://platform.baichuan-ai.com/prices",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "32k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/baichuan.svg"
+    },
+    {
+      "id": "zhipu/glm-4",
+      "name": "GLM-4",
+      "company": "zhipu",
+      "brand_color": "#4268FA",
+      "release_date": "2024-05-20",
+      "weight_availability_tags": [
+        "closed-weights"
+      ],
+      "sources": [
+        {
+          "key": "glm-4-report",
+          "title": "ChatGLM: A Family of Large Language Models from GLM-130B to GLM-4 All Tools",
+          "url": "https://arxiv.org/abs/2406.12793",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 83.3,
+          "source": "glm-4-report"
+        },
+        "gsm8k": {
+          "value": 93.3,
+          "source": "glm-4-report"
+        },
+        "math-level-5": {
+          "value": 61.3,
+          "source": "glm-4-report"
+        },
+        "bbh": {
+          "value": 84.7,
+          "source": "glm-4-report"
+        },
+        "gpqa": {
+          "value": 39.9,
+          "source": "glm-4-report"
+        },
+        "humaneval": {
+          "value": 78.5,
+          "source": "glm-4-report"
+        },
+        "ifeval": {
+          "value": 79.1,
+          "source": "glm-4-report"
+        }
+      },
+      "parameters": {
+        "total": "undisclosed",
+        "active": "undisclosed"
+      },
+      "architecture": "Dense",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/zhipu.svg"
+    },
+    {
+      "id": "openai/gpt-4o",
+      "name": "GPT-4o",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2024-05-13",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-4o-announcement",
+          "title": "Hello GPT-4o",
+          "url": "https://openai.com/index/hello-gpt-4o/",
+          "type": "blog"
+        },
+        {
+          "key": "gpt-4o-system-card",
+          "title": "GPT-4o System Card",
+          "url": "https://arxiv.org/abs/2410.21276",
+          "type": "paper"
+        },
+        {
+          "key": "gpt-4.1-announcement",
+          "title": "Introducing GPT-4.1 in the API",
+          "url": "https://openai.com/index/gpt-4-1/",
+          "type": "blog"
+        },
+        {
+          "key": "mmlu-pro-paper",
+          "title": "MMLU-Pro: A More Robust and Challenging Multi-Task Language Understanding Benchmark",
+          "url": "https://arxiv.org/abs/2406.01574",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 85.7,
+          "source": "gpt-4.1-announcement"
+        },
+        "mmlu-pro": {
+          "value": 72.6,
+          "source": "mmlu-pro-paper"
+        },
+        "gpqa": {
+          "value": 46,
+          "source": "gpt-4.1-announcement"
+        },
+        "humaneval": {
+          "value": 90.2,
+          "source": "mmlu-pro-paper"
+        },
+        "swe-bench": {
+          "value": 33.2,
+          "source": "gpt-4.1-announcement"
+        },
+        "ifeval": {
+          "value": 81,
+          "source": "gpt-4.1-announcement"
+        }
+      },
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text",
+          "image",
+          "audio"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    }
+  ]
+}
