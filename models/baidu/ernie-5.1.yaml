@@ -1,0 +1,32 @@
+id: baidu/ernie-5.1
+name: ERNIE 5.1
+company: baidu
+brand_color: "#2529D8"
+release_date: "2026-05-08"
+parameters:
+  total: "800B"
+  active: "uncertain"
+architecture: MoE
+context_window: "128k"
+modalities:
+  input: [text, image, audio, video]
+  output: [text, image, audio]
+weight_availability_tags: [closed-weights, multimodal]
+logo: assets/logos/baidu.svg
+sources:
+  - key: ernie-5.1-blog
+    title: ERNIE 5.1 Release
+    url: https://ernie.baidu.com/blog/posts/ernie-5.1-0508-release/
+    type: blog
+scores:
+  mmlu-pro:
+    value: 85.6
+    source: ernie-5.1-blog
+  gpqa:
+    value: 82.1
+    source: ernie-5.1-blog
+  arena-elo:
+    value: 1476
+    source: ernie-5.1-blog
+    note: LMArena Text Arena
+  # 原始来源未报告：mmlu, humaneval, math-level-5, gsm8k, ifeval, bbh, drop, hellaswag, arc-c, winogrande

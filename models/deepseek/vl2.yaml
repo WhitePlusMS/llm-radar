@@ -7,7 +7,8 @@ parameters:
   total: "27B"
   active: "4.5B"
 architecture: MoE
-context_window: "4k"
+# DeepSeek-VL2 技术报告未明确披露上下文窗口长度，4k 为推测值，暂不确定。
+context_window: "uncertain"
 modalities:
   input: [text, image]
   output: [text]

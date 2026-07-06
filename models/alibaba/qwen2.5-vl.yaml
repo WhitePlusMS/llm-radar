@@ -1,0 +1,23 @@
+id: alibaba/qwen2.5-vl
+name: Qwen2.5-VL
+company: alibaba
+brand_color: "#FF6A00"
+release_date: "2025-01-28"
+parameters:
+  total: "72B"
+  active: "72B"
+architecture: Dense
+context_window: "128k"
+modalities:
+  input: [text, image, video]
+  output: [text]
+weight_availability_tags: [open-weights, multimodal]
+logo: assets/logos/alibaba.svg
+sources:
+  - key: qwen2.5-vl-report
+    title: "Qwen2.5-VL Technical Report"
+    url: https://arxiv.org/abs/2502.13923
+    type: paper
+# Qwen2.5-VL 为视觉语言模型，官方报告主要聚焦多模态 benchmark，未报告通用文本 featured 指标。
+# 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
+scores: {}

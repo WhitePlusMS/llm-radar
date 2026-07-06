@@ -1,0 +1,23 @@
+id: moonshot/kimi-vl
+name: Kimi-VL
+company: moonshot
+brand_color: "#1783FF"
+release_date: "2025-04-15"
+parameters:
+  total: "16B"
+  active: "2.8B"
+architecture: MoE
+context_window: "128k"
+modalities:
+  input: [text, image, video]
+  output: [text]
+weight_availability_tags: [open-weights, multimodal]
+logo: assets/logos/moonshot.svg
+sources:
+  - key: kimi-vl-tech-report
+    title: "Kimi-VL: Frontier-Class Visual Language Model"
+    url: https://arxiv.org/abs/2504.07491
+    type: paper
+# Kimi-VL 为视觉语言模型，官方报告主要聚焦多模态 benchmark，未报告通用文本 featured 指标。
+# 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
+scores: {}

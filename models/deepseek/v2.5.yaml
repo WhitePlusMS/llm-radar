@@ -1,0 +1,23 @@
+id: deepseek/v2.5
+name: DeepSeek-V2.5
+company: deepseek
+brand_color: "#4D6BFE"
+release_date: "2024-09-05"
+parameters:
+  total: "236B"
+  active: "21B"
+architecture: MoE
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights]
+logo: assets/logos/deepseek.svg
+sources:
+  - key: deepseek-api-updates
+    title: DeepSeek API Updates
+    url: https://api-docs.deepseek.com/updates
+    type: blog
+# DeepSeek-V2.5 官方资料未报告 metrics.yaml 中多数指标的精确数值。
+# 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
+scores: {}

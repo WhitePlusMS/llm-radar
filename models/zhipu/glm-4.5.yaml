@@ -23,12 +23,26 @@ sources:
     url: https://z.ai/blog/glm-4.5
     type: blog
 scores:
+  mmlu:
+    value: 90.0
+    source: glm-4.5-report
   mmlu-pro:
     value: 84.6
     source: glm-4.5-report
   gpqa:
     value: 79.1
     source: glm-4.5-report
+  humaneval:
+    value: 91.5
+    source: glm-4.5-report
+  math-level-5:
+    value: 98.2
+    source: glm-4.5-report
+    note: MATH-500
+  ifeval:
+    value: 86.1
+    source: glm-4.5-report
+    note: IFEval Prompt-Strict
   swe-bench:
     value: 64.2
     source: glm-4.5-report

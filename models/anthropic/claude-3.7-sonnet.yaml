@@ -1,0 +1,21 @@
+id: anthropic/claude-3.7-sonnet
+name: Claude 3.7 Sonnet
+company: anthropic
+brand_color: "#CC785C"
+release_date: "2025-02-24"
+# Anthropic 官方未公开 Claude 3.7 Sonnet 的架构细节，Dense 为行业推测，未获官方确认。
+architecture: Dense
+context_window: "200k"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/anthropic.svg
+sources:
+  - key: claude-3-7-sonnet-launch
+    title: Claude 3.7 Sonnet and Claude Code
+    url: https://www.anthropic.com/news/claude-3-7-sonnet
+    type: blog
+# Claude 3.7 Sonnet 官方发布页未给出 metrics.yaml 中多数指标的精确数值。
+# 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
+scores: {}

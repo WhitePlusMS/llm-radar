@@ -1,0 +1,23 @@
+id: meta/llama-3.3-70b
+name: Llama 3.3 70B Instruct
+company: meta
+brand_color: "#0082FB"
+release_date: "2024-12-06"
+parameters:
+  total: "70B"
+  active: "70B"
+architecture: Dense
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text, code]
+weight_availability_tags: [open-weights]
+logo: assets/logos/meta.svg
+sources:
+  - key: llama3.3-model-card
+    title: Llama 3.3 Model Card
+    url: https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md
+    type: model-card
+# Llama 3.3 70B 官方 model card 未报告 metrics.yaml 中多数指标的精确数值。
+# 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
+scores: {}

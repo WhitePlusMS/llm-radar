@@ -19,9 +19,12 @@ sources:
     url: https://arxiv.org/abs/2602.15763
     type: paper
 scores:
+  # GLM-5 官方博客 headline 值为 GPQA-Diamond 86.0（thinking 模式）；
+  # 论文非 thinking 模式为 82.5。此处采用官方宣传 headline 值并注明版本。
   gpqa:
-    value: 82.5
+    value: 86.0
     source: glm-5-report
+    note: GLM-5 Thinking
   swe-bench:
     value: 77.8
     source: glm-5-report

@@ -2,7 +2,7 @@ id: tencent/hunyuan-large
 name: Hunyuan-Large
 company: tencent
 brand_color: "#0052D9"
-release_date: "2024-11-04"
+release_date: "2024-11-05"
 parameters:
   total: "389B"
   active: "52B"
@@ -18,6 +18,10 @@ sources:
     title: "Hunyuan-Large: An Open-Source MoE Model with 52 Billion Activated Parameters by Tencent"
     url: https://arxiv.org/abs/2411.02265
     type: paper
+  - key: hunyuan-large-github
+    title: "Tencent-Hunyuan-Large GitHub Repository"
+    url: https://github.com/Tencent-Hunyuan/Tencent-Hunyuan-Large
+    type: codebase
 scores:
   mmlu:
     value: 88.4
@@ -49,3 +53,11 @@ scores:
   humaneval:
     value: 71.4
     source: hunyuan-large-paper
+  gpqa:
+    value: 42.4
+    source: hunyuan-large-github
+    note: GPQA Diamond（Instruct）
+  ifeval:
+    value: 85.0
+    source: hunyuan-large-github
+    note: IFEval strict-prompt

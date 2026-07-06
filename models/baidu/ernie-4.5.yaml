@@ -2,14 +2,15 @@ id: baidu/ernie-4.5
 name: ERNIE 4.5-300B-A47B
 company: baidu
 brand_color: "#2529D8"
-release_date: "2025-03-18"
+release_date: "2025-03-16"
 parameters:
   total: "300B"
   active: "47B"
 architecture: MoE
 context_window: "128k"
+# 该 300B-A47B 变体在多数 provider 中标注为 text-only；图像/视频能力归入 VL 变体。
 modalities:
-  input: [text, image, video]
+  input: [text]
   output: [text]
 weight_availability_tags: [open-weights, multimodal]
 logo: assets/logos/baidu.svg
@@ -45,3 +46,7 @@ scores:
   drop:
     value: 91.1
     source: ernie-4.5-tr
+  gpqa:
+    value: 81.1
+    source: ernie-4.5-tr
+    note: GPQA Diamond

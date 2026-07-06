@@ -9,8 +9,10 @@ parameters:
 architecture: MoE
 context_window: "256k"
 modalities:
-  input: [text, image, audio, video]
-  output: [text, image, audio, video]
+  # 官方强调 visual + video 能力，audio input/output 缺乏直接依据。
+  input: [text, image, video]
+  # image/video output 为推测，audio 输出缺乏依据。
+  output: [text, image, video]
 weight_availability_tags: [closed-weights, multimodal]
 logo: assets/logos/bytedance.svg
 sources:
@@ -33,9 +35,12 @@ scores:
   gpqa:
     value: 88.9
     source: seed2.0-model-card
-  humaneval:
-    value: null
   swe-bench:
+    value: 76.5
+    source: seed2.0-model-card
+    note: SWE-Bench Verified
+  # 其余指标官方未报告
+  humaneval:
     value: null
   math-level-5:
     value: null
@@ -43,9 +48,11 @@ scores:
     value: null
   arena-elo:
     value: null
+  # 官方报告为 Inverse IFEval，非标准 IFEval，避免跨模型直接比较。
   ifeval:
     value: 78.9
     source: seed2.0-model-card
+    note: Inverse IFEval
   bbh:
     value: null
   drop:

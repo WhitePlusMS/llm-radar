@@ -1,0 +1,25 @@
+id: bytedance/doubao-1.5-pro
+name: Doubao-1.5-pro
+company: bytedance
+brand_color: "#00F2EA"
+release_date: "2025-01-22"
+# ByteDance 未公开 Doubao-1.5-pro 的参数规模与架构细节。
+context_window: "256k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [closed-weights]
+logo: assets/logos/bytedance.svg
+sources:
+  - key: volcengine-model-list
+    title: Volcano Engine Model List
+    url: https://www.volcengine.com/docs/82379/1330310
+    type: website
+scores:
+  mmlu-pro:
+    value: 80.2
+    source: volcengine-model-list
+  gpqa:
+    value: 66.2
+    source: volcengine-model-list
+  # 原始来源未报告：mmlu, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande

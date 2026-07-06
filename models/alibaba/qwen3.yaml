@@ -23,6 +23,8 @@ sources:
     url: https://qwenlm.github.io/blog/qwen3/
     type: blog
 scores:
+  # 注意：以下分数来自 Qwen3 技术报告的 Base 模型评测表（Qwen3-235B-A22B-Base），
+  # 非 Instruct 版本。若后续获得 Instruct 版本官方分数，应替换并更新来源。
   mmlu:
     value: 87.81
     source: qwen3-report

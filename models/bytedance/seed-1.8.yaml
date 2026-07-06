@@ -1,16 +1,19 @@
 id: bytedance/seed-1.8
 name: Seed1.8
 company: bytedance
-release_date: "2025-12-31"
+release_date: "2025-12-18"
 brand_color: "#00F2EA"
+# ByteDance 官方未披露 Seed1.8 的总/激活参数量。
 parameters:
   total: undisclosed
   active: undisclosed
+# 官方未明确 Seed1.8 架构细节，MoE 为推测。
 architecture: MoE
 context_window: "256k"
 modalities:
   input: [text, image, video]
-  output: [text, image]
+  # 官方未明确支持 image output，此处标注为不确定。
+  output: [text]
 weight_availability_tags: [closed-weights, multimodal, agentic]
 logo: assets/logos/bytedance.svg
 sources:
@@ -43,9 +46,11 @@ scores:
     value: null
   arena-elo:
     value: null
+  # 官方报告为 Inverse IFEval 80.3，非标准 IFEval。
   ifeval:
     value: 80.3
     source: seed1.8-model-card
+    note: Inverse IFEval
   bbh:
     value: null
   drop:

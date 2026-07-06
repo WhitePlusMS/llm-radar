@@ -1,0 +1,20 @@
+id: google/gemini-2.0-flash-lite
+name: Gemini 2.0 Flash-Lite
+company: google
+brand_color: "#4796E3"
+release_date: "2025-02-05"
+# Google 未公开该模型的参数规模与架构细节。
+context_window: "1M"
+modalities:
+  input: [text, image, audio, video]
+  output: [text]
+weight_availability_tags: [closed-weights, multimodal]
+logo: assets/logos/google.svg
+sources:
+  - key: gemini-2.0-update
+    title: Gemini model updates February 2025
+    url: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-updates-february-2025/
+    type: blog
+# Gemini 2.0 Flash-Lite 官方未报告 metrics.yaml 中多数指标的精确数值。
+# 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
+scores: {}

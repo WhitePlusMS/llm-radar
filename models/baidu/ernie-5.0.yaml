@@ -1,5 +1,5 @@
-id: baidu/ernie-5.0-base
-name: ERNIE 5.0-Base
+id: baidu/ernie-5.0
+name: ERNIE 5.0
 company: baidu
 brand_color: "#2529D8"
 release_date: "2026-01-22"
@@ -18,28 +18,33 @@ sources:
     title: ERNIE 5.0 Technical Report
     url: https://arxiv.org/abs/2602.04705
     type: paper
+  - key: ernie-5.0-lmarena
+    title: ERNIE 5.0 release on LMArena
+    url: https://ernie.baidu.com/blog/posts/ernie-5.0-0110-release-on-lmarena/
+    type: blog
 scores:
   mmlu-pro:
-    value: 75.58
+    value: 83.8
     source: ernie-5.0-tr
   mmlu:
-    value: 90.58
+    value: 91.2
     source: ernie-5.0-tr
   gpqa:
-    value: 57.30
+    value: 76.2
     source: ernie-5.0-tr
   humaneval:
-    value: 80.86
+    value: 94.48
     source: ernie-5.0-tr
     note: HumanEval+ 0-shot
   math-level-5:
-    value: 73.89
+    value: 82.54
     source: ernie-5.0-tr
-    note: MATH (CoT) 8-shot
-  bbh:
-    value: 75.69
+    note: MATH-500
+  ifeval:
+    value: 93.35
     source: ernie-5.0-tr
-    note: BBH 5-shot without CoT (Direct)
-  winogrande:
-    value: 92.66
-    source: ernie-5.0-tr
+  arena-elo:
+    value: 1460
+    source: ernie-5.0-lmarena
+    note: LMArena Text Arena
+  # 原始来源未报告：gsm8k, bbh, drop, hellaswag, arc-c, winogrande

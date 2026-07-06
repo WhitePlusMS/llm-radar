@@ -1,0 +1,27 @@
+id: mistral/magistral-small
+name: Magistral Small
+company: mistral
+brand_color: "#FF7000"
+release_date: "2025-06-10"
+parameters:
+  total: "24B"
+  active: "24B"
+architecture: Dense
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights, reasoning]
+logo: assets/logos/mistral.svg
+sources:
+  - key: magistral-blog
+    title: "Magistral — the first reasoning model by Mistral AI"
+    url: https://mistral.ai/news/magistral
+    type: blog
+  - key: magistral-paper
+    title: "Magistral"
+    url: https://arxiv.org/abs/2506.10910
+    type: paper
+# Magistral Small 官方论文主要报告 AIME 系列与代码 benchmark，metrics.yaml 中多数指标未报告。
+# 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
+scores: {}

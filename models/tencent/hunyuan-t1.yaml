@@ -2,7 +2,8 @@ id: tencent/hunyuan-t1
 name: Hunyuan-T1
 company: tencent
 brand_color: "#0052D9"
-release_date: "2025-03-24"
+release_date: "2025-03-21"
+# Hunyuan-T1 基于 TurboS 后训练，官方未单独确认 T1 本身的总/激活参数量。
 parameters:
   total: "560B"
   active: "56B"

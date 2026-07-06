@@ -2,11 +2,18 @@ id: baidu/ernie-x1
 name: ERNIE X1
 company: baidu
 brand_color: "#2529D8"
-release_date: "2025-03-18"
+release_date: "2025-03-16"
+# Baidu 未公开 ERNIE X1 的参数规模与架构细节；基于 ERNIE 4.5 底座，架构为 MoE。
+architecture: MoE
+# 参数规模官方未披露。
+parameters:
+  total: undisclosed
+  active: undisclosed
+# X1 定位为深度推理模型，公开资料未明确支持图像输入。
 modalities:
-  input: [text, image]
+  input: [text]
   output: [text]
-weight_availability_tags: [closed-weights, reasoning, multimodal]
+weight_availability_tags: [closed-weights, reasoning]
 logo: assets/logos/baidu.svg
 sources:
   - key: baidu-x1-news

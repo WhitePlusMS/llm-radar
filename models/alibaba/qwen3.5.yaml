@@ -1,0 +1,23 @@
+id: alibaba/qwen3.5
+name: Qwen3.5
+company: alibaba
+brand_color: "#FF6A00"
+release_date: "2026-02-16"
+parameters:
+  total: "397B"
+  active: "17B"
+architecture: MoE
+context_window: "1M"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/alibaba.svg
+sources:
+  - key: qwen3.5-announcement
+    title: Alibaba Group announces Qwen3.5
+    url: https://www.alibabagroup.com/document-1960233590314762240
+    type: blog
+# Qwen3.5 官方发布资料中可验证的 metrics.yaml 指标有限。
+# 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
+scores: {}

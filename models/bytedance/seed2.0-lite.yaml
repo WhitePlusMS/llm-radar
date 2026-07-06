@@ -1,0 +1,34 @@
+id: bytedance/seed2.0-lite
+name: Seed 2.0 Lite
+company: bytedance
+brand_color: "#00F2EA"
+release_date: "2026-02-14"
+# ByteDance 未公开 Seed 2.0 Lite 的参数规模与架构细节。
+architecture: MoE
+context_window: "128k"
+modalities:
+  input: [text, image, video]
+  output: [text]
+weight_availability_tags: [closed-weights, multimodal]
+logo: assets/logos/bytedance.svg
+sources:
+  - key: seed2.0-model-card
+    title: "Seed2.0 Model Card: Towards Intelligence Frontier for Real-World Complexity"
+    url: https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/seed2/0214/Seed2.0%20Model%20Card.pdf
+    type: paper
+scores:
+  mmlu-pro:
+    value: 87.7
+    source: seed2.0-model-card
+  gpqa:
+    value: 85.1
+    source: seed2.0-model-card
+  swe-bench:
+    value: 73.5
+    source: seed2.0-model-card
+  # 官方报告为 Inverse IFEval，非标准 IFEval。
+  ifeval:
+    value: 77.1
+    source: seed2.0-model-card
+    note: Inverse IFEval
+  # 原始来源未报告：mmlu, humaneval, math-level-5, gsm8k, arena-elo, bbh, drop, hellaswag, arc-c, winogrande

@@ -1,0 +1,31 @@
+id: openai/gpt-4.1
+name: GPT-4.1
+company: openai
+brand_color: "#10A37F"
+release_date: "2025-04-14"
+# OpenAI 未公开 GPT-4.1 的参数规模与架构细节。
+context_window: "1M"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, multimodal]
+logo: assets/logos/openai.svg
+sources:
+  - key: gpt-4.1-announcement
+    title: Introducing GPT-4.1 in the API
+    url: https://openai.com/index/gpt-4-1/
+    type: blog
+scores:
+  mmlu:
+    value: 90.2
+    source: gpt-4.1-announcement
+  gpqa:
+    value: 66.3
+    source: gpt-4.1-announcement
+  ifeval:
+    value: 87.4
+    source: gpt-4.1-announcement
+  swe-bench:
+    value: 54.6
+    source: gpt-4.1-announcement
+  # 原始来源未报告：mmlu-pro, humaneval, math-level-5, gsm8k, arena-elo, bbh, drop, hellaswag, arc-c, winogrande

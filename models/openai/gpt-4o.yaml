@@ -23,19 +23,29 @@ sources:
     title: Introducing GPT-4.1 in the API
     url: https://openai.com/index/gpt-4-1/
     type: blog
+  - key: mmlu-pro-paper
+    title: "MMLU-Pro: A More Robust and Challenging Multi-Task Language Understanding Benchmark"
+    url: https://arxiv.org/abs/2406.01574
+    type: paper
 scores:
   # 以下分数来自 OpenAI 官方 GPT-4.1 发布页中的对比表（GPT-4o 2024-11-20 快照）。
   # GPT-4o 原始 announce 页面未列出具体 benchmark 数值。
   mmlu:
     value: 85.7
     source: gpt-4.1-announcement
+  mmlu-pro:
+    value: 72.6
+    source: mmlu-pro-paper
   gpqa:
     value: 46.0
     source: gpt-4.1-announcement
+  humaneval:
+    value: 90.2
+    source: mmlu-pro-paper
   swe-bench:
     value: 33.2
     source: gpt-4.1-announcement
   ifeval:
     value: 81.0
     source: gpt-4.1-announcement
-  # 原始来源未报告：mmlu-pro, humaneval, math-level-5, gsm8k, arena-elo, bbh, drop, hellaswag, arc-c, winogrande
+  # 原始来源未报告：math-level-5, gsm8k, arena-elo, bbh, drop, hellaswag, arc-c, winogrande

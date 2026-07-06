@@ -37,3 +37,7 @@ scores:
   humaneval:
     value: 78.5
     source: glm-4-report
+  ifeval:
+    value: 79.1
+    source: glm-4-report
+    note: IFEval Prompt-Strict

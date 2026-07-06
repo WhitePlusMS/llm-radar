@@ -48,3 +48,7 @@ scores:
   arc-c:
     value: 96.9
     source: llama3.1-model-card
+  math-level-5:
+    value: 73.8
+    source: llama3.1-model-card
+    note: MATH-500

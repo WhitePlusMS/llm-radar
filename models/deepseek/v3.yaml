@@ -34,6 +34,10 @@ scores:
   drop:
     value: 91.6
     source: v3-tech-report
+  math-level-5:
+    value: 90.2
+    source: v3-tech-report
+    note: MATH-500
   swe-bench:
     value: 42.0
     source: v3-tech-report

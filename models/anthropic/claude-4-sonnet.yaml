@@ -1,9 +1,9 @@
-id: anthropic/claude-4-opus
-name: Claude 4 Opus
+id: anthropic/claude-4-sonnet
+name: Claude 4 Sonnet
 company: anthropic
-release_date: "2025-05-22"
 brand_color: "#CC785C"
-# Anthropic 官方未公开 Claude 4 Opus 的架构细节，Dense 为行业推测，未获官方确认。
+release_date: "2025-05-22"
+# Anthropic 官方未公开 Claude 4 Sonnet 的架构细节，Dense 为行业推测，未获官方确认。
 architecture: Dense
 context_window: "200k"
 modalities:
@@ -21,11 +21,8 @@ sources:
     url: https://www-cdn.anthropic.com/4263b940cabb546aa0e3283f35b686f4f3b2ff47/claude-opus-4-and-claude-sonnet-4-system-card.pdf
     type: system-card
 scores:
-  # SWE-bench Verified, reported as the headline coding benchmark in the launch post.
+  # Claude 4 Sonnet 官方仅重点报告 SWE-Bench Verified 等少数指标。
   swe-bench:
-    value: 72.5
+    value: 72.7
     source: claude-4-launch
-  # GPQA Diamond without extended thinking (base model result).
-  gpqa:
-    value: 74.9
-    source: claude-4-launch
+  # 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande

@@ -1,0 +1,23 @@
+id: minimax/minimax-text-01
+name: MiniMax-Text-01
+company: minimax
+brand_color: "#FE603C"
+release_date: "2025-01-14"
+parameters:
+  total: "456B"
+  active: "45.9B"
+architecture: MoE
+context_window: "1M"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights]
+logo: assets/logos/minimax.svg
+sources:
+  - key: minimax-01-report
+    title: "MiniMax-01: Scaling Foundation Models with Efficient Lightning Attention"
+    url: https://arxiv.org/abs/2501.08313
+    type: paper
+# MiniMax-Text-01 官方报告未报告 metrics.yaml 中多数 featured 指标的精确数值。
+# 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
+scores: {}

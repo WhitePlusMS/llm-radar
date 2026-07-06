@@ -3,6 +3,7 @@ name: Claude Fable 5
 company: anthropic
 release_date: "2026-06-09"
 brand_color: "#CC785C"
+# Anthropic 官方未公开 Claude Fable 5 的架构细节，Dense 为行业推测，未获官方确认。
 architecture: Dense
 context_window: "1M"
 modalities:

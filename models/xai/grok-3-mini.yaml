@@ -1,0 +1,26 @@
+id: xai/grok-3-mini
+name: Grok-3 mini
+company: xai
+brand_color: "#000000"
+# xAI 未公开 Grok-3 mini 的参数规模与架构细节。
+release_date: "2025-02-19"
+architecture: unknown
+context_window: "1M"
+modalities:
+  input: [text, image, video]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/xai.svg
+sources:
+  - key: grok-3-beta
+    title: Grok 3 Beta — The Age of Reasoning Agents
+    url: https://x.ai/news/grok-3
+    type: blog
+scores:
+  mmlu-pro:
+    value: 78.9
+    source: grok-3-beta
+  gpqa:
+    value: 66.2
+    source: grok-3-beta
+  # 原始来源未报告：mmlu, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande

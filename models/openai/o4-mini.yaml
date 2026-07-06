@@ -1,0 +1,20 @@
+id: openai/o4-mini
+name: OpenAI o4-mini
+company: openai
+brand_color: "#10A37F"
+release_date: "2025-04-16"
+# OpenAI 未公开 o4-mini 的参数规模与架构细节。
+context_window: "200k"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/openai.svg
+sources:
+  - key: o3-announcement
+    title: Introducing OpenAI o3 and o4-mini
+    url: https://openai.com/index/introducing-o3-and-o4-mini/
+    type: blog
+# o4-mini 官方发布页未给出 metrics.yaml 中多数指标的精确数值。
+# 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
+scores: {}
