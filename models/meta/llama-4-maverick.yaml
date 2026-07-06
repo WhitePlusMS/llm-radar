@@ -11,13 +11,13 @@ context_window: "1M"
 modalities:
   input: [text, image]
   output: [text, code]
-weight_availability_tags: [open-weights, chat, multimodal]
+weight_availability_tags: [open-weights, multimodal]
 logo: assets/logos/meta.svg
 sources:
   - key: llama4-model-card
     title: Llama 4 Model Card
     url: https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md
-    type: model_card
+    type: model-card
   - key: llama4-announcement
     title: "Introducing Llama 4: Advancing multimodal intelligence"
     url: https://ai.meta.com/blog/llama-4-multimodal-intelligence/

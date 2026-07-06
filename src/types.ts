@@ -7,29 +7,34 @@
  * - 每个分数必须指向 ModelCard.sources 中的 source key。
  */
 
-/** benchmark 分数原始尺度 */
-export type ScoreScale = 'percentage' | 'zero_to_one' | 'raw';
+/** benchmark 分数原始尺度。SCORE_SCALES 是同源运行时数组，供构建期校验复用。 */
+export const SCORE_SCALES = ['percentage', 'zero_to_one', 'raw'] as const;
+export type ScoreScale = (typeof SCORE_SCALES)[number];
 
-/** 来源类型 */
-export type SourceType =
-  | 'paper'
-  | 'blog'
-  | 'leaderboard'
-  | 'report'
-  | 'model-card'
-  | 'system-card'
-  | 'website'
-  | 'code'
-  | 'codebase'
-  | 'other';
+/** 来源类型。SOURCE_TYPES 是同源运行时数组，供构建期校验复用。 */
+export const SOURCE_TYPES = [
+  'paper',
+  'blog',
+  'leaderboard',
+  'report',
+  'model-card',
+  'system-card',
+  'website',
+  'code',
+  'codebase',
+  'other',
+] as const;
+export type SourceType = (typeof SOURCE_TYPES)[number];
 
-/** 权重开放标签 */
-export type WeightAvailabilityTag =
-  | 'open-weights'
-  | 'closed-weights'
-  | 'reasoning'
-  | 'multimodal'
-  | 'agentic';
+/** 权重开放标签。WEIGHT_AVAILABILITY_TAGS 是同源运行时数组，供构建期校验复用。 */
+export const WEIGHT_AVAILABILITY_TAGS = [
+  'open-weights',
+  'closed-weights',
+  'reasoning',
+  'multimodal',
+  'agentic',
+] as const;
+export type WeightAvailabilityTag = (typeof WEIGHT_AVAILABILITY_TAGS)[number];
 
 /** 模型来源 */
 export interface Source {

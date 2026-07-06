@@ -4,9 +4,6 @@ company: xai
 release_date: "2025-07-09"
 brand_color: "#000000"
 # xAI 未公开 Grok-4 的参数规模与架构细节。
-parameters:
-  total: null
-  active: null
 architecture: unknown
 context_window: "256k"
 modalities:

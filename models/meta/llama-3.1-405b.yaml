@@ -11,13 +11,13 @@ context_window: "128k"
 modalities:
   input: [text]
   output: [text, code]
-weight_availability_tags: [open-weights, chat]
+weight_availability_tags: [open-weights]
 logo: assets/logos/meta.svg
 sources:
   - key: llama3.1-model-card
     title: Llama 3.1 Model Card
     url: https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md
-    type: model_card
+    type: model-card
   - key: llama3-herd-paper
     title: The Llama 3 Herd of Models
     url: https://arxiv.org/abs/2407.21783

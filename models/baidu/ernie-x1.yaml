@@ -3,11 +3,6 @@ name: ERNIE X1
 company: baidu
 brand_color: "#2529D8"
 release_date: "2025-03-18"
-parameters:
-  total: null
-  active: null
-architecture: null
-context_window: null
 modalities:
   input: [text, image]
   output: [text]

@@ -21,7 +21,7 @@ sources:
   - key: mistral-large-3-hf
     title: "Mistral Large 3 675B Instruct 2512 — Hugging Face Model Card"
     url: https://huggingface.co/mistralai/Mistral-Large-3-675B-Instruct-2512
-    type: model_card
+    type: model-card
 scores:
   # 发布方原始来源（官方博客与 Hugging Face 模型卡）未以可提取文本形式报告
   # MMLU / MMLU-Pro / GPQA / HumanEval / GSM8K 等标准 benchmark 的具体数值。

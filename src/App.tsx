@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Radar, BarChart3 } from 'lucide-react';
 import { loadModelIndex } from '@/data/model-index-loader';
 import { useComparison } from '@/hooks/use-comparison';
@@ -12,7 +12,6 @@ function App() {
   const [index, setIndex] = useState<ModelIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [averageEnabled, setAverageEnabled] = useState(true);
-  const defaultsAppliedRef = useRef(false);
 
   useEffect(() => {
     loadModelIndex()
@@ -20,7 +19,8 @@ function App() {
       .catch((err) => setError(err instanceof Error ? err.message : String(err)));
   }, []);
 
-  // 默认选中最新 4 个模型，默认选中所有 metric
+  // 默认选中最新 4 个模型，默认选中所有 metric。
+  // "URL 优先否则默认"的决策由 useComparison→useSelectableSet 内部完成，App 无需补打。
   const defaultModelIds = useMemo(
     () => (index ? index.models.slice(0, 4).map((m) => m.id) : []),
     [index]
@@ -36,22 +36,7 @@ function App() {
     toggleModel,
     toggleMetric,
     setModelIds,
-    setMetricIds,
   } = useComparison(defaultModelIds, defaultMetricIds);
-
-  // 首次加载且 URL 未指定选择时，自动应用默认值；仅执行一次，避免清空后自动恢复
-  useEffect(() => {
-    if (!index || defaultsAppliedRef.current) return;
-    defaultsAppliedRef.current = true;
-
-    const params = new URLSearchParams(window.location.search);
-    if (!params.has('models') && defaultModelIds.length > 0) {
-      setModelIds(defaultModelIds);
-    }
-    if (!params.has('metrics') && defaultMetricIds.length > 0) {
-      setMetricIds(defaultMetricIds);
-    }
-  }, [index, defaultModelIds, defaultMetricIds, setModelIds, setMetricIds]);
 
   const selectedModels = useMemo(
     () =>

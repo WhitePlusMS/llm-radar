@@ -21,7 +21,7 @@ sources:
   - key: pixtral-large-hf
     title: "Pixtral Large Instruct 2411 — Hugging Face Model Card"
     url: https://huggingface.co/mistralai/Pixtral-Large-Instruct-2411
-    type: model_card
+    type: model-card
 scores:
   # 官方博客主要报告多模态 benchmark（MathVista 69.4%、ChartQA、DocVQA、MM-MT-Bench、
   # LMSys Vision Leaderboard 等），均未在指定的常见文本 benchmark 集合中。

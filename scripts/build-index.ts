@@ -1,79 +1,31 @@
 import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
+import {
+  SCORE_SCALES,
+  SOURCE_TYPES,
+  WEIGHT_AVAILABILITY_TAGS,
+} from '../src/types';
+import type {
+  Metric,
+  Company,
+  Source,
+  ScoreEntry,
+  ModelCard,
+  ModelIndex,
+} from '../src/types';
 
-// 类型只用于开发时提示，运行时仍做宽松校验
-interface Metric {
-  id: string;
-  name: string;
-  description: string;
-  scale: string;
-  higher_is_better: boolean;
-  max_value?: number;
-  capability_tags: string[];
-}
-
-interface Company {
-  key: string;
-  name: string;
-  website: string;
-}
-
-interface Source {
-  key: string;
-  title: string;
-  url: string;
-  type: string;
-}
-
-interface ScoreEntry {
-  value: number | null;
-  source?: string;
-}
-
-interface ModelCard {
-  id: string;
-  name: string;
-  company: string;
-  brand_color: string;
-  release_date: string;
-  parameters?: { total?: string; active?: string };
-  architecture?: string;
-  context_window?: string;
-  modalities?: { input: string[]; output: string[] };
-  weight_availability_tags: string[];
-  logo?: string;
-  sources: Source[];
-  scores: Record<string, ScoreEntry>;
-}
-
-interface ModelIndex {
-  meta: {
-    generated_at: string;
-    version: string;
-    model_count: number;
-    metric_count: number;
-    company_count: number;
-  };
-  metrics: Metric[];
-  companies: Company[];
-  models: ModelCard[];
-}
-
-const VALID_SCALES = ['percentage', 'zero_to_one', 'raw'];
-const VALID_SOURCE_TYPES = [
-  'paper',
-  'blog',
-  'leaderboard',
-  'report',
-  'model-card',
-  'model_card',
-  'system-card',
-  'website',
-  'code',
-  'codebase',
-  'other',
-];
+/**
+ * 构建脚本：读取 models/*.yaml + metrics.yaml + companies.yaml，
+ * 用一套小型字段校验工具集（reqStr/reqBool/reqEnum/reqArr/reqObj）做表驱动式校验，
+ * 输出 public/model-index.json 供前端运行时加载。
+ *
+ * 设计原则：
+ * - 类型单一来源：Metric/Company/Source/ScoreEntry/ModelCard/ModelIndex 一律从 src/types.ts 引入，
+ *   字面量联合（ScoreScale/SourceType/WeightAvailabilityTag）由同源 const 数组派生，
+ *   本脚本不再重定义宽松副本，避免加枚举值时"缝在漏"。
+ * - 不做向后兼容：曾存在的 `model_card`（下划线）来源类型别名已删除，YAML 统一用 `model-card`。
+ */
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -110,139 +62,243 @@ function loadYaml<T>(filePath: string): T {
   }
 }
 
+// ---------------------------------------------------------------------------
+// 字段校验工具集：把重复的 `if (typeof x !== ...) fail(...)` 收敛为深模块。
+// 删除测试：移除这些 helper 后，每条字段校验都要在调用点重新展开 if + fail 路径，
+// 复杂度会散落到所有 validate 函数——集中而非搬家，故为真模块。
+// ---------------------------------------------------------------------------
+
+type Obj = Record<string, unknown>;
+
+function asObj(value: unknown, p: string): Obj {
+  if (typeof value !== 'object' || value === null || Array.isArray(value)) {
+    fail(`${p}: 必须是对象`);
+  }
+  return value as Obj;
+}
+
+function reqStr(obj: Obj, p: string, field: string): string {
+  const v = obj[field];
+  if (typeof v !== 'string' || !v) fail(`${p}.${field}: 必填且为非空字符串`);
+  return v;
+}
+
+function reqBool(obj: Obj, p: string, field: string): boolean {
+  const v = obj[field];
+  if (typeof v !== 'boolean') fail(`${p}.${field}: 必须是布尔值`);
+  return v;
+}
+
+function reqArr(obj: Obj, p: string, field: string): unknown[] {
+  const v = obj[field];
+  if (!Array.isArray(v)) fail(`${p}.${field}: 必须是数组`);
+  return v;
+}
+
+function reqObj(obj: Obj, p: string, field: string): Obj {
+  const v = obj[field];
+  if (typeof v !== 'object' || v === null || Array.isArray(v)) {
+    fail(`${p}.${field}: 必须是对象`);
+  }
+  return v as Obj;
+}
+
+function optStr(obj: Obj, p: string, field: string): string | undefined {
+  const v = obj[field];
+  if (v === undefined) return undefined;
+  if (typeof v !== 'string' || !v) fail(`${p}.${field}: 必须是非空字符串`);
+  return v;
+}
+
+function reqEnum<T extends string>(
+  obj: Obj,
+  p: string,
+  field: string,
+  values: readonly T[]
+): T {
+  const v = obj[field];
+  if (typeof v !== 'string' || !values.includes(v as T)) {
+    fail(`${p}.${field}: 必须是 ${values.join('/')} 之一`);
+  }
+  return v as T;
+}
+
+// ---------------------------------------------------------------------------
+// 结构校验
+// ---------------------------------------------------------------------------
+
 function validateMetrics(filePath: string): Metric[] {
-  const data = loadYaml<{ metrics?: unknown[] }>(filePath);
-  if (!Array.isArray(data.metrics)) fail(`${filePath}: metrics 必须是数组`);
+  const data = asObj(loadYaml<unknown>(filePath), filePath);
+  const rawMetrics = reqArr(data, filePath, 'metrics');
 
   const ids = new Set<string>();
-  data.metrics.forEach((m, idx) => {
-    const metric = m as Record<string, unknown>;
-    if (typeof metric.id !== 'string' || !metric.id) {
-      fail(`${filePath}[${idx}]: metric.id 必填且为字符串`);
-    }
-    if (ids.has(metric.id)) fail(`${filePath}: 重复的 metric id "${metric.id}"`);
-    ids.add(metric.id);
-    if (typeof metric.name !== 'string' || !metric.name) {
-      fail(`${filePath}[${idx}]: metric.name 必填`);
-    }
-    if (typeof metric.description !== 'string') {
-      fail(`${filePath}[${idx}]: metric.description 必填`);
-    }
-    if (!VALID_SCALES.includes(String(metric.scale))) {
-      fail(`${filePath}[${idx}]: metric.scale 必须是 ${VALID_SCALES.join('/')} 之一`);
-    }
-    if (typeof metric.higher_is_better !== 'boolean') {
-      fail(`${filePath}[${idx}]: metric.higher_is_better 必须是布尔值`);
-    }
-    if (metric.scale === 'raw' && typeof metric.max_value !== 'number') {
-      fail(`${filePath}[${idx}]: raw 尺度的 metric 必须设置 max_value`);
-    }
-    if (!Array.isArray(metric.capability_tags)) {
-      fail(`${filePath}[${idx}]: metric.capability_tags 必须是数组`);
-    }
-  });
+  return rawMetrics.map((m, idx) => {
+    const p = `${filePath}[metrics][${idx}]`;
+    const obj = asObj(m, p);
 
-  return data.metrics as Metric[];
+    const id = reqStr(obj, p, 'id');
+    if (ids.has(id)) fail(`${filePath}: 重复的 metric id "${id}"`);
+    ids.add(id);
+
+    const name = reqStr(obj, p, 'name');
+    if (typeof obj.description !== 'string') fail(`${p}.description: 必填且为字符串`);
+    const scale = reqEnum(obj, p, 'scale', SCORE_SCALES);
+    const higher_is_better = reqBool(obj, p, 'higher_is_better');
+    if (scale === 'raw' && typeof obj.max_value !== 'number') {
+      fail(`${p}: raw 尺度的 metric 必须设置 max_value`);
+    }
+    const max_value = typeof obj.max_value === 'number' ? obj.max_value : undefined;
+    const capability_tags = reqArr(obj, p, 'capability_tags');
+
+    return {
+      id,
+      name,
+      description: obj.description,
+      scale,
+      higher_is_better,
+      ...(max_value !== undefined ? { max_value } : {}),
+      capability_tags,
+    } as Metric;
+  });
 }
 
 function validateCompanies(filePath: string): Company[] {
-  const data = loadYaml<{ companies?: unknown[] }>(filePath);
-  if (!Array.isArray(data.companies)) fail(`${filePath}: companies 必须是数组`);
+  const data = asObj(loadYaml<unknown>(filePath), filePath);
+  const rawCompanies = reqArr(data, filePath, 'companies');
 
   const keys = new Set<string>();
-  data.companies.forEach((c, idx) => {
-    const company = c as Record<string, unknown>;
-    if (typeof company.key !== 'string' || !company.key) {
-      fail(`${filePath}[${idx}]: company.key 必填`);
-    }
-    if (keys.has(company.key)) fail(`${filePath}: 重复的 company key "${company.key}"`);
-    keys.add(company.key);
-    if (typeof company.name !== 'string' || !company.name) {
-      fail(`${filePath}[${idx}]: company.name 必填`);
-    }
-    if (typeof company.website !== 'string' || !company.website) {
-      fail(`${filePath}[${idx}]: company.website 必填`);
-    }
-  });
+  return rawCompanies.map((c, idx) => {
+    const p = `${filePath}[companies][${idx}]`;
+    const obj = asObj(c, p);
 
-  return data.companies as Company[];
+    const key = reqStr(obj, p, 'key');
+    if (keys.has(key)) fail(`${filePath}: 重复的 company key "${key}"`);
+    keys.add(key);
+
+    return {
+      key,
+      name: reqStr(obj, p, 'name'),
+      website: reqStr(obj, p, 'website'),
+    } as Company;
+  });
 }
 
 function validateModelCard(
   filePath: string,
-  model: Record<string, unknown>,
+  model: Obj,
   validMetricIds: Set<string>,
   validCompanyKeys: Set<string>,
   rootDir: string
 ): ModelCard {
-  if (typeof model.id !== 'string' || !model.id) {
-    fail(`${filePath}: id 必填`);
-  }
-  if (typeof model.name !== 'string' || !model.name) {
-    fail(`${filePath}: name 必填`);
-  }
-  if (typeof model.company !== 'string' || !validCompanyKeys.has(model.company)) {
-    fail(`${filePath}: company "${model.company}" 未在 companies.yaml 中定义`);
-  }
-  if (typeof model.brand_color !== 'string' || !model.brand_color) {
-    fail(`${filePath}: brand_color 必填`);
-  }
-  if (typeof model.release_date !== 'string' || !model.release_date) {
-    fail(`${filePath}: release_date 必填`);
-  }
-  if (!Array.isArray(model.weight_availability_tags)) {
-    fail(`${filePath}: weight_availability_tags 必须是数组`);
-  }
+  const p = filePath;
 
-  // sources 校验
-  if (!Array.isArray(model.sources) || model.sources.length === 0) {
-    fail(`${filePath}: sources 必须是非空数组`);
+  const id = reqStr(model, p, 'id');
+  const name = reqStr(model, p, 'name');
+  const company = reqStr(model, p, 'company');
+  if (!validCompanyKeys.has(company)) {
+    fail(`${p}: company "${company}" 未在 companies.yaml 中定义`);
   }
+  const brand_color = reqStr(model, p, 'brand_color');
+  const release_date = reqStr(model, p, 'release_date');
+  const weight_availability_tags = reqArr(model, p, 'weight_availability_tags').map(
+    (t, i) => {
+      if (typeof t !== 'string' || !(WEIGHT_AVAILABILITY_TAGS as readonly string[]).includes(t)) {
+        fail(`${p}.weight_availability_tags[${i}]: 必须是 ${WEIGHT_AVAILABILITY_TAGS.join('/')} 之一`);
+      }
+      return t as ModelCard['weight_availability_tags'][number];
+    }
+  );
+
+  // sources 校验：非空数组、key 唯一、type 枚举合法
+  const rawSources = reqArr(model, p, 'sources');
+  if (rawSources.length === 0) fail(`${p}: sources 必须是非空数组`);
   const sourceKeys = new Set<string>();
-  (model.sources as Source[]).forEach((s, idx) => {
-    if (typeof s.key !== 'string' || !s.key) fail(`${filePath}.sources[${idx}]: key 必填`);
-    if (sourceKeys.has(s.key)) fail(`${filePath}.sources: 重复的 source key "${s.key}"`);
-    sourceKeys.add(s.key);
-    if (typeof s.title !== 'string' || !s.title) fail(`${filePath}.sources[${idx}]: title 必填`);
-    if (typeof s.url !== 'string' || !s.url) fail(`${filePath}.sources[${idx}]: url 必填`);
-    if (!VALID_SOURCE_TYPES.includes(String(s.type))) {
-      fail(`${filePath}.sources[${idx}]: type 必须是 ${VALID_SOURCE_TYPES.join('/')} 之一`);
-    }
+  const sources: Source[] = rawSources.map((s, idx) => {
+    const sp = `${p}.sources[${idx}]`;
+    const obj = asObj(s, sp);
+    const key = reqStr(obj, sp, 'key');
+    if (sourceKeys.has(key)) fail(`${p}.sources: 重复的 source key "${key}"`);
+    sourceKeys.add(key);
+    return {
+      key,
+      title: reqStr(obj, sp, 'title'),
+      url: reqStr(obj, sp, 'url'),
+      type: reqEnum(obj, sp, 'type', SOURCE_TYPES),
+    };
   });
 
-  // scores 校验
-  if (typeof model.scores !== 'object' || model.scores === null) {
-    fail(`${filePath}: scores 必须是对象`);
-  }
-  Object.entries(model.scores as Record<string, ScoreEntry | null>).forEach(([key, rawEntry]) => {
+  // scores 校验：key 必须是已定义 metric；value 为 number|null；source 必须存在于 sources
+  const scoresObj = reqObj(model, p, 'scores');
+  const scores: Record<string, ScoreEntry> = {};
+  for (const [key, rawEntry] of Object.entries(scoresObj)) {
     if (!validMetricIds.has(key)) {
-      fail(`${filePath}.scores: benchmark key "${key}" 未在 metrics.yaml 中定义`);
+      fail(`${p}.scores: benchmark key "${key}" 未在 metrics.yaml 中定义`);
     }
-    // 允许 `mmlu-pro:` 这种空值简写，视为缺失分数
-    const entry: ScoreEntry = rawEntry === null ? { value: null } : rawEntry;
-    if (entry && typeof entry === 'object') {
-      if (entry.value !== null && typeof entry.value !== 'number') {
-        fail(`${filePath}.scores.${key}: value 必须是 number 或 null`);
-      }
-      if (entry.source !== undefined && !sourceKeys.has(entry.source)) {
-        fail(`${filePath}.scores.${key}: source "${entry.source}" 不存在于 sources 列表`);
-      }
-    } else {
-      fail(`${filePath}.scores.${key}: 必须是对象或 null`);
+    // 允许 `mmlu-pro:` 空值简写，视为缺失分数
+    const eo = rawEntry === null ? ({} as Obj) : asObj(rawEntry, `${p}.scores.${key}`);
+    if (eo.value !== undefined && eo.value !== null && typeof eo.value !== 'number') {
+      fail(`${p}.scores.${key}: value 必须是 number 或 null`);
     }
-    // 将空值简写写回 model，保证输出 JSON 结构一致
-    (model.scores as Record<string, ScoreEntry>)[key] = entry;
-  });
+    const value: number | null =
+      eo.value === undefined ? null : (eo.value as number | null);
+    const source = optStr(eo, `${p}.scores.${key}`, 'source');
+    if (source !== undefined && !sourceKeys.has(source)) {
+      fail(`${p}.scores.${key}: source "${source}" 不存在于 sources 列表`);
+    }
+    scores[key] = source !== undefined ? { value, source } : { value };
+  }
+
+  // 可选字段
+  let parameters: ModelCard['parameters'] | undefined = undefined;
+  if (model.parameters !== undefined) {
+    const po = asObj(model.parameters, `${p}.parameters`);
+    const total = optStr(po, `${p}.parameters`, 'total');
+    const active = optStr(po, `${p}.parameters`, 'active');
+    if (total !== undefined || active !== undefined) {
+      parameters = {
+        ...(total !== undefined && { total }),
+        ...(active !== undefined && { active }),
+      };
+    }
+  }
+  const architecture = optStr(model, p, 'architecture');
+  const context_window = optStr(model, p, 'context_window');
+  let modalities: ModelCard['modalities'] | undefined = undefined;
+  if (model.modalities !== undefined) {
+    const mo = asObj(model.modalities, `${p}.modalities`);
+    const input = reqArr(mo, `${p}.modalities`, 'input');
+    const output = reqArr(mo, `${p}.modalities`, 'output');
+    if (!input.every((x) => typeof x === 'string') || !output.every((x) => typeof x === 'string')) {
+      fail(`${p}.modalities: input/output 必须是字符串数组`);
+    }
+    modalities = { input: input as string[], output: output as string[] };
+  }
+  const logo = optStr(model, p, 'logo');
 
   // logo 存在性校验：警告但不阻断
-  if (typeof model.logo === 'string' && model.logo) {
-    const logoPath = path.resolve(rootDir, model.logo);
+  if (logo !== undefined) {
+    const logoPath = path.resolve(rootDir, logo);
     if (!fs.existsSync(logoPath)) {
-      warn(`${filePath}: logo 文件不存在 ${model.logo}，UI 将降级为文字 fallback`);
+      warn(`${p}: logo 文件不存在 ${logo}，UI 将降级为文字 fallback`);
     }
   }
 
-  return model as unknown as ModelCard;
+  const card: ModelCard = {
+    id,
+    name,
+    company,
+    brand_color,
+    release_date,
+    weight_availability_tags,
+    sources,
+    scores,
+    ...(parameters !== undefined && { parameters }),
+    ...(architecture !== undefined && { architecture }),
+    ...(context_window !== undefined && { context_window }),
+    ...(modalities !== undefined && { modalities }),
+    ...(logo !== undefined && { logo }),
+  };
+  return card;
 }
 
 function scanModels(dir: string): string[] {
@@ -282,8 +338,8 @@ function main() {
   console.log(`[build-index] 发现 ${modelFiles.length} 个模型文件`);
 
   const models: ModelCard[] = modelFiles.map((file) => {
-    const raw = loadYaml<Record<string, unknown>>(file);
-    return validateModelCard(file, raw, metricIds, companyKeys, rootDir);
+    const raw = loadYaml<unknown>(file);
+    return validateModelCard(file, asObj(raw, file), metricIds, companyKeys, rootDir);
   });
 
   // 按发布日期降序，便于前端默认展示最新模型

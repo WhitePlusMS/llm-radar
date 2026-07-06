@@ -3,9 +3,6 @@ name: Gemini 2.5 Pro
 company: google
 release_date: "2025-03-25"
 brand_color: "#4796E3"
-parameters:
-  total: null
-  active: null
 architecture: MoE
 context_window: "1M"
 modalities:

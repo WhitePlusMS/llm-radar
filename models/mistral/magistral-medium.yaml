@@ -3,9 +3,6 @@ name: Magistral Medium
 company: mistral
 brand_color: "#FF7000"
 release_date: "2025-06-10"
-parameters:
-  total:
-  active:
 architecture: Dense
 context_window: "128k"
 modalities:

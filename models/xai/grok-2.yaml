@@ -4,9 +4,6 @@ company: xai
 release_date: "2024-08-13"
 brand_color: "#000000"
 # xAI 未公开 Grok-2 的参数规模与架构细节，以下字段按官方披露情况填写。
-parameters:
-  total: null
-  active: null
 architecture: unknown
 # Grok-3 上下文窗口为 1M，官方称其为“上一代模型的 8 倍”，因此推断 Grok-2 为 128k。
 context_window: "128k"
