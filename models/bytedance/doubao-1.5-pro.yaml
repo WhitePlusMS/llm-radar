@@ -1,7 +1,7 @@
 id: bytedance/doubao-1.5-pro
 name: Doubao-1.5-pro
 company: bytedance
-brand_color: "#00F2EA"
+brand_color: "#325AB4"
 release_date: "2025-01-22"
 # ByteDance 未公开 Doubao-1.5-pro 的参数规模与架构细节。
 context_window: "256k"

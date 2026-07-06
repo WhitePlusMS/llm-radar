@@ -2,7 +2,7 @@ id: baichuan/baichuan-omni
 name: Baichuan-Omni
 company: baichuan
 release_date: "2024-10-11"
-brand_color: "#FF6A00"
+brand_color: "#FF6933"
 parameters:
   total: "7B"
   active: "7B"

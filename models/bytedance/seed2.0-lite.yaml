@@ -1,7 +1,7 @@
 id: bytedance/seed2.0-lite
 name: Seed 2.0 Lite
 company: bytedance
-brand_color: "#00F2EA"
+brand_color: "#325AB4"
 release_date: "2026-02-14"
 # ByteDance 未公开 Seed 2.0 Lite 的参数规模与架构细节。
 architecture: MoE

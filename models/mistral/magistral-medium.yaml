@@ -1,7 +1,7 @@
 id: mistral/magistral-medium
 name: Magistral Medium
 company: mistral
-brand_color: "#FF7000"
+brand_color: "#FA520F"
 release_date: "2025-06-10"
 # Mistral 官方未公开 Magistral Medium 的架构细节，Dense 为推测。
 architecture: Dense

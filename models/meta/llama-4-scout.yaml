@@ -2,7 +2,7 @@ id: meta/llama-4-scout
 name: Llama 4 Scout Instruct
 company: meta
 release_date: "2025-04-05"
-brand_color: "#0082FB"
+brand_color: "#1d65c1"
 parameters:
   total: "109B"
   active: "17B"

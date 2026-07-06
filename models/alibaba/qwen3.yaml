@@ -1,7 +1,7 @@
 id: alibaba/qwen3
 name: Qwen3
 company: alibaba
-brand_color: "#FF6A00"
+brand_color: "#615CED"
 release_date: "2025-04-29"
 parameters:
   total: "235B"

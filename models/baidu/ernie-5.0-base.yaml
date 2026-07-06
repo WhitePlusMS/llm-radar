@@ -1,7 +1,7 @@
 id: baidu/ernie-5.0-base
 name: ERNIE 5.0-Base
 company: baidu
-brand_color: "#2529D8"
+brand_color: "#2932E1"
 release_date: "2026-01-22"
 parameters:
   total: "2.4T"

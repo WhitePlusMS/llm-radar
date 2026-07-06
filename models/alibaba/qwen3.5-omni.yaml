@@ -1,7 +1,7 @@
 id: alibaba/qwen3.5-omni
 name: Qwen3.5-Omni
 company: alibaba
-brand_color: "#FF6A00"
+brand_color: "#615CED"
 release_date: "2026-03-30"
 # Qwen3.5-Omni 技术报告未披露单一型号的总/激活参数量，且包含 Plus/Flash 等多个变体。
 parameters:

@@ -1,7 +1,7 @@
 id: minimax/minimax-m3
 name: MiniMax-M3
 company: minimax
-brand_color: "#FE603C"
+brand_color: "#F23F5D"
 release_date: "2026-06-01"
 parameters:
   total: "428B"

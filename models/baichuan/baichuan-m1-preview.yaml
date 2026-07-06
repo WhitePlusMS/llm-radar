@@ -2,7 +2,7 @@ id: baichuan/baichuan-m1-preview
 name: Baichuan-M1-preview
 company: baichuan
 release_date: "2025-01-24"
-brand_color: "#FF6A00"
+brand_color: "#FF6933"
 # 官方未披露 Baichuan-M1-preview 的参数规模、架构与上下文窗口
 modalities:
   input: [text, image]

@@ -1,7 +1,7 @@
 id: minimax/minimax-m1
 name: MiniMax-M1
 company: minimax
-brand_color: "#FE603C"
+brand_color: "#F23F5D"
 release_date: "2025-06-16"
 parameters:
   total: "456B"

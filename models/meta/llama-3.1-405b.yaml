@@ -2,7 +2,7 @@ id: meta/llama-3.1-405b
 name: Llama 3.1 405B Instruct
 company: meta
 release_date: "2024-07-23"
-brand_color: "#0082FB"
+brand_color: "#1d65c1"
 parameters:
   total: "405B"
   active: "405B"

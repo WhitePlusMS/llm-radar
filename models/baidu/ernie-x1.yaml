@@ -1,7 +1,7 @@
 id: baidu/ernie-x1
 name: ERNIE X1
 company: baidu
-brand_color: "#2529D8"
+brand_color: "#2932E1"
 release_date: "2025-03-16"
 # Baidu 未公开 ERNIE X1 的参数规模与架构细节；基于 ERNIE 4.5 底座，架构为 MoE。
 architecture: MoE

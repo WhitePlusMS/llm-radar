@@ -1,7 +1,7 @@
 id: minimax/minimax-text-01
 name: MiniMax-Text-01
 company: minimax
-brand_color: "#FE603C"
+brand_color: "#F23F5D"
 release_date: "2025-01-14"
 parameters:
   total: "456B"

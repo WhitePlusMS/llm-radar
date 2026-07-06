@@ -2,7 +2,7 @@ id: baichuan/baichuan4
 name: Baichuan4
 company: baichuan
 release_date: "2024-05-22"
-brand_color: "#FF6A00"
+brand_color: "#FF6933"
 # 官方未披露 Baichuan4 的总/激活参数量与架构细节，故省略 parameters 与 architecture 字段
 context_window: "32k"
 modalities:

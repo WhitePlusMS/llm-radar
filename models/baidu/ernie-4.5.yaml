@@ -1,7 +1,7 @@
 id: baidu/ernie-4.5
 name: ERNIE 4.5-300B-A47B
 company: baidu
-brand_color: "#2529D8"
+brand_color: "#2932E1"
 release_date: "2025-03-16"
 parameters:
   total: "300B"

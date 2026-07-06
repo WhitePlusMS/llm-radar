@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-07-06T14:15:33.123Z",
+    "generated_at": "2026-07-06T14:19:57.849Z",
     "version": "0.1.0",
     "model_count": 70,
     "metric_count": 14,
@@ -243,7 +243,7 @@
       "id": "anthropic/claude-fable-5",
       "name": "Claude Fable 5",
       "company": "anthropic",
-      "brand_color": "#CC785C",
+      "brand_color": "#D97757",
       "release_date": "2026-06-09",
       "weight_availability_tags": [
         "closed-weights",
@@ -291,7 +291,7 @@
       "id": "minimax/minimax-m3",
       "name": "MiniMax-M3",
       "company": "minimax",
-      "brand_color": "#FE603C",
+      "brand_color": "#F23F5D",
       "release_date": "2026-06-01",
       "weight_availability_tags": [
         "open-weights",
@@ -351,7 +351,7 @@
       "id": "baidu/ernie-5.1",
       "name": "ERNIE 5.1",
       "company": "baidu",
-      "brand_color": "#2529D8",
+      "brand_color": "#2932E1",
       "release_date": "2026-05-08",
       "weight_availability_tags": [
         "closed-weights",
@@ -404,7 +404,7 @@
       "id": "alibaba/qwen3.5-omni",
       "name": "Qwen3.5-Omni",
       "company": "alibaba",
-      "brand_color": "#FF6A00",
+      "brand_color": "#615CED",
       "release_date": "2026-03-30",
       "weight_availability_tags": [
         "closed-weights",
@@ -456,7 +456,7 @@
       "id": "zhipu/glm-5",
       "name": "GLM-5",
       "company": "zhipu",
-      "brand_color": "#0B61FF",
+      "brand_color": "#4268FA",
       "release_date": "2026-02-17",
       "weight_availability_tags": [
         "open-weights",
@@ -500,7 +500,7 @@
       "id": "alibaba/qwen3.5",
       "name": "Qwen3.5",
       "company": "alibaba",
-      "brand_color": "#FF6A00",
+      "brand_color": "#615CED",
       "release_date": "2026-02-16",
       "weight_availability_tags": [
         "closed-weights",
@@ -536,7 +536,7 @@
       "id": "bytedance/seed-2.0-pro",
       "name": "Seed 2.0 Pro",
       "company": "bytedance",
-      "brand_color": "#00F2EA",
+      "brand_color": "#325AB4",
       "release_date": "2026-02-14",
       "weight_availability_tags": [
         "closed-weights",
@@ -631,7 +631,7 @@
       "id": "bytedance/seed2.0-lite",
       "name": "Seed 2.0 Lite",
       "company": "bytedance",
-      "brand_color": "#00F2EA",
+      "brand_color": "#325AB4",
       "release_date": "2026-02-14",
       "weight_availability_tags": [
         "closed-weights",
@@ -738,7 +738,7 @@
       "id": "baidu/ernie-5.0-base",
       "name": "ERNIE 5.0-Base",
       "company": "baidu",
-      "brand_color": "#2529D8",
+      "brand_color": "#2932E1",
       "release_date": "2026-01-22",
       "weight_availability_tags": [
         "closed-weights",
@@ -807,7 +807,7 @@
       "id": "baidu/ernie-5.0",
       "name": "ERNIE 5.0",
       "company": "baidu",
-      "brand_color": "#2529D8",
+      "brand_color": "#2932E1",
       "release_date": "2026-01-22",
       "weight_availability_tags": [
         "closed-weights",
@@ -882,7 +882,7 @@
       "id": "bytedance/seed-1.8",
       "name": "Seed1.8",
       "company": "bytedance",
-      "brand_color": "#00F2EA",
+      "brand_color": "#325AB4",
       "release_date": "2025-12-18",
       "weight_availability_tags": [
         "closed-weights",
@@ -974,7 +974,7 @@
       "id": "mistral/mistral-large-3",
       "name": "Mistral Large 3",
       "company": "mistral",
-      "brand_color": "#FF7000",
+      "brand_color": "#FA520F",
       "release_date": "2025-12-02",
       "weight_availability_tags": [
         "open-weights",
@@ -1060,7 +1060,7 @@
       "id": "minimax/minimax-m2",
       "name": "MiniMax-M2",
       "company": "minimax",
-      "brand_color": "#FE603C",
+      "brand_color": "#F23F5D",
       "release_date": "2025-10-27",
       "weight_availability_tags": [
         "open-weights"
@@ -1189,7 +1189,7 @@
       "id": "zhipu/glm-4.5",
       "name": "GLM-4.5",
       "company": "zhipu",
-      "brand_color": "#0B61FF",
+      "brand_color": "#4268FA",
       "release_date": "2025-07-28",
       "weight_availability_tags": [
         "open-weights",
@@ -1353,7 +1353,7 @@
       "id": "google/gemini-2.5-flash-lite",
       "name": "Gemini 2.5 Flash-Lite",
       "company": "google",
-      "brand_color": "#4796E3",
+      "brand_color": "#4285F4",
       "release_date": "2025-06-17",
       "weight_availability_tags": [
         "closed-weights",
@@ -1386,7 +1386,7 @@
       "id": "minimax/minimax-m1",
       "name": "MiniMax-M1",
       "company": "minimax",
-      "brand_color": "#FE603C",
+      "brand_color": "#F23F5D",
       "release_date": "2025-06-16",
       "weight_availability_tags": [
         "open-weights",
@@ -1440,7 +1440,7 @@
       "id": "mistral/magistral-medium",
       "name": "Magistral Medium",
       "company": "mistral",
-      "brand_color": "#FF7000",
+      "brand_color": "#FA520F",
       "release_date": "2025-06-10",
       "weight_availability_tags": [
         "closed-weights",
@@ -1520,7 +1520,7 @@
       "id": "mistral/magistral-small",
       "name": "Magistral Small",
       "company": "mistral",
-      "brand_color": "#FF7000",
+      "brand_color": "#FA520F",
       "release_date": "2025-06-10",
       "weight_availability_tags": [
         "open-weights",
@@ -1561,7 +1561,7 @@
       "id": "anthropic/claude-4-opus",
       "name": "Claude 4 Opus",
       "company": "anthropic",
-      "brand_color": "#CC785C",
+      "brand_color": "#D97757",
       "release_date": "2025-05-22",
       "weight_availability_tags": [
         "closed-weights",
@@ -1609,7 +1609,7 @@
       "id": "anthropic/claude-4-sonnet",
       "name": "Claude 4 Sonnet",
       "company": "anthropic",
-      "brand_color": "#CC785C",
+      "brand_color": "#D97757",
       "release_date": "2025-05-22",
       "weight_availability_tags": [
         "closed-weights",
@@ -1728,7 +1728,7 @@
       "id": "alibaba/qwen3",
       "name": "Qwen3",
       "company": "alibaba",
-      "brand_color": "#FF6A00",
+      "brand_color": "#615CED",
       "release_date": "2025-04-29",
       "weight_availability_tags": [
         "open-weights",
@@ -1798,7 +1798,7 @@
       "id": "google/gemini-2.5-flash",
       "name": "Gemini 2.5 Flash",
       "company": "google",
-      "brand_color": "#4796E3",
+      "brand_color": "#4285F4",
       "release_date": "2025-04-17",
       "weight_availability_tags": [
         "closed-weights",
@@ -1958,7 +1958,7 @@
       "id": "bytedance/seed-thinking-v1.5",
       "name": "Seed-Thinking-v1.5",
       "company": "bytedance",
-      "brand_color": "#00F2EA",
+      "brand_color": "#325AB4",
       "release_date": "2025-04-14",
       "weight_availability_tags": [
         "closed-weights",
@@ -2145,7 +2145,7 @@
       "id": "meta/llama-4-maverick",
       "name": "Llama 4 Maverick Instruct",
       "company": "meta",
-      "brand_color": "#0082FB",
+      "brand_color": "#1d65c1",
       "release_date": "2025-04-05",
       "weight_availability_tags": [
         "open-weights",
@@ -2197,7 +2197,7 @@
       "id": "meta/llama-4-scout",
       "name": "Llama 4 Scout Instruct",
       "company": "meta",
-      "brand_color": "#0082FB",
+      "brand_color": "#1d65c1",
       "release_date": "2025-04-05",
       "weight_availability_tags": [
         "open-weights",
@@ -2249,7 +2249,7 @@
       "id": "google/gemini-2.5-pro",
       "name": "Gemini 2.5 Pro",
       "company": "google",
-      "brand_color": "#4796E3",
+      "brand_color": "#4285F4",
       "release_date": "2025-03-25",
       "weight_availability_tags": [
         "closed-weights",
@@ -2347,7 +2347,7 @@
       "id": "baidu/ernie-4.5",
       "name": "ERNIE 4.5-300B-A47B",
       "company": "baidu",
-      "brand_color": "#2529D8",
+      "brand_color": "#2932E1",
       "release_date": "2025-03-16",
       "weight_availability_tags": [
         "open-weights",
@@ -2419,7 +2419,7 @@
       "id": "baidu/ernie-x1",
       "name": "ERNIE X1",
       "company": "baidu",
-      "brand_color": "#2529D8",
+      "brand_color": "#2932E1",
       "release_date": "2025-03-16",
       "weight_availability_tags": [
         "closed-weights",
@@ -2453,7 +2453,7 @@
       "id": "anthropic/claude-3.7-sonnet",
       "name": "Claude 3.7 Sonnet",
       "company": "anthropic",
-      "brand_color": "#CC785C",
+      "brand_color": "#D97757",
       "release_date": "2025-02-24",
       "weight_availability_tags": [
         "closed-weights",
@@ -2576,7 +2576,7 @@
       "id": "google/gemini-2.0-flash-lite",
       "name": "Gemini 2.0 Flash-Lite",
       "company": "google",
-      "brand_color": "#4796E3",
+      "brand_color": "#4285F4",
       "release_date": "2025-02-05",
       "weight_availability_tags": [
         "closed-weights",
@@ -2609,7 +2609,7 @@
       "id": "alibaba/qwen2.5-vl",
       "name": "Qwen2.5-VL",
       "company": "alibaba",
-      "brand_color": "#FF6A00",
+      "brand_color": "#615CED",
       "release_date": "2025-01-28",
       "weight_availability_tags": [
         "open-weights",
@@ -2646,7 +2646,7 @@
       "id": "baichuan/baichuan-m1-preview",
       "name": "Baichuan-M1-preview",
       "company": "baichuan",
-      "brand_color": "#FF6A00",
+      "brand_color": "#FF6933",
       "release_date": "2025-01-24",
       "weight_availability_tags": [
         "closed-weights",
@@ -2683,7 +2683,7 @@
       "id": "baichuan/baichuan-m1-14b",
       "name": "Baichuan-M1-14B",
       "company": "baichuan",
-      "brand_color": "#FF6A00",
+      "brand_color": "#FF6933",
       "release_date": "2025-01-23",
       "weight_availability_tags": [
         "open-weights"
@@ -2717,7 +2717,7 @@
       "id": "bytedance/doubao-1.5-pro",
       "name": "Doubao-1.5-pro",
       "company": "bytedance",
-      "brand_color": "#00F2EA",
+      "brand_color": "#325AB4",
       "release_date": "2025-01-22",
       "weight_availability_tags": [
         "closed-weights"
@@ -2903,7 +2903,7 @@
       "id": "minimax/minimax-text-01",
       "name": "MiniMax-Text-01",
       "company": "minimax",
-      "brand_color": "#FE603C",
+      "brand_color": "#F23F5D",
       "release_date": "2025-01-14",
       "weight_availability_tags": [
         "open-weights"
@@ -3036,7 +3036,7 @@
       "id": "google/gemini-2.0-flash",
       "name": "Gemini 2.0 Flash",
       "company": "google",
-      "brand_color": "#4796E3",
+      "brand_color": "#4285F4",
       "release_date": "2024-12-11",
       "weight_availability_tags": [
         "closed-weights",
@@ -3087,7 +3087,7 @@
       "id": "meta/llama-3.3-70b",
       "name": "Llama 3.3 70B Instruct",
       "company": "meta",
-      "brand_color": "#0082FB",
+      "brand_color": "#1d65c1",
       "release_date": "2024-12-06",
       "weight_availability_tags": [
         "open-weights"
@@ -3182,7 +3182,7 @@
       "id": "mistral/pixtral-large",
       "name": "Pixtral Large",
       "company": "mistral",
-      "brand_color": "#FF7000",
+      "brand_color": "#FA520F",
       "release_date": "2024-11-19",
       "weight_availability_tags": [
         "open-weights",
@@ -3356,7 +3356,7 @@
       "id": "anthropic/claude-3.5-sonnet",
       "name": "Claude 3.5 Sonnet",
       "company": "anthropic",
-      "brand_color": "#CC785C",
+      "brand_color": "#D97757",
       "release_date": "2024-10-22",
       "weight_availability_tags": [
         "closed-weights",
@@ -3425,7 +3425,7 @@
       "id": "baichuan/baichuan-omni",
       "name": "Baichuan-Omni",
       "company": "baichuan",
-      "brand_color": "#FF6A00",
+      "brand_color": "#FF6933",
       "release_date": "2024-10-11",
       "weight_availability_tags": [
         "open-weights",
@@ -3473,7 +3473,7 @@
       "id": "alibaba/qwen2.5",
       "name": "Qwen2.5",
       "company": "alibaba",
-      "brand_color": "#FF6A00",
+      "brand_color": "#615CED",
       "release_date": "2024-09-19",
       "weight_availability_tags": [
         "open-weights"
@@ -3700,7 +3700,7 @@
       "id": "meta/llama-3.1-405b",
       "name": "Llama 3.1 405B Instruct",
       "company": "meta",
-      "brand_color": "#0082FB",
+      "brand_color": "#1d65c1",
       "release_date": "2024-07-23",
       "weight_availability_tags": [
         "open-weights"
@@ -3780,7 +3780,7 @@
       "id": "meta/llama-3.1-70b",
       "name": "Llama 3.1 70B Instruct",
       "company": "meta",
-      "brand_color": "#0082FB",
+      "brand_color": "#1d65c1",
       "release_date": "2024-07-23",
       "weight_availability_tags": [
         "open-weights"
@@ -3852,7 +3852,7 @@
       "id": "baichuan/baichuan4",
       "name": "Baichuan4",
       "company": "baichuan",
-      "brand_color": "#FF6A00",
+      "brand_color": "#FF6933",
       "release_date": "2024-05-22",
       "weight_availability_tags": [
         "closed-weights"
@@ -3887,7 +3887,7 @@
       "id": "zhipu/glm-4",
       "name": "GLM-4",
       "company": "zhipu",
-      "brand_color": "#0B61FF",
+      "brand_color": "#4268FA",
       "release_date": "2024-05-20",
       "weight_availability_tags": [
         "closed-weights"

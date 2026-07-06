@@ -2,7 +2,7 @@ id: bytedance/seed-thinking-v1.5
 name: Seed-Thinking-v1.5
 company: bytedance
 release_date: "2025-04-14"
-brand_color: "#00F2EA"
+brand_color: "#325AB4"
 parameters:
   total: "200B"
   active: "20B"

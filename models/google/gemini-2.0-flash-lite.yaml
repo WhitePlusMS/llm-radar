@@ -1,7 +1,7 @@
 id: google/gemini-2.0-flash-lite
 name: Gemini 2.0 Flash-Lite
 company: google
-brand_color: "#4796E3"
+brand_color: "#4285F4"
 release_date: "2025-02-05"
 # Google 未公开该模型的参数规模与架构细节。
 context_window: "1M"

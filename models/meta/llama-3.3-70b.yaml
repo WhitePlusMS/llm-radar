@@ -1,7 +1,7 @@
 id: meta/llama-3.3-70b
 name: Llama 3.3 70B Instruct
 company: meta
-brand_color: "#0082FB"
+brand_color: "#1d65c1"
 release_date: "2024-12-06"
 parameters:
   total: "70B"

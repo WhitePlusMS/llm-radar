@@ -2,7 +2,7 @@ id: google/gemini-2.5-flash
 name: Gemini 2.5 Flash
 company: google
 release_date: "2025-04-17"
-brand_color: "#4796E3"
+brand_color: "#4285F4"
 architecture: MoE
 context_window: "1M"
 modalities:

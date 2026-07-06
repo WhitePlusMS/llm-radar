@@ -2,7 +2,7 @@ id: meta/llama-4-maverick
 name: Llama 4 Maverick Instruct
 company: meta
 release_date: "2025-04-05"
-brand_color: "#0082FB"
+brand_color: "#1d65c1"
 parameters:
   total: "400B"
   active: "17B"

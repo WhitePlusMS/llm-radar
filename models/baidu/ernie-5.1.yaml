@@ -1,7 +1,7 @@
 id: baidu/ernie-5.1
 name: ERNIE 5.1
 company: baidu
-brand_color: "#2529D8"
+brand_color: "#2932E1"
 release_date: "2026-05-08"
 parameters:
   total: "800B"

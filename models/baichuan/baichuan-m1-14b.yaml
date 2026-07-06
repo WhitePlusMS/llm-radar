@@ -1,7 +1,7 @@
 id: baichuan/baichuan-m1-14b
 name: Baichuan-M1-14B
 company: baichuan
-brand_color: "#FF6A00"
+brand_color: "#FF6933"
 release_date: "2025-01-23"
 parameters:
   total: "14B"

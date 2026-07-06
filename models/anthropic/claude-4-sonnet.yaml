@@ -1,7 +1,7 @@
 id: anthropic/claude-4-sonnet
 name: Claude 4 Sonnet
 company: anthropic
-brand_color: "#CC785C"
+brand_color: "#D97757"
 release_date: "2025-05-22"
 # Anthropic 官方未公开 Claude 4 Sonnet 的架构细节，Dense 为行业推测，未获官方确认。
 architecture: Dense

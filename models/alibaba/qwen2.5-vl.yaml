@@ -1,7 +1,7 @@
 id: alibaba/qwen2.5-vl
 name: Qwen2.5-VL
 company: alibaba
-brand_color: "#FF6A00"
+brand_color: "#615CED"
 release_date: "2025-01-28"
 parameters:
   total: "72B"

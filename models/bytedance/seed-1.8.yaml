@@ -2,7 +2,7 @@ id: bytedance/seed-1.8
 name: Seed1.8
 company: bytedance
 release_date: "2025-12-18"
-brand_color: "#00F2EA"
+brand_color: "#325AB4"
 # ByteDance 官方未披露 Seed1.8 的总/激活参数量。
 parameters:
   total: undisclosed

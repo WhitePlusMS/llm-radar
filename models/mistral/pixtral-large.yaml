@@ -1,7 +1,7 @@
 id: mistral/pixtral-large
 name: Pixtral Large
 company: mistral
-brand_color: "#FF7000"
+brand_color: "#FA520F"
 release_date: "2024-11-19"
 parameters:
   total: "124B"

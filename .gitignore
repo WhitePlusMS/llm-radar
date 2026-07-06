@@ -56,3 +56,5 @@ docs/superpowers/
 .vite/
 .playwright-mcp/
 .claude/
+docs/files/
+tmp/

@@ -1,7 +1,7 @@
 id: alibaba/qwen2.5
 name: Qwen2.5
 company: alibaba
-brand_color: "#FF6A00"
+brand_color: "#615CED"
 release_date: "2024-09-19"
 parameters:
   total: "72B"

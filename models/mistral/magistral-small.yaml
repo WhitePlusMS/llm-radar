@@ -1,7 +1,7 @@
 id: mistral/magistral-small
 name: Magistral Small
 company: mistral
-brand_color: "#FF7000"
+brand_color: "#FA520F"
 release_date: "2025-06-10"
 parameters:
   total: "24B"

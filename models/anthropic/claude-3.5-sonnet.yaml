@@ -2,7 +2,7 @@ id: anthropic/claude-3.5-sonnet
 name: Claude 3.5 Sonnet
 company: anthropic
 release_date: "2024-10-22"
-brand_color: "#CC785C"
+brand_color: "#D97757"
 # Anthropic 官方未公开 Claude 3.5 Sonnet 的架构细节，Dense 为行业推测，未获官方确认。
 architecture: Dense
 context_window: "200k"
