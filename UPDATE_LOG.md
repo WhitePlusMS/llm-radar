@@ -1,5 +1,65 @@
 # LLM Radar 更新日志
 
+## 2026-07-07 继续补齐 Baidu / MiniMax 主线，并修正 MiniMax 日期口径
+
+### 修改原因
+
+这轮继续挑证据最硬、能稳定落库的两条线：
+
+- `Baidu`
+  - 官方博客已经足够支撑新增 `ERNIE-4.5-21B-A3B`
+  - 官方博客也已明确 `ERNIE-4.5-VL-28B-A3B-Thinking`
+- `MiniMax`
+  - 官方 release notes 与官方文本生成文档已经足够支撑 `M2.1 / M2.5`
+  - 同时也能把 `MiniMax-M2`、`MiniMax-Text-01`、`MiniMax-VL-01` 的发布日期和 context 口径收紧
+
+本轮仍按“最简原则 + 文档置信度原则”执行：只补官方已经明确存在且能给出足够硬日期的主线卡；像 `MiniMax-M2.7` 这种虽然官方确认存在，但 release notes 只给到 `Mar. 2026` 的，我先不硬猜日期。
+
+### 修改文件与详情
+
+- 新增模型：
+  - `models/baidu/ernie-4.5-21b-a3b.yaml`
+  - `models/baidu/ernie-4.5-vl-28b-a3b-thinking.yaml`
+  - `models/minimax/minimax-m2.1.yaml`
+  - `models/minimax/minimax-m2.5.yaml`
+- 更新模型：
+  - `models/minimax/minimax-m2.yaml`
+  - `models/minimax/minimax-text-01.yaml`
+  - `models/minimax/minimax-vl-01.yaml`
+- 更新研究文档：
+  - `docs/research/baidu-sources.md`
+  - `docs/research/minimax-sources.md`
+
+### 修改影响
+
+- `ERNIE-4.5-21B-A3B`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2025-06-30`
+  - 写入官方可直接支撑的 `21B total / 3B active / MoE / text-only`
+- `ERNIE-4.5-VL-28B-A3B-Thinking`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2025-11-11`
+  - 写入官方可直接支撑的 `28B total / 3B active / text+image+video -> text / reasoning`
+- `MiniMax-M2`
+  - `release_date` 从 `2026-05-29` 收敛为官方 release notes 日期 `2025-09-11`
+  - `context_window` 从 `192k` 收敛为官方 docs 的 `204,800`
+- `MiniMax-M2.1`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2025-10-29`
+  - `context_window` 收敛为 `204,800`
+- `MiniMax-M2.5`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2026-01-23`
+  - `context_window` 收敛为 `204,800`
+- `MiniMax-Text-01 / MiniMax-VL-01`
+  - 发布日期从 `2025-01-14` 收敛为官方 release notes 日期 `2025-01-15`
+- `MiniMax-M2.7`
+  - 本轮明确记录“官方存在但日期不够精确，因此暂不建卡”
+
+### 验证
+
+- 待本轮收尾后统一执行 `npm run build-index`、`npm run build`、`npm test`。
+
 ## 2026-07-07 继续补齐 Tencent / Zhipu 官方主线，并修正发布日期口径
 
 ### 修改原因

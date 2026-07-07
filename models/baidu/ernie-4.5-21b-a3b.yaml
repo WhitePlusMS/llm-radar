@@ -1,0 +1,26 @@
+id: baidu/ernie-4.5-21b-a3b
+name: ERNIE 4.5-21B-A3B
+company: baidu
+brand_color: "#2932E1"
+release_date: "2025-06-30"
+parameters:
+  total: "21B"
+  active: "3B"
+architecture: MoE
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights]
+logo: assets/logos/baidu.svg
+sources:
+  - key: ernie-4.5-open-blog
+    title: ERNIE 4.5 Open Sourced
+    url: https://ernie.baidu.com/blog/posts/ernie4.5/
+    type: blog
+  - key: ernie-4.5-tr
+    title: ERNIE 4.5 Technical Report
+    url: https://ernie.baidu.com/blog/publication/ERNIE_Technical_Report.pdf
+    type: paper
+# 官方开源公告明确给出 ERNIE-4.5-21B-A3B 的家族定位与参数规模，
+# 但当前未稳定给出可直接映射到 metrics.yaml 的精确 benchmark 数值。
+scores: {}

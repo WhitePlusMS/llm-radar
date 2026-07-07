@@ -2,7 +2,7 @@ id: minimax/minimax-vl-01
 name: MiniMax-VL-01
 company: minimax
 brand_color: "#F23F5D"
-release_date: "2025-01-14"
+release_date: "2025-01-15"
 # MiniMax-01 论文确认 VL-01 为家族成员，但未单独公开其总/激活参数。
 architecture: MoE
 modalities:
@@ -15,4 +15,8 @@ sources:
     title: "MiniMax-01: Scaling Foundation Models with Efficient Lightning Attention"
     url: https://arxiv.org/abs/2501.08313
     type: paper
+  - key: minimax-release-notes
+    title: "MiniMax API Release Notes - Models"
+    url: https://platform.minimax.io/docs/release-notes/models
+    type: website
 scores: {}

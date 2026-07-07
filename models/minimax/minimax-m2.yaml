@@ -2,12 +2,12 @@ id: minimax/minimax-m2
 name: MiniMax-M2
 company: minimax
 brand_color: "#F23F5D"
-release_date: "2026-05-29"
+release_date: "2025-09-11"
 parameters:
   total: "229.9B"
   active: "9.8B"
 architecture: MoE
-context_window: "192k"
+context_window: "204,800"
 modalities:
   input: [text]
   output: [text]
@@ -25,7 +25,7 @@ sources:
   - key: minimax-release-notes
     title: "MiniMax API Release Notes - Models"
     url: https://platform.minimax.io/docs/release-notes/models
-    type: blog
+    type: website
 scores:
   # 以下分数来自 MiniMax-M2 GitHub README 中的 "Intelligence Benchmarks" 与 "Coding & Agentic Benchmarks" 表格。
   # 报告还公布了 AIME25、LiveCodeBench、IFBench、Terminal-Bench、BrowseComp、GAIA 等成绩，

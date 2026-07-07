@@ -1,0 +1,23 @@
+id: minimax/minimax-m2.1
+name: MiniMax-M2.1
+company: minimax
+brand_color: "#F23F5D"
+release_date: "2025-10-29"
+context_window: "204,800"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning]
+logo: assets/logos/minimax.svg
+sources:
+  - key: minimax-release-notes
+    title: MiniMax API Release Notes - Models
+    url: https://platform.minimax.io/docs/release-notes/models
+    type: website
+  - key: minimax-text-generation-doc
+    title: Model Invocation
+    url: https://platform.minimax.io/docs/guides/text-generation
+    type: website
+# 官方 docs 已明确发布日期、204,800 context 和文本/工具调用定位，
+# 但当前未稳定提供本项目 metrics.yaml 同口径 benchmark 数值。
+scores: {}

@@ -7,6 +7,8 @@
 - `ERNIE 4.5` 家族
   - 百度官方开源公告 `2025-06-30` 明确写到：家族包含 `47B` / `3B` active 参数的 MoE 变体，最大模型为 `424B total`
   - `ERNIE-4.5-300B-A47B` 与 `ERNIE-4.5-VL-424B-A47B` 均能从官方技术报告 / 官方博客名称层面得到支撑
+  - `ERNIE-4.5-21B-A3B` 已补入官方主线模型卡；参数与发布日期都可由官方开源公告直接支撑
+  - `ERNIE-4.5-VL-28B-A3B-Thinking` 已补入官方主线模型卡；发布日期按官方博客收敛为 `2025-11-11`
   - 但当前公开页没有把 `ERNIE 4.5-300B-A47B` 与 `ERNIE 4.5-VL` 的精确首发日期稳定锚定到 `2025-03-16 / 2025-03-18`，因此仓库已回退这些具体日期
 - `ERNIE 5.0`
   - 百度官方博客页 `article:published_time` 为 `2026-02-06`
@@ -40,6 +42,20 @@
 - **类型**：官方技术报告（论文）
 - **发布日期**：2025-06-30（按官方开源公告页发布时间）
 - **说明**：官方开源公告明确家族包含 `47B` / `3B` active 参数的 MoE 变体、最大模型为 `424B total`，并给出 `ERNIE-4.5-300B-A47B` / `ERNIE-4.5-VL-424B-A47B` 的官方命名；技术报告提供了 ERNIE 4.5-300B-A47B post-trained 模型在 MMLU-Pro、MMLU、HumanEval+、MATH-500、GSM8K、IFEval、BBH、DROP 等 benchmark 上的原始分数。
+
+### 3. ERNIE 4.5-21B-A3B
+- **原始来源**：ERNIE 4.5 家族开源公告
+- **博客**：https://ernie.baidu.com/blog/posts/ernie4.5/
+- **类型**：官方博客（发布方原始来源）
+- **发布日期**：2025-06-30
+- **说明**：官方开源公告正文明确点名 `ERNIE-4.5-21B-A3B-Base`，并给出 `3B active` 家族信息。当前页面提供的是相对 benchmark 结论而非本项目 `metrics.yaml` 同口径精确表格，因此模型卡保持空分数。
+
+### 4. ERNIE 4.5-VL-28B-A3B-Thinking
+- **原始来源**：ERNIE-4.5-VL-28B-A3B-Thinking 官方博客
+- **博客**：https://ernie.baidu.com/blog/posts/ernie-4.5-vl-28b-a3b-thinking/
+- **类型**：官方博客（发布方原始来源）
+- **发布日期**：2025-11-11
+- **说明**：官方博客明确给出 `28B total / 3B active`、Thinking 模式升级、多模态 reasoning 与视频理解定位。当前页面未给出本项目 `metrics.yaml` 同口径 benchmark 表格，因此模型卡保持空分数。
 
 ## 未找到原始来源的模型
 
