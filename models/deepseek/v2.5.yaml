@@ -18,6 +18,20 @@ sources:
     title: DeepSeek API Updates
     url: https://api-docs.deepseek.com/updates
     type: blog
-# DeepSeek-V2.5 官方资料未报告 metrics.yaml 中多数指标的精确数值。
-# 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
-scores: {}
+  - key: deepseek-v2.5-hf
+    title: DeepSeek-V2.5
+    url: https://huggingface.co/deepseek-ai/DeepSeek-V2.5
+    type: model-card
+scores:
+  mmlu:
+    value: 80.6
+    source: deepseek-v2.5-hf
+    note: 5-shot
+  humaneval:
+    value: 89.0
+    source: deepseek-v2.5-hf
+    note: HumanEval python
+  swe-bench:
+    value: 16.8
+    source: deepseek-v2.5-hf
+    note: SWE-verified

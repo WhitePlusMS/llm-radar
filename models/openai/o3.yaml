@@ -19,12 +19,14 @@ sources:
     title: OpenAI o3 and o4-mini System Card
     url: https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf
     type: paper
-scores:
-  # 以下分数来自 OpenAI 官方 o3/o4-mini 发布页及其系统卡中公布的基准结果。
-  gpqa:
-    value: 87.7
-    source: o3-announcement
-  swe-bench:
-    value: 71.7
-    source: o3-announcement
-  # 原始来源未报告：mmlu, mmlu-pro, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
+  - key: o3-model-doc
+    title: o3 Model
+    url: https://developers.openai.com/api/docs/models/o3
+    type: website
+  - key: openai-api-changelog
+    title: OpenAI API Changelog
+    url: https://developers.openai.com/api/docs/changelog
+    type: website
+# 当前官方发布页与 system card 文本中，未稳定检出与本仓库 `metrics.yaml`
+# 一一对应的精确 `gpqa` / `swe-bench` 数值，因此先不保留，以避免误填。
+scores: {}

@@ -1,0 +1,22 @@
+id: openai/o3-pro
+name: OpenAI o3-pro
+company: openai
+brand_color: "#10A37F"
+release_date: "2025-06-10"
+# OpenAI 未公开 o3-pro 的参数规模与架构细节。
+context_window: "200k"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/openai.svg
+sources:
+  - key: o3-pro-model-doc
+    title: o3-pro Model
+    url: https://developers.openai.com/api/docs/models/o3-pro
+    type: website
+  - key: openai-api-changelog
+    title: OpenAI API Changelog
+    url: https://developers.openai.com/api/docs/changelog
+    type: website
+scores: {}

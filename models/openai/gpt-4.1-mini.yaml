@@ -4,7 +4,7 @@ company: openai
 brand_color: "#10A37F"
 release_date: "2025-04-14"
 # OpenAI 未公开 GPT-4.1 mini 的参数规模与架构细节。
-context_window: "1M"
+context_window: "1,047,576"
 modalities:
   input: [text, image]
   output: [text]
@@ -15,6 +15,10 @@ sources:
     title: Introducing GPT-4.1 in the API
     url: https://openai.com/index/gpt-4-1/
     type: blog
+  - key: gpt-4.1-mini-model-doc
+    title: GPT-4.1 mini Model
+    url: https://developers.openai.com/api/docs/models/gpt-4.1-mini
+    type: website
 scores:
   mmlu:
     value: 87.5

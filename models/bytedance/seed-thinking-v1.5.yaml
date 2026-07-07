@@ -7,7 +7,6 @@ parameters:
   total: "200B"
   active: "20B"
 architecture: MoE
-context_window: "32k"
 modalities:
   input: [text]
   output: [text]

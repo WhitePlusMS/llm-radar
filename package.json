@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build-index": "tsx scripts/build-index.ts",
+    "scan:parameter-gaps": "tsx scripts/scan-parameter-gaps.ts",
     "prebuild": "npm run build-index",
     "build": "tsc && vite build",
     "dev": "npm run build-index && vite",

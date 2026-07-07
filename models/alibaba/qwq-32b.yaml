@@ -2,12 +2,11 @@ id: alibaba/qwq-32b
 name: QwQ-32B
 company: alibaba
 brand_color: "#615CED"
-release_date: "2025-03-05"
+release_date: "2025-03-06"
 parameters:
-  total: "32B"
-  active: "32B"
-architecture: Dense
-context_window: "32k"
+  total: "32.5B"
+  active: undisclosed
+context_window: "131,072"
 modalities:
   input: [text]
   output: [text]
@@ -18,4 +17,8 @@ sources:
     title: "QwQ-32B: Embracing the Power of Reinforcement Learning"
     url: https://qwenlm.github.io/blog/qwq-32b/
     type: blog
+  - key: qwq-32b-hf
+    title: QwQ-32B
+    url: https://huggingface.co/Qwen/QwQ-32B
+    type: model-card
 scores: {}

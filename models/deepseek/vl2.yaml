@@ -7,8 +7,7 @@ parameters:
   total: "27B"
   active: "4.5B"
 architecture: MoE
-# DeepSeek-VL2 技术报告未明确披露上下文窗口长度，4k 为推测值，暂不确定。
-context_window: "uncertain"
+context_window: "4k"
 modalities:
   input: [text, image]
   output: [text]
@@ -19,4 +18,10 @@ sources:
     title: "DeepSeek-VL2: Mixture-of-Experts Vision-Language Models for Advanced Multimodal Understanding"
     url: https://arxiv.org/abs/2412.10302
     type: paper
+  - key: vl2-github
+    title: "deepseek-ai/DeepSeek-VL2"
+    url: https://github.com/deepseek-ai/DeepSeek-VL2
+    type: codebase
+# DeepSeek-VL2 官方论文主要报告 MMMU、MMBench、MMStar、MathVista、AI2D、OCRBench 等视觉语言 benchmark。
+# 这些指标不在当前项目的通用文本 metrics 集合中，因此这里继续保持空分数。
 scores: {}

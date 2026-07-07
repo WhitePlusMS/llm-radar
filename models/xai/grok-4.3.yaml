@@ -2,17 +2,21 @@ id: xai/grok-4.3
 name: Grok 4.3
 company: xai
 brand_color: "#000000"
-release_date: "2026-06-11"
+release_date: "2026-06-17"
 # xAI 未公开 Grok 4.3 的参数规模与架构细节。
 context_window: "1M"
 modalities:
-  input: [text]
+  input: [text, image]
   output: [text]
-weight_availability_tags: [closed-weights, reasoning]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
 logo: assets/logos/xai.svg
 sources:
-  - key: xai-models-doc
-    title: Models
-    url: https://docs.x.ai/docs/models
+  - key: grok-4.3-doc
+    title: Grok 4.3
+    url: https://docs.x.ai/developers/models/grok-4.3
     type: website
+  - key: grok-4.3-bedrock
+    title: Grok on Amazon Bedrock
+    url: https://x.ai/news/grok-amazon-bedrock
+    type: blog
 scores: {}

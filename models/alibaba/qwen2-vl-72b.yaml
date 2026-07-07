@@ -1,0 +1,25 @@
+id: alibaba/qwen2-vl-72b
+name: Qwen2-VL-72B
+company: alibaba
+brand_color: "#615CED"
+release_date: "2024-09-17"
+parameters:
+  total: "72B"
+  active: "72B"
+modalities:
+  input: [text, image, video]
+  output: [text]
+weight_availability_tags: [open-weights, multimodal]
+logo: assets/logos/alibaba.svg
+sources:
+  - key: qwen2-vl-72b-hf
+    title: Qwen2-VL-72B-Instruct
+    url: https://huggingface.co/Qwen/Qwen2-VL-72B-Instruct
+    type: model-card
+  - key: qwen2-vl-72b-hf-api
+    title: Qwen2-VL-72B-Instruct metadata API
+    url: https://huggingface.co/api/models/Qwen/Qwen2-VL-72B-Instruct
+    type: website
+# Qwen2-VL-72B 官方报告了 MMMU、DocVQA、RealWorldQA、MMStar、MathVista、MVBench 等视觉/视频 benchmark，
+# 但这些指标不在当前项目 metrics.yaml 的通用文本集合内，因此 scores 保持为空。
+scores: {}

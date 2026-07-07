@@ -1,0 +1,22 @@
+id: anthropic/claude-opus-4.5
+name: Claude Opus 4.5
+company: anthropic
+brand_color: "#D97757"
+release_date: "2025-11-24"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/anthropic.svg
+sources:
+  - key: claude-opus-4.5-launch
+    title: Introducing Claude Opus 4.5
+    url: https://www.anthropic.com/news/claude-opus-4-5
+    type: blog
+  - key: claude-model-deprecations
+    title: Model deprecations
+    url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    type: website
+# Anthropic 官方已确认 Opus 4.5 为正式模型。
+# 当前仓库暂未从官方原文稳定落锤出可直接回填 metrics.yaml 的 context 与 benchmark 数值。
+scores: {}

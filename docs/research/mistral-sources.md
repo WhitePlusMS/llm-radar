@@ -37,6 +37,23 @@
   - PDF 已下载到：`docs/papers/mistral/magistral-arxiv-2506.10910.pdf`
   - 关键信息：介绍 Magistral Medium（基于 Mistral Medium 3 纯 RL 训练）和 Magistral Small（ cold-start + RL）；论文包含 RL 算法、基础设施、数据筛选与 benchmark 表格。
 
+### Mistral Medium 3.5 / Mistral Small 4 / Ministral 3 14B 25.12
+
+- **官方模型卡：Mistral Medium 3.5 26.04**  
+  https://docs.mistral.ai/models/model-cards/mistral-medium-3-5-26-04  
+  类型：website  
+  关键信息：`123B total / 15B active`、`Hybrid`、`128K`、Open、多模态。
+
+- **官方模型卡：Mistral Small 4 25.06**  
+  https://docs.mistral.ai/models/model-cards/mistral-small-4-25-06  
+  类型：website  
+  关键信息：`119B total / 6.5B active`、`Hybrid`、`256K`、Open、多模态。
+
+- **官方模型卡：Ministral 3 14B 25.12**  
+  https://docs.mistral.ai/models/model-cards/ministral-3-14b-25-12  
+  类型：website  
+  关键信息：`14B`、Dense Transformer、`256K`、Open。
+
 ## 未采用来源说明
 
 - 第三方 benchmark 聚合站（如 frontierbenchmarks.com、llm-stats.com、artificialanalysis.ai）给出了 Mistral Large 3 的 MMLU / MMLU-Pro / GPQA 等具体数值，但属于第三方复测/聚合，不符合本项目"只采用发布方原始来源"的 ScoreSourcePolicy，故未录入 scores。

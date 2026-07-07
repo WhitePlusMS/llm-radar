@@ -10,7 +10,7 @@ architecture: MoE
 context_window: "128k"
 modalities:
   input: [text]
-  output: [text, code]
+  output: [text]
 weight_availability_tags: [open-weights, reasoning]
 logo: assets/logos/deepseek.svg
 sources:
@@ -18,4 +18,20 @@ sources:
     title: DeepSeek-V3.1 Release
     url: https://api-docs.deepseek.com/news/news250821
     type: website
-scores: {}
+  - key: deepseek-v3.1-hf
+    title: DeepSeek-V3.1
+    url: https://huggingface.co/deepseek-ai/DeepSeek-V3.1
+    type: model-card
+scores:
+  mmlu-pro:
+    value: 84.4
+    source: deepseek-v3.1-hf
+    note: MMLU-Pro
+  gpqa:
+    value: 74.9
+    source: deepseek-v3.1-hf
+    note: GPQA Diamond
+  swe-bench:
+    value: 57.0
+    source: deepseek-v3.1-hf
+    note: SWE Verified

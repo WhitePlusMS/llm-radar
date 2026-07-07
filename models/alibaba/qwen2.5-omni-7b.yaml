@@ -2,12 +2,10 @@ id: alibaba/qwen2.5-omni-7b
 name: Qwen2.5-Omni-7B
 company: alibaba
 brand_color: "#615CED"
-release_date: "2025-03-26"
+release_date: "2025-03-27"
 parameters:
   total: "7B"
   active: "7B"
-architecture: Dense
-context_window: "32k"
 modalities:
   input: [text, image, audio, video]
   output: [text, audio]
@@ -18,4 +16,20 @@ sources:
     title: Qwen2.5-Omni
     url: https://qwenlm.github.io/blog/qwen2.5-omni/
     type: blog
-scores: {}
+  - key: qwen2.5-omni-hf
+    title: Qwen2.5-Omni-7B
+    url: https://huggingface.co/Qwen/Qwen2.5-Omni-7B
+    type: model-card
+scores:
+  mmlu-pro:
+    value: 47.0
+    source: qwen2.5-omni-hf
+  gpqa:
+    value: 30.8
+    source: qwen2.5-omni-hf
+  gsm8k:
+    value: 88.7
+    source: qwen2.5-omni-hf
+  humaneval:
+    value: 78.7
+    source: qwen2.5-omni-hf

@@ -15,6 +15,18 @@ sources:
     title: Introducing OpenAI o3 and o4-mini
     url: https://openai.com/index/introducing-o3-and-o4-mini/
     type: blog
+  - key: o3-system-card
+    title: OpenAI o3 and o4-mini System Card
+    url: https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf
+    type: paper
+  - key: o4-mini-model-doc
+    title: o4-mini Model
+    url: https://developers.openai.com/api/docs/models/o4-mini
+    type: website
+  - key: openai-api-changelog
+    title: OpenAI API Changelog
+    url: https://developers.openai.com/api/docs/changelog
+    type: website
 # o4-mini 官方发布页未给出 metrics.yaml 中多数指标的精确数值。
 # 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
 scores: {}

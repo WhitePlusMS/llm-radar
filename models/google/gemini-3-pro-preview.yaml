@@ -1,0 +1,23 @@
+id: google/gemini-3-pro-preview
+name: Gemini 3 Pro Preview
+company: google
+brand_color: "#4285F4"
+release_date: "2025-11-18"
+context_window: "1M"
+modalities:
+  input: [text, image, audio, video, pdf]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/google.svg
+sources:
+  - key: gemini-3-pro-preview-doc
+    title: Gemini 3 Pro Preview
+    url: https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-preview
+    type: website
+  - key: gemini-deprecations
+    title: Gemini deprecations
+    url: https://ai.google.dev/gemini-api/docs/deprecations
+    type: website
+# 官方模型页明确给出 1M context 与 PDF 输入，但当前未找到可稳定映射到 metrics.yaml
+# 的官方 benchmark 数值，因此不硬填分数。
+scores: {}

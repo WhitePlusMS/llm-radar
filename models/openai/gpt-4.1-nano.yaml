@@ -1,0 +1,32 @@
+id: openai/gpt-4.1-nano
+name: GPT-4.1 nano
+company: openai
+brand_color: "#10A37F"
+release_date: "2025-04-14"
+# OpenAI 未公开 GPT-4.1 nano 的参数规模与架构细节。
+context_window: "1,047,576"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, multimodal]
+logo: assets/logos/openai.svg
+sources:
+  - key: gpt-4.1-announcement
+    title: Introducing GPT-4.1 in the API
+    url: https://openai.com/index/gpt-4-1/
+    type: blog
+  - key: gpt-4.1-nano-model-doc
+    title: GPT-4.1 nano Model
+    url: https://developers.openai.com/api/docs/models/gpt-4.1-nano
+    type: website
+scores:
+  mmlu:
+    value: 80.1
+    source: gpt-4.1-announcement
+  gpqa:
+    value: 50.3
+    source: gpt-4.1-announcement
+  ifeval:
+    value: 74.5
+    source: gpt-4.1-announcement
+  # 原始来源未报告：mmlu-pro, humaneval, swe-bench, math-level-5, gsm8k, arena-elo, bbh, drop, hellaswag, arc-c, winogrande

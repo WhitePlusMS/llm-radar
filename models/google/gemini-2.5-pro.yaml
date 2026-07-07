@@ -1,12 +1,11 @@
 id: google/gemini-2.5-pro
 name: Gemini 2.5 Pro
 company: google
-release_date: "2025-03-25"
+release_date: "2025-06-17"
 brand_color: "#4285F4"
-architecture: MoE
 context_window: "1M"
 modalities:
-  input: [text, image, audio, video]
+  input: [text, image, audio, video, pdf]
   output: [text]
 weight_availability_tags: [closed-weights, reasoning, multimodal]
 logo: assets/logos/google.svg
@@ -19,7 +18,12 @@ sources:
     title: "Gemini 2.5: Our most intelligent AI model"
     url: https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-thinking-updates-march-2025/
     type: blog
+  - key: gemini-deprecations
+    title: Gemini deprecations
+    url: https://ai.google.dev/gemini-api/docs/deprecations
+    type: website
 scores:
+  # 分数来自 Google-authored Gemini 2.5 technical report；发布日期按稳定 API 模型口径收敛到 lifecycle 页。
   gpqa:
     value: 86.4
     source: gemini-2.5-report

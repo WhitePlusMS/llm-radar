@@ -22,6 +22,14 @@ sources:
     title: "GLM-4.5: Reasoning, Coding, and Agentic Abilities"
     url: https://z.ai/blog/glm-4.5
     type: blog
+  - key: glm-4.5-github
+    title: zai-org/GLM-4.5
+    url: https://github.com/zai-org/GLM-4.5
+    type: codebase
+  - key: glm-4.5-hf
+    title: zai-org/GLM-4.5
+    url: https://huggingface.co/zai-org/GLM-4.5
+    type: model-card
 scores:
   mmlu:
     value: 90.0

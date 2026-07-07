@@ -4,7 +4,6 @@ company: xai
 release_date: "2025-02-19"
 brand_color: "#000000"
 # xAI 未公开 Grok-3 的参数规模与架构细节。
-architecture: unknown
 context_window: "1M"
 modalities:
   input: [text, image, video]

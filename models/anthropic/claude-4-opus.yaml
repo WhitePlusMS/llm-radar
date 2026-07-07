@@ -1,10 +1,8 @@
 id: anthropic/claude-4-opus
-name: Claude 4 Opus
+name: Claude Opus 4
 company: anthropic
 release_date: "2025-05-22"
 brand_color: "#D97757"
-# Anthropic 官方未公开 Claude 4 Opus 的架构细节，Dense 为行业推测，未获官方确认。
-architecture: Dense
 context_window: "200k"
 modalities:
   input: [text, image]

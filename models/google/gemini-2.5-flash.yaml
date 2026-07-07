@@ -1,9 +1,8 @@
 id: google/gemini-2.5-flash
 name: Gemini 2.5 Flash
 company: google
-release_date: "2025-04-17"
+release_date: "2025-06-17"
 brand_color: "#4285F4"
-architecture: MoE
 context_window: "1M"
 modalities:
   input: [text, image, audio, video]
@@ -15,7 +14,12 @@ sources:
     title: "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities"
     url: https://arxiv.org/abs/2507.06261
     type: paper
+  - key: gemini-deprecations
+    title: Gemini deprecations
+    url: https://ai.google.dev/gemini-api/docs/deprecations
+    type: website
 scores:
+  # 分数来自 Google-authored Gemini 2.5 technical report；发布日期按稳定 API 模型口径收敛到 lifecycle 页。
   gpqa:
     value: 82.8
     source: gemini-2.5-report

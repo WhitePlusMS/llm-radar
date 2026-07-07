@@ -3,8 +3,6 @@ name: Claude Fable 5
 company: anthropic
 release_date: "2026-06-09"
 brand_color: "#D97757"
-# Anthropic 官方未公开 Claude Fable 5 的架构细节，Dense 为行业推测，未获官方确认。
-architecture: Dense
 context_window: "1M"
 modalities:
   input: [text, image]
@@ -20,13 +18,4 @@ sources:
     title: "Claude Fable 5 and Claude Mythos 5"
     url: https://www.anthropic.com/news/claude-fable-5-mythos-5
     type: blog
-scores:
-  # SWE-bench Verified (Fable 5, with production safeguards; 500-problem subset).
-  swe-bench:
-    value: 95.0
-    source: claude-fable-5-mythos-5-system-card
-  # GPQA Diamond value is reported for Mythos 5 in the system card;
-  # Fable 5 shares the same underlying model and is only differentiated by safety safeguards.
-  gpqa:
-    value: 94.1
-    source: claude-fable-5-mythos-5-system-card
+scores: {}

@@ -2,15 +2,11 @@ id: baidu/ernie-5.1
 name: ERNIE 5.1
 company: baidu
 brand_color: "#2932E1"
-release_date: "2026-05-08"
+release_date: "2026-05-09"
 parameters:
-  total: "800B"
-  active: "uncertain"
+  total: "undisclosed"
+  active: "undisclosed"
 architecture: MoE
-context_window: "128k"
-modalities:
-  input: [text, image, audio, video]
-  output: [text, image, audio]
 weight_availability_tags: [closed-weights, multimodal]
 logo: assets/logos/baidu.svg
 sources:
@@ -18,15 +14,7 @@ sources:
     title: ERNIE 5.1 Release
     url: https://ernie.baidu.com/blog/posts/ernie-5.1-0508-release/
     type: blog
-scores:
-  mmlu-pro:
-    value: 85.6
-    source: ernie-5.1-blog
-  gpqa:
-    value: 82.1
-    source: ernie-5.1-blog
-  arena-elo:
-    value: 1476
-    source: ernie-5.1-blog
-    note: LMArena Text Arena
-  # 原始来源未报告：mmlu, humaneval, math-level-5, gsm8k, ifeval, bbh, drop, hellaswag, arc-c, winogrande
+# 当前官方博客正文只明确提到其在 GPQA / MMLU-Pro 上接近领先闭源模型，
+# 并给出 Arena Search 1223；尚未稳定检出与本仓库 `metrics.yaml`
+# 一一对应的精确 `mmlu-pro` / `gpqa` / `arena-elo` 数值，因此先不保留。
+scores: {}

@@ -3,12 +3,10 @@ name: Grok-4
 company: xai
 release_date: "2025-07-09"
 brand_color: "#000000"
-# xAI 未公开 Grok-4 的参数规模与架构细节。
-architecture: unknown
 context_window: "256k"
 modalities:
-  input: [text, image, audio]
-  output: [text, audio]
+  input: [text, image]
+  output: [text]
 weight_availability_tags: [closed-weights, reasoning, multimodal]
 logo: assets/logos/xai.svg
 sources:

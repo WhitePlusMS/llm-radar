@@ -3,16 +3,19 @@ name: Mistral Medium 3.5
 company: mistral
 brand_color: "#FA520F"
 release_date: "2026-02-17"
-# Mistral 官方未公开 Medium 3.5 的参数规模。
-context_window: "256k"
+parameters:
+  total: "123B"
+  active: "15B"
+architecture: Hybrid
+context_window: "128k"
 modalities:
   input: [text, image]
   output: [text]
-weight_availability_tags: [closed-weights, multimodal]
+weight_availability_tags: [open-weights, multimodal]
 logo: assets/logos/mistral.svg
 sources:
   - key: mistral-medium-3.5-doc
     title: Mistral Medium 3.5
-    url: https://docs.mistral.ai/models/model-cards/mistral-medium-3.5
+    url: https://docs.mistral.ai/models/model-cards/mistral-medium-3-5-26-04
     type: website
 scores: {}

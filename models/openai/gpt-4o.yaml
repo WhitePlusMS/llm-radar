@@ -6,8 +6,8 @@ release_date: "2024-05-13"
 # OpenAI 未公开 GPT-4o 的参数规模与架构细节，故不填写 parameters 与 architecture。
 context_window: "128k"
 modalities:
-  input: [text, image, audio, video]
-  output: [text, image, audio]
+  input: [text, image]
+  output: [text]
 weight_availability_tags: [closed-weights, multimodal]
 logo: assets/logos/openai.svg
 sources:
@@ -19,33 +19,27 @@ sources:
     title: GPT-4o System Card
     url: https://arxiv.org/abs/2410.21276
     type: paper
+  - key: gpt-4o-model-doc
+    title: GPT-4o Model
+    url: https://developers.openai.com/api/docs/models/gpt-4o
+    type: website
   - key: gpt-4.1-announcement
     title: Introducing GPT-4.1 in the API
     url: https://openai.com/index/gpt-4-1/
     type: blog
-  - key: mmlu-pro-paper
-    title: "MMLU-Pro: A More Robust and Challenging Multi-Task Language Understanding Benchmark"
-    url: https://arxiv.org/abs/2406.01574
-    type: paper
 scores:
+  # 上下文窗口与模态采用当前 OpenAI API model doc 口径。
   # 以下分数来自 OpenAI 官方 GPT-4.1 发布页中的对比表（GPT-4o 2024-11-20 快照）。
-  # GPT-4o 原始 announce 页面未列出具体 benchmark 数值。
   mmlu:
     value: 85.7
     source: gpt-4.1-announcement
-  mmlu-pro:
-    value: 72.6
-    source: mmlu-pro-paper
   gpqa:
     value: 46.0
     source: gpt-4.1-announcement
-  humaneval:
-    value: 90.2
-    source: mmlu-pro-paper
   swe-bench:
     value: 33.2
     source: gpt-4.1-announcement
   ifeval:
     value: 81.0
     source: gpt-4.1-announcement
-  # 原始来源未报告：math-level-5, gsm8k, arena-elo, bbh, drop, hellaswag, arc-c, winogrande
+  # 原始来源未报告：mmlu-pro, humaneval, math-level-5, gsm8k, arena-elo, bbh, drop, hellaswag, arc-c, winogrande

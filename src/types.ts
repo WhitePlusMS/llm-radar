@@ -48,6 +48,7 @@ export interface Source {
 export interface ScoreEntry {
   value: number | null;
   source?: string;
+  note?: string;
 }
 
 /** 模型参数规模 */

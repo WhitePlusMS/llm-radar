@@ -11,6 +11,10 @@ modalities:
 weight_availability_tags: [closed-weights, reasoning, multimodal]
 logo: assets/logos/anthropic.svg
 sources:
+  - key: claude-opus-4.8-launch
+    title: Introducing Claude Opus 4.8
+    url: https://www.anthropic.com/news/claude-opus-4-8
+    type: blog
   - key: claude-models-overview
     title: Models overview
     url: https://platform.claude.com/docs/en/about-claude/models/overview

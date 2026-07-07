@@ -1,0 +1,39 @@
+id: openai/gpt-4.5-preview
+name: GPT-4.5 Preview
+company: openai
+brand_color: "#10A37F"
+release_date: "2025-02-27"
+# OpenAI 未公开 GPT-4.5 Preview 的参数规模与架构细节。
+context_window: "128k"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, multimodal]
+logo: assets/logos/openai.svg
+sources:
+  - key: gpt-4.5-announcement
+    title: Introducing GPT-4.5
+    url: https://openai.com/index/introducing-gpt-4-5/
+    type: blog
+  - key: gpt-4.5-model-doc
+    title: GPT-4.5 Preview Model
+    url: https://developers.openai.com/api/docs/models/gpt-4.5-preview
+    type: website
+  - key: gpt-4.1-announcement
+    title: Introducing GPT-4.1 in the API
+    url: https://openai.com/index/gpt-4-1/
+    type: blog
+scores:
+  mmlu:
+    value: 90.8
+    source: gpt-4.1-announcement
+  gpqa:
+    value: 69.5
+    source: gpt-4.1-announcement
+  ifeval:
+    value: 88.2
+    source: gpt-4.1-announcement
+  swe-bench:
+    value: 38.0
+    source: gpt-4.1-announcement
+  # 原始来源未报告：mmlu-pro, humaneval, math-level-5, gsm8k, arena-elo, bbh, drop, hellaswag, arc-c, winogrande

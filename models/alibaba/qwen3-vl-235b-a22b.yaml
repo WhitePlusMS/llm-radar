@@ -7,7 +7,7 @@ parameters:
   total: "235B"
   active: "22B"
 architecture: MoE
-context_window: "256k"
+context_window: "256k native / 1M with extrapolation"
 modalities:
   input: [text, image, video]
   output: [text]

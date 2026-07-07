@@ -1,13 +1,12 @@
 id: google/gemini-2.0-flash
 name: Gemini 2.0 Flash
 company: google
-release_date: "2024-12-11"
+release_date: "2025-02-05"
 brand_color: "#4285F4"
-architecture: MoE
 context_window: "1M"
 modalities:
   input: [text, image, audio, video]
-  output: [text, image, audio]
+  output: [text]
 weight_availability_tags: [closed-weights, multimodal]
 logo: assets/logos/google.svg
 sources:
@@ -19,7 +18,12 @@ sources:
     title: "Introducing Gemini 2.0: our new AI model for the agentic era"
     url: https://blog.google/intl/en-nz/company-news/2024_12_introducing-gemini-20-our-new-ai-mode/
     type: blog
+  - key: gemini-deprecations
+    title: Gemini deprecations
+    url: https://ai.google.dev/gemini-api/docs/deprecations
+    type: website
 scores:
+  # 当前保留分数来自 Google-authored Gemini 2.5 technical report 对 Gemini 2.0 Flash 的对比表。
   gpqa:
     value: 65.2
     source: gemini-2.5-report

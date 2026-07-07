@@ -1,0 +1,41 @@
+id: deepseek/v3-0324
+name: DeepSeek-V3-0324
+company: deepseek
+brand_color: "#4D6BFE"
+release_date: "2025-03-25"
+parameters:
+  total: "671B"
+  active: "37B"
+architecture: MoE
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights]
+logo: assets/logos/deepseek.svg
+sources:
+  - key: deepseek-v3-0324-news
+    title: DeepSeek-V3-0324 Release
+    url: https://api-docs.deepseek.com/news/news250325
+    type: website
+  - key: deepseek-v3-0324-hf
+    title: DeepSeek-V3-0324
+    url: https://huggingface.co/deepseek-ai/DeepSeek-V3-0324
+    type: model-card
+scores:
+  mmlu-pro:
+    value: 81.2
+    source: deepseek-v3-0324-hf
+    note: MMLU-Pro
+  gpqa:
+    value: 68.4
+    source: deepseek-v3-0324-hf
+    note: GPQA Diamond
+  math-level-5:
+    value: 92.4
+    source: deepseek-v3-0324-hf
+    note: MATH-500
+  swe-bench:
+    value: 49.2
+    source: deepseek-v3-0324-hf
+    note: SWE-bench Verified

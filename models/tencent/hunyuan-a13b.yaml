@@ -2,7 +2,7 @@ id: tencent/hunyuan-a13b
 name: Hunyuan-A13B
 company: tencent
 brand_color: "#0052D9"
-release_date: "2025-06-27"
+release_date: "2025-06-25"
 parameters:
   total: "80B"
   active: "13B"
@@ -11,7 +11,7 @@ context_window: "256k"
 modalities:
   input: [text]
   output: [text]
-weight_availability_tags: [open-weights]
+weight_availability_tags: [open-weights, reasoning]
 logo: assets/logos/tencent.svg
 sources:
   - key: hunyuan-a13b-github
@@ -28,6 +28,7 @@ scores:
   gpqa:
     value: 49.12
     source: hunyuan-a13b-github
+    note: GPQA Diamond
   math-level-5:
     value: 72.35
     source: hunyuan-a13b-github

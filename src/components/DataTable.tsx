@@ -61,7 +61,10 @@ export function DataTable({ models, metrics, selectedMetricIds }: DataTableProps
                     {model.name}
                   </td>
                   {selectedMetrics.map((metric) => {
-                    const point = projectScore(model.scores[metric.id], metric);
+                    const score = model.scores[metric.id] as
+                      | (typeof model.scores[string] & { note?: string })
+                      | undefined;
+                    const point = projectScore(score, metric);
                     const source = resolveSource(model, point.source);
                     if (point.missing) {
                       return (
@@ -75,6 +78,11 @@ export function DataTable({ models, metrics, selectedMetricIds }: DataTableProps
                       <td key={metric.id} className="val">
                         <span className="raw">{formatRawValue(point.rawValue!, metric)}</span>
                         <span className="norm">归一 {point.value.toFixed(1)}</span>
+                        {score?.note && (
+                          <span className="note" title={score.note}>
+                            {score.note}
+                          </span>
+                        )}
                         {source && (
                           <a
                             className="src"
