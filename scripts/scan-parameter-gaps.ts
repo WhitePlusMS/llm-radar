@@ -12,7 +12,9 @@ interface ParameterInfo {
 interface ModelScanRecord {
   company: string;
   fileName: string;
+  name: string;
   parameters?: ParameterInfo;
+  scoreStats: ScoreStats;
 }
 
 interface ScanBuckets {
@@ -20,9 +22,21 @@ interface ScanBuckets {
   missingActive: Map<string, string[]>;
   totalPlaceholder: Map<string, string[]>;
   activePlaceholder: Map<string, string[]>;
+  emptyScores: Map<string, string[]>;
+  noNumericScores: Map<string, string[]>;
+  noFeaturedScores: Map<string, string[]>;
+  noParametersAndNoNumericScores: Map<string, string[]>;
+  smallModelNoNumericScores: Map<string, string[]>;
 }
 
 const PLACEHOLDER_VALUES = new Set(['undisclosed', 'uncertain']);
+const SMALL_MODEL_SIZE_THRESHOLD_B = 40;
+
+interface ScoreStats {
+  totalEntries: number;
+  numericEntries: number;
+  featuredNumericEntries: number;
+}
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -35,6 +49,7 @@ function parseArgs() {
 
   return {
     modelsDir: options['models-dir'] || 'models',
+    metricsFile: options['metrics-file'] || 'metrics.yaml',
     outFile: options['out-file'],
   };
 }
@@ -58,6 +73,36 @@ function readYaml(filePath: string): unknown {
       }`
     );
   }
+}
+
+function loadFeaturedMetricIds(metricsFilePath: string): Set<string> {
+  const raw = readYaml(metricsFilePath);
+  if (!isObject(raw)) {
+    fail(`metrics 文件根节点必须是对象: ${metricsFilePath}`);
+  }
+
+  const metrics = raw['metrics'];
+  if (!Array.isArray(metrics)) {
+    fail(`metrics 文件缺少 metrics 数组: ${metricsFilePath}`);
+  }
+
+  const featuredMetricIds = new Set<string>();
+  for (const metric of metrics) {
+    if (!isObject(metric)) {
+      fail(`metrics 数组元素必须是对象: ${metricsFilePath}`);
+    }
+
+    const id = getStringField(metric, 'id');
+    if (!id) {
+      fail(`metrics 项缺少 id: ${metricsFilePath}`);
+    }
+
+    if (metric['featured'] === true) {
+      featuredMetricIds.add(id);
+    }
+  }
+
+  return featuredMetricIds;
 }
 
 function scanModelFiles(dir: string): string[] {
@@ -96,7 +141,70 @@ function normalizePlaceholder(value: ParameterValue): boolean {
   return value !== undefined && PLACEHOLDER_VALUES.has(value.toLowerCase());
 }
 
-function loadModelRecord(filePath: string): ModelScanRecord {
+function readScoreStats(
+  rawScores: unknown,
+  featuredMetricIds: Set<string>,
+  filePath: string
+): ScoreStats {
+  if (!isObject(rawScores)) {
+    fail(`模型文件 scores 必须是对象: ${filePath}`);
+  }
+
+  let numericEntries = 0;
+  let featuredNumericEntries = 0;
+  const entries = Object.entries(rawScores);
+
+  for (const [metricId, rawEntry] of entries) {
+    if (!isObject(rawEntry)) {
+      continue;
+    }
+
+    const value = rawEntry['value'];
+    if (typeof value === 'number') {
+      numericEntries += 1;
+      if (featuredMetricIds.has(metricId)) {
+        featuredNumericEntries += 1;
+      }
+    }
+  }
+
+  return {
+    totalEntries: entries.length,
+    numericEntries,
+    featuredNumericEntries,
+  };
+}
+
+function extractFirstBillionCount(value: string): number | undefined {
+  const normalized = value.replace(/,/g, '').trim();
+  const matched = normalized.match(/^(\d+(?:\.\d+)?)B$/i);
+  if (!matched) {
+    return undefined;
+  }
+
+  const count = Number(matched[1]);
+  return Number.isFinite(count) ? count : undefined;
+}
+
+function looksLikeSmallModel(record: ModelScanRecord): boolean {
+  const total = record.parameters?.total;
+  if (total) {
+    const totalB = extractFirstBillionCount(total);
+    if (totalB !== undefined) {
+      return totalB <= SMALL_MODEL_SIZE_THRESHOLD_B;
+    }
+  }
+
+  const matched = `${record.name} ${record.fileName}`.match(/(?:^|[\s-])(\d+(?:\.\d+)?)b(?:$|[\s-.])/i);
+  if (!matched) {
+    return false;
+  }
+
+  const count = Number(matched[1]);
+  return Number.isFinite(count) && count <= SMALL_MODEL_SIZE_THRESHOLD_B;
+}
+
+function loadModelRecord(filePath: string, featuredMetricIds: Set<string>): ModelScanRecord {
   const raw = readYaml(filePath);
   if (!isObject(raw)) {
     fail(`模型文件根节点必须是对象: ${filePath}`);
@@ -107,9 +215,18 @@ function loadModelRecord(filePath: string): ModelScanRecord {
     fail(`模型文件缺少 company: ${filePath}`);
   }
 
+  const name = getStringField(raw, 'name');
+  if (!name) {
+    fail(`模型文件缺少 name: ${filePath}`);
+  }
+
+  const rawScores = raw['scores'];
+
   const record: ModelScanRecord = {
     company,
     fileName: path.basename(filePath),
+    name,
+    scoreStats: readScoreStats(rawScores, featuredMetricIds, filePath),
   };
 
   const rawParameters = raw['parameters'];
@@ -144,11 +261,42 @@ function createBuckets(records: ModelScanRecord[]): ScanBuckets {
     missingActive: new Map(),
     totalPlaceholder: new Map(),
     activePlaceholder: new Map(),
+    emptyScores: new Map(),
+    noNumericScores: new Map(),
+    noFeaturedScores: new Map(),
+    noParametersAndNoNumericScores: new Map(),
+    smallModelNoNumericScores: new Map(),
   };
 
   for (const record of records) {
+    if (record.scoreStats.totalEntries === 0) {
+      pushGroup(buckets.emptyScores, record.company, `\`${record.fileName}\``);
+    }
+
+    if (record.scoreStats.numericEntries === 0) {
+      pushGroup(buckets.noNumericScores, record.company, `\`${record.fileName}\``);
+    }
+
+    if (record.scoreStats.featuredNumericEntries === 0) {
+      pushGroup(buckets.noFeaturedScores, record.company, `\`${record.fileName}\``);
+    }
+
     if (!record.parameters) {
       pushGroup(buckets.noParameters, record.company, `\`${record.fileName}\``);
+      if (record.scoreStats.numericEntries === 0) {
+        pushGroup(
+          buckets.noParametersAndNoNumericScores,
+          record.company,
+          `\`${record.fileName}\``
+        );
+      }
+      if (record.scoreStats.numericEntries === 0 && looksLikeSmallModel(record)) {
+        pushGroup(
+          buckets.smallModelNoNumericScores,
+          record.company,
+          `\`${record.fileName}\``
+        );
+      }
       continue;
     }
 
@@ -173,6 +321,14 @@ function createBuckets(records: ModelScanRecord[]): ScanBuckets {
         buckets.activePlaceholder,
         record.company,
         `\`${record.fileName}\` -> \`active: ${record.parameters.active}\``
+      );
+    }
+
+    if (record.scoreStats.numericEntries === 0 && looksLikeSmallModel(record)) {
+      pushGroup(
+        buckets.smallModelNoNumericScores,
+        record.company,
+        `\`${record.fileName}\`${record.parameters.total ? ` (\`total: ${record.parameters.total}\`)` : ''}`
       );
     }
   }
@@ -232,7 +388,7 @@ function buildReport(records: ModelScanRecord[], buckets: ScanBuckets, scanDate:
   lines.push(`> 扫描时间：${scanDate}`);
   lines.push(`> 扫描脚本：\`scripts/scan-parameter-gaps.ts\``);
   lines.push(
-    '> 扫描方式：脚本解析全部 YAML，统计 `parameters` 缺失、`active` 缺失、以及 `undisclosed/uncertain` 参数占位。'
+    '> 扫描方式：脚本解析全部 YAML，统计 `parameters` 缺失、`active` 缺失、`undisclosed/uncertain` 参数占位，以及 `scores` / 数值 benchmark 缺口。'
   );
   lines.push('');
   lines.push('## 总体结果');
@@ -250,6 +406,21 @@ function buildReport(records: ModelScanRecord[], buckets: ScanBuckets, scanDate:
       buckets.activePlaceholder
     )}\``
   );
+  lines.push(`- \`scores\` 完全为空：\`${countItems(buckets.emptyScores)}\``);
+  lines.push(`- 完全没有任何数值 benchmark：\`${countItems(buckets.noNumericScores)}\``);
+  lines.push(
+    `- 一个 featured benchmark 数值都没有：\`${countItems(buckets.noFeaturedScores)}\``
+  );
+  lines.push(
+    `- 同时缺少 \`parameters\` 且没有任何数值 benchmark：\`${countItems(
+      buckets.noParametersAndNoNumericScores
+    )}\``
+  );
+  lines.push(
+    `- 中小模型且没有任何数值 benchmark（人工复核候选）：\`${countItems(
+      buckets.smallModelNoNumericScores
+    )}\``
+  );
   lines.push('');
   lines.push('## 按公司分组');
   lines.push('');
@@ -265,6 +436,23 @@ function buildReport(records: ModelScanRecord[], buckets: ScanBuckets, scanDate:
     lines,
     '### 4. `parameters.active` 为 `undisclosed/uncertain`',
     buckets.activePlaceholder
+  );
+  appendGroupLines(lines, '### 5. `scores` 完全为空', buckets.emptyScores);
+  appendGroupLines(lines, '### 6. 完全没有任何数值 benchmark', buckets.noNumericScores);
+  appendGroupLines(
+    lines,
+    '### 7. 一个 featured benchmark 数值都没有',
+    buckets.noFeaturedScores
+  );
+  appendGroupLines(
+    lines,
+    '### 8. 同时缺少 `parameters` 且没有任何数值 benchmark',
+    buckets.noParametersAndNoNumericScores
+  );
+  appendGroupLines(
+    lines,
+    '### 9. 中小模型且没有任何数值 benchmark（人工复核候选）',
+    buckets.smallModelNoNumericScores
   );
 
   lines.push('## 优先处理建议');
@@ -290,28 +478,32 @@ function buildReport(records: ModelScanRecord[], buckets: ScanBuckets, scanDate:
   lines.push('');
   lines.push('### 第三优先级：已部分完成但仍有缺口');
   lines.push('');
+  lines.push('- 先人工复核“中小模型且没有任何数值 benchmark”这一组，决定哪些该删、哪些只是 benchmark 不匹配当前 metrics 集。');
   lines.push('- `deepseek/v3.2`：优先继续核验 `active params`');
   lines.push('- `tencent/hunyuanvideo-1.5`：优先核验是否有官方 `active params`');
   lines.push('');
   lines.push('## 结论');
   lines.push('');
-  lines.push('当前最需要处理的，不是继续盲目补模型数量，而是把参数信息的缺口按三类收口：');
+  lines.push('当前最需要处理的，不是继续盲目补模型数量，而是把模型缺口按四类收口：');
   lines.push('');
   lines.push('1. 官方完全未公开，因此当前文件没有 `parameters`');
   lines.push('2. 已知 `total`，但仍缺 `active`');
   lines.push('3. 只能暂时保守写成 `undisclosed/uncertain`');
+  lines.push('4. 模型存在，但完全没有可落到当前项目的数值 benchmark');
   lines.push('');
-  lines.push('后续最有效的推进方式，是按这三类分别清理，而不是混在一起逐个碰运气。');
+  lines.push('其中第 4 类尤其适合配合“官方主线 / 非主线”和“旗舰 / 中小模型”一起判断，避免把该留的多模态主线误删，也避免把信息过薄的小模型继续堆在库里。');
 
   return `${lines.join('\n')}\n`;
 }
 
 function main() {
   const rootDir = process.cwd();
-  const { modelsDir, outFile } = parseArgs();
+  const { modelsDir, metricsFile, outFile } = parseArgs();
   const modelsPath = path.resolve(rootDir, modelsDir);
+  const metricsPath = path.resolve(rootDir, metricsFile);
   const files = scanModelFiles(modelsPath);
-  const records = files.map(loadModelRecord);
+  const featuredMetricIds = loadFeaturedMetricIds(metricsPath);
+  const records = files.map((filePath) => loadModelRecord(filePath, featuredMetricIds));
   const buckets = createBuckets(records);
   const scanDate = formatDate(new Date());
   const report = buildReport(records, buckets, scanDate);
@@ -322,6 +514,15 @@ function main() {
   console.log(`  缺少 active: ${countItems(buckets.missingActive)}`);
   console.log(`  total 为占位值: ${countItems(buckets.totalPlaceholder)}`);
   console.log(`  active 为占位值: ${countItems(buckets.activePlaceholder)}`);
+  console.log(`  空 scores: ${countItems(buckets.emptyScores)}`);
+  console.log(`  无数值 benchmark: ${countItems(buckets.noNumericScores)}`);
+  console.log(`  无 featured benchmark: ${countItems(buckets.noFeaturedScores)}`);
+  console.log(
+    `  无 parameters 且无数值 benchmark: ${countItems(buckets.noParametersAndNoNumericScores)}`
+  );
+  console.log(
+    `  中小模型且无数值 benchmark: ${countItems(buckets.smallModelNoNumericScores)}`
+  );
 
   if (outFile) {
     const outPath = path.resolve(rootDir, outFile);

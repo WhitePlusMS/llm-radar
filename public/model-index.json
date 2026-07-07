@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated_at": "2026-07-07T08:11:54.677Z",
+    "generated_at": "2026-07-07T08:50:58.930Z",
     "version": "0.1.0",
-    "model_count": 139,
+    "model_count": 143,
     "metric_count": 14,
     "company_count": 15
   },
@@ -511,65 +511,6 @@
           "text",
           "image",
           "video"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "logo": "assets/logos/minimax.svg"
-    },
-    {
-      "id": "minimax/minimax-m2",
-      "name": "MiniMax-M2",
-      "company": "minimax",
-      "brand_color": "#F23F5D",
-      "release_date": "2026-05-29",
-      "weight_availability_tags": [
-        "open-weights"
-      ],
-      "sources": [
-        {
-          "key": "minimax-m2-paper",
-          "title": "The MiniMax-M2 Series: Mini Activations Unleashing Max Real-World Intelligence",
-          "url": "https://arxiv.org/abs/2605.26494",
-          "type": "paper"
-        },
-        {
-          "key": "minimax-m2-github",
-          "title": "MiniMax-M2 GitHub Repository",
-          "url": "https://github.com/MiniMax-AI/MiniMax-M2",
-          "type": "codebase"
-        },
-        {
-          "key": "minimax-release-notes",
-          "title": "MiniMax API Release Notes - Models",
-          "url": "https://platform.minimax.io/docs/release-notes/models",
-          "type": "blog"
-        }
-      ],
-      "scores": {
-        "mmlu-pro": {
-          "value": 82,
-          "source": "minimax-m2-github"
-        },
-        "gpqa": {
-          "value": 78,
-          "source": "minimax-m2-github"
-        },
-        "swe-bench": {
-          "value": 69.4,
-          "source": "minimax-m2-github"
-        }
-      },
-      "parameters": {
-        "total": "229.9B",
-        "active": "9.8B"
-      },
-      "architecture": "MoE",
-      "context_window": "192k",
-      "modalities": {
-        "input": [
-          "text"
         ],
         "output": [
           "text"
@@ -1923,6 +1864,42 @@
       "logo": "assets/logos/moonshot.svg"
     },
     {
+      "id": "minimax/minimax-m2.5",
+      "name": "MiniMax-M2.5",
+      "company": "minimax",
+      "brand_color": "#F23F5D",
+      "release_date": "2026-01-23",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "minimax-release-notes",
+          "title": "MiniMax API Release Notes - Models",
+          "url": "https://platform.minimax.io/docs/release-notes/models",
+          "type": "website"
+        },
+        {
+          "key": "minimax-text-generation-doc",
+          "title": "Model Invocation",
+          "url": "https://platform.minimax.io/docs/guides/text-generation",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "204,800",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/minimax.svg"
+    },
+    {
       "id": "bytedance/seed-1.8",
       "name": "Seed1.8",
       "company": "bytedance",
@@ -2347,6 +2324,49 @@
       "logo": "assets/logos/google.svg"
     },
     {
+      "id": "baidu/ernie-4.5-vl-28b-a3b-thinking",
+      "name": "ERNIE 4.5-VL-28B-A3B-Thinking",
+      "company": "baidu",
+      "brand_color": "#2932E1",
+      "release_date": "2025-11-11",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "ernie-4.5-vl-thinking-blog",
+          "title": "ERNIE-4.5-VL-28B-A3B-Thinking",
+          "url": "https://ernie.baidu.com/blog/posts/ernie-4.5-vl-28b-a3b-thinking/",
+          "type": "blog"
+        },
+        {
+          "key": "ernie-4.5-open-blog",
+          "title": "ERNIE 4.5 Open Sourced",
+          "url": "https://ernie.baidu.com/blog/posts/ernie4.5/",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "28B",
+        "active": "3B"
+      },
+      "architecture": "MoE",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/baidu.svg"
+    },
+    {
       "id": "tencent/tencent-hy-2.0-instruct",
       "name": "Tencent HY 2.0 Instruct",
       "company": "tencent",
@@ -2402,6 +2422,42 @@
         ]
       },
       "logo": "assets/logos/tencent.svg"
+    },
+    {
+      "id": "minimax/minimax-m2.1",
+      "name": "MiniMax-M2.1",
+      "company": "minimax",
+      "brand_color": "#F23F5D",
+      "release_date": "2025-10-29",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "minimax-release-notes",
+          "title": "MiniMax API Release Notes - Models",
+          "url": "https://platform.minimax.io/docs/release-notes/models",
+          "type": "website"
+        },
+        {
+          "key": "minimax-text-generation-doc",
+          "title": "Model Invocation",
+          "url": "https://platform.minimax.io/docs/guides/text-generation",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "204,800",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/minimax.svg"
     },
     {
       "id": "anthropic/claude-haiku-4.5",
@@ -2609,6 +2665,65 @@
         ]
       },
       "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "minimax/minimax-m2",
+      "name": "MiniMax-M2",
+      "company": "minimax",
+      "brand_color": "#F23F5D",
+      "release_date": "2025-09-11",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "minimax-m2-paper",
+          "title": "The MiniMax-M2 Series: Mini Activations Unleashing Max Real-World Intelligence",
+          "url": "https://arxiv.org/abs/2605.26494",
+          "type": "paper"
+        },
+        {
+          "key": "minimax-m2-github",
+          "title": "MiniMax-M2 GitHub Repository",
+          "url": "https://github.com/MiniMax-AI/MiniMax-M2",
+          "type": "codebase"
+        },
+        {
+          "key": "minimax-release-notes",
+          "title": "MiniMax API Release Notes - Models",
+          "url": "https://platform.minimax.io/docs/release-notes/models",
+          "type": "website"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 82,
+          "source": "minimax-m2-github"
+        },
+        "gpqa": {
+          "value": 78,
+          "source": "minimax-m2-github"
+        },
+        "swe-bench": {
+          "value": 69.4,
+          "source": "minimax-m2-github"
+        }
+      },
+      "parameters": {
+        "total": "229.9B",
+        "active": "9.8B"
+      },
+      "architecture": "MoE",
+      "context_window": "204,800",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/minimax.svg"
     },
     {
       "id": "deepseek/v3.1",
@@ -3140,6 +3255,45 @@
         ]
       },
       "logo": "assets/logos/xai.svg"
+    },
+    {
+      "id": "baidu/ernie-4.5-21b-a3b",
+      "name": "ERNIE 4.5-21B-A3B",
+      "company": "baidu",
+      "brand_color": "#2932E1",
+      "release_date": "2025-06-30",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "ernie-4.5-open-blog",
+          "title": "ERNIE 4.5 Open Sourced",
+          "url": "https://ernie.baidu.com/blog/posts/ernie4.5/",
+          "type": "blog"
+        },
+        {
+          "key": "ernie-4.5-tr",
+          "title": "ERNIE 4.5 Technical Report",
+          "url": "https://ernie.baidu.com/blog/publication/ERNIE_Technical_Report.pdf",
+          "type": "paper"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "21B",
+        "active": "3B"
+      },
+      "architecture": "MoE",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/baidu.svg"
     },
     {
       "id": "baidu/ernie-4.5-vl",
@@ -5572,7 +5726,7 @@
       "name": "MiniMax-Text-01",
       "company": "minimax",
       "brand_color": "#F23F5D",
-      "release_date": "2025-01-14",
+      "release_date": "2025-01-15",
       "weight_availability_tags": [
         "open-weights"
       ],
@@ -5582,6 +5736,12 @@
           "title": "MiniMax-01: Scaling Foundation Models with Efficient Lightning Attention",
           "url": "https://arxiv.org/abs/2501.08313",
           "type": "paper"
+        },
+        {
+          "key": "minimax-release-notes",
+          "title": "MiniMax API Release Notes - Models",
+          "url": "https://platform.minimax.io/docs/release-notes/models",
+          "type": "website"
         }
       ],
       "scores": {},
@@ -5606,7 +5766,7 @@
       "name": "MiniMax-VL-01",
       "company": "minimax",
       "brand_color": "#F23F5D",
-      "release_date": "2025-01-14",
+      "release_date": "2025-01-15",
       "weight_availability_tags": [
         "open-weights",
         "multimodal"
@@ -5617,6 +5777,12 @@
           "title": "MiniMax-01: Scaling Foundation Models with Efficient Lightning Attention",
           "url": "https://arxiv.org/abs/2501.08313",
           "type": "paper"
+        },
+        {
+          "key": "minimax-release-notes",
+          "title": "MiniMax API Release Notes - Models",
+          "url": "https://platform.minimax.io/docs/release-notes/models",
+          "type": "website"
         }
       ],
       "scores": {},

@@ -1,5 +1,61 @@
 # LLM Radar 更新日志
 
+## 2026-07-07 补强模型缺口扫描脚本，并沉淀官方主线收录清洗清单
+
+### 修改原因
+
+用户先明确要求“先用脚本扫一遍全部代码，看看哪些模型没有任何参数”，随后又进一步强调了两条收录原则：
+
+- 没有任何相关评测参数的中小模型，不应继续无差别堆在仓库里
+- 只保留官方模型，不要 distill / 第三方蒸馏 / 非官方派生
+
+现有 `scan-parameter-gaps.ts` 只能回答“有没有 parameters”，还不能回答：
+
+- 哪些模型 `scores` 完全为空
+- 哪些模型虽然有卡，但没有任何数值 benchmark
+- 哪些是“中小模型 + 无 benchmark”的优先复核候选
+
+因此本轮先按“最简原则 + 单一职责原则”扩脚本能力，并把并发官方核验的结论沉淀成可执行清单，为下一轮真正补卡 / 清理模型做准备。
+
+### 修改文件与详情
+
+- 更新脚本：
+  - `scripts/scan-parameter-gaps.ts`
+- 更新研究文档：
+  - `docs/research/model-parameter-gap-scan-2026-07-07.md`
+  - `docs/research/model-curation-findings-2026-07-07.md`
+
+### 修改影响
+
+- `scan-parameter-gaps.ts`
+  - 新增对 `metrics.yaml` 的读取，识别 featured benchmark 集
+  - 新增 `scores` 为空、无数值 benchmark、无 featured benchmark 三类扫描
+  - 新增“无 parameters 且无 benchmark”与“中小模型且无 benchmark”两类人工复核桶
+- `model-parameter-gap-scan-2026-07-07.md`
+  - 扫描口径从“只看 parameters”升级为“parameters + benchmark 缺口联合扫描”
+  - 当前扫描结果收敛为：
+    - `143` 个模型
+    - `68` 个无 `parameters`
+    - `76` 个无任何数值 benchmark
+    - `47` 个同时缺少 `parameters` 且无 benchmark
+    - `14` 个“中小模型且无 benchmark”人工复核候选
+- `model-curation-findings-2026-07-07.md`
+  - 汇总并发官方核验结果
+  - 明确记录高优先级应补主线：
+    - `OpenAI`: `gpt-5.1 / 5.2 / 5.2-pro / 5.3-codex`
+    - `Google`: `gemini-3.1-flash-lite`
+    - `Baidu`: `ERNIE-X1.1 / 4.5-Turbo-128K / 4.5-Turbo-VL / 4.5-0.3B`
+    - `Tencent`: `Hy3 / Hy3-Preview / HY-Image-V3.0 / HY-3D-3.1 / HY-Vision-2.0-Instruct`
+    - `Zhipu`: `GLM-4.6 / 4.7 / 5-Turbo / 5V-Turbo / 4.6V`
+    - `Alibaba`: 一批 `Qwen2.5 / Qwen3 / Qwen3.5 / Qwen3.6 / Qwen2.5-Coder / Qwen2.5-Omni-3B`
+  - 明确记录候选移除 / 复核条目，避免下一轮重复搜
+
+### 验证
+
+- `npm run scan:parameter-gaps -- --out-file docs\\research\\model-parameter-gap-scan-2026-07-07.md`：通过
+- `npm run build-index`：通过
+- `npm run build`：通过（产物仍提示前端 chunk 体积偏大告警，但不影响本轮扫描脚本与索引构建入库）
+
 ## 2026-07-07 继续补齐 Baidu / MiniMax 主线，并修正 MiniMax 日期口径
 
 ### 修改原因
