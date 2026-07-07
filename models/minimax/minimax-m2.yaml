@@ -2,7 +2,7 @@ id: minimax/minimax-m2
 name: MiniMax-M2
 company: minimax
 brand_color: "#F23F5D"
-release_date: "2025-10-27"
+release_date: "2026-05-29"
 parameters:
   total: "229.9B"
   active: "9.8B"

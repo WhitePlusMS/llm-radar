@@ -1,0 +1,20 @@
+id: tencent/hunyuanvideo-1.5
+name: HunyuanVideo-1.5
+company: tencent
+brand_color: "#0052D9"
+release_date: "2025-11-20"
+parameters:
+  total: "8.3B"
+  active: "undisclosed"
+architecture: Diffusion Transformer (DiT) + 3D causal VAE
+modalities:
+  input: [text, image]
+  output: [video]
+weight_availability_tags: [open-weights, multimodal]
+logo: assets/logos/tencent.svg
+sources:
+  - key: hunyuanvideo-1.5-github
+    title: "Tencent-Hunyuan/HunyuanVideo-1.5 README"
+    url: https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5
+    type: codebase
+scores: {}

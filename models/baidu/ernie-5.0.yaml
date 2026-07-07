@@ -2,7 +2,7 @@ id: baidu/ernie-5.0
 name: ERNIE 5.0
 company: baidu
 brand_color: "#2932E1"
-release_date: "2026-01-22"
+release_date: "2026-02-06"
 parameters:
   total: "2.4T"
   active: "<3% of total"
@@ -10,7 +10,7 @@ architecture: MoE
 context_window: "128k"
 modalities:
   input: [text, image, audio, video]
-  output: [text, image, audio]
+  output: [text, image, audio, video]
 weight_availability_tags: [closed-weights, multimodal]
 logo: assets/logos/baidu.svg
 sources:

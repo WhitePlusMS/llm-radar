@@ -7,9 +7,6 @@ brand_color: "#325AB4"
 parameters:
   total: undisclosed
   active: undisclosed
-# 官方未明确 Seed1.8 架构细节，MoE 为推测。
-architecture: MoE
-context_window: "256k"
 modalities:
   input: [text, image, video]
   # 官方未明确支持 image output，此处标注为不确定。
@@ -24,7 +21,7 @@ sources:
   - key: seed1.8-github
     title: "ByteDance-Seed/Seed-1.8"
     url: https://github.com/ByteDance-Seed/Seed-1.8
-    type: website
+    type: codebase
 scores:
   mmlu:
     value: 92.3

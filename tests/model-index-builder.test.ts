@@ -102,4 +102,29 @@ describe('buildModelIndex', () => {
       })
     ).toThrow(BuildIndexError);
   });
+
+  it('保留 score note 供运行时展示口径说明', () => {
+    const result = buildWithModel({
+      id: 'openai/noted',
+      name: 'Noted',
+      company: 'openai',
+      brand_color: '#000000',
+      release_date: '2024-01-01',
+      weight_availability_tags: ['closed-weights'],
+      sources: [{ key: 'paper', title: 'Paper', url: 'https://example.com', type: 'paper' }],
+      scores: {
+        'mmlu-pro': {
+          value: 80,
+          source: 'paper',
+          note: 'Prompt Strict',
+        },
+      },
+    });
+
+    expect(result.index.models[0].scores['mmlu-pro']).toEqual({
+      value: 80,
+      source: 'paper',
+      note: 'Prompt Strict',
+    });
+  });
 });

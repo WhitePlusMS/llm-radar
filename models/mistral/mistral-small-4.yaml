@@ -4,10 +4,10 @@ company: mistral
 brand_color: "#FA520F"
 release_date: "2026-06-17"
 parameters:
-  total: "24B"
-  active: "24B"
-architecture: Dense
-context_window: "128k"
+  total: "119B"
+  active: "6.5B"
+architecture: Hybrid
+context_window: "256k"
 modalities:
   input: [text, image]
   output: [text]
@@ -16,6 +16,6 @@ logo: assets/logos/mistral.svg
 sources:
   - key: mistral-small-4-doc
     title: Mistral Small 4
-    url: https://docs.mistral.ai/models/model-cards/mistral-small-4
+    url: https://docs.mistral.ai/models/model-cards/mistral-small-4-25-06
     type: website
 scores: {}

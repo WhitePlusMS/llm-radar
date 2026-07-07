@@ -5,8 +5,8 @@ brand_color: "#0052D9"
 release_date: "2025-03-21"
 # Hunyuan-T1 基于 TurboS 后训练，官方未单独确认 T1 本身的总/激活参数量。
 parameters:
-  total: "560B"
-  active: "56B"
+  total: "undisclosed"
+  active: "undisclosed"
 architecture: Hybrid Transformer-Mamba MoE
 context_window: "256k"
 modalities:
@@ -18,7 +18,7 @@ sources:
   - key: hunyuan-t1-blog
     title: "混元-T1：强化学习驱动，业内首个超大规模混合Mamba推理模型正式发布"
     url: https://github.com/Tencent/llm.hunyuan.T1/blob/main/README.md
-    type: blog
+    type: codebase
 scores:
   mmlu-pro:
     value: 87.2

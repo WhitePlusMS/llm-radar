@@ -1,0 +1,27 @@
+id: anthropic/claude-opus-4.7
+name: Claude Opus 4.7
+company: anthropic
+brand_color: "#D97757"
+release_date: "2026-04-16"
+context_window: "1M"
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
+logo: assets/logos/anthropic.svg
+sources:
+  - key: claude-opus-4.7-launch
+    title: Introducing Claude Opus 4.7
+    url: https://www.anthropic.com/news/claude-opus-4-7
+    type: blog
+  - key: claude-model-deprecations
+    title: Model deprecations
+    url: https://platform.claude.com/docs/en/about-claude/model-deprecations
+    type: website
+  - key: claude-bedrock-models
+    title: Using Claude on Amazon Bedrock
+    url: https://docs.claude.com/en/api/claude-on-amazon-bedrock
+    type: website
+# Anthropic 官方文档已把 Opus 4.7 列入 1M token context window 适用范围。
+# 当前仓库暂未从官方原文稳定落锤出可直接回填 metrics.yaml 的统一 benchmark 数值。
+scores: {}

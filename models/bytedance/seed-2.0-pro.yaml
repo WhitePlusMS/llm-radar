@@ -6,12 +6,6 @@ brand_color: "#325AB4"
 parameters:
   total: undisclosed
   active: undisclosed
-architecture: MoE
-context_window: "256k"
-modalities:
-  # 官方强调 visual + video 能力，audio input/output 缺乏直接依据。
-  input: [text, image, video]
-  output: [text]
 weight_availability_tags: [closed-weights, multimodal]
 logo: assets/logos/bytedance.svg
 sources:
@@ -37,7 +31,7 @@ scores:
   swe-bench:
     value: 76.5
     source: seed2.0-model-card
-    note: SWE-Bench Verified
+    note: SWE Bench Verified
   # 其余指标官方未报告
   humaneval:
     value: null

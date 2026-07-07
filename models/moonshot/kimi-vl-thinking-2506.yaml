@@ -1,0 +1,25 @@
+id: moonshot/kimi-vl-thinking-2506
+name: Kimi-VL-A3B-Thinking-2506
+company: moonshot
+brand_color: "#1783FF"
+release_date: "2025-06-21"
+parameters:
+  total: "16B"
+  active: "3B"
+architecture: MoE
+context_window: "128k"
+modalities:
+  input: [text, image, video]
+  output: [text]
+weight_availability_tags: [open-weights, multimodal, reasoning]
+logo: assets/logos/moonshot.svg
+sources:
+  - key: kimi-vl-github
+    title: "MoonshotAI/Kimi-VL README"
+    url: https://github.com/MoonshotAI/Kimi-VL
+    type: codebase
+  - key: kimi-vl-thinking-2506-hf
+    title: "Kimi-VL-A3B-Thinking-2506"
+    url: https://huggingface.co/moonshotai/Kimi-VL-A3B-Thinking-2506
+    type: model-card
+scores: {}

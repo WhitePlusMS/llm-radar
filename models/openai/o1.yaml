@@ -2,13 +2,13 @@ id: openai/o1
 name: OpenAI o1
 company: openai
 brand_color: "#10A37F"
-release_date: "2024-12-05"
+release_date: "2024-12-17"
 # OpenAI 未公开 o1 的参数规模与架构细节，故不填写 parameters 与 architecture。
 context_window: "200k"
 modalities:
   input: [text, image]
   output: [text]
-weight_availability_tags: [closed-weights, reasoning]
+weight_availability_tags: [closed-weights, reasoning, multimodal]
 logo: assets/logos/openai.svg
 sources:
   - key: o1-api-announcement
@@ -23,6 +23,14 @@ sources:
     title: OpenAI o1 System Card
     url: https://arxiv.org/abs/2412.16720
     type: paper
+  - key: o1-model-doc
+    title: o1 Model
+    url: https://developers.openai.com/api/docs/models/o1
+    type: website
+  - key: openai-api-changelog
+    title: OpenAI API Changelog
+    url: https://developers.openai.com/api/docs/changelog
+    type: website
 scores:
   # 以下分数来自 OpenAI 官方 o1 API 发布页的 benchmark 对比表（o1-2024-12-17）。
   mmlu:

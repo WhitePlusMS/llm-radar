@@ -1,0 +1,29 @@
+id: alibaba/qwen3-omni-30b-a3b
+name: Qwen3-Omni-30B-A3B
+company: alibaba
+brand_color: "#615CED"
+release_date: "2025-09-22"
+parameters:
+  total: "30B"
+  active: "3B"
+architecture: MoE
+modalities:
+  input: [text, image, audio, video]
+  output: [text, audio]
+weight_availability_tags: [open-weights, multimodal]
+logo: assets/logos/alibaba.svg
+sources:
+  - key: qwen3-omni-repo
+    title: Qwen3-Omni
+    url: https://github.com/QwenLM/Qwen3-Omni
+    type: codebase
+  - key: qwen3-omni-hf
+    title: Qwen3-Omni-30B-A3B-Instruct
+    url: https://huggingface.co/Qwen/Qwen3-Omni-30B-A3B-Instruct
+    type: model-card
+  - key: qwen3-omni-hf-api
+    title: Qwen3-Omni-30B-A3B-Instruct metadata API
+    url: https://huggingface.co/api/models/Qwen/Qwen3-Omni-30B-A3B-Instruct
+    type: website
+# Qwen3-Omni-30B-A3B 官方 benchmark 主要是音频、视频与音视频多模态能力，当前项目 metrics.yaml 无法无损承接。
+scores: {}

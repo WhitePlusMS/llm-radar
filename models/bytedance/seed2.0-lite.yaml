@@ -4,11 +4,6 @@ company: bytedance
 brand_color: "#325AB4"
 release_date: "2026-02-14"
 # ByteDance 未公开 Seed 2.0 Lite 的参数规模与架构细节。
-architecture: MoE
-context_window: "128k"
-modalities:
-  input: [text, image, video]
-  output: [text]
 weight_availability_tags: [closed-weights, multimodal]
 logo: assets/logos/bytedance.svg
 sources:
@@ -16,7 +11,13 @@ sources:
     title: "Seed2.0 Model Card: Towards Intelligence Frontier for Real-World Complexity"
     url: https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/seed2/0214/Seed2.0%20Model%20Card.pdf
     type: paper
+  - key: seed2.0-official-page
+    title: "Seed2.0 Official Product Page"
+    url: https://seed.bytedance.com/en/seed2
+    type: website
 scores:
+  # 官方产品页补充确认了 Seed2.0 Lite (0428) 支持 audio input；
+  # 当前分数仍来自官方 model card。
   mmlu-pro:
     value: 87.7
     source: seed2.0-model-card

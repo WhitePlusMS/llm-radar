@@ -1,5 +1,1279 @@
 # LLM Radar 更新日志
 
+## 2026-07-07 继续补齐 Tencent / Zhipu 官方主线，并修正发布日期口径
+
+### 修改原因
+
+在 OpenAI 和 Moonshot 收口之后，国内厂商里最适合继续推进的是 `Tencent / Zhipu`，因为这两条线上已经有足够硬的官方来源能支撑“补主线缺卡 + 修字段错误”：
+
+- `Tencent`
+  - 官方产品动态已经明确列出 `Tencent HY 2.0 Think / Instruct`
+  - `Hunyuan-A13B` 的发布日期此前比官方动态晚了两天
+- `Zhipu`
+  - 官方 release notes 已明确列出 `GLM-5.1 / 5.2`
+  - `GLM-5` 的产品发布日期与论文发布日期被混用了，`gpqa: 86.0` 的来源归因也不一致
+
+这一轮继续遵循“最简原则 + 文档置信度原则”：只补官方已明确存在的主线条目，只修能被官方页面直接压实的日期、来源和最小规格，不猜参数和 benchmark。
+
+### 修改文件与详情
+
+- 新增模型：
+  - `models/tencent/tencent-hy-2.0-think.yaml`
+  - `models/tencent/tencent-hy-2.0-instruct.yaml`
+  - `models/zhipu/glm-5.1.yaml`
+  - `models/zhipu/glm-5.2.yaml`
+- 更新模型：
+  - `models/tencent/hunyuan-a13b.yaml`
+  - `models/zhipu/glm-5.yaml`
+- 更新研究文档：
+  - `docs/research/tencent-sources.md`
+  - `docs/research/zhipu-sources.md`
+- 刷新索引：
+  - `public/model-index.json`
+
+### 修改影响
+
+- `Tencent HY 2.0 Think`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2025-11-09`
+  - 当前只保留官方动态可直接支撑的最小事实集：文本输入输出、closed-weights、reasoning
+- `Tencent HY 2.0 Instruct`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2025-11-11`
+  - 当前只保留官方动态可直接支撑的最小事实集：文本输入输出、closed-weights
+- `Hunyuan-A13B`
+  - 发布日期从 `2025-06-27` 修正为官方产品动态日期 `2025-06-25`
+  - 补入 `reasoning` 标签
+- `GLM-5.1`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2026-04-07`
+  - `context_window` 收敛为 `200k`
+- `GLM-5.2`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2026-06-16`
+  - `context_window` 收敛为 `1M`
+- `GLM-5`
+  - `release_date` 从论文日期 `2026-02-17` 收敛为官方 release notes 日期 `2026-02-03`
+  - `gpqa: 86.0` 的来源改回官方博客，而不再错误归给论文
+
+### 验证
+
+- `npm run build-index`：通过，生成 `139` 模型 / `14` benchmark / `15` 公司索引。
+- `npm run build`：通过。
+- `npm test`：`25/25` 通过。
+
+## 2026-07-07 继续收紧 Moonshot / Kimi 参数口径，并记录最新主线迁移
+
+### 修改原因
+
+国内厂商这一段里，`Moonshot / Kimi` 是当前证据最硬、最适合继续推进的一条线，因为已经有两类非常明确的问题：
+
+- `Kimi K2` / `Kimi K2.5` 的总参数量还保留着偏大的旧写法
+- 官方平台当前主线已经切到 `K2.6` / `K2.7 Code`，但仓库研究文档还没有把这个状态记录清楚
+
+同时，`K2.6` / `K2.7 Code` 虽然已经确认是官方最新主线，但在当前页面里还没有稳定暴露出可直接落库的发布日期；而本仓库又对 `release_date` 做强校验。因此这轮按“最简原则 + 文档置信度原则”先不硬加新卡，先把已知错误收掉，并把主线迁移事实记录清楚。
+
+### 修改文件与详情
+
+- 更新模型：
+  - `models/moonshot/kimi-k2.yaml`
+  - `models/moonshot/kimi-k2.5.yaml`
+- 更新研究文档：
+  - `docs/research/moonshot-sources.md`
+- 刷新索引：
+  - `public/model-index.json`
+
+### 修改影响
+
+- `Kimi K2`
+  - `parameters.total` 从 `1.04T` 收敛为官方 GitHub 明示的 `1T`
+  - `parameters.active` 从 `32.6B` 收敛为官方 GitHub 明示的 `32B`
+- `Kimi K2.5`
+  - `parameters.total` 从 `1.04T` 收敛为 `1T`
+  - `parameters.active` 继续保留 `32B`
+- `Moonshot` 研究文档
+  - 明确记录 `K2.6` 是当前通用主线、`K2.7 Code` 是当前代码主线
+  - 明确说明本轮为何没有立刻新建 `K2.6 / K2.7 Code` 模型卡：不是没找到官方型号，而是还没压实可直接落库的发布日期
+
+### 验证
+
+- `npm run build-index`：通过，生成 `135` 模型 / `14` benchmark / `15` 公司索引。
+- `npm run build`：通过。
+- `npm test`：`25/25` 通过。
+
+## 2026-07-07 继续补齐 OpenAI 官方主线缺卡，并收紧 GPT-4.1 家族口径
+
+### 修改原因
+
+在 Anthropic、Google、xAI 收口之后，`OpenAI` 目录里最明显的剩余问题已经不是“字段脏”，而是“主线缺卡”：
+
+- `GPT-4.1` 家族缺 `gpt-4.1-nano`
+- `GPT-4.5 Preview` 缺卡
+- `o3-mini / o3-pro / o1-pro` 缺卡
+- `GPT-5 Pro / GPT-5.4 Pro / GPT-5.5 Pro` 缺卡
+
+同时，`GPT-4.1` 与 `GPT-4.1 mini` 还缺官方 model doc，`context_window` 也仍是概括写法 `1M`，还没有收敛到官方模型页给出的精确数字。
+
+这轮继续遵循“最简原则 + 文档置信度原则”：
+
+- 只补官方 model doc + 官方 changelog / 官方博客都能支撑的主线卡；
+- 能从 OpenAI 官方对比表直接拿到的分数才写；
+- `o1-pro / o3-pro / GPT-5 Pro` 这类如果官方当前只给规格不给本项目 `metrics.yaml` 同口径 benchmark，就先空着。
+
+### 修改文件与详情
+
+- 新增模型：
+  - `models/openai/gpt-4.1-nano.yaml`
+  - `models/openai/gpt-4.5-preview.yaml`
+  - `models/openai/o3-mini.yaml`
+  - `models/openai/o3-pro.yaml`
+  - `models/openai/o1-pro.yaml`
+  - `models/openai/gpt-5-pro.yaml`
+  - `models/openai/gpt-5.4-pro.yaml`
+  - `models/openai/gpt-5.5-pro.yaml`
+- 更新模型：
+  - `models/openai/gpt-4.1.yaml`
+  - `models/openai/gpt-4.1-mini.yaml`
+- 更新研究文档：
+  - `docs/research/openai-sources.md`
+- 刷新索引：
+  - `public/model-index.json`
+- 刷新索引：
+  - `public/model-index.json`
+
+### 修改影响
+
+- `GPT-4.1`
+  - 补入官方 model doc source
+  - `context_window` 从 `1M` 收敛为官方精确值 `1,047,576`
+- `GPT-4.1 mini`
+  - 补入官方 model doc source
+  - `context_window` 从 `1M` 收敛为官方精确值 `1,047,576`
+- `GPT-4.1 nano`
+  - 新增官方主线模型卡
+  - 写入官方 `GPT-4.1` 对比表可直接支撑的分数：
+    - `mmlu: 80.1`
+    - `gpqa: 50.3`
+    - `ifeval: 74.5`
+  - 不猜官方未报告的 `swe-bench`
+- `GPT-4.5 Preview`
+  - 新增官方主线 research preview 模型卡
+  - 发布日期收敛为 `2025-02-27`
+  - 写入官方对比表可直接支撑的分数：
+    - `mmlu: 90.8`
+    - `gpqa: 69.5`
+    - `ifeval: 88.2`
+    - `swe-bench: 38.0`
+- `o3-mini`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2025-01-31`
+  - 写入官方对比表可直接支撑的分数：
+    - `mmlu: 86.9`
+    - `gpqa: 77.2`
+    - `ifeval: 93.9`
+    - `swe-bench: 49.3`
+- `o3-pro`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2025-06-10`
+  - 当前官方只稳定给出规格与发布日期，`scores` 保持空值
+- `o1-pro`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2025-03-19`
+  - 当前官方只稳定给出规格与发布日期，`scores` 保持空值
+- `GPT-5 Pro`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2025-10-06`
+- `GPT-5.4 Pro`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2026-03-05`
+- `GPT-5.5 Pro`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2026-04-24`
+
+### 验证
+
+- `npm run build-index`：通过，生成 `135` 模型 / `14` benchmark / `15` 公司索引。
+- `npm run build`：通过。
+- `npm test`：`25/25` 通过。
+
+## 2026-07-07 继续补齐 Google 主线预览，并收紧 xAI 官方模型页字段
+
+### 修改原因
+
+在补完 Anthropic 缺失主线后，`Google / xAI` 这条线也已经有足够硬的官方证据可以继续推进，但这一轮不需要大范围翻修，只需要收掉几处最明确的问题：
+
+- `Google`
+  - 当前仓库缺少官方主线预览 `Gemini 3 Pro Preview`
+  - 多张 `2.5 / 3.x` 模型卡没有把官方模型页已明确披露的 `PDF` 输入能力写回 `modalities`
+- `xAI`
+  - `Grok 4.3`、`Grok Build 0.1` 仍把输入模态写成纯文本，但官方 docs 已明确是 `text + image`
+  - `Grok Build 0.1` 还有更硬的官方发布日期来源可以替换当前日期
+  - `Grok 4.3` 的精确首发日期仍不够硬，但已经能拿到一个明确 dated 的官方公开可用公告，可先收敛到这个时间点
+
+本轮继续遵循“最简原则 + 文档置信度原则”：只处理证据最硬的缺卡与字段，不顺手扩大到更多仍需额外核验的模型。
+
+### 修改文件与详情
+
+- 新增模型：
+  - `models/google/gemini-3-pro-preview.yaml`
+- 更新模型：
+  - `models/google/gemini-2.5-pro.yaml`
+  - `models/google/gemini-2.5-flash-lite.yaml`
+  - `models/google/gemini-3-flash-preview.yaml`
+  - `models/google/gemini-3.1-pro-preview.yaml`
+  - `models/google/gemini-3.5-flash.yaml`
+  - `models/xai/grok-4.3.yaml`
+  - `models/xai/grok-build-0.1.yaml`
+- 更新研究文档：
+  - `docs/research/google-sources.md`
+  - `docs/research/xai-sources.md`
+- 刷新索引：
+  - `public/model-index.json`
+
+### 修改影响
+
+- `Gemini 3 Pro Preview`
+  - 新增官方主线预览模型卡
+  - 发布日期按官方 lifecycle 页收敛为 `2025-11-18`
+  - `context_window` 收敛为 `1M`
+  - 模态收敛为 `text/image/audio/video/pdf -> text`
+  - 因当前未从官方页面稳定落锤出可直接映射到 `metrics.yaml` 的 benchmark，`scores` 继续保持空值
+- `Gemini 2.5 Pro`
+  - 补回官方模型页明确披露的 `pdf` 输入能力
+- `Gemini 2.5 Flash-Lite`
+  - 补回官方模型页明确披露的 `pdf` 输入能力
+- `Gemini 3 Flash Preview`
+  - 补回官方模型页明确披露的 `pdf` 输入能力
+- `Gemini 3.1 Pro Preview`
+  - 补回官方模型页明确披露的 `pdf` 输入能力
+- `Gemini 3.5 Flash`
+  - 补回官方模型页明确披露的 `pdf` 输入能力
+- `Gemini 2.5 Flash`
+  - 本轮明确确认其官方模型页未把 `PDF` 列入 Inputs，因此不补 `pdf`，避免错填
+- `Grok 4.3`
+  - source 从泛化的 models 总页收敛为模型专页 `docs.x.ai/developers/models/grok-4.3`
+  - 输入模态从 `[text]` 修正为 `[text, image]`
+  - 标签补回 `multimodal`
+  - `release_date` 收敛为 `2026-06-17`，依据当前能稳定定位到的最硬官方 dated 可用性公告 `Grok on Amazon Bedrock`
+- `Grok Build 0.1`
+  - source 从泛化的 models 总页收敛为模型专页
+  - 补入官方发布博客 `Introducing Grok Build`
+  - 发布日期收敛为 `2026-05-19`，优先采用官方 release notes 中 `grok-build-0.1` 这个具体 model slug 的上架时间
+  - 输入模态从 `[text]` 修正为 `[text, image]`
+  - 标签补回 `multimodal`
+
+### 验证
+
+- `npm run build-index`：通过，生成 `127` 模型 / `14` benchmark / `15` 公司索引。
+- `npm run build`：通过。
+- `npm test`：`25/25` 通过。
+
+## 2026-07-07 补齐 Anthropic 缺失主线模型，并补记最新参数缺口扫描
+
+### 修改原因
+
+用户已经明确要求继续联网核验，并优先补齐官方主线模型；同时也要求不要因为“看起来像版本号”就凭直觉删掉官方真实存在的型号。这一轮在 Anthropic 线上已经拿到了足够硬的官方证据：
+
+- 官方发布博客明确存在：
+  - `Claude Sonnet 4.5`
+  - `Claude Sonnet 4.6`
+  - `Claude Opus 4.5`
+  - `Claude Opus 4.6`
+  - `Claude Opus 4.7`
+- 官方 `Model deprecations` 页面也把这些模型列为正式 API 生命周期中的型号。
+
+因此本轮按“最简原则 + 文档置信度原则”只做最小必要补齐：
+
+- 新增 5 张缺失的 Anthropic 主线模型卡；
+- 不先做整批文件重命名，不引入无必要 churn；
+- 对没有从官方原文稳定落锤的 benchmark，继续保持空值而不是猜。
+
+此外，参数缺口扫描脚本已经重新执行并刷新了 `docs/research/model-parameter-gap-scan-2026-07-07.md`，上一轮还没来得及写入更新日志，这里一并补记。
+
+### 修改文件与详情
+
+- 新增模型：
+  - `models/anthropic/claude-sonnet-4.5.yaml`
+  - `models/anthropic/claude-sonnet-4.6.yaml`
+  - `models/anthropic/claude-opus-4.5.yaml`
+  - `models/anthropic/claude-opus-4.6.yaml`
+  - `models/anthropic/claude-opus-4.7.yaml`
+- 更新研究文档：
+  - `docs/research/anthropic-sources.md`
+- 刷新索引：
+  - `public/model-index.json`
+- 补记本轮前已刷新的扫描报告：
+  - `docs/research/model-parameter-gap-scan-2026-07-07.md`
+
+### 修改影响
+
+- `Claude Sonnet 4.5`
+  - 新增官方主线模型卡
+  - 发布日期收敛为官方博客日期 `2025-09-29`
+  - `context_window` 收敛为官方 docs 可确认的 `200k`
+- `Claude Sonnet 4.6`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2026-02-17`
+  - `context_window` 收敛为官方博客 / docs 可确认的 `1M`
+- `Claude Opus 4.5`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2025-11-24`
+  - 不猜当前尚未稳定落锤的 `context_window` 与 benchmark
+- `Claude Opus 4.6`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2026-02-05`
+  - `context_window` 收敛为官方博客 / docs 可确认的 `1M`
+- `Claude Opus 4.7`
+  - 新增官方主线模型卡
+  - 发布日期收敛为 `2026-04-16`
+  - `context_window` 收敛为官方 docs 可确认的 `1M`
+- `Anthropic` 研究文档
+  - 补入上述 5 个主线模型的来源说明
+  - 明确记录 Anthropic 官方 docs 中存在带日期的 API model name，但本轮不做整批 rename
+  - 明确记录为什么 `Opus 4.5` 暂不硬写 context、为什么这 5 张卡暂不硬填 benchmark
+- 参数缺口扫描报告
+  - 本轮日志补记最新扫描结果：
+    - 模型总数 `121`
+    - 完全没有 `parameters` 信息 `48`
+    - 缺少 `parameters.active` `1`
+    - `parameters.total` 占位值 `6`
+    - `parameters.active` 占位值 `8`
+
+### 验证
+
+- `npm run build-index`：通过，生成 `126` 模型 / `14` benchmark / `15` 公司索引。
+- `npm run build`：通过。
+- `npm test`：`25/25` 通过。
+
+## 2026-07-07 继续补齐 Alibaba 官方主线开源模型，并收紧空分数的适用边界
+
+### 修改原因
+
+用户已经明确两条边界：
+
+- 只保留官方主线模型，不要 distill、派生版、中间研究版；
+- 没有任何可靠官方评测支撑的小模型不要硬加。
+
+基于这个标准，`Alibaba / Qwen` 当前最明显的缺口不是“小模型数量不够”，而是几条已经公开、而且有官方 model card / 官方仓库直接支撑的主线条目还没入库，尤其是：
+
+- `Qwen3.6-35B-A3B`
+- `Qwen3.5-122B-A10B`
+- `Qwen3.5-35B-A3B`
+- `Qwen3-Omni-30B-A3B`
+- `Qwen2-VL-72B`
+
+这一轮继续遵循“最简原则 + 文档置信度原则”推进：只新增已经能被官方来源直接支撑的主线条目；对不在当前 `metrics.yaml` 范围内的多模态 benchmark，不做错误映射，直接在模型卡和研究文档中写清楚原因。
+
+### 修改文件与详情
+
+- 新增模型：
+  - `models/alibaba/qwen3.6-35b-a3b.yaml`
+  - `models/alibaba/qwen3.5-122b-a10b.yaml`
+  - `models/alibaba/qwen3.5-35b-a3b.yaml`
+  - `models/alibaba/qwen3-omni-30b-a3b.yaml`
+  - `models/alibaba/qwen2-vl-72b.yaml`
+- 更新研究文档：
+  - `docs/research/alibaba-sources.md`
+- 刷新索引：
+  - `public/model-index.json`
+
+### 修改影响
+
+- `Qwen3.6-35B-A3B`
+  - 新增官方主线模型卡
+  - 写入官方可直接支撑的：
+    - `35B total / 3B active`
+    - `262,144 natively / 1,010,000 with extrapolation`
+    - `text/image/video -> text`
+    - `mmlu-pro: 85.2`
+    - `gpqa: 85.5`
+    - `swe-bench: 73.4`
+- `Qwen3.5-122B-A10B`
+  - 新增官方主线模型卡
+  - 写入官方可直接支撑的：
+    - `122B total / 10B active`
+    - `mmlu-pro: 86.7`
+    - `gpqa: 86.6`
+    - `ifeval: 93.4`
+    - `swe-bench: 72.0`
+- `Qwen3.5-35B-A3B`
+  - 新增官方主线模型卡
+  - 写入官方可直接支撑的：
+    - `35B total / 3B active`
+    - `mmlu-pro: 85.3`
+    - `gpqa: 84.2`
+    - `ifeval: 91.9`
+    - `swe-bench: 69.2`
+- `Qwen3-Omni-30B-A3B`
+  - 新增官方主线模型卡
+  - 明确它是官方 `MoE-based Thinker-Talker` 主线，不是 distill / 派生版
+  - 明确模态为 `text/image/audio/video -> text/audio`
+  - 不硬写 `context_window`
+  - `scores` 保持为空，并直接注明原因：官方 benchmark 主要是音频/视频/音视频指标，不在当前 `metrics.yaml` 集合内
+- `Qwen2-VL-72B`
+  - 新增官方主线模型卡
+  - 明确它是官方 `72B` 指令版，模态为 `text/image/video -> text`
+  - `scores` 保持为空，并直接注明原因：官方分数主要是 `MMMU / DocVQA / RealWorldQA / MMStar / MathVista / MVBench`
+- `Alibaba` 研究文档
+  - 新增上述 5 条官方主线的来源说明
+  - 把 `Qwen3-Omni-30B-A3B` 和 `Qwen2-VL-72B` 为什么允许空 `scores` 讲清楚
+  - 把 `Qwen3.5 / 3.6` 新增的 `SWE-bench` 口径与此前 generic family 卡片区分开，避免“家族卡”和“具体官方变体卡”混淆
+
+### 验证
+
+- `npm run build-index`：通过，生成 `121` 模型 / `14` benchmark / `15` 公司索引。
+- `npm run build`：通过。
+- `npm test`：`25/25` 通过。
+
+---
+
+## 2026-07-07 继续收紧 DeepSeek 官方主线，移除中间研究版 R1-Zero
+
+### 修改原因
+
+继续按“只采信官方一手来源、优先保留正式官方主线、避免把论文里的中间研究版本当成常规模型卡”推进 `DeepSeek`。这一轮最确定的问题是：
+
+- `DeepSeek-R1-Zero` 虽然来自官方论文，但它是 R1 训练流程中的中间研究版本，不是正式对外主推的稳定主线型号；
+- 同时官方也没有给出能稳定映射进当前项目 `metrics.yaml` 的 featured benchmark 集合。
+
+在用户已经明确“不要无相关评测参数的小/杂模型，只保留官方模型”的前提下，这条继续留着只会增加噪音。
+
+### 修改文件与详情
+
+- 删除模型：
+  - `models/deepseek/r1-zero.yaml`
+- 更新研究文档：
+  - `docs/research/deepseek-sources.md`
+- 更新模型说明：
+  - `models/deepseek/coder-v2.yaml`
+  - `models/deepseek/vl2.yaml`
+
+### 修改影响
+
+- `DeepSeek-R1-Zero`
+  - 从模型库移除
+  - 原因在研究文档中明确记录为：
+    - 官方存在，但属于中间研究版
+    - 不是当前应优先保留的正式官方主线
+    - 缺少可直接落到当前指标集合的 featured benchmark
+- `DeepSeek` 研究文档
+  - 新增 `R1-Zero` 已移除的裁决说明
+  - 继续保留 `DeepSeek-Coder-V2` 与 `DeepSeek-VL2` 的说明：
+    - `Coder-V2` 空分数是因为官方分数按 `Instruct / Base / Lite` 具体变体给出，不能安全混填到 generic 条目
+    - `VL2` 空分数是因为官方主要给的是视觉/多模态 benchmark，不属于当前文本指标集
+- `DeepSeek-Coder-V2`
+  - 补入官方 arXiv 论文 source
+  - 在模型卡中直接注明“空分数是因为官方只给具体后缀变体分数”
+- `DeepSeek-VL2`
+  - 在模型卡中直接注明“空分数是因为官方主要给视觉语言 benchmark，不属于当前文本指标集”
+
+### 验证
+
+- `npm run build-index`：通过，生成 `135` 模型 / `14` benchmark / `15` 公司索引。
+- `npm run build`：通过。
+- `npm test`：`25/25` 通过。
+
+---
+
+## 2026-07-07 继续收紧 Alibaba 官方模型卡，并补回可直接落地的官方分数
+
+### 修改原因
+
+继续按“只采信官方一手来源、能落就落、不能稳定确认就收回”的标准推进 `Alibaba / Qwen`。这轮重点不是盲删模型，而是把几条此前空分数或字段不稳的官方主线重新核一遍：
+
+- `Qwen3.5-397B-A17B` 的官方 Hugging Face model card 已经能直接支撑一组通用文本 benchmark。
+- `Qwen2.5-Omni-7B` 其实有官方 benchmark，只是之前没有落回 YAML。
+- `QwQ-32B`、`Qwen2.5-VL`、`Qwen3-Coder`、`Qwen3-VL` 里还留着几处 context / 参数 / source 口径不够准的字段。
+
+### 修改文件与详情
+
+- 更新模型：
+  - `models/alibaba/qwen3.5.yaml`
+  - `models/alibaba/qwen3-coder-480b-a35b.yaml`
+  - `models/alibaba/qwen3-vl-235b-a22b.yaml`
+  - `models/alibaba/qwen2.5-vl.yaml`
+  - `models/alibaba/qwen2.5-omni-7b.yaml`
+  - `models/alibaba/qwq-32b.yaml`
+- 更新研究文档：
+  - `docs/research/alibaba-sources.md`
+  - `docs/research/model-parameter-gap-scan-2026-07-07.md`
+
+### 修改影响
+
+- `Qwen3.5-397B-A17B`
+  - `context_window` 收敛为官方表述：`262,144 natively / 1,010,000 with extrapolation`
+  - 新增官方分数：
+    - `mmlu-pro: 87.8`
+    - `gpqa: 88.4`
+    - `ifeval: 92.6`
+- `Qwen2.5-Omni-7B`
+  - `release_date` 从 `2025-03-26` 修正为官方博客日期 `2025-03-27`
+  - 删除未在当前官方卡中稳定落锤的 `architecture` / `context_window`
+  - 新增官方分数：
+    - `mmlu-pro: 47.0`
+    - `gpqa: 30.8`
+    - `gsm8k: 88.7`
+    - `humaneval: 78.7`
+  - 补入 Hugging Face model card source
+- `Qwen2.5-VL`
+  - `context_window` 从 `128k` 收敛为官方 model card 的默认 `32k`
+  - 删除 `architecture: Dense`
+  - 补入 Hugging Face model card source
+- `QwQ-32B`
+  - `release_date` 修正为 `2025-03-06`
+  - `parameters.total` 从 `32B` 收敛为官方 `32.5B`
+  - `parameters.active` 改为 `undisclosed`
+  - 删除未经当前官方来源直接确认的 `architecture: Dense`
+  - `context_window` 改为官方 `131,072`
+  - 补入 Hugging Face model card source
+- `Qwen3-Coder-480B-A35B`
+  - `context_window` 从概括写法收敛为官方 `262,144 natively / 1M with extrapolation`
+- `Qwen3-VL-235B-A22B`
+  - `context_window` 明确为 `256k native / 1M with extrapolation`
+- `Alibaba` 研究文档
+  - 新增 `Qwen3.5-397B-A17B` 与 `Qwen2.5-Omni-7B` 的官方来源说明
+  - 不再把 `QwQ-32B` 简单记成“未单独收录”
+  - 明确 `Qwen2.5-VL` 之所以仍空分数，是因为官方主要给的是视觉/视频/Agent benchmark，不是当前项目的通用文本指标集
+- 参数缺口扫描报告
+  - 重新执行 `scan:parameter-gaps`，刷新全库统计为：
+    - 模型总数 `117`
+    - 无 `parameters` `48`
+    - 缺少 `active` `1`
+    - `total` 占位值 `6`
+    - `active` 占位值 `8`
+
+### 验证
+
+- `npm run build-index`：通过，生成 `117` 模型 / `14` benchmark / `15` 公司索引。
+- `npm run build`：通过。
+- `npm test`：`25/25` 通过。
+- `npm run scan:parameter-gaps -- --out-file docs/research/model-parameter-gap-scan-2026-07-07.md`：通过。
+
+---
+
+## 2026-07-07 继续清理 ByteDance 中已确认属于推测或过期说明的字段
+
+### 修改原因
+
+在等待 `Baidu / ByteDance` 并发核验结论期间，`ByteDance` 里已经有几处不需要再等的确定问题：
+
+- `Seed1.8` 的注释已经明确写着“MoE 为推测”，这种字段不应该继续保留。
+- `Seed 2.0 Lite` 也没有官方直接披露能支撑 `architecture: MoE`。
+- `bytedance-sources.md` 仍把 `Doubao-1.5-Pro` 写成“未收录”，但仓库当前已经有对应模型卡，文档已经落后于实际状态。
+
+### 修改文件与详情
+
+- 更新模型：
+  - `models/bytedance/seed-1.8.yaml`
+  - `models/bytedance/seed2.0-lite.yaml`
+- 更新研究文档：
+  - `docs/research/bytedance-sources.md`
+
+### 修改影响
+
+- `Seed1.8`
+  - 删除 `architecture: MoE`
+  - GitHub source type 统一改为 `codebase`
+- `Seed 2.0 Lite`
+  - 删除 `architecture: MoE`
+- `ByteDance` 研究文档
+  - 明确指出 `Doubao-1.5-Pro` 已经入库，旧的“未收录”说明过期
+  - 记录了 `Seed1.8 / Seed 2.0 Lite` 的架构字段属于推测、已移除
+
+### 验证
+
+- 待本轮收尾后统一执行 `npm run build-index`、`npm run build`、`npm test`。
+
+---
+
+## 2026-07-07 根据并发核验结果继续收敛 Zhipu / Baichuan 模型字段
+
+### 修改原因
+
+并发核验回收后，`Zhipu / Baichuan` 这条线也拿到了足够硬的官方来源，可以继续收一批字段：
+
+- `GLM-4` 的架构写法过于武断。
+- `GLM-4.5 / 4.5-Air / 4.5V / 5` 还缺直接的 GitHub / Hugging Face model card 来源。
+- `GLM-4.5V` 的发布日期、参数和输入模态都还不完整。
+- `Baichuan-M1-14B` 的发布日期偏早，且上下文窗口没有被官方论文 / GitHub 稳定确认。
+- `Baichuan-Omni` 的 source type 与项目内其他代码仓库来源不统一。
+- `Baichuan` 研究文档里仍保留着把第三方新闻/转载当主来源的旧口径。
+
+### 修改文件与详情
+
+- 更新模型：
+  - `models/zhipu/glm-4.yaml`
+  - `models/zhipu/glm-4.5.yaml`
+  - `models/zhipu/glm-4.5-air.yaml`
+  - `models/zhipu/glm-4.5v.yaml`
+  - `models/zhipu/glm-5.yaml`
+  - `models/baichuan/baichuan-m1-14b.yaml`
+  - `models/baichuan/baichuan-omni.yaml`
+- 更新研究文档：
+  - `docs/research/zhipu-sources.md`
+  - `docs/research/baichuan-sources.md`
+
+### 修改影响
+
+- `GLM-4`
+  - `architecture` 从 `Dense` 改为 `Transformer`
+- `GLM-4.5`
+  - 补入官方 GitHub 与 Hugging Face model card 来源
+- `GLM-4.5-Air`
+  - 补入 Hugging Face model card 来源
+- `GLM-4.5V`
+  - 发布日期收敛为 `2025-08-11`
+  - 参数补齐为 `106B total / 12B active`
+  - 输入模态补齐为 `text / image / video`
+  - source 改为 `GLM-4.5V` Hugging Face + `GLM-V` GitHub
+- `GLM-5`
+  - 补入 GitHub / Hugging Face model card 来源
+  - `swe-bench` 增加 `200K context window` 说明
+- `Baichuan-M1-14B`
+  - 发布日期收敛为 `2025-02-18`
+  - 补入官方 GitHub source
+  - 去掉未被官方论文 / GitHub 稳定确认的 `32k context_window`
+- `Baichuan-Omni`
+  - GitHub source type 统一改为 `codebase`
+- `Baichuan` 研究文档
+  - 降低了第三方新闻/转载的角色，不再把它们写成主来源
+  - 明确标出 `Baichuan-M1-preview` 当前仍缺少足够硬的官方一手证据
+
+### 验证
+
+- 待本轮收尾后统一执行 `npm run build-index`、`npm run build`、`npm test`。
+
+---
+
+## 2026-07-07 根据并发核验结果继续收敛 Tencent 参数与来源口径
+
+### 修改原因
+
+并发核验回收后，`Tencent` 这条线已经有足够硬的官方证据可以收掉几处悬而未决的字段：
+
+- `HunyuanVideo-1.5` 当前只有 `total: 8.3B`，`active` 缺失，会让参数缺口扫描长期挂着“待处理”。
+- `Hunyuan-T1` 在 YAML 与研究文档里的发布日期不一致。
+- `Hunyuan-A13B` 的 `gpqa` 需要更明确地标出是 `GPQA Diamond` 口径。
+- `Tencent` 研究文档末尾还混着第三方新闻与云开发者链接，不适合继续当主证据清单。
+
+### 修改文件与详情
+
+- 更新模型：
+  - `models/tencent/hunyuan-a13b.yaml`
+  - `models/tencent/hunyuanvideo-1.5.yaml`
+- 更新研究文档：
+  - `docs/research/tencent-sources.md`
+
+### 修改影响
+
+- `Hunyuan-A13B`
+  - 为 `gpqa` 补入 `note: GPQA Diamond`
+- `HunyuanVideo-1.5`
+  - 参数从“仅 total”收敛为：
+    - `total: 8.3B`
+    - `active: undisclosed`
+  - 这样后续参数缺口扫描不会再把它归为“缺少 active”
+- `Tencent` 研究文档
+  - `Hunyuan-Large` 的发布日期说明改成以 `2024-11-05` 为 GitHub/开源发布日，并注明 `2024-11-04` 是 arXiv 提交日
+  - `Hunyuan-T1` 发布日期统一为 `2025-03-21`
+  - 明确写出 `HunyuanVideo-1.5` 的 `active params` 官方未披露
+  - 参考来源列表移除了第三方新闻/云开发者文章，优先只保留原始来源
+
+### 验证
+
+- 待本轮收尾后统一执行 `npm run build-index`、`npm run build`、`npm test`。
+
+---
+
+## 2026-07-07 根据并发核验结果继续收紧 Google / xAI 主线模型字段
+
+### 修改原因
+
+在 `OpenAI / Anthropic` 收口之后，继续按并发核验结论处理 `Google / xAI`。这一轮发现的核心问题不是“模型缺失”，而是官方生命周期页、模型页和技术报告口径被混用了：
+
+- `Google` 里有几条稳定模型仍保留首次预览日期。
+- `Gemini 2.0 / 2.5` 中仍存在 `MoE` 这类官方未直接披露的架构字段。
+- `Gemini 2.0 Flash` 的输出模态写得过宽。
+- `Gemini 3.1 Pro Preview` 已经有官方页面可支撑分数，但模型卡仍是空分数。
+- `xAI` 研究文档还没有把 `Grok 4.3 / Grok Build 0.1` 这类已入库官方模型的来源口径补清楚。
+
+### 修改文件与详情
+
+- 更新模型：
+  - `models/google/gemini-2.0-flash.yaml`
+  - `models/google/gemini-2.0-flash-lite.yaml`
+  - `models/google/gemini-2.5-pro.yaml`
+  - `models/google/gemini-2.5-flash.yaml`
+  - `models/google/gemini-2.5-flash-lite.yaml`
+  - `models/google/gemini-3.1-pro-preview.yaml`
+  - `models/google/gemini-3.5-flash.yaml`
+- 更新研究文档：
+  - `docs/research/google-sources.md`
+  - `docs/research/xai-sources.md`
+
+### 修改影响
+
+- `Gemini 2.0 Flash`
+  - 删除 `architecture: MoE`
+  - 输出模态收窄为 `[text]`
+  - 补入 `Gemini deprecations` source
+- `Gemini 2.5 Pro`
+  - 发布日期收敛为稳定 API 模型口径 `2025-06-17`
+  - 删除 `architecture: MoE`
+  - 补入 `Gemini deprecations` source
+- `Gemini 2.5 Flash`
+  - 发布日期收敛为稳定 API 模型口径 `2025-06-17`
+  - 删除 `architecture: MoE`
+  - 补入 `Gemini deprecations` source
+- `Gemini 2.5 Flash-Lite`
+  - 发布日期收敛为稳定 API 模型口径 `2025-07-22`
+  - 补入 `Gemini deprecations` source
+- `Gemini 3.1 Pro Preview`
+  - 补入 `Gemini deprecations` 与 Google DeepMind 模型页
+  - 新增官方分数 `gpqa=94.3`、`swe-bench=80.6`
+- `Gemini 3.5 Flash`
+  - 补入 `Gemini deprecations` 与 Google DeepMind 模型页
+- `Google` 研究文档
+  - 清理了“技术报告 PDF 已下载到本地”这类已过期表述
+  - 明确区分“首次预览日期”和“稳定 API 模型发布日期”
+- `xAI` 研究文档
+  - 补记了 `Grok 4.3` / `Grok Build 0.1` 的官方 docs 口径
+  - 说明了此前 `Grok-2` 上下文窗口为何属于推断值并已移除
+
+### 验证
+
+- 待本轮收尾后统一执行 `npm run build-index`、`npm run build`、`npm test`。
+
+---
+
+## 2026-07-07 根据并发核验结果继续收紧 OpenAI / Anthropic 主线模型字段
+
+### 修改原因
+
+在参数缺口脚本扫描之后，继续按“并发子代理 + 官方原始来源”推进闭源主线模型核验。新一轮核验确认，`OpenAI` 与 `Anthropic` 里还有一批字段虽然不为空，但并不够硬：
+
+- `GPT-4o` / `GPT-4o mini` 的模态写得过宽，混入了当前 API model doc 不支持的输入/输出。
+- `o1` 的发布日期与当前保留 benchmark 所对应的 API 版本口径不一致。
+- `o3` 的 `gpqa` / `swe-bench` 在官方文本里暂时没有稳定检出到与当前 `metrics.yaml` 一一对应的精确值。
+- `Claude Haiku 4.5` 的发布日期过早。
+- `Claude Fable 5` / `Claude Mythos 5` 里保留了尚未稳定核到的分数，而且 `Fable 5` 还存在把 `Mythos 5` 结果借填进来的风险。
+
+### 修改文件与详情
+
+- 更新模型：
+  - `models/openai/gpt-4o.yaml`
+  - `models/openai/gpt-4o-mini.yaml`
+  - `models/openai/gpt-5.yaml`
+  - `models/openai/gpt-5-mini.yaml`
+  - `models/openai/gpt-5-nano.yaml`
+  - `models/openai/gpt-5.4.yaml`
+  - `models/openai/gpt-5.4-mini.yaml`
+  - `models/openai/gpt-5.4-nano.yaml`
+  - `models/openai/gpt-5.5.yaml`
+  - `models/openai/o1.yaml`
+  - `models/openai/o3.yaml`
+  - `models/openai/o4-mini.yaml`
+  - `models/anthropic/claude-4-opus.yaml`
+  - `models/anthropic/claude-4-sonnet.yaml`
+  - `models/anthropic/claude-haiku-4.5.yaml`
+  - `models/anthropic/claude-opus-4.8.yaml`
+  - `models/anthropic/claude-sonnet-5.yaml`
+  - `models/anthropic/claude-fable-5.yaml`
+  - `models/anthropic/claude-mythos-5.yaml`
+- 更新研究文档：
+  - `docs/research/openai-sources.md`
+  - `docs/research/anthropic-sources.md`
+
+### 修改影响
+
+- `GPT-4o`：
+  - 模态收窄为 `text/image -> text`
+  - 补入 OpenAI API model doc source
+- `GPT-4o mini`：
+  - 去掉 `audio` 输入
+  - 补入 OpenAI API model doc source
+- `GPT-5.5`：
+  - 发布日期修正为 `2026-04-24`
+- `GPT-5* / GPT-5.4* / GPT-5.5 / o1 / o3 / o4-mini`：
+  - 补入 OpenAI API changelog / model doc / system card 等官方来源
+- `o1`：
+  - 发布日期收敛为 `2024-12-17`
+  - `weight_availability_tags` 补入 `multimodal`
+- `o3`：
+  - 清空暂时无法稳定由官方原始来源确认的 `gpqa` / `swe-bench`
+- `Claude 4 Opus`、`Claude 4 Sonnet`：
+  - 名称按官方写法改为 `Claude Opus 4`、`Claude Sonnet 4`
+- `Claude Haiku 4.5`：
+  - 发布日期修正为 `2025-10-15`
+  - 补入官方发布博客
+- `Claude Opus 4.8`、`Claude Sonnet 5`：
+  - 补入官方发布博客
+- `Claude Fable 5`、`Claude Mythos 5`：
+  - 清空当前尚未稳定核到、且可能存在口径借填问题的分数
+
+### 验证
+
+- 待本轮收尾后统一执行 `npm run build-index`、`npm run build`、`npm test`。
+
+---
+
+## 2026-07-07 收紧 Anthropic / xAI / OpenAI 中已确认不可靠的字段
+
+### 修改原因
+
+在全量参数缺口扫描之后，继续按“官方未披露就不猜、现有字段必须能被官方原始来源支撑”的标准回看主线闭源模型，发现有几类值已经可以确定不该继续保留：
+
+- `Anthropic` 里仍残留 `Dense` 这类官方未确认的架构推测。
+- `xAI` 里存在通过 `Grok-3` 反推 `Grok-2` 上下文窗口的写法，也存在把官方仅明确为视觉理解的模型写成图像输出的情况。
+- `OpenAI GPT-4o` 里仍保留了无法由官方页面确认的 `mmlu-pro` / `humaneval` 条目，而且 source 指向也不成立。
+
+### 修改文件与详情
+
+- 更新模型：
+  - `models/anthropic/claude-3.5-sonnet.yaml`
+  - `models/anthropic/claude-3.7-sonnet.yaml`
+  - `models/xai/grok-2.yaml`
+  - `models/xai/grok-2-mini.yaml`
+  - `models/xai/grok-3.yaml`
+  - `models/xai/grok-3-mini.yaml`
+  - `models/openai/gpt-4o.yaml`
+- 更新研究文档：
+  - `docs/research/anthropic-sources.md`
+  - `docs/research/xai-sources.md`
+  - `docs/research/openai-sources.md`
+
+### 修改影响
+
+- `Claude 3.5 Sonnet` 与 `Claude 3.7 Sonnet` 不再保留官方未确认的 `architecture: Dense`。
+- `Grok-2` 与 `Grok-2 mini` 不再保留由上一代描述反推出来的 `128k` context，也不再写成 `image` 输出。
+- `Grok-3` 与 `Grok-3 mini` 不再保留 `architecture: unknown` 这种没有信息量且非官方字段。
+- `GPT-4o` 移除了无法从 OpenAI 官方 `GPT-4.1` 对比页或官方 system card 直接确认的 `mmlu-pro` / `humaneval` 条目，只保留当前已经能由官方页面支撑的分数。
+
+### 验证
+
+- 待本轮收尾后统一执行 `npm run build-index`、`npm run build`。 
+
+---
+
+## 2026-07-07 新增参数缺口扫描脚本并重跑全量模型扫描
+
+### 修改原因
+
+用户要求先“用脚本扫一遍全部代码，看看都需要处理哪些没有任何参数的模型”。为避免后续反复手工统计，本轮先把参数缺口扫描固化为独立脚本，并重新在当前分支上跑一遍全量模型。
+
+### 修改文件与详情
+
+- 新增脚本：
+  - `scripts/scan-parameter-gaps.ts`
+- 更新脚本入口：
+  - `package.json`
+- 重新生成扫描报告：
+  - `docs/research/model-parameter-gap-scan-2026-07-07.md`
+
+### 扫描结果摘要
+
+- 模型总数：`118`
+- 完全没有 `parameters`：`49`
+- 缺少 `parameters.active`：`2`
+- `parameters.total` 为 `undisclosed/uncertain`：`6`
+- `parameters.active` 为 `undisclosed/uncertain`：`7`
+
+### 修改影响
+
+- 后续可以直接复跑 `npm run scan:parameter-gaps`，不需要再手工翻 `models/**/*.yaml`。
+- 现在“完全没参数”、“缺 active”、“只写了 undisclosed/uncertain” 三类缺口已经被脚本分开列出，便于后续逐类清理。
+- 本轮没有改动任何模型字段，只补了扫描能力和最新报告。
+
+### 验证
+
+- `npm run scan:parameter-gaps -- --out-file docs/research/model-parameter-gap-scan-2026-07-07.md`：通过。
+
+---
+
+## 2026-07-07 继续为 DeepSeek V2 / V2.5 主线补入官方分数
+
+### 修改原因
+
+在参数缺口扫描之后，继续按“已保留主线模型优先补官方评测参数”的策略推进。并发核验确认 `DeepSeek-V2` 与 `DeepSeek-V2.5` 都已经有能安全映射到当前 `metrics.yaml` 的官方分数，因此优先写回；而 `DeepSeek-Coder-V2` 的官方表格主要面向具体变体，不适合直接混填到当前无后缀模型卡。
+
+### 修改文件与详情
+
+- 更新模型：
+  - `models/deepseek/v2.yaml`
+  - `models/deepseek/v2.5.yaml`
+- 更新研究文档：
+  - `docs/research/deepseek-sources.md`
+  - `docs/research/model-audit-2026-07-06-round2.md`
+
+### 修改影响
+
+- `DeepSeek-V2` 补入：
+  - `mmlu`
+  - `humaneval`
+  - `gsm8k`
+  - `bbh`
+- `DeepSeek-V2.5` 补入：
+  - `mmlu`（`note: 5-shot`）
+  - `humaneval`（`note: HumanEval python`）
+  - `swe-bench`（`note: SWE-verified`）
+- `DeepSeek-Coder-V2` 继续保持空分数，避免把 `Instruct / Base / Lite` 这些具体变体的数据混填进当前模型卡。
+
+### 验证
+
+- 待本轮收尾后统一执行 `npm run build-index`、`npm run build`、`npm test`。
+
+---
+
+## 2026-07-07 新增全量参数缺口扫描报告
+
+### 修改原因
+
+用户明确要求先“用脚本扫一遍全部代码，看看都有哪些没有任何参数的模型”。因此本轮先暂停继续补模型或补分数，转而做一次全量参数缺口扫描，把需要处理的模型按类型和公司分组列出来。
+
+### 修改文件与详情
+
+- 新增扫描报告：
+  - `docs/research/model-parameter-gap-scan-2026-07-07.md`
+
+### 扫描结果摘要
+
+- 扫描模型总数：`118`
+- 完全没有 `parameters`：`49`
+- 缺少 `parameters.active`：`2`
+- `parameters.total` 为 `undisclosed/uncertain`：`6`
+- `parameters.active` 为 `undisclosed/uncertain`：`7`
+
+### 修改影响
+
+- 后续工作顺序更清楚了，不需要再凭感觉逐个翻模型文件。
+- 现在可以直接按三类缺口推进：
+  - 完全无参数
+  - 缺 `active`
+  - `undisclosed/uncertain`
+- 对主线闭源厂商（Anthropic / OpenAI / Google / xAI）和中文厂商旗舰（Baidu / Tencent / ByteDance / Zhipu 等）的处理策略也可以分开制定。
+
+### 验证
+
+- 使用脚本解析全部 `models/**/*.yaml` 后生成统计结果，并写入本地 Markdown 报告。
+
+---
+
+## 2026-07-07 为 Qwen3 主线与小中模型补入一批官方分数，并收紧口径映射
+
+### 修改原因
+
+继续给“已经保留的主线模型”补官方评测参数时，`Qwen3` 家族已经具备足够硬的官方技术报告表格，可以把一部分不易混淆的分数落回模型卡。但这条线同时存在 `base / thinking / non-thinking` 三种口径，必须保守写入，避免把不同模式的数据硬混成一张卡。
+
+### 修改文件与详情
+
+- 更新模型：
+  - `models/alibaba/qwen3.yaml`
+  - `models/alibaba/qwen3-8b.yaml`
+  - `models/alibaba/qwen3-14b.yaml`
+  - `models/alibaba/qwen3-32b.yaml`
+  - `models/alibaba/qwen3-30b-a3b.yaml`
+- 更新研究文档：
+  - `docs/research/alibaba-sources.md`
+  - `docs/research/model-audit-2026-07-06-round2.md`
+
+### 修改影响
+
+- `Qwen3` 旗舰与 `8B / 14B / 32B / 30B-A3B` 这些仍被保留的官方模型，不再全是空分数。
+- 本轮只写入：
+  - `mmlu-pro`
+  - `gpqa`
+  - `bbh`
+  - `gsm8k`
+  - `ifeval`
+- 其中：
+  - `mmlu-pro / gpqa / bbh / gsm8k` 来自官方技术报告 Base 表
+  - `ifeval` 来自 thinking 表，并统一加了 `note: thinking mode`
+- 没有把 `MATH` 或 `MATH-500` 强行映射到 `math-level-5`，继续避免错误口径扩散。
+
+### 验证
+
+- 待本轮收尾后统一执行 `npm run build-index`、`npm run build`、`npm test`。
+
+---
+
+## 2026-07-07 为 DeepSeek 主线版本补入官方 benchmark，并暂缓混口径的 Qwen3 小模型分数
+
+### 修改原因
+
+在用户收紧收录标准之后，下一步最有价值的工作不再是继续扩模型数量，而是给已经保留的主线模型补上可靠的官方评测参数。并发核验后，`DeepSeek` 主线的几条模型已经拿到了可直接落 `metrics.yaml` 的官方分数；而 `Qwen3` 小中模型虽然也找到了官方表格，但存在 `base / thinking / non-thinking` 三种口径混合问题，不能草率写回。
+
+### 修改文件与详情
+
+- 更新模型：
+  - `models/deepseek/v3.1.yaml`
+  - `models/deepseek/v3.2.yaml`
+  - `models/deepseek/v3-0324.yaml`
+  - `models/deepseek/r1-0528.yaml`
+- 更新研究文档：
+  - `docs/research/deepseek-sources.md`
+  - `docs/research/model-audit-2026-07-06-round2.md`
+
+### 修改影响
+
+- `DeepSeek-V3.1` 补入 `mmlu-pro`、`gpqa`、`swe-bench`
+- `DeepSeek-V3.2` 补入 `mmlu-pro`、`gpqa`、`swe-bench`
+- `DeepSeek-V3-0324` 补入 `mmlu-pro`、`gpqa`、`math-level-5`（以 `MATH-500` 口径注明）、`swe-bench`
+- `DeepSeek-R1-0528` 补入 `mmlu-pro`、`gpqa`
+- 对 `Qwen3-8B / 14B / 32B / 30B-A3B`，目前只在研究文档里记录“已找到官方表格但口径混合”，没有贸然写入模型卡，避免把 `base` 与 `thinking` 混成一张卡的数据。
+
+### 验证
+
+- 待本轮收尾后统一执行 `npm run build-index`、`npm run build`、`npm test`。
+
+---
+
+## 2026-07-07 按新口径移除无评测参数小模型与 distill，并补回 DeepSeek / Google 主线模型
+
+### 修改原因
+
+用户进一步明确了收录标准：
+
+- 没有官方评测参数支撑的小模型/轻量分支，不要为了“补数量”而保留。
+- `Distill` 家族不要。
+- 仍然要保留和继续补充“官方主线模型”。
+
+因此这轮工作从“扩张家族数量”切换为“按更严格口径收缩无效条目，并补回主线正式版本”。
+
+### 修改文件与详情
+
+- 删除不符合新口径的模型：
+  - `models/deepseek/r1-distill-llama-70b.yaml`
+  - `models/deepseek/r1-distill-llama-8b.yaml`
+  - `models/deepseek/r1-distill-qwen-14b.yaml`
+  - `models/deepseek/r1-distill-qwen-32b.yaml`
+  - `models/deepseek/r1-distill-qwen-7b.yaml`
+  - `models/deepseek/vl2-small.yaml`
+  - `models/deepseek/vl2-tiny.yaml`
+  - `models/alibaba/qwen2.5-14b-instruct-1m.yaml`
+  - `models/alibaba/qwen2.5-7b-instruct-1m.yaml`
+  - `models/alibaba/qwen2.5-coder-32b.yaml`
+  - `models/google/gemini-3.1-flash-lite.yaml`
+- 新增主线官方模型：
+  - `models/deepseek/v3-0324.yaml`
+  - `models/deepseek/v3.2.yaml`
+  - `models/google/gemini-3-flash-preview.yaml`
+- 修正已有模型：
+  - `models/deepseek/v3.1.yaml`：`output` 从 `[text, code]` 收敛为 `[text]`
+  - `models/google/gemini-2.0-flash.yaml`：发布日期修正为 `2025-02-05`
+  - `models/google/gemini-2.0-flash-lite.yaml`：发布日期修正为 `2025-02-25`
+  - `models/google/gemini-3.1-pro-preview.yaml`：发布日期修正为 `2026-02-19`
+  - `models/google/gemini-3.5-flash.yaml`：发布日期修正为 `2026-05-19`
+- 更新研究文档：
+  - `docs/research/deepseek-sources.md`
+  - `docs/research/alibaba-sources.md`
+  - `docs/research/google-sources.md`
+  - `docs/research/model-audit-2026-07-06-round2.md`
+
+### 修改影响
+
+- 模型库不再为了凑数量保留缺少官方评测参数支撑的小模型和 distill 型号。
+- DeepSeek 补回了更符合口径的主线版本 `V3-0324`、`V3.2`。
+- Google 补入 `Gemini 3 Flash Preview`，并用官方生命周期页修正了多条发布日期。
+- 模型总量会比上一轮略回落，但数据质量和筛选标准更贴近用户最新要求。
+
+### 验证
+
+- 待本轮收尾后统一执行 `npm run build-index`、`npm run build`、`npm test`。
+
+---
+
+## 2026-07-07 继续补齐 DeepSeek VL2 / R1 distill 家族与 Qwen2.5-Coder
+
+### 修改原因
+
+继续按“每家公司家族不能明显残缺”的目标推进时，DeepSeek 和 Alibaba/Qwen 仍有几类高置信度缺口：
+
+- `DeepSeek-VL2` 官方已经明确拆成 `27B / Small / Tiny` 三个独立开源型号，但仓库只保留了主型号。
+- `DeepSeek-R1` distill 家族除 32B / 70B 外，还存在多个官方已发布且常见的中小模型档位。
+- `Qwen2.5-Coder-32B-Instruct` 作为 Qwen2.5 家族的重要代码代表模型，当前仓库缺失。
+- Google 方面，本轮拿到了更硬的“应继续收录/应标注 deprecated”的研究证据，但由于新模型发布日期仍不够硬，本轮只更新研究文档，不强行写 YAML。
+
+### 修改文件与详情
+
+- 新增模型：
+  - `models/deepseek/vl2-small.yaml`
+  - `models/deepseek/vl2-tiny.yaml`
+  - `models/deepseek/r1-distill-qwen-14b.yaml`
+  - `models/deepseek/r1-distill-qwen-7b.yaml`
+  - `models/deepseek/r1-distill-llama-8b.yaml`
+  - `models/alibaba/qwen2.5-coder-32b.yaml`
+- 更新研究文档：
+  - `docs/research/deepseek-sources.md`
+  - `docs/research/alibaba-sources.md`
+  - `docs/research/google-sources.md`
+  - `docs/research/model-audit-2026-07-06-round2.md`
+
+### 修改影响
+
+- DeepSeek 家族进一步从“旗舰模型覆盖”扩展为“官方公开主型号 + Small/Tiny + distill 主流档位”。
+- `DeepSeek-VL2` 不再隐含代表整条家族，Small/Tiny 有了独立卡片。
+- Alibaba/Qwen 新增 `Qwen2.5-Coder-32B-Instruct`，补上高价值代码模型分支。
+- Google 研究文档中明确记下了 `Gemini 3.1 Flash-Lite`、`Gemini 3 Flash Preview` 的待收录状态，以及 `Gemini 2.0` 系列应视为 deprecated / shut down 的生命周期问题。
+
+### 验证
+
+- 待本轮收尾后统一执行 `npm run build-index`、`npm run build`、`npm test`。
+
+---
+
+## 2026-07-07 补充 DeepSeek R1 distill 模型并收敛 VL2 上下文窗口
+
+### 修改原因
+
+继续审计 DeepSeek 家族时发现两类缺口：
+
+- `DeepSeek-R1` 的 distill 家族已经在官方发布页、官方 GitHub 和官方 Hugging Face 中明确存在，但模型库里还没有代表条目。
+- `DeepSeek-VL2` 的 `context_window` 仍写成 `uncertain`，而官方 GitHub README 已经明确给出 `4096 sequence length`，可以收敛为确定值。
+
+### 修改文件与详情
+
+- 新增模型：
+  - `models/deepseek/r1-distill-qwen-32b.yaml`
+  - `models/deepseek/r1-distill-llama-70b.yaml`
+- 更新模型：
+  - `models/deepseek/vl2.yaml`
+- 更新研究文档：
+  - `docs/research/deepseek-sources.md`
+  - `docs/research/model-audit-2026-07-06-round2.md`
+
+### 修改影响
+
+- DeepSeek 家族从主模型覆盖扩展到 distill 代表模型，补强了中等参数量与开源推理分支。
+- `DeepSeek-VL2` 的上下文窗口从“不确定”收敛为官方可证实的 `4k`。
+- 新增 distill 条目只写入官方 GitHub README 中明确给出的 `GPQA Diamond` 与 `MATH-500`，没有引入第三方评测站数据。
+
+### 验证
+
+- 待本轮继续整理后统一执行 `npm run build-index`、`npm run build`、`npm test`。
+
+---
+
+## 2026-07-07 补充 OpenAI / Anthropic / Alibaba / Mistral 新模型并修正 xAI / Mistral / Anthropic 字段
+
+### 修改原因
+
+继续并发审计官方模型目录后，发现还有几类高置信度缺口和错误字段需要立即落地：
+
+- OpenAI 主线 `GPT-5 / GPT-5 mini / GPT-5 nano` 尚未入库。
+- Anthropic 新增 `Claude Mythos 5` 未入库，且多条 Claude 卡片仍保留了未经官方确认的 `Dense` 架构。
+- Alibaba/Qwen 缺少官方明确发布的 `Qwen2.5-1M` 长上下文分支。
+- Mistral 已有条目中，`Mistral Medium 3.5` 与 `Mistral Small 4` 的参数、架构、上下文和开源状态与官方模型卡不一致。
+- xAI 的 `Grok-4` 模态写得过宽，混入了官方未确认的音频输入输出。
+
+### 修改文件与详情
+
+- 新增模型：
+  - `models/openai/gpt-5.yaml`
+  - `models/openai/gpt-5-mini.yaml`
+  - `models/openai/gpt-5-nano.yaml`
+  - `models/anthropic/claude-mythos-5.yaml`
+  - `models/alibaba/qwen2.5-14b-instruct-1m.yaml`
+  - `models/alibaba/qwen2.5-7b-instruct-1m.yaml`
+  - `models/mistral/ministral-3-14b-25.12.yaml`
+- 修正现有模型：
+  - `models/anthropic/claude-4-opus.yaml`
+  - `models/anthropic/claude-4-sonnet.yaml`
+  - `models/anthropic/claude-fable-5.yaml`
+  - `models/xai/grok-4.yaml`
+  - `models/mistral/mistral-medium-3.5.yaml`
+  - `models/mistral/mistral-small-4.yaml`
+- 更新研究文档：
+  - `docs/research/openai-sources.md`
+  - `docs/research/anthropic-sources.md`
+  - `docs/research/alibaba-sources.md`
+  - `docs/research/mistral-sources.md`
+  - `docs/research/xai-sources.md`
+  - `docs/research/model-audit-2026-07-06-round2.md`
+
+### 修改影响
+
+- 模型总数从 110 增长到 117。
+- OpenAI 主线谱系从 5.4 / 5.5 补全到 `GPT-5` 主干及其 `mini` / `nano` 分支。
+- Anthropic 不再保留官方未公开的推测架构字段，数据更干净。
+- Alibaba 新增两条长上下文 Qwen2.5 分支，补强 7B / 14B 级别覆盖。
+- Mistral 的两条现有卡片从明显错误元数据修正为官方模型卡值。
+- xAI 的 Grok-4 模态不再把未确认的音频能力写进来。
+
+### 验证
+
+- `npm run build-index`：通过，生成 117 模型 / 14 benchmark / 15 公司索引。
+- `npm run build`：待本轮收尾后统一执行。
+- `npm test`：待本轮收尾后统一执行。
+
+---
+
+## 2026-07-07 补充 Kimi-VL-A3B-Thinking-2506 与 HunyuanVideo-1.5
+
+### 修改原因
+
+继续执行模型数据联网审计时，发现 Moonshot 与 Tencent 两个厂商仍有“官方仓库已明确发布、但当前模型库缺失”的代表模型：`Kimi-VL-A3B-Thinking-2506` 与 `HunyuanVideo-1.5`。这类缺口会让厂商家族覆盖失真，也会误导后续交叉验证。
+
+### 修改文件与详情
+
+- 新增模型文件：
+  - `models/moonshot/kimi-vl-thinking-2506.yaml`
+  - `models/tencent/hunyuanvideo-1.5.yaml`
+- 更新来源审计文档：
+  - `docs/research/moonshot-sources.md`
+  - `docs/research/tencent-sources.md`
+  - `docs/research/model-audit-2026-07-06-round2.md`
+
+### 字段落地原则
+
+- `Kimi-VL-A3B-Thinking-2506`
+  - 仅依据 Moonshot 官方 GitHub 与官方 Hugging Face 模型卡写入。
+  - 落地 `16B total / 3B active`、`128k` context、`text/image/video -> text` 多模态推理定位。
+  - 官方未提供本项目当前 text benchmark 同口径分数，因此保持 `scores: {}`。
+- `HunyuanVideo-1.5`
+  - 仅依据 Tencent 官方 GitHub README 写入。
+  - 落地 `8.3B`、`Diffusion Transformer (DiT) + 3D causal VAE`、`text/image -> video`。
+  - 该模型定位为视频生成，当前项目 metrics 不匹配，因此保持 `scores: {}`。
+
+### 修改影响
+
+- Moonshot 与 Tencent 的模型家族覆盖更接近官方已发布状态。
+- 模型总数预计从 108 增长到 110。
+- 没有引入第三方新闻或非同口径 benchmark，数据来源链更干净。
+
+### 验证
+
+- 待本轮继续补充后统一执行 `npm run build-index`、`npm run build`、`npm test`。
+
+---
+
+## 2026-07-07 清理已合入分支与历史 stash
+
+### 修改原因
+
+确认 `refs/stash@{0}`、`refs/stash@{1}` 与 `codex/model-data-audit` 不再需要：两条 stash 的内容已被当前 `master` 吸收，`codex/model-data-audit` 已是 `master` 的祖先分支。
+
+### 修改文件与详情
+
+- 删除 Git stash 记录：
+  - `stash@{1}`：`pre-merge-save-unrelated-work`，架构重切改动已通过 `daa9de45` / `37a2eb9e` 合入。
+  - `stash@{0}`：`pre-merge-save-untracked-model-files`，新增模型文件已在当前 `master` 中跟踪。
+- 删除本地分支：
+  - `codex/model-data-audit`，该分支相对 `master` 没有独有提交。
+- 更新：
+  - `UPDATE_LOG.md`：记录本次清理动作、原因与影响。
+
+### 修改影响
+
+- 减少本地 Git 历史备份和已合入开发分支带来的误判。
+- 不影响当前 `master` 源码、模型数据、构建产物或远程分支。
+- 未删除 `gh-pages`，因为它是部署产物分支，不属于本次清理对象。
+
+### 验证
+
+- 后续通过 `git stash list`、`git branch --all --verbose --no-abbrev` 与 `git status --short --branch` 复查。
+
+---
+
 ## 2026-07-06 官方 API 文档补全 OpenAI / Anthropic / Google / xAI 新模型
 
 ### 修改原因
@@ -174,9 +1448,78 @@
 
 ### 验证
 
-- `npm run build-index`：通过，生成 103 模型 / 14 benchmark / 15 公司索引。
+- `npm run build-index`：后续继续补充后，最新索引已更新为 108 模型 / 14 benchmark / 15 公司。
 - `npm run build`：通过。
-- `npm test`：24/24 通过。
+- `npm test`：25/25 通过。
+
+---
+
+## 2026-07-07 保留 benchmark 口径说明并补充 Zhipu 缺失模型
+
+### 修改原因
+
+继续审中文厂商时确认了一个数据链路问题：YAML 里很多 benchmark 已经写了 `note`，例如 `GPQA-Diamond`、`Prompt Strict`、`MATH-500`，但构建器会把这些说明丢掉。同时，Zhipu 生态仍缺 `GLM-4.5-Air` 和 `GLM-4.5V`。
+
+### 修改文件与详情
+
+- `src/types.ts`
+  - 为 `ScoreEntry` 增加可选字段 `note?: string`。
+- `src/lib/model-index-builder.ts`
+  - 构建索引时正式保留 score 的 `note` 字段，不再在 YAML -> JSON 过程中丢失。
+- `tests/model-index-builder.test.ts`
+  - 新增回归测试，确保 `note` 会进入 `public/model-index.json`。
+- `models/baidu/ernie-4.5.yaml`
+  - 删除与 text-only 模态矛盾的 `multimodal` 标签。
+- `models/tencent/hunyuan-t1.yaml`
+  - 将推测的 `560B / 56B` 参数改回 `undisclosed`。
+  - 将 GitHub README 的 source type 从 `blog` 改为 `codebase`。
+- `models/minimax/minimax-m2.yaml`
+  - 将明显错误的 `release_date` 修正到 2026-05-29。
+- `models/baichuan/baichuan-m1-preview.yaml`
+  - 删除 IT 之家/环球网第三方来源，保留百川官方平台来源。
+- 新增：
+  - `models/zhipu/glm-4.5-air.yaml`
+  - `models/zhipu/glm-4.5v.yaml`
+
+### 修改影响
+
+- 前端索引现在能保留 benchmark 的口径说明，后续如果 UI 需要展示 `Prompt Strict`、`HumanEval+`、`MATH-500`，数据层已经准备好。
+- Zhipu 从 3 个模型扩展到 5 个，补上 `Air` 与视觉变体。
+- 中文厂商中几条最明显的错误字段已被修正，减少“推测参数”和“第三方来源”混入。
+
+### 验证
+
+- `npm run build-index`：通过，生成 108 模型 / 14 benchmark / 15 公司索引。
+- `npm test`：25/25 通过。
+
+---
+
+## 2026-07-07 补充 ERNIE 4.5-VL / MiniMax-VL-01 / Baichuan4-Turbo
+
+### 修改原因
+
+继续补“公司内代表模型数量明显偏少”的厂商。Baidu、MiniMax、Baichuan 仍只有 4-5 个条目，且缺少公开能确认存在的视觉或 Turbo 代表模型。
+
+### 修改文件与详情
+
+- 新增：
+  - `models/baidu/ernie-4.5-vl.yaml`
+  - `models/minimax/minimax-vl-01.yaml`
+  - `models/baichuan/baichuan4-turbo.yaml`
+- 更新：
+  - `docs/research/model-audit-2026-07-06-round2.md`
+
+### 修改影响
+
+- 这些新增条目主要用于家族补全，而不是文本 benchmark 排名。
+- 三个模型都只保留官方能确认的来源、模态和基础元数据；当前项目指标不匹配或官方未公开分数，因此统一保持 `scores: {}`。
+- DataTable 现在会显示 benchmark 口径说明，例如 `GPQA-Diamond`、`Prompt Strict`、`MATH-500`。
+
+### 验证
+
+- `npm run build-index`：通过，生成 108 模型 / 14 benchmark / 15 公司索引。
+- `npm run build`：通过。
+- `npm test`：25/25 通过。
 
 ---
 
@@ -1158,3 +2501,97 @@ value: points.map((p) =>
 
 ### 相关文件
 - `src/lib/radar-option.ts`
+
+---
+
+## 2026-07-07 收紧百度 / 字节模型卡官方来源口径
+
+### 修改原因
+用户要求继续按“只采信官方一手来源”的标准收紧模型库。上一轮百度、字节部分模型卡仍混有几类不够硬的字段：
+
+- 用第三方新闻稿充当主 source
+- 由相对描述反推出来的精确参数
+- 官方页未稳定落锤的 `release_date` / `context_window` / `modalities`
+- 研究文档与仓库当前数据状态不一致
+
+这轮目标不是继续铺量，而是先把 `models/baidu` 与 `models/bytedance` 里已经发现的口径问题清干净。
+
+### 修改内容
+
+**百度模型卡收紧**
+- 删除 `models/baidu/ernie-x1.yaml`
+  - 原因：当前未找到百度官方博客、官方论文、官方 API / 模型文档作为一手来源；原文件主 source 为第三方 `wicinternet.org`，不符合本轮采信标准。
+- `models/baidu/ernie-4.5.yaml`
+  - 删除未被当前官方页稳定支撑的 `release_date`
+  - 删除未被当前官方页稳定支撑的 `context_window`
+- `models/baidu/ernie-4.5-vl.yaml`
+  - 删除 `release_date`
+  - 删除 `context_window`
+  - 将模态从 `text,image,audio,video -> text,image,audio` 收紧为 `text,image -> text`
+- `models/baidu/ernie-5.0.yaml`
+  - `release_date` 从 `2026-01-22` 改为百度官方博客页发布时间 `2026-02-06`
+  - `modalities.output` 从 `[text, image, audio]` 补齐为 `[text, image, audio, video]`
+- `models/baidu/ernie-5.0-base.yaml`
+  - `release_date` 从 `2026-01-22` 改为 `2026-02-06`
+  - `modalities.output` 从 `[text, image, audio]` 补齐为 `[text, image, audio, video]`
+- `models/baidu/ernie-5.1.yaml`
+  - `parameters.total` 从基于比例反推的 `800B` 收紧为 `undisclosed`
+  - 删除 `context_window`
+  - 删除整块 `modalities`
+  - 将非标准 YAML 空对象写法收敛为标准 `scores: {}`
+
+**字节模型卡收紧**
+- `models/bytedance/doubao-1.5-pro.yaml`
+  - 删除 `release_date`
+  - 删除 `context_window`
+  - 删除 `modalities`
+  - 清空 `scores`，回退为仅保留官方 source 的最小事实集
+- `models/bytedance/seed-1.8.yaml`
+  - 删除未稳定落锤的 `release_date`
+  - 删除 `context_window`
+- `models/bytedance/seed-2.0-pro.yaml`
+  - 删除 `architecture`
+  - 删除 `context_window`
+  - 删除 `modalities`
+  - `swe-bench.note` 统一为官方表格原文口径 `SWE Bench Verified`
+- `models/bytedance/seed-thinking-v1.5.yaml`
+  - 删除 `context_window`
+  - 保留由官方博客与技术报告直接支撑的 `release_date / architecture / 200B / 20B / IFEval 87.4`
+- `models/bytedance/seed2.0-lite.yaml`
+  - 删除 `context_window`
+  - 删除 `modalities`
+
+**研究文档同步**
+- `docs/research/baidu-sources.md`
+  - 新增本轮对 `ERNIE 4.5 / 5.0 / 5.1 / X1` 的裁决结论
+  - 同步 `ERNIE X1` 已从仓库移除
+  - 修正 `ERNIE 5.0` 发布日期口径到 `2026-02-06`
+  - 移除不存在的本地 PDF 备份描述
+- `docs/research/bytedance-sources.md`
+  - 同步 `Seed1.8 / Seed 2.0 Pro / Seed 2.0 Lite / Seed-Thinking-v1.5 / Doubao-1.5-Pro` 的最新裁决
+  - 修正 `Seed 2.0 Pro` / `Seed 2.0 Lite` 的 `SWE Bench Verified` 结论
+  - 修正 `Seed-Thinking-v1.5` 的 `IFEval 87.4` 口径
+  - 删除不存在的“本地保存 PDF”清单
+
+### 修改影响
+
+- `ERNIE X1` 不再以第三方新闻稿为依据混入模型库，百度模型集合更干净。
+- 百度 / 字节这两组模型卡中，未被官方原文直接支撑的 `release_date`、`context_window`、`modalities`、参数与分数被明显收紧，减少“看起来完整但证据不够硬”的字段。
+- 研究文档与当前仓库状态重新对齐，后续继续做全库审计时不会再被旧说明误导。
+
+### 相关文件
+
+- `models/baidu/ernie-4.5.yaml`
+- `models/baidu/ernie-4.5-vl.yaml`
+- `models/baidu/ernie-5.0.yaml`
+- `models/baidu/ernie-5.0-base.yaml`
+- `models/baidu/ernie-5.1.yaml`
+- `models/baidu/ernie-x1.yaml`
+- `models/bytedance/doubao-1.5-pro.yaml`
+- `models/bytedance/seed-1.8.yaml`
+- `models/bytedance/seed-2.0-pro.yaml`
+- `models/bytedance/seed-thinking-v1.5.yaml`
+- `models/bytedance/seed2.0-lite.yaml`
+- `docs/research/baidu-sources.md`
+- `docs/research/bytedance-sources.md`
+- `UPDATE_LOG.md`

@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generated_at": "2026-07-06T16:19:12.067Z",
+    "generated_at": "2026-07-07T08:11:54.677Z",
     "version": "0.1.0",
-    "model_count": 103,
+    "model_count": 139,
     "metric_count": 14,
     "company_count": 15
   },
@@ -252,6 +252,12 @@
       ],
       "sources": [
         {
+          "key": "claude-sonnet-5-launch",
+          "title": "Introducing Claude Sonnet 5",
+          "url": "https://www.anthropic.com/news/claude-sonnet-5",
+          "type": "blog"
+        },
+        {
           "key": "claude-models-overview",
           "title": "Models overview",
           "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
@@ -278,40 +284,6 @@
       "logo": "assets/logos/anthropic.svg"
     },
     {
-      "id": "google/gemini-3.5-flash",
-      "name": "Gemini 3.5 Flash",
-      "company": "google",
-      "brand_color": "#4285F4",
-      "release_date": "2026-06-17",
-      "weight_availability_tags": [
-        "closed-weights",
-        "reasoning",
-        "multimodal"
-      ],
-      "sources": [
-        {
-          "key": "gemini-3.5-flash-doc",
-          "title": "Gemini 3.5 Flash",
-          "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash",
-          "type": "website"
-        }
-      ],
-      "scores": {},
-      "context_window": "1M",
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio",
-          "video"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "logo": "assets/logos/google.svg"
-    },
-    {
       "id": "mistral/mistral-small-4",
       "name": "Mistral Small 4",
       "company": "mistral",
@@ -325,17 +297,17 @@
         {
           "key": "mistral-small-4-doc",
           "title": "Mistral Small 4",
-          "url": "https://docs.mistral.ai/models/model-cards/mistral-small-4",
+          "url": "https://docs.mistral.ai/models/model-cards/mistral-small-4-25-06",
           "type": "website"
         }
       ],
       "scores": {},
       "parameters": {
-        "total": "24B",
-        "active": "24B"
+        "total": "119B",
+        "active": "6.5B"
       },
-      "architecture": "Dense",
-      "context_window": "128k",
+      "architecture": "Hybrid",
+      "context_window": "256k",
       "modalities": {
         "input": [
           "text",
@@ -352,17 +324,61 @@
       "name": "Grok 4.3",
       "company": "xai",
       "brand_color": "#000000",
-      "release_date": "2026-06-11",
+      "release_date": "2026-06-17",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "grok-4.3-doc",
+          "title": "Grok 4.3",
+          "url": "https://docs.x.ai/developers/models/grok-4.3",
+          "type": "website"
+        },
+        {
+          "key": "grok-4.3-bedrock",
+          "title": "Grok on Amazon Bedrock",
+          "url": "https://x.ai/news/grok-amazon-bedrock",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/xai.svg"
+    },
+    {
+      "id": "zhipu/glm-5.2",
+      "name": "GLM-5.2",
+      "company": "zhipu",
+      "brand_color": "#4268FA",
+      "release_date": "2026-06-16",
       "weight_availability_tags": [
         "closed-weights",
         "reasoning"
       ],
       "sources": [
         {
-          "key": "xai-models-doc",
-          "title": "Models",
-          "url": "https://docs.x.ai/docs/models",
+          "key": "zai-release-notes",
+          "title": "New Released",
+          "url": "https://docs.z.ai/release-notes/new-released",
           "type": "website"
+        },
+        {
+          "key": "glm-5.2-blog",
+          "title": "GLM-5.2",
+          "url": "https://z.ai/blog/glm-5.2",
+          "type": "blog"
         }
       ],
       "scores": {},
@@ -375,38 +391,7 @@
           "text"
         ]
       },
-      "logo": "assets/logos/xai.svg"
-    },
-    {
-      "id": "xai/grok-build-0.1",
-      "name": "Grok Build 0.1",
-      "company": "xai",
-      "brand_color": "#000000",
-      "release_date": "2026-06-11",
-      "weight_availability_tags": [
-        "closed-weights",
-        "reasoning",
-        "agentic"
-      ],
-      "sources": [
-        {
-          "key": "xai-models-doc",
-          "title": "Models",
-          "url": "https://docs.x.ai/docs/models",
-          "type": "website"
-        }
-      ],
-      "scores": {},
-      "context_window": "256k",
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "logo": "assets/logos/xai.svg"
+      "logo": "assets/logos/zhipu.svg"
     },
     {
       "id": "anthropic/claude-fable-5",
@@ -433,17 +418,45 @@
           "type": "blog"
         }
       ],
-      "scores": {
-        "swe-bench": {
-          "value": 95,
-          "source": "claude-fable-5-mythos-5-system-card"
-        },
-        "gpqa": {
-          "value": 94.1,
-          "source": "claude-fable-5-mythos-5-system-card"
-        }
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
       },
-      "architecture": "Dense",
+      "logo": "assets/logos/anthropic.svg"
+    },
+    {
+      "id": "anthropic/claude-mythos-5",
+      "name": "Claude Mythos 5",
+      "company": "anthropic",
+      "brand_color": "#D97757",
+      "release_date": "2026-06-09",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "claude-fable-5-mythos-5-system-card",
+          "title": "Claude Fable 5 & Claude Mythos 5 System Card",
+          "url": "https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf",
+          "type": "system-card"
+        },
+        {
+          "key": "claude-fable-5-launch",
+          "title": "Claude Fable 5 and Claude Mythos 5",
+          "url": "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
       "context_window": "1M",
       "modalities": {
         "input": [
@@ -506,6 +519,65 @@
       "logo": "assets/logos/minimax.svg"
     },
     {
+      "id": "minimax/minimax-m2",
+      "name": "MiniMax-M2",
+      "company": "minimax",
+      "brand_color": "#F23F5D",
+      "release_date": "2026-05-29",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "minimax-m2-paper",
+          "title": "The MiniMax-M2 Series: Mini Activations Unleashing Max Real-World Intelligence",
+          "url": "https://arxiv.org/abs/2605.26494",
+          "type": "paper"
+        },
+        {
+          "key": "minimax-m2-github",
+          "title": "MiniMax-M2 GitHub Repository",
+          "url": "https://github.com/MiniMax-AI/MiniMax-M2",
+          "type": "codebase"
+        },
+        {
+          "key": "minimax-release-notes",
+          "title": "MiniMax API Release Notes - Models",
+          "url": "https://platform.minimax.io/docs/release-notes/models",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 82,
+          "source": "minimax-m2-github"
+        },
+        "gpqa": {
+          "value": 78,
+          "source": "minimax-m2-github"
+        },
+        "swe-bench": {
+          "value": 69.4,
+          "source": "minimax-m2-github"
+        }
+      },
+      "parameters": {
+        "total": "229.9B",
+        "active": "9.8B"
+      },
+      "architecture": "MoE",
+      "context_window": "192k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/minimax.svg"
+    },
+    {
       "id": "anthropic/claude-opus-4.8",
       "name": "Claude Opus 4.8",
       "company": "anthropic",
@@ -517,6 +589,12 @@
         "multimodal"
       ],
       "sources": [
+        {
+          "key": "claude-opus-4.8-launch",
+          "title": "Introducing Claude Opus 4.8",
+          "url": "https://www.anthropic.com/news/claude-opus-4-8",
+          "type": "blog"
+        },
         {
           "key": "claude-models-overview",
           "title": "Models overview",
@@ -544,11 +622,97 @@
       "logo": "assets/logos/anthropic.svg"
     },
     {
+      "id": "google/gemini-3.5-flash",
+      "name": "Gemini 3.5 Flash",
+      "company": "google",
+      "brand_color": "#4285F4",
+      "release_date": "2026-05-19",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gemini-3.5-flash-doc",
+          "title": "Gemini 3.5 Flash",
+          "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash",
+          "type": "website"
+        },
+        {
+          "key": "gemini-deprecations",
+          "title": "Gemini deprecations",
+          "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+          "type": "website"
+        },
+        {
+          "key": "gemini-3.5-flash-deepmind",
+          "title": "Gemini 3.5 Flash",
+          "url": "https://deepmind.google/models/gemini/flash/",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/google.svg"
+    },
+    {
+      "id": "xai/grok-build-0.1",
+      "name": "Grok Build 0.1",
+      "company": "xai",
+      "brand_color": "#000000",
+      "release_date": "2026-05-19",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal",
+        "agentic"
+      ],
+      "sources": [
+        {
+          "key": "grok-build-0.1-doc",
+          "title": "Grok Build 0.1",
+          "url": "https://docs.x.ai/developers/models/grok-build-0.1",
+          "type": "website"
+        },
+        {
+          "key": "grok-build-0.1-launch",
+          "title": "Introducing Grok Build",
+          "url": "https://x.ai/news/grok-build-cli",
+          "type": "blog"
+        }
+      ],
+      "scores": {},
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/xai.svg"
+    },
+    {
       "id": "baidu/ernie-5.1",
       "name": "ERNIE 5.1",
       "company": "baidu",
       "brand_color": "#2932E1",
-      "release_date": "2026-05-08",
+      "release_date": "2026-05-09",
       "weight_availability_tags": [
         "closed-weights",
         "multimodal"
@@ -561,47 +725,20 @@
           "type": "blog"
         }
       ],
-      "scores": {
-        "mmlu-pro": {
-          "value": 85.6,
-          "source": "ernie-5.1-blog"
-        },
-        "gpqa": {
-          "value": 82.1,
-          "source": "ernie-5.1-blog"
-        },
-        "arena-elo": {
-          "value": 1476,
-          "source": "ernie-5.1-blog"
-        }
-      },
+      "scores": {},
       "parameters": {
-        "total": "800B",
-        "active": "uncertain"
+        "total": "undisclosed",
+        "active": "undisclosed"
       },
       "architecture": "MoE",
-      "context_window": "128k",
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio",
-          "video"
-        ],
-        "output": [
-          "text",
-          "image",
-          "audio"
-        ]
-      },
       "logo": "assets/logos/baidu.svg"
     },
     {
-      "id": "openai/gpt-5.5",
-      "name": "GPT-5.5",
+      "id": "openai/gpt-5.5-pro",
+      "name": "GPT-5.5 Pro",
       "company": "openai",
       "brand_color": "#10A37F",
-      "release_date": "2026-04-23",
+      "release_date": "2026-04-24",
       "weight_availability_tags": [
         "closed-weights",
         "reasoning",
@@ -609,9 +746,15 @@
       ],
       "sources": [
         {
-          "key": "gpt-5.5-model-doc",
-          "title": "GPT-5.5 Model",
-          "url": "https://developers.openai.com/api/docs/models/gpt-5.5",
+          "key": "gpt-5.5-pro-model-doc",
+          "title": "GPT-5.5 Pro Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.5-pro",
+          "type": "website"
+        },
+        {
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
           "type": "website"
         }
       ],
@@ -627,6 +770,187 @@
         ]
       },
       "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "openai/gpt-5.5",
+      "name": "GPT-5.5",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2026-04-24",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-5.5-model-doc",
+          "title": "GPT-5.5 Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.5",
+          "type": "website"
+        },
+        {
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1.05M",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "anthropic/claude-opus-4.7",
+      "name": "Claude Opus 4.7",
+      "company": "anthropic",
+      "brand_color": "#D97757",
+      "release_date": "2026-04-16",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "claude-opus-4.7-launch",
+          "title": "Introducing Claude Opus 4.7",
+          "url": "https://www.anthropic.com/news/claude-opus-4-7",
+          "type": "blog"
+        },
+        {
+          "key": "claude-model-deprecations",
+          "title": "Model deprecations",
+          "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "type": "website"
+        },
+        {
+          "key": "claude-bedrock-models",
+          "title": "Using Claude on Amazon Bedrock",
+          "url": "https://docs.claude.com/en/api/claude-on-amazon-bedrock",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/anthropic.svg"
+    },
+    {
+      "id": "alibaba/qwen3.6-35b-a3b",
+      "name": "Qwen3.6-35B-A3B",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2026-04-15",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "qwen3.6-blog",
+          "title": "Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All",
+          "url": "https://qwen.ai/blog?id=qwen3.6-35b-a3b",
+          "type": "blog"
+        },
+        {
+          "key": "qwen3.6-hf",
+          "title": "Qwen3.6-35B-A3B",
+          "url": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B",
+          "type": "model-card"
+        },
+        {
+          "key": "qwen3.6-hf-api",
+          "title": "Qwen3.6-35B-A3B metadata API",
+          "url": "https://huggingface.co/api/models/Qwen/Qwen3.6-35B-A3B",
+          "type": "website"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 85.2,
+          "source": "qwen3.6-hf"
+        },
+        "gpqa": {
+          "value": 85.5,
+          "source": "qwen3.6-hf"
+        },
+        "swe-bench": {
+          "value": 73.4,
+          "source": "qwen3.6-hf"
+        }
+      },
+      "parameters": {
+        "total": "35B",
+        "active": "3B"
+      },
+      "architecture": "MoE",
+      "context_window": "262,144 natively / 1,010,000 with extrapolation",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "zhipu/glm-5.1",
+      "name": "GLM-5.1",
+      "company": "zhipu",
+      "brand_color": "#4268FA",
+      "release_date": "2026-04-07",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "zai-release-notes",
+          "title": "New Released",
+          "url": "https://docs.z.ai/release-notes/new-released",
+          "type": "website"
+        },
+        {
+          "key": "glm-5.1-doc",
+          "title": "GLM-5.1",
+          "url": "https://docs.z.ai/guides/llm/glm-5-1",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "200k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/zhipu.svg"
     },
     {
       "id": "alibaba/qwen3.5-omni",
@@ -681,40 +1005,6 @@
       "logo": "assets/logos/alibaba.svg"
     },
     {
-      "id": "google/gemini-3.1-pro-preview",
-      "name": "Gemini 3.1 Pro Preview",
-      "company": "google",
-      "brand_color": "#4285F4",
-      "release_date": "2026-03-30",
-      "weight_availability_tags": [
-        "closed-weights",
-        "reasoning",
-        "multimodal"
-      ],
-      "sources": [
-        {
-          "key": "gemini-3.1-pro-preview-doc",
-          "title": "Gemini 3.1 Pro Preview",
-          "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview",
-          "type": "website"
-        }
-      ],
-      "scores": {},
-      "context_window": "1M",
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio",
-          "video"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "logo": "assets/logos/google.svg"
-    },
-    {
       "id": "openai/gpt-5.4-mini",
       "name": "GPT-5.4 mini",
       "company": "openai",
@@ -730,6 +1020,12 @@
           "key": "gpt-5.4-mini-model-doc",
           "title": "GPT-5.4 mini Model",
           "url": "https://developers.openai.com/api/docs/models/gpt-5.4-mini",
+          "type": "website"
+        },
+        {
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
           "type": "website"
         }
       ],
@@ -763,10 +1059,54 @@
           "title": "GPT-5.4 nano Model",
           "url": "https://developers.openai.com/api/docs/models/gpt-5.4-nano",
           "type": "website"
+        },
+        {
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "type": "website"
         }
       ],
       "scores": {},
       "context_window": "400k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "openai/gpt-5.4-pro",
+      "name": "GPT-5.4 Pro",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2026-03-05",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-5.4-pro-model-doc",
+          "title": "GPT-5.4 Pro Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.4-pro",
+          "type": "website"
+        },
+        {
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1.05M",
       "modalities": {
         "input": [
           "text",
@@ -795,6 +1135,12 @@
           "title": "GPT-5.4 Model",
           "url": "https://developers.openai.com/api/docs/models/gpt-5.4",
           "type": "website"
+        },
+        {
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "type": "website"
         }
       ],
       "scores": {},
@@ -811,25 +1157,254 @@
       "logo": "assets/logos/openai.svg"
     },
     {
+      "id": "alibaba/qwen3.5-122b-a10b",
+      "name": "Qwen3.5-122B-A10B",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2026-02-24",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "qwen3.5-122b-hf",
+          "title": "Qwen3.5-122B-A10B",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-122B-A10B",
+          "type": "model-card"
+        },
+        {
+          "key": "qwen3.5-122b-hf-api",
+          "title": "Qwen3.5-122B-A10B metadata API",
+          "url": "https://huggingface.co/api/models/Qwen/Qwen3.5-122B-A10B",
+          "type": "website"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 86.7,
+          "source": "qwen3.5-122b-hf"
+        },
+        "gpqa": {
+          "value": 86.6,
+          "source": "qwen3.5-122b-hf",
+          "note": "GPQA Diamond"
+        },
+        "ifeval": {
+          "value": 93.4,
+          "source": "qwen3.5-122b-hf"
+        },
+        "swe-bench": {
+          "value": 72,
+          "source": "qwen3.5-122b-hf"
+        }
+      },
+      "parameters": {
+        "total": "122B",
+        "active": "10B"
+      },
+      "architecture": "MoE",
+      "context_window": "262,144 natively / 1,010,000 with extrapolation",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "alibaba/qwen3.5-35b-a3b",
+      "name": "Qwen3.5-35B-A3B",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2026-02-24",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "qwen3.5-35b-hf",
+          "title": "Qwen3.5-35B-A3B",
+          "url": "https://huggingface.co/Qwen/Qwen3.5-35B-A3B",
+          "type": "model-card"
+        },
+        {
+          "key": "qwen3.5-35b-hf-api",
+          "title": "Qwen3.5-35B-A3B metadata API",
+          "url": "https://huggingface.co/api/models/Qwen/Qwen3.5-35B-A3B",
+          "type": "website"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 85.3,
+          "source": "qwen3.5-35b-hf"
+        },
+        "gpqa": {
+          "value": 84.2,
+          "source": "qwen3.5-35b-hf",
+          "note": "GPQA Diamond"
+        },
+        "ifeval": {
+          "value": 91.9,
+          "source": "qwen3.5-35b-hf"
+        },
+        "swe-bench": {
+          "value": 69.2,
+          "source": "qwen3.5-35b-hf"
+        }
+      },
+      "parameters": {
+        "total": "35B",
+        "active": "3B"
+      },
+      "architecture": "MoE",
+      "context_window": "262,144 natively / 1,010,000 with extrapolation",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "google/gemini-3.1-pro-preview",
+      "name": "Gemini 3.1 Pro Preview",
+      "company": "google",
+      "brand_color": "#4285F4",
+      "release_date": "2026-02-19",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gemini-3.1-pro-preview-doc",
+          "title": "Gemini 3.1 Pro Preview",
+          "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview",
+          "type": "website"
+        },
+        {
+          "key": "gemini-deprecations",
+          "title": "Gemini deprecations",
+          "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+          "type": "website"
+        },
+        {
+          "key": "gemini-3.1-pro-deepmind",
+          "title": "Gemini 3.1 Pro",
+          "url": "https://deepmind.google/models/gemini/pro/",
+          "type": "website"
+        }
+      ],
+      "scores": {
+        "gpqa": {
+          "value": 94.3,
+          "source": "gemini-3.1-pro-deepmind"
+        },
+        "swe-bench": {
+          "value": 80.6,
+          "source": "gemini-3.1-pro-deepmind"
+        }
+      },
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/google.svg"
+    },
+    {
+      "id": "anthropic/claude-sonnet-4.6",
+      "name": "Claude Sonnet 4.6",
+      "company": "anthropic",
+      "brand_color": "#D97757",
+      "release_date": "2026-02-17",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "claude-sonnet-4.6-launch",
+          "title": "Introducing Sonnet 4.6",
+          "url": "https://www.anthropic.com/news/claude-sonnet-4-6",
+          "type": "blog"
+        },
+        {
+          "key": "claude-model-deprecations",
+          "title": "Model deprecations",
+          "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "type": "website"
+        },
+        {
+          "key": "claude-bedrock-models",
+          "title": "Using Claude on Amazon Bedrock",
+          "url": "https://docs.claude.com/en/api/claude-on-amazon-bedrock",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/anthropic.svg"
+    },
+    {
       "id": "mistral/mistral-medium-3.5",
       "name": "Mistral Medium 3.5",
       "company": "mistral",
       "brand_color": "#FA520F",
       "release_date": "2026-02-17",
       "weight_availability_tags": [
-        "closed-weights",
+        "open-weights",
         "multimodal"
       ],
       "sources": [
         {
           "key": "mistral-medium-3.5-doc",
           "title": "Mistral Medium 3.5",
-          "url": "https://docs.mistral.ai/models/model-cards/mistral-medium-3.5",
+          "url": "https://docs.mistral.ai/models/model-cards/mistral-medium-3-5-26-04",
           "type": "website"
         }
       ],
       "scores": {},
-      "context_window": "256k",
+      "parameters": {
+        "total": "123B",
+        "active": "15B"
+      },
+      "architecture": "Hybrid",
+      "context_window": "128k",
       "modalities": {
         "input": [
           "text",
@@ -840,50 +1415,6 @@
         ]
       },
       "logo": "assets/logos/mistral.svg"
-    },
-    {
-      "id": "zhipu/glm-5",
-      "name": "GLM-5",
-      "company": "zhipu",
-      "brand_color": "#4268FA",
-      "release_date": "2026-02-17",
-      "weight_availability_tags": [
-        "open-weights",
-        "reasoning"
-      ],
-      "sources": [
-        {
-          "key": "glm-5-report",
-          "title": "GLM-5: from Vibe Coding to Agentic Engineering",
-          "url": "https://arxiv.org/abs/2602.15763",
-          "type": "paper"
-        }
-      ],
-      "scores": {
-        "gpqa": {
-          "value": 86,
-          "source": "glm-5-report"
-        },
-        "swe-bench": {
-          "value": 77.8,
-          "source": "glm-5-report"
-        }
-      },
-      "parameters": {
-        "total": "744B",
-        "active": "40B"
-      },
-      "architecture": "MoE",
-      "context_window": "200k",
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "logo": "assets/logos/zhipu.svg"
     },
     {
       "id": "alibaba/qwen3.5-397b-a17b",
@@ -910,13 +1441,26 @@
           "type": "model-card"
         }
       ],
-      "scores": {},
+      "scores": {
+        "mmlu-pro": {
+          "value": 87.8,
+          "source": "qwen3.5-hf"
+        },
+        "gpqa": {
+          "value": 88.4,
+          "source": "qwen3.5-hf"
+        },
+        "ifeval": {
+          "value": 92.6,
+          "source": "qwen3.5-hf"
+        }
+      },
       "parameters": {
         "total": "397B",
         "active": "17B"
       },
       "architecture": "MoE",
-      "context_window": "262k native / 1M with extrapolation",
+      "context_window": "262,144 natively / 1,010,000 with extrapolation",
       "modalities": {
         "input": [
           "text",
@@ -970,7 +1514,8 @@
         },
         "swe-bench": {
           "value": 76.5,
-          "source": "seed2.0-model-card"
+          "source": "seed2.0-model-card",
+          "note": "SWE Bench Verified"
         },
         "humaneval": {
           "value": null
@@ -1007,18 +1552,6 @@
         "total": "undisclosed",
         "active": "undisclosed"
       },
-      "architecture": "MoE",
-      "context_window": "256k",
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "video"
-        ],
-        "output": [
-          "text"
-        ]
-      },
       "logo": "assets/logos/bytedance.svg"
     },
     {
@@ -1037,6 +1570,12 @@
           "title": "Seed2.0 Model Card: Towards Intelligence Frontier for Real-World Complexity",
           "url": "https://lf3-static.bytednsdoc.com/obj/eden-cn/lapzild-tss/ljhwZthlaukjlkulzlp/seed2/0214/Seed2.0%20Model%20Card.pdf",
           "type": "paper"
+        },
+        {
+          "key": "seed2.0-official-page",
+          "title": "Seed2.0 Official Product Page",
+          "url": "https://seed.bytedance.com/en/seed2",
+          "type": "website"
         }
       ],
       "scores": {
@@ -1056,83 +1595,14 @@
           "value": null
         }
       },
-      "architecture": "MoE",
-      "context_window": "128k",
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "video"
-        ],
-        "output": [
-          "text"
-        ]
-      },
       "logo": "assets/logos/bytedance.svg"
-    },
-    {
-      "id": "moonshot/kimi-k2.5",
-      "name": "Kimi K2.5",
-      "company": "moonshot",
-      "brand_color": "#1783FF",
-      "release_date": "2026-02-02",
-      "weight_availability_tags": [
-        "open-weights",
-        "multimodal",
-        "reasoning"
-      ],
-      "sources": [
-        {
-          "key": "kimi-k2.5-tech-report",
-          "title": "Kimi K2.5: Visual Agentic Intelligence",
-          "url": "https://arxiv.org/abs/2602.02276",
-          "type": "paper"
-        },
-        {
-          "key": "kimi-k2.5-huggingface",
-          "title": "Kimi K2.5 Hugging Face Model Card",
-          "url": "https://huggingface.co/moonshotai/Kimi-K2.5",
-          "type": "model-card"
-        }
-      ],
-      "scores": {
-        "mmlu-pro": {
-          "value": 87.1,
-          "source": "kimi-k2.5-tech-report"
-        },
-        "gpqa": {
-          "value": 87.6,
-          "source": "kimi-k2.5-tech-report"
-        },
-        "swe-bench": {
-          "value": 76.8,
-          "source": "kimi-k2.5-tech-report"
-        }
-      },
-      "parameters": {
-        "total": "1.04T",
-        "active": "32B"
-      },
-      "architecture": "MoE",
-      "context_window": "256k",
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "video"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "logo": "assets/logos/moonshot.svg"
     },
     {
       "id": "baidu/ernie-5.0-base",
       "name": "ERNIE 5.0-Base",
       "company": "baidu",
       "brand_color": "#2932E1",
-      "release_date": "2026-01-22",
+      "release_date": "2026-02-06",
       "weight_availability_tags": [
         "closed-weights",
         "multimodal"
@@ -1160,15 +1630,18 @@
         },
         "humaneval": {
           "value": 80.86,
-          "source": "ernie-5.0-tr"
+          "source": "ernie-5.0-tr",
+          "note": "HumanEval+ 0-shot"
         },
         "math-level-5": {
           "value": 73.89,
-          "source": "ernie-5.0-tr"
+          "source": "ernie-5.0-tr",
+          "note": "MATH (CoT) 8-shot"
         },
         "bbh": {
           "value": 75.69,
-          "source": "ernie-5.0-tr"
+          "source": "ernie-5.0-tr",
+          "note": "BBH 5-shot without CoT (Direct)"
         },
         "winogrande": {
           "value": 92.66,
@@ -1191,7 +1664,8 @@
         "output": [
           "text",
           "image",
-          "audio"
+          "audio",
+          "video"
         ]
       },
       "logo": "assets/logos/baidu.svg"
@@ -1201,7 +1675,7 @@
       "name": "ERNIE 5.0",
       "company": "baidu",
       "brand_color": "#2932E1",
-      "release_date": "2026-01-22",
+      "release_date": "2026-02-06",
       "weight_availability_tags": [
         "closed-weights",
         "multimodal"
@@ -1235,11 +1709,13 @@
         },
         "humaneval": {
           "value": 94.48,
-          "source": "ernie-5.0-tr"
+          "source": "ernie-5.0-tr",
+          "note": "HumanEval+ 0-shot"
         },
         "math-level-5": {
           "value": 82.54,
-          "source": "ernie-5.0-tr"
+          "source": "ernie-5.0-tr",
+          "note": "MATH-500"
         },
         "ifeval": {
           "value": 93.35,
@@ -1247,7 +1723,8 @@
         },
         "arena-elo": {
           "value": 1460,
-          "source": "ernie-5.0-lmarena"
+          "source": "ernie-5.0-lmarena",
+          "note": "LMArena Text Arena"
         }
       },
       "parameters": {
@@ -1266,10 +1743,184 @@
         "output": [
           "text",
           "image",
-          "audio"
+          "audio",
+          "video"
         ]
       },
       "logo": "assets/logos/baidu.svg"
+    },
+    {
+      "id": "anthropic/claude-opus-4.6",
+      "name": "Claude Opus 4.6",
+      "company": "anthropic",
+      "brand_color": "#D97757",
+      "release_date": "2026-02-05",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "claude-opus-4.6-launch",
+          "title": "Claude Opus 4.6",
+          "url": "https://www.anthropic.com/news/claude-opus-4-6",
+          "type": "blog"
+        },
+        {
+          "key": "claude-model-deprecations",
+          "title": "Model deprecations",
+          "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "type": "website"
+        },
+        {
+          "key": "claude-bedrock-models",
+          "title": "Using Claude on Amazon Bedrock",
+          "url": "https://docs.claude.com/en/api/claude-on-amazon-bedrock",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/anthropic.svg"
+    },
+    {
+      "id": "zhipu/glm-5",
+      "name": "GLM-5",
+      "company": "zhipu",
+      "brand_color": "#4268FA",
+      "release_date": "2026-02-03",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "glm-5-report",
+          "title": "GLM-5: from Vibe Coding to Agentic Engineering",
+          "url": "https://arxiv.org/abs/2602.15763",
+          "type": "paper"
+        },
+        {
+          "key": "zai-release-notes",
+          "title": "New Released",
+          "url": "https://docs.z.ai/release-notes/new-released",
+          "type": "website"
+        },
+        {
+          "key": "glm-5-blog",
+          "title": "GLM-5",
+          "url": "https://z.ai/blog/glm-5",
+          "type": "blog"
+        },
+        {
+          "key": "glm-5-github",
+          "title": "zai-org/GLM-5",
+          "url": "https://github.com/zai-org/GLM-5",
+          "type": "codebase"
+        },
+        {
+          "key": "glm-5-hf",
+          "title": "zai-org/GLM-5",
+          "url": "https://huggingface.co/zai-org/GLM-5",
+          "type": "model-card"
+        }
+      ],
+      "scores": {
+        "gpqa": {
+          "value": 86,
+          "source": "glm-5-blog",
+          "note": "GLM-5 Thinking"
+        },
+        "swe-bench": {
+          "value": 77.8,
+          "source": "glm-5-report",
+          "note": "200K context window"
+        }
+      },
+      "parameters": {
+        "total": "744B",
+        "active": "40B"
+      },
+      "architecture": "MoE",
+      "context_window": "200k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/zhipu.svg"
+    },
+    {
+      "id": "moonshot/kimi-k2.5",
+      "name": "Kimi K2.5",
+      "company": "moonshot",
+      "brand_color": "#1783FF",
+      "release_date": "2026-02-02",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "kimi-k2.5-tech-report",
+          "title": "Kimi K2.5: Visual Agentic Intelligence",
+          "url": "https://arxiv.org/abs/2602.02276",
+          "type": "paper"
+        },
+        {
+          "key": "kimi-k2.5-huggingface",
+          "title": "Kimi K2.5 Hugging Face Model Card",
+          "url": "https://huggingface.co/moonshotai/Kimi-K2.5",
+          "type": "model-card"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 87.1,
+          "source": "kimi-k2.5-tech-report"
+        },
+        "gpqa": {
+          "value": 87.6,
+          "source": "kimi-k2.5-tech-report",
+          "note": "GPQA-Diamond（Avg@8）"
+        },
+        "swe-bench": {
+          "value": 76.8,
+          "source": "kimi-k2.5-tech-report",
+          "note": "SWE-Bench Verified"
+        }
+      },
+      "parameters": {
+        "total": "1T",
+        "active": "32B"
+      },
+      "architecture": "MoE",
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/moonshot.svg"
     },
     {
       "id": "bytedance/seed-1.8",
@@ -1293,7 +1944,7 @@
           "key": "seed1.8-github",
           "title": "ByteDance-Seed/Seed-1.8",
           "url": "https://github.com/ByteDance-Seed/Seed-1.8",
-          "type": "website"
+          "type": "codebase"
         }
       ],
       "scores": {
@@ -1348,8 +1999,6 @@
         "total": "undisclosed",
         "active": "undisclosed"
       },
-      "architecture": "MoE",
-      "context_window": "256k",
       "modalities": {
         "input": [
           "text",
@@ -1361,6 +2010,80 @@
         ]
       },
       "logo": "assets/logos/bytedance.svg"
+    },
+    {
+      "id": "google/gemini-3-flash-preview",
+      "name": "Gemini 3 Flash Preview",
+      "company": "google",
+      "brand_color": "#4285F4",
+      "release_date": "2025-12-17",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gemini-3-flash-preview-doc",
+          "title": "Gemini 3 Flash Preview",
+          "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview",
+          "type": "website"
+        },
+        {
+          "key": "gemini-deprecations",
+          "title": "Gemini deprecations",
+          "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/google.svg"
+    },
+    {
+      "id": "mistral/ministral-3-14b-25.12",
+      "name": "Ministral 3 14B 25.12",
+      "company": "mistral",
+      "brand_color": "#FA520F",
+      "release_date": "2025-12-02",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "mistral-ministral-3-14b-doc",
+          "title": "Ministral 3 14B 25.12",
+          "url": "https://docs.mistral.ai/models/model-cards/ministral-3-14b-25-12",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "14B",
+        "active": "14B"
+      },
+      "architecture": "Dense Transformer",
+      "context_window": "256k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/mistral.svg"
     },
     {
       "id": "mistral/mistral-large-3",
@@ -1449,54 +2172,57 @@
       "logo": "assets/logos/mistral.svg"
     },
     {
-      "id": "minimax/minimax-m2",
-      "name": "MiniMax-M2",
-      "company": "minimax",
-      "brand_color": "#F23F5D",
-      "release_date": "2025-10-27",
+      "id": "deepseek/v3.2",
+      "name": "DeepSeek-V3.2",
+      "company": "deepseek",
+      "brand_color": "#4D6BFE",
+      "release_date": "2025-12-01",
       "weight_availability_tags": [
-        "open-weights"
+        "open-weights",
+        "reasoning"
       ],
       "sources": [
         {
-          "key": "minimax-m2-paper",
-          "title": "The MiniMax-M2 Series: Mini Activations Unleashing Max Real-World Intelligence",
-          "url": "https://arxiv.org/abs/2605.26494",
+          "key": "deepseek-v3.2-news",
+          "title": "DeepSeek-V3.2 Release",
+          "url": "https://api-docs.deepseek.com/news/news251201",
+          "type": "website"
+        },
+        {
+          "key": "deepseek-v3.2-hf",
+          "title": "DeepSeek-V3.2",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2",
+          "type": "model-card"
+        },
+        {
+          "key": "deepseek-v3.2-paper",
+          "title": "DeepSeek-V3.2 Technical Paper",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.2/resolve/main/assets/paper.pdf",
           "type": "paper"
-        },
-        {
-          "key": "minimax-m2-github",
-          "title": "MiniMax-M2 GitHub Repository",
-          "url": "https://github.com/MiniMax-AI/MiniMax-M2",
-          "type": "codebase"
-        },
-        {
-          "key": "minimax-release-notes",
-          "title": "MiniMax API Release Notes - Models",
-          "url": "https://platform.minimax.io/docs/release-notes/models",
-          "type": "blog"
         }
       ],
       "scores": {
         "mmlu-pro": {
-          "value": 82,
-          "source": "minimax-m2-github"
+          "value": 85,
+          "source": "deepseek-v3.2-hf",
+          "note": "MMLU-Pro"
         },
         "gpqa": {
-          "value": 78,
-          "source": "minimax-m2-github"
+          "value": 82.4,
+          "source": "deepseek-v3.2-hf",
+          "note": "GPQA Diamond"
         },
         "swe-bench": {
-          "value": 69.4,
-          "source": "minimax-m2-github"
+          "value": 70,
+          "source": "deepseek-v3.2-hf",
+          "note": "SWE Verified"
         }
       },
       "parameters": {
-        "total": "229.9B",
-        "active": "9.8B"
+        "total": "685B"
       },
       "architecture": "MoE",
-      "context_window": "192k",
+      "context_window": "128k",
       "modalities": {
         "input": [
           "text"
@@ -1505,14 +2231,14 @@
           "text"
         ]
       },
-      "logo": "assets/logos/minimax.svg"
+      "logo": "assets/logos/deepseek.svg"
     },
     {
-      "id": "anthropic/claude-haiku-4.5",
-      "name": "Claude Haiku 4.5",
+      "id": "anthropic/claude-opus-4.5",
+      "name": "Claude Opus 4.5",
       "company": "anthropic",
       "brand_color": "#D97757",
-      "release_date": "2025-10-01",
+      "release_date": "2025-11-24",
       "weight_availability_tags": [
         "closed-weights",
         "reasoning",
@@ -1520,9 +2246,267 @@
       ],
       "sources": [
         {
+          "key": "claude-opus-4.5-launch",
+          "title": "Introducing Claude Opus 4.5",
+          "url": "https://www.anthropic.com/news/claude-opus-4-5",
+          "type": "blog"
+        },
+        {
+          "key": "claude-model-deprecations",
+          "title": "Model deprecations",
+          "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/anthropic.svg"
+    },
+    {
+      "id": "tencent/hunyuanvideo-1.5",
+      "name": "HunyuanVideo-1.5",
+      "company": "tencent",
+      "brand_color": "#0052D9",
+      "release_date": "2025-11-20",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "hunyuanvideo-1.5-github",
+          "title": "Tencent-Hunyuan/HunyuanVideo-1.5 README",
+          "url": "https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5",
+          "type": "codebase"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "8.3B",
+        "active": "undisclosed"
+      },
+      "architecture": "Diffusion Transformer (DiT) + 3D causal VAE",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "video"
+        ]
+      },
+      "logo": "assets/logos/tencent.svg"
+    },
+    {
+      "id": "google/gemini-3-pro-preview",
+      "name": "Gemini 3 Pro Preview",
+      "company": "google",
+      "brand_color": "#4285F4",
+      "release_date": "2025-11-18",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gemini-3-pro-preview-doc",
+          "title": "Gemini 3 Pro Preview",
+          "url": "https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-preview",
+          "type": "website"
+        },
+        {
+          "key": "gemini-deprecations",
+          "title": "Gemini deprecations",
+          "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/google.svg"
+    },
+    {
+      "id": "tencent/tencent-hy-2.0-instruct",
+      "name": "Tencent HY 2.0 Instruct",
+      "company": "tencent",
+      "brand_color": "#0052D9",
+      "release_date": "2025-11-11",
+      "weight_availability_tags": [
+        "closed-weights"
+      ],
+      "sources": [
+        {
+          "key": "tencent-model-updates",
+          "title": "腾讯云大模型知识引擎产品动态",
+          "url": "https://cloud.tencent.com/document/product/1729/97765",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/tencent.svg"
+    },
+    {
+      "id": "tencent/tencent-hy-2.0-think",
+      "name": "Tencent HY 2.0 Think",
+      "company": "tencent",
+      "brand_color": "#0052D9",
+      "release_date": "2025-11-09",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "tencent-model-updates",
+          "title": "腾讯云大模型知识引擎产品动态",
+          "url": "https://cloud.tencent.com/document/product/1729/97765",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/tencent.svg"
+    },
+    {
+      "id": "anthropic/claude-haiku-4.5",
+      "name": "Claude Haiku 4.5",
+      "company": "anthropic",
+      "brand_color": "#D97757",
+      "release_date": "2025-10-15",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "claude-haiku-4.5-launch",
+          "title": "Introducing Claude Haiku 4.5",
+          "url": "https://www.anthropic.com/news/claude-haiku-4-5",
+          "type": "blog"
+        },
+        {
           "key": "claude-models-overview",
           "title": "Models overview",
           "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "200k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/anthropic.svg"
+    },
+    {
+      "id": "openai/gpt-5-pro",
+      "name": "GPT-5 Pro",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2025-10-06",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-5-pro-model-doc",
+          "title": "GPT-5 Pro Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5-pro",
+          "type": "website"
+        },
+        {
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "400k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "anthropic/claude-sonnet-4.5",
+      "name": "Claude Sonnet 4.5",
+      "company": "anthropic",
+      "brand_color": "#D97757",
+      "release_date": "2025-09-29",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "claude-sonnet-4.5-launch",
+          "title": "Introducing Claude Sonnet 4.5",
+          "url": "https://www.anthropic.com/news/claude-sonnet-4-5",
+          "type": "blog"
+        },
+        {
+          "key": "claude-model-deprecations",
+          "title": "Model deprecations",
+          "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "type": "website"
+        },
+        {
+          "key": "claude-bedrock-models",
+          "title": "Using Claude on Amazon Bedrock",
+          "url": "https://docs.claude.com/en/api/claude-on-amazon-bedrock",
           "type": "website"
         }
       ],
@@ -1563,7 +2547,7 @@
         "active": "22B"
       },
       "architecture": "MoE",
-      "context_window": "256k",
+      "context_window": "256k native / 1M with extrapolation",
       "modalities": {
         "input": [
           "text",
@@ -1572,6 +2556,56 @@
         ],
         "output": [
           "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "alibaba/qwen3-omni-30b-a3b",
+      "name": "Qwen3-Omni-30B-A3B",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2025-09-22",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "qwen3-omni-repo",
+          "title": "Qwen3-Omni",
+          "url": "https://github.com/QwenLM/Qwen3-Omni",
+          "type": "codebase"
+        },
+        {
+          "key": "qwen3-omni-hf",
+          "title": "Qwen3-Omni-30B-A3B-Instruct",
+          "url": "https://huggingface.co/Qwen/Qwen3-Omni-30B-A3B-Instruct",
+          "type": "model-card"
+        },
+        {
+          "key": "qwen3-omni-hf-api",
+          "title": "Qwen3-Omni-30B-A3B-Instruct metadata API",
+          "url": "https://huggingface.co/api/models/Qwen/Qwen3-Omni-30B-A3B-Instruct",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "30B",
+        "active": "3B"
+      },
+      "architecture": "MoE",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text",
+          "audio"
         ]
       },
       "logo": "assets/logos/alibaba.svg"
@@ -1592,9 +2626,31 @@
           "title": "DeepSeek-V3.1 Release",
           "url": "https://api-docs.deepseek.com/news/news250821",
           "type": "website"
+        },
+        {
+          "key": "deepseek-v3.1-hf",
+          "title": "DeepSeek-V3.1",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3.1",
+          "type": "model-card"
         }
       ],
-      "scores": {},
+      "scores": {
+        "mmlu-pro": {
+          "value": 84.4,
+          "source": "deepseek-v3.1-hf",
+          "note": "MMLU-Pro"
+        },
+        "gpqa": {
+          "value": 74.9,
+          "source": "deepseek-v3.1-hf",
+          "note": "GPQA Diamond"
+        },
+        "swe-bench": {
+          "value": 57,
+          "source": "deepseek-v3.1-hf",
+          "note": "SWE Verified"
+        }
+      },
       "parameters": {
         "total": "671B",
         "active": "37B"
@@ -1606,11 +2662,166 @@
           "text"
         ],
         "output": [
-          "text",
-          "code"
+          "text"
         ]
       },
       "logo": "assets/logos/deepseek.svg"
+    },
+    {
+      "id": "zhipu/glm-4.5v",
+      "name": "GLM-4.5V",
+      "company": "zhipu",
+      "brand_color": "#4268FA",
+      "release_date": "2025-08-11",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "glm-4.5v-hf",
+          "title": "zai-org/GLM-4.5V",
+          "url": "https://huggingface.co/zai-org/GLM-4.5V",
+          "type": "model-card"
+        },
+        {
+          "key": "glm-v-github",
+          "title": "zai-org/GLM-V",
+          "url": "https://github.com/zai-org/GLM-V",
+          "type": "codebase"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "106B",
+        "active": "12B"
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/zhipu.svg"
+    },
+    {
+      "id": "openai/gpt-5-mini",
+      "name": "GPT-5 mini",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2025-08-07",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-5-mini-model-doc",
+          "title": "GPT-5 mini Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5-mini",
+          "type": "website"
+        },
+        {
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "400k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "openai/gpt-5-nano",
+      "name": "GPT-5 nano",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2025-08-07",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-5-nano-model-doc",
+          "title": "GPT-5 nano Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5-nano",
+          "type": "website"
+        },
+        {
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "400k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "openai/gpt-5",
+      "name": "GPT-5",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2025-08-07",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-5-model-doc",
+          "title": "GPT-5 Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5",
+          "type": "website"
+        },
+        {
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "400k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
     },
     {
       "id": "moonshot/kimi-k2",
@@ -1647,19 +2858,23 @@
         },
         "gpqa": {
           "value": 75.1,
-          "source": "kimi-k2-tech-report"
+          "source": "kimi-k2-tech-report",
+          "note": "GPQA-Diamond（Avg@8）"
         },
         "swe-bench": {
           "value": 65.8,
-          "source": "kimi-k2-tech-report"
+          "source": "kimi-k2-tech-report",
+          "note": "SWE-Bench Verified Agentic-Single-Attempt（Pass@1）"
         },
         "math-level-5": {
           "value": 97.4,
-          "source": "kimi-k2-tech-report"
+          "source": "kimi-k2-tech-report",
+          "note": "MATH-500"
         },
         "ifeval": {
           "value": 89.8,
-          "source": "kimi-k2-tech-report"
+          "source": "kimi-k2-tech-report",
+          "note": "Prompt Strict"
         },
         "drop": {
           "value": 93.5,
@@ -1667,8 +2882,8 @@
         }
       },
       "parameters": {
-        "total": "1.04T",
-        "active": "32.6B"
+        "total": "1T",
+        "active": "32B"
       },
       "architecture": "MoE",
       "context_window": "128k",
@@ -1681,6 +2896,53 @@
         ]
       },
       "logo": "assets/logos/moonshot.svg"
+    },
+    {
+      "id": "zhipu/glm-4.5-air",
+      "name": "GLM-4.5-Air",
+      "company": "zhipu",
+      "brand_color": "#4268FA",
+      "release_date": "2025-07-28",
+      "weight_availability_tags": [
+        "open-weights",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "glm-4.5-blog",
+          "title": "GLM-4.5: Reasoning, Coding, and Agentic Abilities",
+          "url": "https://z.ai/blog/glm-4.5",
+          "type": "blog"
+        },
+        {
+          "key": "glm-4.5-report",
+          "title": "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models",
+          "url": "https://arxiv.org/abs/2508.06471",
+          "type": "paper"
+        },
+        {
+          "key": "glm-4.5-air-hf",
+          "title": "zai-org/GLM-4.5-Air",
+          "url": "https://huggingface.co/zai-org/GLM-4.5-Air",
+          "type": "model-card"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "106B",
+        "active": "12B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/zhipu.svg"
     },
     {
       "id": "zhipu/glm-4.5",
@@ -1704,6 +2966,18 @@
           "title": "GLM-4.5: Reasoning, Coding, and Agentic Abilities",
           "url": "https://z.ai/blog/glm-4.5",
           "type": "blog"
+        },
+        {
+          "key": "glm-4.5-github",
+          "title": "zai-org/GLM-4.5",
+          "url": "https://github.com/zai-org/GLM-4.5",
+          "type": "codebase"
+        },
+        {
+          "key": "glm-4.5-hf",
+          "title": "zai-org/GLM-4.5",
+          "url": "https://huggingface.co/zai-org/GLM-4.5",
+          "type": "model-card"
         }
       ],
       "scores": {
@@ -1725,11 +2999,13 @@
         },
         "math-level-5": {
           "value": 98.2,
-          "source": "glm-4.5-report"
+          "source": "glm-4.5-report",
+          "note": "MATH-500"
         },
         "ifeval": {
           "value": 86.1,
-          "source": "glm-4.5-report"
+          "source": "glm-4.5-report",
+          "note": "IFEval Prompt-Strict"
         },
         "swe-bench": {
           "value": 64.2,
@@ -1782,7 +3058,7 @@
         "active": "35B"
       },
       "architecture": "MoE",
-      "context_window": "256k native / 1M with extrapolation",
+      "context_window": "262,144 natively / 1M with extrapolation",
       "modalities": {
         "input": [
           "text"
@@ -1792,6 +3068,46 @@
         ]
       },
       "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "google/gemini-2.5-flash-lite",
+      "name": "Gemini 2.5 Flash-Lite",
+      "company": "google",
+      "brand_color": "#4285F4",
+      "release_date": "2025-07-22",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gemini-2.5-report",
+          "title": "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities",
+          "url": "https://arxiv.org/abs/2507.06261",
+          "type": "paper"
+        },
+        {
+          "key": "gemini-deprecations",
+          "title": "Gemini deprecations",
+          "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/google.svg"
     },
     {
       "id": "xai/grok-4",
@@ -1813,29 +3129,131 @@
         }
       ],
       "scores": {},
-      "architecture": "unknown",
       "context_window": "256k",
       "modalities": {
         "input": [
           "text",
-          "image",
-          "audio"
+          "image"
         ],
         "output": [
-          "text",
-          "audio"
+          "text"
         ]
       },
       "logo": "assets/logos/xai.svg"
+    },
+    {
+      "id": "baidu/ernie-4.5-vl",
+      "name": "ERNIE 4.5-VL",
+      "company": "baidu",
+      "brand_color": "#2932E1",
+      "release_date": "2025-06-30",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "ernie-4.5-tr",
+          "title": "ERNIE 4.5 Technical Report",
+          "url": "https://ernie.baidu.com/blog/publication/ERNIE_Technical_Report.pdf",
+          "type": "paper"
+        }
+      ],
+      "scores": {},
+      "architecture": "MoE",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/baidu.svg"
+    },
+    {
+      "id": "baidu/ernie-4.5",
+      "name": "ERNIE 4.5-300B-A47B",
+      "company": "baidu",
+      "brand_color": "#2932E1",
+      "release_date": "2025-06-30",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "ernie-4.5-tr",
+          "title": "ERNIE 4.5 Technical Report",
+          "url": "https://ernie.baidu.com/blog/publication/ERNIE_Technical_Report.pdf",
+          "type": "paper"
+        }
+      ],
+      "scores": {
+        "mmlu-pro": {
+          "value": 78.4,
+          "source": "ernie-4.5-tr"
+        },
+        "mmlu": {
+          "value": 86.5,
+          "source": "ernie-4.5-tr"
+        },
+        "humaneval": {
+          "value": 92.1,
+          "source": "ernie-4.5-tr",
+          "note": "HumanEval+ 0-shot"
+        },
+        "math-level-5": {
+          "value": 96.4,
+          "source": "ernie-4.5-tr",
+          "note": "MATH-500"
+        },
+        "gsm8k": {
+          "value": 96.6,
+          "source": "ernie-4.5-tr"
+        },
+        "ifeval": {
+          "value": 88,
+          "source": "ernie-4.5-tr"
+        },
+        "bbh": {
+          "value": 94.3,
+          "source": "ernie-4.5-tr"
+        },
+        "drop": {
+          "value": 91.1,
+          "source": "ernie-4.5-tr"
+        },
+        "gpqa": {
+          "value": 81.1,
+          "source": "ernie-4.5-tr",
+          "note": "GPQA Diamond"
+        }
+      },
+      "parameters": {
+        "total": "300B",
+        "active": "47B"
+      },
+      "architecture": "MoE",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/baidu.svg"
     },
     {
       "id": "tencent/hunyuan-a13b",
       "name": "Hunyuan-A13B",
       "company": "tencent",
       "brand_color": "#0052D9",
-      "release_date": "2025-06-27",
+      "release_date": "2025-06-25",
       "weight_availability_tags": [
-        "open-weights"
+        "open-weights",
+        "reasoning"
       ],
       "sources": [
         {
@@ -1856,11 +3274,13 @@
         },
         "gpqa": {
           "value": 49.12,
-          "source": "hunyuan-a13b-github"
+          "source": "hunyuan-a13b-github",
+          "note": "GPQA Diamond"
         },
         "math-level-5": {
           "value": 72.35,
-          "source": "hunyuan-a13b-github"
+          "source": "hunyuan-a13b-github",
+          "note": "MATH-500"
         },
         "gsm8k": {
           "value": 91.83,
@@ -1888,13 +3308,58 @@
       "logo": "assets/logos/tencent.svg"
     },
     {
-      "id": "google/gemini-2.5-flash-lite",
-      "name": "Gemini 2.5 Flash-Lite",
+      "id": "moonshot/kimi-vl-thinking-2506",
+      "name": "Kimi-VL-A3B-Thinking-2506",
+      "company": "moonshot",
+      "brand_color": "#1783FF",
+      "release_date": "2025-06-21",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal",
+        "reasoning"
+      ],
+      "sources": [
+        {
+          "key": "kimi-vl-github",
+          "title": "MoonshotAI/Kimi-VL README",
+          "url": "https://github.com/MoonshotAI/Kimi-VL",
+          "type": "codebase"
+        },
+        {
+          "key": "kimi-vl-thinking-2506-hf",
+          "title": "Kimi-VL-A3B-Thinking-2506",
+          "url": "https://huggingface.co/moonshotai/Kimi-VL-A3B-Thinking-2506",
+          "type": "model-card"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "16B",
+        "active": "3B"
+      },
+      "architecture": "MoE",
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/moonshot.svg"
+    },
+    {
+      "id": "google/gemini-2.5-flash",
+      "name": "Gemini 2.5 Flash",
       "company": "google",
       "brand_color": "#4285F4",
       "release_date": "2025-06-17",
       "weight_availability_tags": [
         "closed-weights",
+        "reasoning",
         "multimodal"
       ],
       "sources": [
@@ -1903,9 +3368,24 @@
           "title": "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities",
           "url": "https://arxiv.org/abs/2507.06261",
           "type": "paper"
+        },
+        {
+          "key": "gemini-deprecations",
+          "title": "Gemini deprecations",
+          "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+          "type": "website"
         }
       ],
-      "scores": {},
+      "scores": {
+        "gpqa": {
+          "value": 82.8,
+          "source": "gemini-2.5-report"
+        },
+        "swe-bench": {
+          "value": 60.3,
+          "source": "gemini-2.5-report"
+        }
+      },
       "context_window": "1M",
       "modalities": {
         "input": [
@@ -1913,6 +3393,62 @@
           "image",
           "audio",
           "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/google.svg"
+    },
+    {
+      "id": "google/gemini-2.5-pro",
+      "name": "Gemini 2.5 Pro",
+      "company": "google",
+      "brand_color": "#4285F4",
+      "release_date": "2025-06-17",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gemini-2.5-report",
+          "title": "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities",
+          "url": "https://arxiv.org/abs/2507.06261",
+          "type": "paper"
+        },
+        {
+          "key": "gemini-2.5-announcement",
+          "title": "Gemini 2.5: Our most intelligent AI model",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-thinking-updates-march-2025/",
+          "type": "blog"
+        },
+        {
+          "key": "gemini-deprecations",
+          "title": "Gemini deprecations",
+          "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+          "type": "website"
+        }
+      ],
+      "scores": {
+        "gpqa": {
+          "value": 86.4,
+          "source": "gemini-2.5-report"
+        },
+        "swe-bench": {
+          "value": 67.2,
+          "source": "gemini-2.5-report"
+        }
+      },
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
         ],
         "output": [
           "text"
@@ -2096,6 +3632,44 @@
       "logo": "assets/logos/mistral.svg"
     },
     {
+      "id": "openai/o3-pro",
+      "name": "OpenAI o3-pro",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2025-06-10",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "o3-pro-model-doc",
+          "title": "o3-pro Model",
+          "url": "https://developers.openai.com/api/docs/models/o3-pro",
+          "type": "website"
+        },
+        {
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "200k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
       "id": "deepseek/r1-0528",
       "name": "DeepSeek-R1-0528",
       "company": "deepseek",
@@ -2111,9 +3685,26 @@
           "title": "DeepSeek-R1",
           "url": "https://github.com/deepseek-ai/DeepSeek-R1",
           "type": "codebase"
+        },
+        {
+          "key": "deepseek-r1-0528-hf",
+          "title": "DeepSeek-R1-0528",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528",
+          "type": "model-card"
         }
       ],
-      "scores": {},
+      "scores": {
+        "mmlu-pro": {
+          "value": 85,
+          "source": "deepseek-r1-0528-hf",
+          "note": "MMLU-Pro"
+        },
+        "gpqa": {
+          "value": 73.3,
+          "source": "deepseek-r1-0528-hf",
+          "note": "GPQA Diamond"
+        }
+      },
       "parameters": {
         "total": "671B",
         "active": "37B"
@@ -2169,7 +3760,7 @@
     },
     {
       "id": "anthropic/claude-4-opus",
-      "name": "Claude 4 Opus",
+      "name": "Claude Opus 4",
       "company": "anthropic",
       "brand_color": "#D97757",
       "release_date": "2025-05-22",
@@ -2202,7 +3793,6 @@
           "source": "claude-4-launch"
         }
       },
-      "architecture": "Dense",
       "context_window": "200k",
       "modalities": {
         "input": [
@@ -2217,7 +3807,7 @@
     },
     {
       "id": "anthropic/claude-4-sonnet",
-      "name": "Claude 4 Sonnet",
+      "name": "Claude Sonnet 4",
       "company": "anthropic",
       "brand_color": "#D97757",
       "release_date": "2025-05-22",
@@ -2246,7 +3836,6 @@
           "source": "claude-4-launch"
         }
       },
-      "architecture": "Dense",
       "context_window": "200k",
       "modalities": {
         "input": [
@@ -2350,9 +3939,37 @@
           "title": "Qwen3: Think Deeper, Act Faster",
           "url": "https://qwenlm.github.io/blog/qwen3/",
           "type": "blog"
+        },
+        {
+          "key": "qwen3-report",
+          "title": "Qwen3 Technical Report",
+          "url": "https://arxiv.org/abs/2505.09388",
+          "type": "paper"
         }
       ],
-      "scores": {},
+      "scores": {
+        "mmlu-pro": {
+          "value": 65.88,
+          "source": "qwen3-report"
+        },
+        "gpqa": {
+          "value": 50.63,
+          "source": "qwen3-report"
+        },
+        "bbh": {
+          "value": 81.38,
+          "source": "qwen3-report"
+        },
+        "gsm8k": {
+          "value": 94.63,
+          "source": "qwen3-report"
+        },
+        "ifeval": {
+          "value": 86.1,
+          "source": "qwen3-report",
+          "note": "thinking mode"
+        }
+      },
       "parameters": {
         "total": "14B",
         "active": "14B"
@@ -2385,9 +4002,37 @@
           "title": "Qwen3: Think Deeper, Act Faster",
           "url": "https://qwenlm.github.io/blog/qwen3/",
           "type": "blog"
+        },
+        {
+          "key": "qwen3-report",
+          "title": "Qwen3 Technical Report",
+          "url": "https://arxiv.org/abs/2505.09388",
+          "type": "paper"
         }
       ],
-      "scores": {},
+      "scores": {
+        "mmlu-pro": {
+          "value": 65.33,
+          "source": "qwen3-report"
+        },
+        "gpqa": {
+          "value": 50,
+          "source": "qwen3-report"
+        },
+        "bbh": {
+          "value": 81.73,
+          "source": "qwen3-report"
+        },
+        "gsm8k": {
+          "value": 93.93,
+          "source": "qwen3-report"
+        },
+        "ifeval": {
+          "value": 87.7,
+          "source": "qwen3-report",
+          "note": "thinking mode"
+        }
+      },
       "parameters": {
         "total": "30B",
         "active": "3B"
@@ -2420,9 +4065,37 @@
           "title": "Qwen3: Think Deeper, Act Faster",
           "url": "https://qwenlm.github.io/blog/qwen3/",
           "type": "blog"
+        },
+        {
+          "key": "qwen3-report",
+          "title": "Qwen3 Technical Report",
+          "url": "https://arxiv.org/abs/2505.09388",
+          "type": "paper"
         }
       ],
-      "scores": {},
+      "scores": {
+        "mmlu-pro": {
+          "value": 70.9,
+          "source": "qwen3-report"
+        },
+        "gpqa": {
+          "value": 56.1,
+          "source": "qwen3-report"
+        },
+        "bbh": {
+          "value": 85,
+          "source": "qwen3-report"
+        },
+        "gsm8k": {
+          "value": 95.7,
+          "source": "qwen3-report"
+        },
+        "ifeval": {
+          "value": 88.2,
+          "source": "qwen3-report",
+          "note": "thinking mode"
+        }
+      },
       "parameters": {
         "total": "32B",
         "active": "32B"
@@ -2455,9 +4128,37 @@
           "title": "Qwen3: Think Deeper, Act Faster",
           "url": "https://qwenlm.github.io/blog/qwen3/",
           "type": "blog"
+        },
+        {
+          "key": "qwen3-report",
+          "title": "Qwen3 Technical Report",
+          "url": "https://arxiv.org/abs/2505.09388",
+          "type": "paper"
         }
       ],
-      "scores": {},
+      "scores": {
+        "mmlu-pro": {
+          "value": 61.06,
+          "source": "qwen3-report"
+        },
+        "gpqa": {
+          "value": 47.67,
+          "source": "qwen3-report"
+        },
+        "bbh": {
+          "value": 80.34,
+          "source": "qwen3-report"
+        },
+        "gsm8k": {
+          "value": 94.16,
+          "source": "qwen3-report"
+        },
+        "ifeval": {
+          "value": 85,
+          "source": "qwen3-report",
+          "note": "thinking mode"
+        }
+      },
       "parameters": {
         "total": "8B",
         "active": "8B"
@@ -2515,17 +4216,14 @@
           "value": 94.39,
           "source": "qwen3-report"
         },
-        "math-level-5": {
-          "value": 71.84,
-          "source": "qwen3-report"
-        },
         "bbh": {
           "value": 88.87,
           "source": "qwen3-report"
         },
         "ifeval": {
           "value": 83.4,
-          "source": "qwen3-report"
+          "source": "qwen3-report",
+          "note": "thinking mode"
         }
       },
       "parameters": {
@@ -2543,50 +4241,6 @@
         ]
       },
       "logo": "assets/logos/alibaba.svg"
-    },
-    {
-      "id": "google/gemini-2.5-flash",
-      "name": "Gemini 2.5 Flash",
-      "company": "google",
-      "brand_color": "#4285F4",
-      "release_date": "2025-04-17",
-      "weight_availability_tags": [
-        "closed-weights",
-        "reasoning",
-        "multimodal"
-      ],
-      "sources": [
-        {
-          "key": "gemini-2.5-report",
-          "title": "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities",
-          "url": "https://arxiv.org/abs/2507.06261",
-          "type": "paper"
-        }
-      ],
-      "scores": {
-        "gpqa": {
-          "value": 82.8,
-          "source": "gemini-2.5-report"
-        },
-        "swe-bench": {
-          "value": 60.3,
-          "source": "gemini-2.5-report"
-        }
-      },
-      "architecture": "MoE",
-      "context_window": "1M",
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio",
-          "video"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "logo": "assets/logos/google.svg"
     },
     {
       "id": "openai/o3",
@@ -2611,18 +4265,21 @@
           "title": "OpenAI o3 and o4-mini System Card",
           "url": "https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf",
           "type": "paper"
+        },
+        {
+          "key": "o3-model-doc",
+          "title": "o3 Model",
+          "url": "https://developers.openai.com/api/docs/models/o3",
+          "type": "website"
+        },
+        {
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "type": "website"
         }
       ],
-      "scores": {
-        "gpqa": {
-          "value": 87.7,
-          "source": "o3-announcement"
-        },
-        "swe-bench": {
-          "value": 71.7,
-          "source": "o3-announcement"
-        }
-      },
+      "scores": {},
       "context_window": "200k",
       "modalities": {
         "input": [
@@ -2652,6 +4309,24 @@
           "title": "Introducing OpenAI o3 and o4-mini",
           "url": "https://openai.com/index/introducing-o3-and-o4-mini/",
           "type": "blog"
+        },
+        {
+          "key": "o3-system-card",
+          "title": "OpenAI o3 and o4-mini System Card",
+          "url": "https://cdn.openai.com/pdf/2221c875-02dc-4789-800b-e7758f3722c1/o3-and-o4-mini-system-card.pdf",
+          "type": "paper"
+        },
+        {
+          "key": "o4-mini-model-doc",
+          "title": "o4-mini Model",
+          "url": "https://developers.openai.com/api/docs/models/o4-mini",
+          "type": "website"
+        },
+        {
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "type": "website"
         }
       ],
       "scores": {},
@@ -2784,7 +4459,6 @@
         "active": "20B"
       },
       "architecture": "MoE",
-      "context_window": "32k",
       "modalities": {
         "input": [
           "text"
@@ -2811,6 +4485,12 @@
           "title": "Introducing GPT-4.1 in the API",
           "url": "https://openai.com/index/gpt-4-1/",
           "type": "blog"
+        },
+        {
+          "key": "gpt-4.1-mini-model-doc",
+          "title": "GPT-4.1 mini Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4.1-mini",
+          "type": "website"
         }
       ],
       "scores": {
@@ -2831,7 +4511,57 @@
           "source": "gpt-4.1-announcement"
         }
       },
-      "context_window": "1M",
+      "context_window": "1,047,576",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "openai/gpt-4.1-nano",
+      "name": "GPT-4.1 nano",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2025-04-14",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-4.1-announcement",
+          "title": "Introducing GPT-4.1 in the API",
+          "url": "https://openai.com/index/gpt-4-1/",
+          "type": "blog"
+        },
+        {
+          "key": "gpt-4.1-nano-model-doc",
+          "title": "GPT-4.1 nano Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4.1-nano",
+          "type": "website"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 80.1,
+          "source": "gpt-4.1-announcement"
+        },
+        "gpqa": {
+          "value": 50.3,
+          "source": "gpt-4.1-announcement"
+        },
+        "ifeval": {
+          "value": 74.5,
+          "source": "gpt-4.1-announcement"
+        }
+      },
+      "context_window": "1,047,576",
       "modalities": {
         "input": [
           "text",
@@ -2859,6 +4589,12 @@
           "title": "Introducing GPT-4.1 in the API",
           "url": "https://openai.com/index/gpt-4-1/",
           "type": "blog"
+        },
+        {
+          "key": "gpt-4.1-model-doc",
+          "title": "GPT-4.1 Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4.1",
+          "type": "website"
         }
       ],
       "scores": {
@@ -2879,7 +4615,7 @@
           "source": "gpt-4.1-announcement"
         }
       },
-      "context_window": "1M",
+      "context_window": "1,047,576",
       "modalities": {
         "input": [
           "text",
@@ -3000,7 +4736,7 @@
       "name": "Qwen2.5-Omni-7B",
       "company": "alibaba",
       "brand_color": "#615CED",
-      "release_date": "2025-03-26",
+      "release_date": "2025-03-27",
       "weight_availability_tags": [
         "open-weights",
         "multimodal"
@@ -3011,15 +4747,36 @@
           "title": "Qwen2.5-Omni",
           "url": "https://qwenlm.github.io/blog/qwen2.5-omni/",
           "type": "blog"
+        },
+        {
+          "key": "qwen2.5-omni-hf",
+          "title": "Qwen2.5-Omni-7B",
+          "url": "https://huggingface.co/Qwen/Qwen2.5-Omni-7B",
+          "type": "model-card"
         }
       ],
-      "scores": {},
+      "scores": {
+        "mmlu-pro": {
+          "value": 47,
+          "source": "qwen2.5-omni-hf"
+        },
+        "gpqa": {
+          "value": 30.8,
+          "source": "qwen2.5-omni-hf"
+        },
+        "gsm8k": {
+          "value": 88.7,
+          "source": "qwen2.5-omni-hf"
+        },
+        "humaneval": {
+          "value": 78.7,
+          "source": "qwen2.5-omni-hf"
+        }
+      },
       "parameters": {
         "total": "7B",
         "active": "7B"
       },
-      "architecture": "Dense",
-      "context_window": "32k",
       "modalities": {
         "input": [
           "text",
@@ -3035,54 +4792,65 @@
       "logo": "assets/logos/alibaba.svg"
     },
     {
-      "id": "google/gemini-2.5-pro",
-      "name": "Gemini 2.5 Pro",
-      "company": "google",
-      "brand_color": "#4285F4",
+      "id": "deepseek/v3-0324",
+      "name": "DeepSeek-V3-0324",
+      "company": "deepseek",
+      "brand_color": "#4D6BFE",
       "release_date": "2025-03-25",
       "weight_availability_tags": [
-        "closed-weights",
-        "reasoning",
-        "multimodal"
+        "open-weights"
       ],
       "sources": [
         {
-          "key": "gemini-2.5-report",
-          "title": "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities",
-          "url": "https://arxiv.org/abs/2507.06261",
-          "type": "paper"
+          "key": "deepseek-v3-0324-news",
+          "title": "DeepSeek-V3-0324 Release",
+          "url": "https://api-docs.deepseek.com/news/news250325",
+          "type": "website"
         },
         {
-          "key": "gemini-2.5-announcement",
-          "title": "Gemini 2.5: Our most intelligent AI model",
-          "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-thinking-updates-march-2025/",
-          "type": "blog"
+          "key": "deepseek-v3-0324-hf",
+          "title": "DeepSeek-V3-0324",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324",
+          "type": "model-card"
         }
       ],
       "scores": {
+        "mmlu-pro": {
+          "value": 81.2,
+          "source": "deepseek-v3-0324-hf",
+          "note": "MMLU-Pro"
+        },
         "gpqa": {
-          "value": 86.4,
-          "source": "gemini-2.5-report"
+          "value": 68.4,
+          "source": "deepseek-v3-0324-hf",
+          "note": "GPQA Diamond"
+        },
+        "math-level-5": {
+          "value": 92.4,
+          "source": "deepseek-v3-0324-hf",
+          "note": "MATH-500"
         },
         "swe-bench": {
-          "value": 67.2,
-          "source": "gemini-2.5-report"
+          "value": 49.2,
+          "source": "deepseek-v3-0324-hf",
+          "note": "SWE-bench Verified"
         }
       },
+      "parameters": {
+        "total": "671B",
+        "active": "37B"
+      },
       "architecture": "MoE",
-      "context_window": "1M",
+      "context_window": "128k",
       "modalities": {
         "input": [
-          "text",
-          "image",
-          "audio",
-          "video"
+          "text"
         ],
         "output": [
           "text"
         ]
       },
-      "logo": "assets/logos/google.svg"
+      "logo": "assets/logos/deepseek.svg"
     },
     {
       "id": "tencent/hunyuan-t1",
@@ -3099,7 +4867,7 @@
           "key": "hunyuan-t1-blog",
           "title": "混元-T1：强化学习驱动，业内首个超大规模混合Mamba推理模型正式发布",
           "url": "https://github.com/Tencent/llm.hunyuan.T1/blob/main/README.md",
-          "type": "blog"
+          "type": "codebase"
         }
       ],
       "scores": {
@@ -3117,8 +4885,8 @@
         }
       },
       "parameters": {
-        "total": "560B",
-        "active": "56B"
+        "total": "undisclosed",
+        "active": "undisclosed"
       },
       "architecture": "Hybrid Transformer-Mamba MoE",
       "context_window": "256k",
@@ -3133,117 +4901,49 @@
       "logo": "assets/logos/tencent.svg"
     },
     {
-      "id": "baidu/ernie-4.5",
-      "name": "ERNIE 4.5-300B-A47B",
-      "company": "baidu",
-      "brand_color": "#2932E1",
-      "release_date": "2025-03-16",
+      "id": "openai/o1-pro",
+      "name": "OpenAI o1-pro",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2025-03-19",
       "weight_availability_tags": [
-        "open-weights",
+        "closed-weights",
+        "reasoning",
         "multimodal"
       ],
       "sources": [
         {
-          "key": "ernie-4.5-tr",
-          "title": "ERNIE 4.5 Technical Report",
-          "url": "https://ernie.baidu.com/blog/publication/ERNIE_Technical_Report.pdf",
-          "type": "paper"
-        }
-      ],
-      "scores": {
-        "mmlu-pro": {
-          "value": 78.4,
-          "source": "ernie-4.5-tr"
+          "key": "o1-pro-model-doc",
+          "title": "o1-pro Model",
+          "url": "https://developers.openai.com/api/docs/models/o1-pro",
+          "type": "website"
         },
-        "mmlu": {
-          "value": 86.5,
-          "source": "ernie-4.5-tr"
-        },
-        "humaneval": {
-          "value": 92.1,
-          "source": "ernie-4.5-tr"
-        },
-        "math-level-5": {
-          "value": 96.4,
-          "source": "ernie-4.5-tr"
-        },
-        "gsm8k": {
-          "value": 96.6,
-          "source": "ernie-4.5-tr"
-        },
-        "ifeval": {
-          "value": 88,
-          "source": "ernie-4.5-tr"
-        },
-        "bbh": {
-          "value": 94.3,
-          "source": "ernie-4.5-tr"
-        },
-        "drop": {
-          "value": 91.1,
-          "source": "ernie-4.5-tr"
-        },
-        "gpqa": {
-          "value": 81.1,
-          "source": "ernie-4.5-tr"
-        }
-      },
-      "parameters": {
-        "total": "300B",
-        "active": "47B"
-      },
-      "architecture": "MoE",
-      "context_window": "128k",
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "logo": "assets/logos/baidu.svg"
-    },
-    {
-      "id": "baidu/ernie-x1",
-      "name": "ERNIE X1",
-      "company": "baidu",
-      "brand_color": "#2932E1",
-      "release_date": "2025-03-16",
-      "weight_availability_tags": [
-        "closed-weights",
-        "reasoning"
-      ],
-      "sources": [
         {
-          "key": "baidu-x1-news",
-          "title": "Baidu unveils Ernie 4.5 and deep-thinking reasoning model Ernie X1",
-          "url": "https://www.wicinternet.org/2025-03/24/c_1080639.htm",
-          "type": "blog"
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "type": "website"
         }
       ],
       "scores": {},
-      "parameters": {
-        "total": "undisclosed",
-        "active": "undisclosed"
-      },
-      "architecture": "MoE",
+      "context_window": "200k",
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
         ]
       },
-      "logo": "assets/logos/baidu.svg"
+      "logo": "assets/logos/openai.svg"
     },
     {
       "id": "alibaba/qwq-32b",
       "name": "QwQ-32B",
       "company": "alibaba",
       "brand_color": "#615CED",
-      "release_date": "2025-03-05",
+      "release_date": "2025-03-06",
       "weight_availability_tags": [
         "open-weights",
         "reasoning"
@@ -3254,15 +4954,20 @@
           "title": "QwQ-32B: Embracing the Power of Reinforcement Learning",
           "url": "https://qwenlm.github.io/blog/qwq-32b/",
           "type": "blog"
+        },
+        {
+          "key": "qwq-32b-hf",
+          "title": "QwQ-32B",
+          "url": "https://huggingface.co/Qwen/QwQ-32B",
+          "type": "model-card"
         }
       ],
       "scores": {},
       "parameters": {
-        "total": "32B",
-        "active": "32B"
+        "total": "32.5B",
+        "active": "undisclosed"
       },
-      "architecture": "Dense",
-      "context_window": "32k",
+      "context_window": "131,072",
       "modalities": {
         "input": [
           "text"
@@ -3272,6 +4977,105 @@
         ]
       },
       "logo": "assets/logos/alibaba.svg"
+    },
+    {
+      "id": "openai/gpt-4.5-preview",
+      "name": "GPT-4.5 Preview",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2025-02-27",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gpt-4.5-announcement",
+          "title": "Introducing GPT-4.5",
+          "url": "https://openai.com/index/introducing-gpt-4-5/",
+          "type": "blog"
+        },
+        {
+          "key": "gpt-4.5-model-doc",
+          "title": "GPT-4.5 Preview Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4.5-preview",
+          "type": "website"
+        },
+        {
+          "key": "gpt-4.1-announcement",
+          "title": "Introducing GPT-4.1 in the API",
+          "url": "https://openai.com/index/gpt-4-1/",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 90.8,
+          "source": "gpt-4.1-announcement"
+        },
+        "gpqa": {
+          "value": 69.5,
+          "source": "gpt-4.1-announcement"
+        },
+        "ifeval": {
+          "value": 88.2,
+          "source": "gpt-4.1-announcement"
+        },
+        "swe-bench": {
+          "value": 38,
+          "source": "gpt-4.1-announcement"
+        }
+      },
+      "context_window": "128k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
+      "id": "google/gemini-2.0-flash-lite",
+      "name": "Gemini 2.0 Flash-Lite",
+      "company": "google",
+      "brand_color": "#4285F4",
+      "release_date": "2025-02-25",
+      "weight_availability_tags": [
+        "closed-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "gemini-2.0-update",
+          "title": "Gemini model updates February 2025",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-updates-february-2025/",
+          "type": "blog"
+        },
+        {
+          "key": "gemini-deprecations",
+          "title": "Gemini deprecations",
+          "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "1M",
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/google.svg"
     },
     {
       "id": "anthropic/claude-3.7-sonnet",
@@ -3293,7 +5097,6 @@
         }
       ],
       "scores": {},
-      "architecture": "Dense",
       "context_window": "200k",
       "modalities": {
         "input": [
@@ -3335,7 +5138,6 @@
           "source": "grok-3-beta"
         }
       },
-      "architecture": "unknown",
       "context_window": "1M",
       "modalities": {
         "input": [
@@ -3382,7 +5184,6 @@
           "source": "grok-3-beta"
         }
       },
-      "architecture": "unknown",
       "context_window": "1M",
       "modalities": {
         "input": [
@@ -3397,8 +5198,47 @@
       "logo": "assets/logos/xai.svg"
     },
     {
-      "id": "google/gemini-2.0-flash-lite",
-      "name": "Gemini 2.0 Flash-Lite",
+      "id": "baichuan/baichuan-m1-14b",
+      "name": "Baichuan-M1-14B",
+      "company": "baichuan",
+      "brand_color": "#FF6933",
+      "release_date": "2025-02-18",
+      "weight_availability_tags": [
+        "open-weights"
+      ],
+      "sources": [
+        {
+          "key": "baichuan-m1-14b-report",
+          "title": "Baichuan-M1-14B: A Medical Specialized Large Language Model",
+          "url": "https://arxiv.org/abs/2502.12671",
+          "type": "paper"
+        },
+        {
+          "key": "baichuan-m1-14b-github",
+          "title": "baichuan-inc/Baichuan-M1-14B",
+          "url": "https://github.com/baichuan-inc/Baichuan-M1-14B",
+          "type": "codebase"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "14B",
+        "active": "14B"
+      },
+      "architecture": "Dense",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/baichuan.svg"
+    },
+    {
+      "id": "google/gemini-2.0-flash",
+      "name": "Gemini 2.0 Flash",
       "company": "google",
       "brand_color": "#4285F4",
       "release_date": "2025-02-05",
@@ -3408,13 +5248,34 @@
       ],
       "sources": [
         {
-          "key": "gemini-2.0-update",
-          "title": "Gemini model updates February 2025",
-          "url": "https://blog.google/innovation-and-ai/models-and-research/google-deepmind/gemini-model-updates-february-2025/",
+          "key": "gemini-2.5-report",
+          "title": "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities (includes Gemini 2.0 Flash results)",
+          "url": "https://arxiv.org/abs/2507.06261",
+          "type": "paper"
+        },
+        {
+          "key": "gemini-2.0-announcement",
+          "title": "Introducing Gemini 2.0: our new AI model for the agentic era",
+          "url": "https://blog.google/intl/en-nz/company-news/2024_12_introducing-gemini-20-our-new-ai-mode/",
           "type": "blog"
+        },
+        {
+          "key": "gemini-deprecations",
+          "title": "Gemini deprecations",
+          "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+          "type": "website"
         }
       ],
-      "scores": {},
+      "scores": {
+        "gpqa": {
+          "value": 65.2,
+          "source": "gemini-2.5-report"
+        },
+        "swe-bench": {
+          "value": 34.2,
+          "source": "gemini-2.5-report"
+        }
+      },
       "context_window": "1M",
       "modalities": {
         "input": [
@@ -3428,6 +5289,67 @@
         ]
       },
       "logo": "assets/logos/google.svg"
+    },
+    {
+      "id": "openai/o3-mini",
+      "name": "OpenAI o3-mini",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2025-01-31",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "o3-mini-model-doc",
+          "title": "o3-mini Model",
+          "url": "https://developers.openai.com/api/docs/models/o3-mini",
+          "type": "website"
+        },
+        {
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "type": "website"
+        },
+        {
+          "key": "gpt-4.1-announcement",
+          "title": "Introducing GPT-4.1 in the API",
+          "url": "https://openai.com/index/gpt-4-1/",
+          "type": "blog"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 86.9,
+          "source": "gpt-4.1-announcement"
+        },
+        "gpqa": {
+          "value": 77.2,
+          "source": "gpt-4.1-announcement"
+        },
+        "ifeval": {
+          "value": 93.9,
+          "source": "gpt-4.1-announcement"
+        },
+        "swe-bench": {
+          "value": 49.3,
+          "source": "gpt-4.1-announcement"
+        }
+      },
+      "context_window": "200k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
     },
     {
       "id": "alibaba/qwen2.5-vl",
@@ -3445,6 +5367,12 @@
           "title": "Qwen2.5-VL Technical Report",
           "url": "https://arxiv.org/abs/2502.13923",
           "type": "paper"
+        },
+        {
+          "key": "qwen2.5-vl-hf",
+          "title": "Qwen2.5-VL-72B-Instruct",
+          "url": "https://huggingface.co/Qwen/Qwen2.5-VL-72B-Instruct",
+          "type": "model-card"
         }
       ],
       "scores": {},
@@ -3452,8 +5380,7 @@
         "total": "72B",
         "active": "72B"
       },
-      "architecture": "Dense",
-      "context_window": "128k",
+      "context_window": "32k",
       "modalities": {
         "input": [
           "text",
@@ -3479,16 +5406,10 @@
       ],
       "sources": [
         {
-          "key": "baichuan-m1-preview-launch",
-          "title": "百川智能发布深度思考模型Baichuan-M1-preview",
-          "url": "https://www.ithome.com/0/826/964.htm",
-          "type": "blog"
-        },
-        {
-          "key": "baichuan-m1-preview-huanqiu",
-          "title": "百川智能首个全场景深度思考模型Baichuan-M1-preview发布",
-          "url": "https://tech.huanqiu.com/article/4LCc06490AH",
-          "type": "blog"
+          "key": "baichuan-platform",
+          "title": "百川大模型 API 平台",
+          "url": "https://platform.baichuan-ai.com/prices",
+          "type": "website"
         }
       ],
       "scores": {},
@@ -3496,40 +5417,6 @@
         "input": [
           "text",
           "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "logo": "assets/logos/baichuan.svg"
-    },
-    {
-      "id": "baichuan/baichuan-m1-14b",
-      "name": "Baichuan-M1-14B",
-      "company": "baichuan",
-      "brand_color": "#FF6933",
-      "release_date": "2025-01-23",
-      "weight_availability_tags": [
-        "open-weights"
-      ],
-      "sources": [
-        {
-          "key": "baichuan-m1-14b-report",
-          "title": "Baichuan-M1-14B: A Medical Specialized Large Language Model",
-          "url": "https://arxiv.org/abs/2502.12671",
-          "type": "paper"
-        }
-      ],
-      "scores": {},
-      "parameters": {
-        "total": "14B",
-        "active": "14B"
-      },
-      "architecture": "Dense",
-      "context_window": "32k",
-      "modalities": {
-        "input": [
-          "text"
         ],
         "output": [
           "text"
@@ -3548,31 +5435,20 @@
       ],
       "sources": [
         {
+          "key": "doubao-1.5-pro-official-page",
+          "title": "Doubao-1.5-pro Official Page",
+          "url": "https://seed.bytedance.com/zh/special/doubao_1_5_pro",
+          "type": "website"
+        },
+        {
           "key": "volcengine-model-list",
           "title": "Volcano Engine Model List",
           "url": "https://www.volcengine.com/docs/82379/1330310",
           "type": "website"
         }
       ],
-      "scores": {
-        "mmlu-pro": {
-          "value": 80.2,
-          "source": "volcengine-model-list"
-        },
-        "gpqa": {
-          "value": 66.2,
-          "source": "volcengine-model-list"
-        }
-      },
-      "context_window": "256k",
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
+      "scores": {},
+      "architecture": "MoE",
       "logo": "assets/logos/bytedance.svg"
     },
     {
@@ -3605,11 +5481,13 @@
         },
         "math-level-5": {
           "value": 96.2,
-          "source": "kimi-k1.5-tech-report"
+          "source": "kimi-k1.5-tech-report",
+          "note": "MATH-500（long-CoT）"
         },
         "humaneval": {
           "value": 81.5,
-          "source": "kimi-k1.5-tech-report"
+          "source": "kimi-k1.5-tech-report",
+          "note": "HumanEval-Mul（short-CoT）"
         }
       },
       "context_window": "128k",
@@ -3623,41 +5501,6 @@
         ]
       },
       "logo": "assets/logos/moonshot.svg"
-    },
-    {
-      "id": "deepseek/r1-zero",
-      "name": "DeepSeek-R1-Zero",
-      "company": "deepseek",
-      "brand_color": "#4D6BFE",
-      "release_date": "2025-01-20",
-      "weight_availability_tags": [
-        "open-weights",
-        "reasoning"
-      ],
-      "sources": [
-        {
-          "key": "r1-tech-report",
-          "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning",
-          "url": "https://arxiv.org/abs/2501.12948",
-          "type": "paper"
-        }
-      ],
-      "scores": {},
-      "parameters": {
-        "total": "671B",
-        "active": "37B"
-      },
-      "architecture": "MoE",
-      "context_window": "128k",
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "logo": "assets/logos/deepseek.svg"
     },
     {
       "id": "deepseek/r1",
@@ -3700,7 +5543,8 @@
         },
         "math-level-5": {
           "value": 97.3,
-          "source": "r1-tech-report"
+          "source": "r1-tech-report",
+          "note": "MATH-500"
         },
         "swe-bench": {
           "value": 49.2,
@@ -3750,6 +5594,37 @@
       "modalities": {
         "input": [
           "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/minimax.svg"
+    },
+    {
+      "id": "minimax/minimax-vl-01",
+      "name": "MiniMax-VL-01",
+      "company": "minimax",
+      "brand_color": "#F23F5D",
+      "release_date": "2025-01-14",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "minimax-01-report",
+          "title": "MiniMax-01: Scaling Foundation Models with Efficient Lightning Attention",
+          "url": "https://arxiv.org/abs/2501.08313",
+          "type": "paper"
+        }
+      ],
+      "scores": {},
+      "architecture": "MoE",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
         ],
         "output": [
           "text"
@@ -3828,7 +5703,8 @@
         },
         "math-level-5": {
           "value": 90.2,
-          "source": "v3-tech-report"
+          "source": "v3-tech-report",
+          "note": "MATH-500"
         },
         "swe-bench": {
           "value": 42,
@@ -3852,6 +5728,79 @@
       "logo": "assets/logos/deepseek.svg"
     },
     {
+      "id": "openai/o1",
+      "name": "OpenAI o1",
+      "company": "openai",
+      "brand_color": "#10A37F",
+      "release_date": "2024-12-17",
+      "weight_availability_tags": [
+        "closed-weights",
+        "reasoning",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "o1-api-announcement",
+          "title": "OpenAI o1 and new tools for developers",
+          "url": "https://openai.com/index/o1-and-new-tools-for-developers/",
+          "type": "blog"
+        },
+        {
+          "key": "o1-reasoning-blog",
+          "title": "Learning to reason with LLMs",
+          "url": "https://openai.com/index/learning-to-reason-with-llms/",
+          "type": "blog"
+        },
+        {
+          "key": "o1-system-card",
+          "title": "OpenAI o1 System Card",
+          "url": "https://arxiv.org/abs/2412.16720",
+          "type": "paper"
+        },
+        {
+          "key": "o1-model-doc",
+          "title": "o1 Model",
+          "url": "https://developers.openai.com/api/docs/models/o1",
+          "type": "website"
+        },
+        {
+          "key": "openai-api-changelog",
+          "title": "OpenAI API Changelog",
+          "url": "https://developers.openai.com/api/docs/changelog",
+          "type": "website"
+        }
+      ],
+      "scores": {
+        "mmlu": {
+          "value": 91.8,
+          "source": "o1-api-announcement"
+        },
+        "gpqa": {
+          "value": 75.7,
+          "source": "o1-api-announcement"
+        },
+        "swe-bench": {
+          "value": 48.9,
+          "source": "o1-api-announcement"
+        },
+        "math-level-5": {
+          "value": 96.4,
+          "source": "o1-api-announcement"
+        }
+      },
+      "context_window": "200k",
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/openai.svg"
+    },
+    {
       "id": "deepseek/vl2",
       "name": "DeepSeek-VL2",
       "company": "deepseek",
@@ -3867,6 +5816,12 @@
           "title": "DeepSeek-VL2: Mixture-of-Experts Vision-Language Models for Advanced Multimodal Understanding",
           "url": "https://arxiv.org/abs/2412.10302",
           "type": "paper"
+        },
+        {
+          "key": "vl2-github",
+          "title": "deepseek-ai/DeepSeek-VL2",
+          "url": "https://github.com/deepseek-ai/DeepSeek-VL2",
+          "type": "codebase"
         }
       ],
       "scores": {},
@@ -3875,7 +5830,7 @@
         "active": "4.5B"
       },
       "architecture": "MoE",
-      "context_window": "uncertain",
+      "context_window": "4k",
       "modalities": {
         "input": [
           "text",
@@ -3886,57 +5841,6 @@
         ]
       },
       "logo": "assets/logos/deepseek.svg"
-    },
-    {
-      "id": "google/gemini-2.0-flash",
-      "name": "Gemini 2.0 Flash",
-      "company": "google",
-      "brand_color": "#4285F4",
-      "release_date": "2024-12-11",
-      "weight_availability_tags": [
-        "closed-weights",
-        "multimodal"
-      ],
-      "sources": [
-        {
-          "key": "gemini-2.5-report",
-          "title": "Gemini 2.5: Pushing the Frontier with Advanced Reasoning, Multimodality, Long Context, and Next Generation Agentic Capabilities (includes Gemini 2.0 Flash results)",
-          "url": "https://arxiv.org/abs/2507.06261",
-          "type": "paper"
-        },
-        {
-          "key": "gemini-2.0-announcement",
-          "title": "Introducing Gemini 2.0: our new AI model for the agentic era",
-          "url": "https://blog.google/intl/en-nz/company-news/2024_12_introducing-gemini-20-our-new-ai-mode/",
-          "type": "blog"
-        }
-      ],
-      "scores": {
-        "gpqa": {
-          "value": 65.2,
-          "source": "gemini-2.5-report"
-        },
-        "swe-bench": {
-          "value": 34.2,
-          "source": "gemini-2.5-report"
-        }
-      },
-      "architecture": "MoE",
-      "context_window": "1M",
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio",
-          "video"
-        ],
-        "output": [
-          "text",
-          "image",
-          "audio"
-        ]
-      },
-      "logo": "assets/logos/google.svg"
     },
     {
       "id": "meta/llama-3.3-70b",
@@ -4001,66 +5905,6 @@
         ]
       },
       "logo": "assets/logos/meta.svg"
-    },
-    {
-      "id": "openai/o1",
-      "name": "OpenAI o1",
-      "company": "openai",
-      "brand_color": "#10A37F",
-      "release_date": "2024-12-05",
-      "weight_availability_tags": [
-        "closed-weights",
-        "reasoning"
-      ],
-      "sources": [
-        {
-          "key": "o1-api-announcement",
-          "title": "OpenAI o1 and new tools for developers",
-          "url": "https://openai.com/index/o1-and-new-tools-for-developers/",
-          "type": "blog"
-        },
-        {
-          "key": "o1-reasoning-blog",
-          "title": "Learning to reason with LLMs",
-          "url": "https://openai.com/index/learning-to-reason-with-llms/",
-          "type": "blog"
-        },
-        {
-          "key": "o1-system-card",
-          "title": "OpenAI o1 System Card",
-          "url": "https://arxiv.org/abs/2412.16720",
-          "type": "paper"
-        }
-      ],
-      "scores": {
-        "mmlu": {
-          "value": 91.8,
-          "source": "o1-api-announcement"
-        },
-        "gpqa": {
-          "value": 75.7,
-          "source": "o1-api-announcement"
-        },
-        "swe-bench": {
-          "value": 48.9,
-          "source": "o1-api-announcement"
-        },
-        "math-level-5": {
-          "value": 96.4,
-          "source": "o1-api-announcement"
-        }
-      },
-      "context_window": "200k",
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "logo": "assets/logos/openai.svg"
     },
     {
       "id": "mistral/pixtral-large",
@@ -4213,11 +6057,13 @@
         },
         "gpqa": {
           "value": 42.4,
-          "source": "hunyuan-large-github"
+          "source": "hunyuan-large-github",
+          "note": "GPQA Diamond（Instruct）"
         },
         "ifeval": {
           "value": 85,
-          "source": "hunyuan-large-github"
+          "source": "hunyuan-large-github",
+          "note": "IFEval strict-prompt"
         }
       },
       "parameters": {
@@ -4292,7 +6138,6 @@
           "source": "claude-3-5-sonnet-oct-addendum"
         }
       },
-      "architecture": "Dense",
       "context_window": "200k",
       "modalities": {
         "input": [
@@ -4360,7 +6205,7 @@
           "key": "baichuan-omni-github",
           "title": "Baichuan-Omni GitHub Repository",
           "url": "https://github.com/westlake-baichuan-mllm/bc-omni",
-          "type": "code"
+          "type": "codebase"
         }
       ],
       "scores": {
@@ -4651,6 +6496,47 @@
       "logo": "assets/logos/alibaba.svg"
     },
     {
+      "id": "alibaba/qwen2-vl-72b",
+      "name": "Qwen2-VL-72B",
+      "company": "alibaba",
+      "brand_color": "#615CED",
+      "release_date": "2024-09-17",
+      "weight_availability_tags": [
+        "open-weights",
+        "multimodal"
+      ],
+      "sources": [
+        {
+          "key": "qwen2-vl-72b-hf",
+          "title": "Qwen2-VL-72B-Instruct",
+          "url": "https://huggingface.co/Qwen/Qwen2-VL-72B-Instruct",
+          "type": "model-card"
+        },
+        {
+          "key": "qwen2-vl-72b-hf-api",
+          "title": "Qwen2-VL-72B-Instruct metadata API",
+          "url": "https://huggingface.co/api/models/Qwen/Qwen2-VL-72B-Instruct",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "parameters": {
+        "total": "72B",
+        "active": "72B"
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/alibaba.svg"
+    },
+    {
       "id": "deepseek/v2.5",
       "name": "DeepSeek-V2.5",
       "company": "deepseek",
@@ -4665,9 +6551,31 @@
           "title": "DeepSeek API Updates",
           "url": "https://api-docs.deepseek.com/updates",
           "type": "blog"
+        },
+        {
+          "key": "deepseek-v2.5-hf",
+          "title": "DeepSeek-V2.5",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V2.5",
+          "type": "model-card"
         }
       ],
-      "scores": {},
+      "scores": {
+        "mmlu": {
+          "value": 80.6,
+          "source": "deepseek-v2.5-hf",
+          "note": "5-shot"
+        },
+        "humaneval": {
+          "value": 89,
+          "source": "deepseek-v2.5-hf",
+          "note": "HumanEval python"
+        },
+        "swe-bench": {
+          "value": 16.8,
+          "source": "deepseek-v2.5-hf",
+          "note": "SWE-verified"
+        }
+      },
       "parameters": {
         "total": "236B",
         "active": "21B"
@@ -4724,16 +6632,13 @@
           "source": "grok-2-beta"
         }
       },
-      "architecture": "unknown",
-      "context_window": "128k",
       "modalities": {
         "input": [
           "text",
           "image"
         ],
         "output": [
-          "text",
-          "image"
+          "text"
         ]
       },
       "logo": "assets/logos/xai.svg"
@@ -4775,19 +6680,17 @@
         },
         "math-level-5": {
           "value": 76.1,
-          "source": "grok-2-beta"
+          "source": "grok-2-beta",
+          "note": "MATH maj@1"
         }
       },
-      "architecture": "unknown",
-      "context_window": "128k",
       "modalities": {
         "input": [
           "text",
           "image"
         ],
         "output": [
-          "text",
-          "image"
+          "text"
         ]
       },
       "logo": "assets/logos/xai.svg"
@@ -4852,7 +6755,8 @@
         },
         "math-level-5": {
           "value": 73.8,
-          "source": "llama3.1-model-card"
+          "source": "llama3.1-model-card",
+          "note": "MATH-500"
         }
       },
       "parameters": {
@@ -5024,6 +6928,12 @@
           "title": "GPT-4o mini advancing cost-efficient intelligence",
           "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
           "type": "blog"
+        },
+        {
+          "key": "gpt-4o-mini-model-doc",
+          "title": "GPT-4o mini Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4o-mini",
+          "type": "website"
         }
       ],
       "scores": {
@@ -5036,8 +6946,7 @@
       "modalities": {
         "input": [
           "text",
-          "image",
-          "audio"
+          "image"
         ],
         "output": [
           "text"
@@ -5056,6 +6965,12 @@
         "agentic"
       ],
       "sources": [
+        {
+          "key": "deepseek-coder-v2-paper",
+          "title": "DeepSeek-Coder-V2: Breaking the Barrier of Closed-Source Models in Code Intelligence",
+          "url": "https://arxiv.org/abs/2406.11931",
+          "type": "paper"
+        },
         {
           "key": "deepseek-coder-v2-github",
           "title": "DeepSeek-Coder-V2",
@@ -5080,6 +6995,35 @@
         ]
       },
       "logo": "assets/logos/deepseek.svg"
+    },
+    {
+      "id": "baichuan/baichuan4-turbo",
+      "name": "Baichuan4-Turbo",
+      "company": "baichuan",
+      "brand_color": "#FF6933",
+      "release_date": "2024-05-22",
+      "weight_availability_tags": [
+        "closed-weights"
+      ],
+      "sources": [
+        {
+          "key": "baichuan-platform",
+          "title": "百川大模型 API 平台（Baichuan4 / Baichuan4-Turbo）",
+          "url": "https://platform.baichuan-ai.com/prices",
+          "type": "website"
+        }
+      ],
+      "scores": {},
+      "context_window": "32k",
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "logo": "assets/logos/baichuan.svg"
     },
     {
       "id": "baichuan/baichuan4",
@@ -5154,14 +7098,15 @@
         },
         "ifeval": {
           "value": 79.1,
-          "source": "glm-4-report"
+          "source": "glm-4-report",
+          "note": "IFEval Prompt-Strict"
         }
       },
       "parameters": {
         "total": "undisclosed",
         "active": "undisclosed"
       },
-      "architecture": "Dense",
+      "architecture": "Transformer",
       "context_window": "128k",
       "modalities": {
         "input": [
@@ -5197,16 +7142,16 @@
           "type": "paper"
         },
         {
+          "key": "gpt-4o-model-doc",
+          "title": "GPT-4o Model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-4o",
+          "type": "website"
+        },
+        {
           "key": "gpt-4.1-announcement",
           "title": "Introducing GPT-4.1 in the API",
           "url": "https://openai.com/index/gpt-4-1/",
           "type": "blog"
-        },
-        {
-          "key": "mmlu-pro-paper",
-          "title": "MMLU-Pro: A More Robust and Challenging Multi-Task Language Understanding Benchmark",
-          "url": "https://arxiv.org/abs/2406.01574",
-          "type": "paper"
         }
       ],
       "scores": {
@@ -5214,17 +7159,9 @@
           "value": 85.7,
           "source": "gpt-4.1-announcement"
         },
-        "mmlu-pro": {
-          "value": 72.6,
-          "source": "mmlu-pro-paper"
-        },
         "gpqa": {
           "value": 46,
           "source": "gpt-4.1-announcement"
-        },
-        "humaneval": {
-          "value": 90.2,
-          "source": "mmlu-pro-paper"
         },
         "swe-bench": {
           "value": 33.2,
@@ -5239,14 +7176,10 @@
       "modalities": {
         "input": [
           "text",
-          "image",
-          "audio",
-          "video"
+          "image"
         ],
         "output": [
-          "text",
-          "image",
-          "audio"
+          "text"
         ]
       },
       "logo": "assets/logos/openai.svg"
@@ -5268,7 +7201,24 @@
           "type": "codebase"
         }
       ],
-      "scores": {},
+      "scores": {
+        "mmlu": {
+          "value": 78.5,
+          "source": "deepseek-v2-github"
+        },
+        "humaneval": {
+          "value": 48.8,
+          "source": "deepseek-v2-github"
+        },
+        "gsm8k": {
+          "value": 79.2,
+          "source": "deepseek-v2-github"
+        },
+        "bbh": {
+          "value": 78.9,
+          "source": "deepseek-v2-github"
+        }
+      },
       "parameters": {
         "total": "236B",
         "active": "21B"

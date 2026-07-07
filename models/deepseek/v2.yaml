@@ -18,4 +18,16 @@ sources:
     title: DeepSeek-V2
     url: https://github.com/deepseek-ai/DeepSeek-V2
     type: codebase
-scores: {}
+scores:
+  mmlu:
+    value: 78.5
+    source: deepseek-v2-github
+  humaneval:
+    value: 48.8
+    source: deepseek-v2-github
+  gsm8k:
+    value: 79.2
+    source: deepseek-v2-github
+  bbh:
+    value: 78.9
+    source: deepseek-v2-github

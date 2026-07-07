@@ -23,7 +23,7 @@ sources:
   - key: baichuan-omni-github
     title: Baichuan-Omni GitHub Repository
     url: https://github.com/westlake-baichuan-mllm/bc-omni
-    type: code
+    type: codebase
 scores:
   mmlu:
     value: 65.3

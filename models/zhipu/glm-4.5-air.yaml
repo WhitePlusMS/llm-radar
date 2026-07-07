@@ -1,0 +1,29 @@
+id: zhipu/glm-4.5-air
+name: GLM-4.5-Air
+company: zhipu
+brand_color: "#4268FA"
+release_date: "2025-07-28"
+parameters:
+  total: "106B"
+  active: "12B"
+architecture: MoE
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights, reasoning]
+logo: assets/logos/zhipu.svg
+sources:
+  - key: glm-4.5-blog
+    title: "GLM-4.5: Reasoning, Coding, and Agentic Abilities"
+    url: https://z.ai/blog/glm-4.5
+    type: blog
+  - key: glm-4.5-report
+    title: "GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models"
+    url: https://arxiv.org/abs/2508.06471
+    type: paper
+  - key: glm-4.5-air-hf
+    title: zai-org/GLM-4.5-Air
+    url: https://huggingface.co/zai-org/GLM-4.5-Air
+    type: model-card
+scores: {}

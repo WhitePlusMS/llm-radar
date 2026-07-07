@@ -2,7 +2,7 @@ id: anthropic/claude-haiku-4.5
 name: Claude Haiku 4.5
 company: anthropic
 brand_color: "#D97757"
-release_date: "2025-10-01"
+release_date: "2025-10-15"
 # Anthropic 官方未公开 Claude Haiku 4.5 的参数规模与架构细节。
 context_window: "200k"
 modalities:
@@ -11,6 +11,10 @@ modalities:
 weight_availability_tags: [closed-weights, reasoning, multimodal]
 logo: assets/logos/anthropic.svg
 sources:
+  - key: claude-haiku-4.5-launch
+    title: Introducing Claude Haiku 4.5
+    url: https://www.anthropic.com/news/claude-haiku-4-5
+    type: blog
   - key: claude-models-overview
     title: Models overview
     url: https://platform.claude.com/docs/en/about-claude/models/overview

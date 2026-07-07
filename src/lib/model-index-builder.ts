@@ -213,10 +213,15 @@ function validateModelCard(
     }
     const value: number | null = eo.value === undefined ? null : (eo.value as number | null);
     const source = optStr(eo, `${p}.scores.${key}`, 'source');
+    const note = optStr(eo, `${p}.scores.${key}`, 'note');
     if (source !== undefined && !sourceKeys.has(source)) {
       fail(`${p}.scores.${key}: source "${source}" 不存在于 sources 列表`);
     }
-    scores[key] = source !== undefined ? { value, source } : { value };
+    scores[key] = {
+      value,
+      ...(source !== undefined && { source }),
+      ...(note !== undefined && { note }),
+    };
   }
 
   let parameters: ModelCard['parameters'] | undefined = undefined;

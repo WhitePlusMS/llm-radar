@@ -1,0 +1,23 @@
+id: zhipu/glm-5.2
+name: GLM-5.2
+company: zhipu
+brand_color: "#4268FA"
+release_date: "2026-06-16"
+context_window: "1M"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning]
+logo: assets/logos/zhipu.svg
+sources:
+  - key: zai-release-notes
+    title: New Released
+    url: https://docs.z.ai/release-notes/new-released
+    type: website
+  - key: glm-5.2-blog
+    title: GLM-5.2
+    url: https://z.ai/blog/glm-5.2
+    type: blog
+# 官方页面当前重点披露的是 long-horizon / coding / terminal 能力，
+# 未稳定给出本项目 metrics.yaml 同口径 benchmark 数值。
+scores: {}

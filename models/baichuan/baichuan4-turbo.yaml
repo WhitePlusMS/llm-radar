@@ -1,0 +1,18 @@
+id: baichuan/baichuan4-turbo
+name: Baichuan4-Turbo
+company: baichuan
+brand_color: "#FF6933"
+release_date: "2024-05-22"
+# 百川官方平台确认 Baichuan4-Turbo 为服务模型，但未公开其参数规模与技术报告。
+context_window: "32k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [closed-weights]
+logo: assets/logos/baichuan.svg
+sources:
+  - key: baichuan-platform
+    title: 百川大模型 API 平台（Baichuan4 / Baichuan4-Turbo）
+    url: https://platform.baichuan-ai.com/prices
+    type: website
+scores: {}

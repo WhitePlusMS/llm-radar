@@ -7,7 +7,7 @@ parameters:
   total: "397B"
   active: "17B"
 architecture: MoE
-context_window: "262k native / 1M with extrapolation"
+context_window: "262,144 natively / 1,010,000 with extrapolation"
 modalities:
   input: [text, image, video]
   output: [text]
@@ -22,6 +22,13 @@ sources:
     title: Qwen3.5-397B-A17B
     url: https://huggingface.co/Qwen/Qwen3.5-397B-A17B
     type: model-card
-# Qwen3.5 官方发布资料中可验证的 metrics.yaml 指标有限。
-# 原始来源未报告：mmlu, mmlu-pro, gpqa, humaneval, math-level-5, gsm8k, arena-elo, ifeval, bbh, drop, hellaswag, arc-c, winogrande
-scores: {}
+scores:
+  mmlu-pro:
+    value: 87.8
+    source: qwen3.5-hf
+  gpqa:
+    value: 88.4
+    source: qwen3.5-hf
+  ifeval:
+    value: 92.6
+    source: qwen3.5-hf

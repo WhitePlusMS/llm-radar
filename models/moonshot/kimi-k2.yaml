@@ -4,8 +4,8 @@ company: moonshot
 brand_color: "#1783FF"
 release_date: "2025-07-28"
 parameters:
-  total: "1.04T"
-  active: "32.6B"
+  total: "1T"
+  active: "32B"
 architecture: MoE
 context_window: "128k"
 modalities:

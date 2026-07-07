@@ -1,0 +1,40 @@
+id: deepseek/v3.2
+name: DeepSeek-V3.2
+company: deepseek
+brand_color: "#4D6BFE"
+release_date: "2025-12-01"
+parameters:
+  total: "685B"
+architecture: MoE
+context_window: "128k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [open-weights, reasoning]
+logo: assets/logos/deepseek.svg
+sources:
+  - key: deepseek-v3.2-news
+    title: DeepSeek-V3.2 Release
+    url: https://api-docs.deepseek.com/news/news251201
+    type: website
+  - key: deepseek-v3.2-hf
+    title: DeepSeek-V3.2
+    url: https://huggingface.co/deepseek-ai/DeepSeek-V3.2
+    type: model-card
+  - key: deepseek-v3.2-paper
+    title: DeepSeek-V3.2 Technical Paper
+    url: https://huggingface.co/deepseek-ai/DeepSeek-V3.2/resolve/main/assets/paper.pdf
+    type: paper
+scores:
+  mmlu-pro:
+    value: 85.0
+    source: deepseek-v3.2-hf
+    note: MMLU-Pro
+  gpqa:
+    value: 82.4
+    source: deepseek-v3.2-hf
+    note: GPQA Diamond
+  swe-bench:
+    value: 70.0
+    source: deepseek-v3.2-hf
+    note: SWE Verified

@@ -17,6 +17,8 @@ export interface RadarPoint {
   rawValue?: number;
   /** 原始分数来源 key（仅非缺失时有效） */
   source?: string;
+  /** 原始分数口径说明（仅非缺失时有效） */
+  note?: string;
 }
 
 /**
@@ -57,6 +59,7 @@ export function projectScore(entry: ScoreEntry | undefined, metric: Metric): Rad
     missing: false,
     rawValue: entry.value,
     source: entry.source,
+    note: entry.note,
   };
 }
 

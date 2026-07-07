@@ -1,0 +1,23 @@
+id: zhipu/glm-4.5v
+name: GLM-4.5V
+company: zhipu
+brand_color: "#4268FA"
+release_date: "2025-08-11"
+parameters:
+  total: "106B"
+  active: "12B"
+modalities:
+  input: [text, image, video]
+  output: [text]
+weight_availability_tags: [open-weights, reasoning, multimodal]
+logo: assets/logos/zhipu.svg
+sources:
+  - key: glm-4.5v-hf
+    title: zai-org/GLM-4.5V
+    url: https://huggingface.co/zai-org/GLM-4.5V
+    type: model-card
+  - key: glm-v-github
+    title: zai-org/GLM-V
+    url: https://github.com/zai-org/GLM-V
+    type: codebase
+scores: {}

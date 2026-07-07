@@ -486,6 +486,16 @@ table.data td.val .raw {
   font-weight: 700;
 }
 table.data td.val .norm { display: block; font-size: 9px; color: var(--dim); margin-top: 1px; }
+table.data td.val .note {
+  display: block;
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 2px;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 table.data td.val .src {
   display: inline-flex; align-items: center; justify-content: flex-end; gap: 3px;
   max-width: 8rem; overflow: hidden; text-overflow: ellipsis;

@@ -7,7 +7,7 @@ parameters:
   total: "480B"
   active: "35B"
 architecture: MoE
-context_window: "256k native / 1M with extrapolation"
+context_window: "262,144 natively / 1M with extrapolation"
 modalities:
   input: [text]
   output: [text]

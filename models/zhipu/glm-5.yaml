@@ -2,7 +2,7 @@ id: zhipu/glm-5
 name: GLM-5
 company: zhipu
 brand_color: "#4268FA"
-release_date: "2026-02-17"
+release_date: "2026-02-03"
 parameters:
   total: "744B"
   active: "40B"
@@ -18,13 +18,30 @@ sources:
     title: "GLM-5: from Vibe Coding to Agentic Engineering"
     url: https://arxiv.org/abs/2602.15763
     type: paper
+  - key: zai-release-notes
+    title: New Released
+    url: https://docs.z.ai/release-notes/new-released
+    type: website
+  - key: glm-5-blog
+    title: GLM-5
+    url: https://z.ai/blog/glm-5
+    type: blog
+  - key: glm-5-github
+    title: zai-org/GLM-5
+    url: https://github.com/zai-org/GLM-5
+    type: codebase
+  - key: glm-5-hf
+    title: zai-org/GLM-5
+    url: https://huggingface.co/zai-org/GLM-5
+    type: model-card
 scores:
   # GLM-5 官方博客 headline 值为 GPQA-Diamond 86.0（thinking 模式）；
   # 论文非 thinking 模式为 82.5。此处采用官方宣传 headline 值并注明版本。
   gpqa:
     value: 86.0
-    source: glm-5-report
+    source: glm-5-blog
     note: GLM-5 Thinking
   swe-bench:
     value: 77.8
     source: glm-5-report
+    note: 200K context window

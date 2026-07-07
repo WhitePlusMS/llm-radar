@@ -1,0 +1,38 @@
+id: alibaba/qwen3.6-35b-a3b
+name: Qwen3.6-35B-A3B
+company: alibaba
+brand_color: "#615CED"
+release_date: "2026-04-15"
+parameters:
+  total: "35B"
+  active: "3B"
+architecture: MoE
+context_window: "262,144 natively / 1,010,000 with extrapolation"
+modalities:
+  input: [text, image, video]
+  output: [text]
+weight_availability_tags: [open-weights, reasoning, multimodal]
+logo: assets/logos/alibaba.svg
+sources:
+  - key: qwen3.6-blog
+    title: "Qwen3.6-35B-A3B: Agentic Coding Power, Now Open to All"
+    url: https://qwen.ai/blog?id=qwen3.6-35b-a3b
+    type: blog
+  - key: qwen3.6-hf
+    title: Qwen3.6-35B-A3B
+    url: https://huggingface.co/Qwen/Qwen3.6-35B-A3B
+    type: model-card
+  - key: qwen3.6-hf-api
+    title: Qwen3.6-35B-A3B metadata API
+    url: https://huggingface.co/api/models/Qwen/Qwen3.6-35B-A3B
+    type: website
+scores:
+  mmlu-pro:
+    value: 85.2
+    source: qwen3.6-hf
+  gpqa:
+    value: 85.5
+    source: qwen3.6-hf
+  swe-bench:
+    value: 73.4
+    source: qwen3.6-hf

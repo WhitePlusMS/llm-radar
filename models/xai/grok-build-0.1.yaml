@@ -2,17 +2,21 @@ id: xai/grok-build-0.1
 name: Grok Build 0.1
 company: xai
 brand_color: "#000000"
-release_date: "2026-06-11"
+release_date: "2026-05-19"
 # xAI 未公开 Grok Build 0.1 的参数规模与架构细节。
 context_window: "256k"
 modalities:
-  input: [text]
+  input: [text, image]
   output: [text]
-weight_availability_tags: [closed-weights, reasoning, agentic]
+weight_availability_tags: [closed-weights, reasoning, multimodal, agentic]
 logo: assets/logos/xai.svg
 sources:
-  - key: xai-models-doc
-    title: Models
-    url: https://docs.x.ai/docs/models
+  - key: grok-build-0.1-doc
+    title: Grok Build 0.1
+    url: https://docs.x.ai/developers/models/grok-build-0.1
     type: website
+  - key: grok-build-0.1-launch
+    title: Introducing Grok Build
+    url: https://x.ai/news/grok-build-cli
+    type: blog
 scores: {}

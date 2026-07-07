@@ -1,0 +1,18 @@
+id: tencent/tencent-hy-2.0-think
+name: Tencent HY 2.0 Think
+company: tencent
+brand_color: "#0052D9"
+release_date: "2025-11-09"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning]
+logo: assets/logos/tencent.svg
+sources:
+  - key: tencent-model-updates
+    title: 腾讯云大模型知识引擎产品动态
+    url: https://cloud.tencent.com/document/product/1729/97765
+    type: website
+# 官方产品动态确认型号存在、发布日期与产品定位，
+# 但当前未稳定公开该模型的参数规模、上下文窗口和 metrics.yaml 同口径 benchmark。
+scores: {}

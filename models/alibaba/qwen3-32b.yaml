@@ -18,4 +18,24 @@ sources:
     title: "Qwen3: Think Deeper, Act Faster"
     url: https://qwenlm.github.io/blog/qwen3/
     type: blog
-scores: {}
+  - key: qwen3-report
+    title: "Qwen3 Technical Report"
+    url: https://arxiv.org/abs/2505.09388
+    type: paper
+scores:
+  mmlu-pro:
+    value: 70.9
+    source: qwen3-report
+  gpqa:
+    value: 56.1
+    source: qwen3-report
+  bbh:
+    value: 85.0
+    source: qwen3-report
+  gsm8k:
+    value: 95.7
+    source: qwen3-report
+  ifeval:
+    value: 88.2
+    source: qwen3-report
+    note: thinking mode

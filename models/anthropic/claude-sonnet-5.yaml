@@ -11,6 +11,10 @@ modalities:
 weight_availability_tags: [closed-weights, reasoning, multimodal]
 logo: assets/logos/anthropic.svg
 sources:
+  - key: claude-sonnet-5-launch
+    title: Introducing Claude Sonnet 5
+    url: https://www.anthropic.com/news/claude-sonnet-5
+    type: blog
   - key: claude-models-overview
     title: Models overview
     url: https://platform.claude.com/docs/en/about-claude/models/overview

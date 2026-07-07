@@ -1,0 +1,38 @@
+id: alibaba/qwen3.5-35b-a3b
+name: Qwen3.5-35B-A3B
+company: alibaba
+brand_color: "#615CED"
+release_date: "2026-02-24"
+parameters:
+  total: "35B"
+  active: "3B"
+architecture: MoE
+context_window: "262,144 natively / 1,010,000 with extrapolation"
+modalities:
+  input: [text, image, video]
+  output: [text]
+weight_availability_tags: [open-weights, reasoning, multimodal]
+logo: assets/logos/alibaba.svg
+sources:
+  - key: qwen3.5-35b-hf
+    title: Qwen3.5-35B-A3B
+    url: https://huggingface.co/Qwen/Qwen3.5-35B-A3B
+    type: model-card
+  - key: qwen3.5-35b-hf-api
+    title: Qwen3.5-35B-A3B metadata API
+    url: https://huggingface.co/api/models/Qwen/Qwen3.5-35B-A3B
+    type: website
+scores:
+  mmlu-pro:
+    value: 85.3
+    source: qwen3.5-35b-hf
+  gpqa:
+    value: 84.2
+    source: qwen3.5-35b-hf
+    note: GPQA Diamond
+  ifeval:
+    value: 91.9
+    source: qwen3.5-35b-hf
+  swe-bench:
+    value: 69.2
+    source: qwen3.5-35b-hf

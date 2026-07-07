@@ -1,0 +1,18 @@
+id: baidu/ernie-4.5-vl
+name: ERNIE 4.5-VL
+company: baidu
+brand_color: "#2932E1"
+release_date: "2025-06-30"
+# ERNIE 4.5 技术报告确认存在原生多模态 VL 变体，但未公开其独立参数规模。
+architecture: MoE
+modalities:
+  input: [text, image]
+  output: [text]
+weight_availability_tags: [open-weights, multimodal]
+logo: assets/logos/baidu.svg
+sources:
+  - key: ernie-4.5-tr
+    title: ERNIE 4.5 Technical Report
+    url: https://ernie.baidu.com/blog/publication/ERNIE_Technical_Report.pdf
+    type: paper
+scores: {}

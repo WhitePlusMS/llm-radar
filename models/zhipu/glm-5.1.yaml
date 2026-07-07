@@ -1,0 +1,23 @@
+id: zhipu/glm-5.1
+name: GLM-5.1
+company: zhipu
+brand_color: "#4268FA"
+release_date: "2026-04-07"
+context_window: "200k"
+modalities:
+  input: [text]
+  output: [text]
+weight_availability_tags: [closed-weights, reasoning]
+logo: assets/logos/zhipu.svg
+sources:
+  - key: zai-release-notes
+    title: New Released
+    url: https://docs.z.ai/release-notes/new-released
+    type: website
+  - key: glm-5.1-doc
+    title: GLM-5.1
+    url: https://docs.z.ai/guides/llm/glm-5-1
+    type: website
+# 官方页面当前重点披露的是长时任务与工程智能表现，
+# 未稳定给出本项目 metrics.yaml 同口径 benchmark 数值。
+scores: {}

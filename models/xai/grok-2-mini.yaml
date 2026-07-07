@@ -2,13 +2,11 @@ id: xai/grok-2-mini
 name: Grok-2 mini
 company: xai
 brand_color: "#000000"
-# xAI 未公开 Grok-2 mini 的参数规模与架构细节。
+# xAI 未公开 Grok-2 mini 的参数规模、架构与上下文窗口。
 release_date: "2024-08-13"
-architecture: unknown
-context_window: "128k"
 modalities:
   input: [text, image]
-  output: [text, image]
+  output: [text]
 weight_availability_tags: [closed-weights, multimodal]
 logo: assets/logos/xai.svg
 sources:

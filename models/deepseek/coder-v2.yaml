@@ -14,8 +14,14 @@ modalities:
 weight_availability_tags: [open-weights, agentic]
 logo: assets/logos/deepseek.svg
 sources:
+  - key: deepseek-coder-v2-paper
+    title: "DeepSeek-Coder-V2: Breaking the Barrier of Closed-Source Models in Code Intelligence"
+    url: https://arxiv.org/abs/2406.11931
+    type: paper
   - key: deepseek-coder-v2-github
     title: DeepSeek-Coder-V2
     url: https://github.com/deepseek-ai/DeepSeek-Coder-V2
     type: codebase
+# DeepSeek-Coder-V2 官方 benchmark 主要按 Base / Instruct / Lite 具体变体给出。
+# 当前 generic 模型卡不直接混填这些分数，避免把不同后缀型号的数据写到同一条目里。
 scores: {}

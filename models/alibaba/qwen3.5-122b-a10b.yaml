@@ -1,0 +1,38 @@
+id: alibaba/qwen3.5-122b-a10b
+name: Qwen3.5-122B-A10B
+company: alibaba
+brand_color: "#615CED"
+release_date: "2026-02-24"
+parameters:
+  total: "122B"
+  active: "10B"
+architecture: MoE
+context_window: "262,144 natively / 1,010,000 with extrapolation"
+modalities:
+  input: [text, image, video]
+  output: [text]
+weight_availability_tags: [open-weights, reasoning, multimodal]
+logo: assets/logos/alibaba.svg
+sources:
+  - key: qwen3.5-122b-hf
+    title: Qwen3.5-122B-A10B
+    url: https://huggingface.co/Qwen/Qwen3.5-122B-A10B
+    type: model-card
+  - key: qwen3.5-122b-hf-api
+    title: Qwen3.5-122B-A10B metadata API
+    url: https://huggingface.co/api/models/Qwen/Qwen3.5-122B-A10B
+    type: website
+scores:
+  mmlu-pro:
+    value: 86.7
+    source: qwen3.5-122b-hf
+  gpqa:
+    value: 86.6
+    source: qwen3.5-122b-hf
+    note: GPQA Diamond
+  ifeval:
+    value: 93.4
+    source: qwen3.5-122b-hf
+  swe-bench:
+    value: 72.0
+    source: qwen3.5-122b-hf

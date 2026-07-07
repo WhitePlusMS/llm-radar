@@ -18,4 +18,16 @@ sources:
     title: DeepSeek-R1
     url: https://github.com/deepseek-ai/DeepSeek-R1
     type: codebase
-scores: {}
+  - key: deepseek-r1-0528-hf
+    title: DeepSeek-R1-0528
+    url: https://huggingface.co/deepseek-ai/DeepSeek-R1-0528
+    type: model-card
+scores:
+  mmlu-pro:
+    value: 85.0
+    source: deepseek-r1-0528-hf
+    note: MMLU-Pro
+  gpqa:
+    value: 73.3
+    source: deepseek-r1-0528-hf
+    note: GPQA Diamond
